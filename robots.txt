@@ -1,0 +1,16 @@
+# robots.txt para jonathanesteban.netlify.app
+# Usuario: todos los bots tienen acceso completo
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://jonathanesteban.netlify.app/sitemap.xml
+
+# Denied paths (reservado para el futuro)
+# Disallow: /_netlify/
+# Disallow: /admin/
+# Disallow: /.git/
+
+# Crawl delay (Google lo ignora, pero otros bots lo respetan)
+Crawl-delay: 1
