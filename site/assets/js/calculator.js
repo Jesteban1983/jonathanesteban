@@ -9,9 +9,9 @@ export function initCalculator() {
   if (!calcForm || !estimatedPriceEl || !estimatedTimeEl) return;
 
   const serviceLabels = {
-    landing: 'Landing para captar clientes',
+    landing: 'Landing page web',
     fullstack: 'Web profesional multipagina',
-    backend: 'Automatizacion y panel interno',
+    backend: 'APIs REST y Backend',
     'ai-agent': 'Asistente IA para negocio',
     'it-support': 'Soporte IT'
   };

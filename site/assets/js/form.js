@@ -9,44 +9,31 @@ export function initContactForm() {
   const subjectInput = form.querySelector('#subject');
   const messageInput = form.querySelector('#message');
 
-  function applyBudgetPrefill() {
+  function applyPrefill() {
     const params = new URLSearchParams(window.location.search);
     const isBudgetPrefill = params.get('prefill') === 'budget';
     const urlSubject = params.get('subject');
     const urlMessage = params.get('message');
 
-    let prefill = null;
-
+    // Priority 1: URL params from calculator ("Solicitar Esta Propuesta")
     if (isBudgetPrefill && (urlSubject || urlMessage)) {
-      prefill = {
-        subject: urlSubject || '',
-        message: urlMessage || ''
-      };
-    } else {
-      const savedPrefill = localStorage.getItem('budgetPrefill');
-      if (savedPrefill) {
-        try {
-          prefill = JSON.parse(savedPrefill);
-        } catch {
-          prefill = null;
-        }
-      }
+      if (subjectInput && urlSubject) subjectInput.value = urlSubject;
+      if (messageInput && urlMessage) messageInput.value = urlMessage;
+      localStorage.removeItem('budgetPrefill');
+      return;
     }
 
-    if (!prefill) return;
-
-    if (subjectInput && !subjectInput.value.trim()) {
-      subjectInput.value = prefill.subject || '';
+    // Priority 2: Subject-only URL param (from service card "Consultar →")
+    if (urlSubject && !isBudgetPrefill) {
+      if (subjectInput) subjectInput.value = urlSubject;
+      return;
     }
 
-    if (messageInput && !messageInput.value.trim()) {
-      messageInput.value = prefill.message || '';
-    }
-
+    // No URL params → direct visit → clear stale localStorage → form stays blank
     localStorage.removeItem('budgetPrefill');
   }
 
-  applyBudgetPrefill();
+  applyPrefill();
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();

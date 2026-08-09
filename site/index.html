@@ -36,10 +36,6 @@
   <link rel="stylesheet" href="/assets/css/layout.css">
   <link rel="stylesheet" href="/assets/css/components.css">
   <link rel="stylesheet" href="/assets/css/pages.css">
-  <style>
-    .home-services-section {
-      padding-bottom: clamp(2.25rem, 4vw, 3.25rem);
-    }
   </style>
 
   <!-- JSON-LD Stacked Schemas for SEO & GEO -->
@@ -77,7 +73,6 @@
       </a>
       <ul class="nav-links" role="list">
         <li><a href="/servicios/">Servicios</a></li>
-        <li><a href="/soporte-it/">Soporte IT</a></li>
         <li><a href="/proyectos/">Proyectos</a></li>
         <li><a href="/certificaciones/">Certificaciones</a></li>
         <li><a href="/sobre-mi/">Sobre Mí</a></li>
@@ -86,7 +81,6 @@
       </ul>
       <div class="nav-actions">
         <button class="theme-toggle-btn" data-theme-toggle aria-label="Cambiar tema"></button>
-        <a href="/contacto/" class="btn-primary">Contrátame</a>
         <button class="hamburger-btn" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -97,7 +91,6 @@
   <!-- Mobile Nav Drawer -->
   <nav class="nav-mobile" id="mobileNav" aria-label="Menú móvil">
     <a href="/servicios/">Servicios & Presupuesto</a>
-    <a href="/soporte-it/">Soporte IT & Operaciones</a>
     <a href="/proyectos/">Proyectos & Casos</a>
     <a href="/certificaciones/">Certificaciones</a>
     <a href="/sobre-mi/">Sobre Mí</a>
@@ -144,30 +137,96 @@
       </div>
     </section>
 
-    <!-- Services Overview -->
-    <section class="section section-alt home-services-section">
+    <!-- Featured Projects + Tech Stack (Opción C) -->
+    <section class="section section-alt">
       <div class="container">
         <div>
-          <p class="section-label">Soluciones Tecnológicas</p>
-          <h2 class="section-title">Servicios Principales</h2>
-          <p class="section-desc">Desarrollo robusto, arquitecturas backend seguras e inteligencia artificial integrada.</p>
+          <p class="section-label">Trabajo Reciente</p>
+          <h2 class="section-title">Proyectos Destacados</h2>
+          <p class="section-desc">Casos reales de desarrollo web, backend e inteligencia artificial. Puedes revisar el código, probar demos y leer los estudios de caso.</p>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+        <!-- Proyecto destacado principal -->
+        <div style="background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 1.25rem; padding: 2rem; transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;" onmouseover="this.style.borderColor='var(--primary)'; this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 40px rgba(0,0,0,0.3)'" onmouseout="this.style.borderColor=''; this.style.transform=''; this.style.boxShadow=''">
+          <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 1.5rem;">
+            <div style="flex: 2; min-width: 260px;">
+              <span class="badge-status badge-active" style="margin-bottom: 0.5rem; display: inline-block;">En desarrollo</span>
+              <h3 style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; margin-bottom: 0.5rem;">📦 TrackFlow — Gestión de Inventario</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">Sistema completo de inventario para logística con almacenes en EE.UU. y España. API REST con FastAPI, autenticación JWT, stock en tiempo real y backoffice en Next.js.</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem;">
+                <span style="font-size: 0.75rem; background: var(--primary); color: #fff; padding: 0.25rem 0.7rem; border-radius: 999px; font-weight: 600;">Python</span>
+                <span style="font-size: 0.75rem; background: var(--surface-2-color, var(--surface-color)); color: var(--text-muted); border: 1px solid var(--border-color); padding: 0.25rem 0.7rem; border-radius: 999px; font-weight: 600;">FastAPI</span>
+                <span style="font-size: 0.75rem; background: var(--surface-2-color, var(--surface-color)); color: var(--text-muted); border: 1px solid var(--border-color); padding: 0.25rem 0.7rem; border-radius: 999px; font-weight: 600;">PostgreSQL</span>
+                <span style="font-size: 0.75rem; background: var(--surface-2-color, var(--surface-color)); color: var(--text-muted); border: 1px solid var(--border-color); padding: 0.25rem 0.7rem; border-radius: 999px; font-weight: 600;">Next.js</span>
+                <span style="font-size: 0.75rem; background: var(--surface-2-color, var(--surface-color)); color: var(--text-muted); border: 1px solid var(--border-color); padding: 0.25rem 0.7rem; border-radius: 999px; font-weight: 600;">Supabase</span>
+              </div>
+              <div style="display: flex; gap: 1.25rem; flex-wrap: wrap;">
+                <a href="https://github.com/4GeeksAcademy/Jesteban1983-TrackFlow.git" target="_blank" rel="noopener noreferrer" style="font-size: 0.875rem; font-weight: 600; color: var(--primary);">Ver en GitHub →</a>
+              </div>
+            </div>
+            <div style="flex: 1; min-width: 180px; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 1rem; padding: 1.25rem;">
+              <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-faint); margin-bottom: 0.75rem;">Stack del proyecto</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+                <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.3rem 0.6rem; border-radius: 0.4rem; color: var(--text-muted);">🐍 Python</span>
+                <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.3rem 0.6rem; border-radius: 0.4rem; color: var(--text-muted);">⚡ FastAPI</span>
+                <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.3rem 0.6rem; border-radius: 0.4rem; color: var(--text-muted);">🗄️ PostgreSQL</span>
+                <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.3rem 0.6rem; border-radius: 0.4rem; color: var(--text-muted);">⚛️ Next.js</span>
+                <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.3rem 0.6rem; border-radius: 0.4rem; color: var(--text-muted);">🔐 JWT</span>
+                <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.3rem 0.6rem; border-radius: 0.4rem; color: var(--text-muted);">☁️ Supabase</span>
+                <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.3rem 0.6rem; border-radius: 0.4rem; color: var(--text-muted);">🧪 Pytest</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grid proyectos secundarios -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 1.5rem;">
           <div class="card">
-            <h3>💻 Desarrollo Web Full-Stack</h3>
-            <p style="color: var(--text-muted); margin-block: 0.75rem;">Aplicaciones web modernas con React, Next.js, TypeScript y Tailwind CSS.</p>
-            <a href="/servicios/" style="color: var(--primary); font-weight: 600; font-size: 0.875rem;">Saber más →</a>
+            <span class="badge-status badge-info" style="margin-bottom: 0.5rem; display: inline-block;">Completado</span>
+            <h3 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 400; margin-bottom: 0.5rem;">🧠 ClawMate — Agente IA</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Asistente autónomo con OpenClaw y Composio MCP conectado a Gmail, Calendar, Drive, Telegram y más de 8 servicios.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem;">
+              <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.2rem 0.5rem; border-radius: 999px; color: var(--text-muted);">OpenClaw</span>
+              <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.2rem 0.5rem; border-radius: 999px; color: var(--text-muted);">Composio MCP</span>
+              <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.2rem 0.5rem; border-radius: 999px; color: var(--text-muted);">Python</span>
+            </div>
+            <a href="/proyectos/casos/automatizacion-leads/" style="font-size: 0.875rem; font-weight: 600; color: var(--primary);">Ver caso de estudio →</a>
           </div>
           <div class="card">
-            <h3>⚙️ APIs REST & Backend</h3>
-            <p style="color: var(--text-muted); margin-block: 0.75rem;">Servicios con FastAPI, Python, PostgreSQL, Supabase y JWT.</p>
-            <a href="/servicios/" style="color: var(--primary); font-weight: 600; font-size: 0.875rem;">Saber más →</a>
+            <span class="badge-status badge-info" style="margin-bottom: 0.5rem; display: inline-block;">Completado</span>
+            <h3 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 400; margin-bottom: 0.5rem;">💬 Talk to the Machine</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Chat conversacional en tiempo real con Groq API y LLaMA 3. Interfaz responsive y fluida construida con Next.js.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem;">
+              <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.2rem 0.5rem; border-radius: 999px; color: var(--text-muted);">Next.js</span>
+              <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.2rem 0.5rem; border-radius: 999px; color: var(--text-muted);">Groq API</span>
+              <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.2rem 0.5rem; border-radius: 999px; color: var(--text-muted);">LLaMA 3</span>
+            </div>
+            <div style="display: flex; gap: 1rem;">
+              <a href="https://github.com/4GeeksAcademy/Jesteban1983-talk-to-the-machine.git" target="_blank" rel="noopener noreferrer" style="font-size: 0.875rem; font-weight: 600; color: var(--primary);">GitHub →</a>
+              <a href="/proyectos/demo-app/" style="font-size: 0.875rem; font-weight: 600; color: var(--text-muted);">Demo →</a>
+            </div>
           </div>
-          <div class="card">
-            <h3>🤖 Agentes de IA & Automatización</h3>
-            <p style="color: var(--text-muted); margin-block: 0.75rem;">Agentes autónomos OpenClaw, Composio MCP y pipelines n8n.</p>
-            <a href="/servicios/" style="color: var(--primary); font-weight: 600; font-size: 0.875rem;">Saber más →</a>
+        </div>
+
+        <!-- Tech Stack Bar -->
+        <div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+          <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-faint); text-align: center; margin-bottom: 1.25rem;">Tecnologías que domino</p>
+          <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem;">
+            <span class="card" style="font-size: 0.8rem; padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-weight: 600;">TypeScript</span>
+            <span class="card" style="font-size: 0.8rem; padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-weight: 600;">React</span>
+            <span class="card" style="font-size: 0.8rem; padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-weight: 600;">Next.js</span>
+            <span class="card" style="font-size: 0.8rem; padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-weight: 600;">Python</span>
+            <span class="card" style="font-size: 0.8rem; padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-weight: 600;">FastAPI</span>
+            <span class="card" style="font-size: 0.8rem; padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-weight: 600;">PostgreSQL</span>
+            <span class="card" style="font-size: 0.8rem; padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-weight: 600;">Supabase</span>
+            <span class="card" style="font-size: 0.8rem; padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-weight: 600;">OpenClaw</span>
+            <span class="card" style="font-size: 0.8rem; padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-weight: 600;">Docker</span>
+            <span class="card" style="font-size: 0.8rem; padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-weight: 600;">Git</span>
+            <span class="card" style="font-size: 0.8rem; padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-weight: 600;">Figma</span>
+            <span class="card" style="font-size: 0.8rem; padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-weight: 600;">n8n</span>
+          </div>
+          <div style="text-align: center; margin-top: 2rem;">
+            <a href="/proyectos/" class="btn-secondary">Ver todos los proyectos →</a>
           </div>
         </div>
       </div>
@@ -188,7 +247,6 @@
             <li><a href="/servicios/">Servicios</a></li>
             <li><a href="/proyectos/">Proyectos</a></li>
             <li><a href="/certificaciones/">Certificaciones</a></li>
-            <li><a href="/soporte-it/">Soporte IT</a></li>
           </ul>
         </div>
         <div class="footer-col">
