@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio de Proyectos & Casos de Éxito | Jonathan Esteban</title>
+  <meta name="description" content="Explora el portfolio de proyectos reales desarrollados por Jonathan Esteban: TrackFlow, Agentes de IA OpenClaw, APIs REST FastAPI, aplicaciones Next.js y más.">
+  <link rel="canonical" href="https://jonathanesteban.dev/proyectos/">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/pages.css">
+</head>
+<body>
+  <header class="nav-header">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Jonathan Esteban
+      </a>
+      <ul class="nav-links">
+        <li><a href="/servicios/">Servicios</a></li>
+        <li><a href="/soporte-it/">Soporte IT</a></li>
+        <li><a href="/proyectos/" class="active">Proyectos</a></li>
+        <li><a href="/certificaciones/">Certificaciones</a></li>
+        <li><a href="/sobre-mi/">Sobre Mí</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+        <li><a href="/contacto/">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" data-theme-toggle aria-label="Cambiar tema"></button>
+        <a href="/contacto/" class="btn-primary">Contrátame</a>
+        <button class="hamburger-btn" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="container-wide pt-28 pb-16 lg:pt-32">
+    <div class="fade-in">
+      <p class="section-label">Trabajo Desarrollado</p>
+      <h1 class="section-title">Portfolio de Proyectos & Casos</h1>
+      <p class="section-desc">Proyectos reales con código en GitHub, demostraciones en vivo y estudios de caso.</p>
+    </div>
+
+    <!-- Category Filters -->
+    <div class="fade-in mt-8 mb-10 flex flex-wrap gap-3" id="projectFilters" role="tablist" aria-label="Filtrar proyectos por categoría">
+      <button class="filter-btn active rounded-full border border-slate-600 bg-cyan-500 px-5 py-2 text-sm font-semibold text-white transition-colors duration-200" data-filter="all" data-state="active">Todos los Proyectos</button>
+      <button class="filter-btn rounded-full border border-slate-700 bg-slate-900/70 px-5 py-2 text-sm font-semibold text-slate-300 transition-colors duration-200 hover:border-cyan-400 hover:text-cyan-200" data-filter="backend" data-state="inactive">Backend & APIs</button>
+      <button class="filter-btn rounded-full border border-slate-700 bg-slate-900/70 px-5 py-2 text-sm font-semibold text-slate-300 transition-colors duration-200 hover:border-cyan-400 hover:text-cyan-200" data-filter="ai" data-state="inactive">Agentes de IA</button>
+      <button class="filter-btn rounded-full border border-slate-700 bg-slate-900/70 px-5 py-2 text-sm font-semibold text-slate-300 transition-colors duration-200 hover:border-cyan-400 hover:text-cyan-200" data-filter="frontend" data-state="inactive">Frontend & React</button>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3" id="projectsGrid">
+      
+      <article class="project-card group rounded-2xl border border-slate-700/80 bg-slate-900/70 p-7 shadow-sm shadow-black/20 transition hover:-translate-y-1 hover:border-cyan-400/80" data-project-category="backend">
+        <span class="badge-status badge-active">En desarrollo</span>
+        <h3 class="mt-3 text-xl font-semibold leading-snug text-slate-100">TrackFlow — Gestión de Inventario</h3>
+        <p class="my-3 break-words text-sm leading-relaxed text-slate-300">API REST con FastAPI, SQLModel, PostgreSQL/Supabase, stock calculado en tiempo real y backoffice Next.js.</p>
+        <div class="mb-4 flex flex-wrap gap-2">
+          <span class="badge-tech">Python</span><span class="badge-tech">FastAPI</span><span class="badge-tech">PostgreSQL</span><span class="badge-tech">Next.js</span>
+        </div>
+        <a href="https://github.com/4GeeksAcademy/Jesteban1983-TrackFlow.git" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-cyan-300 transition-colors hover:text-cyan-200">Ver código en GitHub ↗</a>
+      </article>
+
+      <article class="project-card group rounded-2xl border border-slate-700/80 bg-slate-900/70 p-7 shadow-sm shadow-black/20 transition hover:-translate-y-1 hover:border-cyan-400/80" data-project-category="ai">
+        <span class="badge-status badge-info">Completado</span>
+        <h3 class="mt-3 text-xl font-semibold leading-snug text-slate-100">ClawMate — Agente Personal de IA</h3>
+        <p class="my-3 break-words text-sm leading-relaxed text-slate-300">Asistente autónomo con OpenClaw y Composio MCP conectado a Gmail, Drive, Calendar y Telegram.</p>
+        <div class="mb-4 flex flex-wrap gap-2">
+          <span class="badge-tech">OpenClaw</span><span class="badge-tech">Composio MCP</span><span class="badge-tech">Python</span><span class="badge-tech">Google APIs</span>
+        </div>
+        <a href="/proyectos/casos/automatizacion-leads/" class="text-sm font-semibold text-cyan-300 transition-colors hover:text-cyan-200">Ver Estudio de Caso →</a>
+      </article>
+
+      <article class="project-card group rounded-2xl border border-slate-700/80 bg-slate-900/70 p-7 shadow-sm shadow-black/20 transition hover:-translate-y-1 hover:border-cyan-400/80" data-project-category="frontend">
+        <span class="badge-status badge-info">Completado</span>
+        <h3 class="mt-3 text-xl font-semibold leading-snug text-slate-100">Talk to the Machine</h3>
+        <p class="my-3 break-words text-sm leading-relaxed text-slate-300">Chat con IA en tiempo real utilizando Groq API y LLaMA 3 con interfaz Next.js.</p>
+        <div class="mb-4 flex flex-wrap gap-2">
+          <span class="badge-tech">Next.js</span><span class="badge-tech">Groq API</span><span class="badge-tech">LLaMA 3</span>
+        </div>
+        <a href="https://github.com/4GeeksAcademy/Jesteban1983-talk-to-the-machine.git" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-cyan-300 transition-colors hover:text-cyan-200">Ver en GitHub ↗</a>
+      </article>
+
+      <article class="project-card group rounded-2xl border border-slate-700/80 bg-slate-900/70 p-7 shadow-sm shadow-black/20 transition hover:-translate-y-1 hover:border-cyan-400/80" data-project-category="frontend">
+        <span class="badge-status badge-info">Completado</span>
+        <h3 class="mt-3 text-xl font-semibold leading-snug text-slate-100">Cinema Seat Manager</h3>
+        <p class="my-3 break-words text-sm leading-relaxed text-slate-300">Reserva de butacas con TypeScript puro, gestión de estados del DOM y POO.</p>
+        <div class="mb-4 flex flex-wrap gap-2">
+          <span class="badge-tech">TypeScript</span><span class="badge-tech">Vite</span><span class="badge-tech">DOM API</span>
+        </div>
+        <a href="/proyectos/demo-app/" class="text-sm font-semibold text-cyan-300 transition-colors hover:text-cyan-200">Probar Demo Interactivo →</a>
+      </article>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container-wide">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Jonathan Esteban · jonathanesteban.dev</div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/assets/js/main.js"></script>
+</body>
+</html>

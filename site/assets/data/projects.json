@@ -1,0 +1,97 @@
+[
+  {
+    "id": "trackflow",
+    "title": "TrackFlow — Sistema de Gestión de Inventario",
+    "category": "backend",
+    "featured": true,
+    "description": "Sistema completo de gestión de inventario para empresa de logística con almacenes en EE.UU. (LA) y España (ZGZ). API REST construida con FastAPI, SQLModel, PostgreSQL/Supabase, cálculo de stock en tiempo real y backoffice en Next.js.",
+    "tags": ["Python", "FastAPI", "SQLModel", "PostgreSQL", "Supabase", "Next.js"],
+    "github": "https://github.com/4GeeksAcademy/Jesteban1983-TrackFlow.git",
+    "case_study_url": "/proyectos/casos/landing-negocio/",
+    "status": "En desarrollo"
+  },
+  {
+    "id": "clawmate",
+    "title": "ClawMate — Agente Personal de IA",
+    "category": "ai",
+    "featured": true,
+    "description": "Asistente autónomo de IA integrado con OpenClaw y Composio MCP. Conexiones bidireccionales con 8+ servicios de Google (Gmail, Calendar, Drive), Telegram Bot, 4Geeks Academy API y pipelines automatizados de video.",
+    "tags": ["OpenClaw", "Composio MCP", "Python", "Google APIs", "Telegram"],
+    "case_study_url": "/proyectos/casos/automatizacion-leads/",
+    "status": "Completado"
+  },
+  {
+    "id": "voice-command-api",
+    "title": "Voice Command API",
+    "category": "backend",
+    "featured": false,
+    "description": "API REST de comandos por voz para gestión de tareas. Procesa entrada de audio, deserializa comandos con Pydantic y documentación OpenAPI automática.",
+    "tags": ["FastAPI", "Python", "Pydantic", "REST API", "Audio Processing"],
+    "status": "Completado"
+  },
+  {
+    "id": "auth-system",
+    "title": "Sistema Completo de Autenticación (AUTH-01/02/03)",
+    "category": "backend",
+    "featured": false,
+    "description": "Arquitectura de seguridad end-to-end: autenticación JWT con FastAPI, hashing bcrypt, control de sesiones frontend y flujo completo de recuperación de contraseña vía email.",
+    "tags": ["FastAPI", "JWT", "OAuth2", "bcrypt", "Security"],
+    "status": "Completado"
+  },
+  {
+    "id": "talk-to-machine",
+    "title": "Talk to the Machine",
+    "category": "frontend",
+    "featured": false,
+    "description": "Interfaz conversacional en tiempo real impulsada por Groq API y el modelo LLaMA 3. Chat fluido con soporte de contextos y diseño responsive.",
+    "tags": ["Next.js", "React", "Groq API", "LLaMA 3", "Tailwind CSS"],
+    "github": "https://github.com/4GeeksAcademy/Jesteban1983-talk-to-the-machine.git",
+    "status": "Completado"
+  },
+  {
+    "id": "cinema-seat-manager",
+    "title": "Cinema Seat Manager",
+    "category": "frontend",
+    "featured": false,
+    "description": "Aplicación interactiva de reserva de asientos de cine construida con TypeScript puro y DOM API. Gestión de estados de butaca, tipos de entrada y cálculo dinámico.",
+    "tags": ["TypeScript", "Vite", "DOM API", "POO"],
+    "github": "https://github.com/4GeeksAcademy/jesteban1983-cinema.git",
+    "status": "Completado"
+  },
+  {
+    "id": "supplier-directory",
+    "title": "Supplier Directory API",
+    "category": "backend",
+    "featured": false,
+    "description": "API REST ligera para directorio de proveedores con almacenamiento TinyDB y SQLModel. CRUD completo, filtros de búsqueda y serialización de esquemas.",
+    "tags": ["FastAPI", "TinyDB", "SQLModel", "Python"],
+    "status": "Completado"
+  },
+  {
+    "id": "edutrack-sql-audit",
+    "title": "EduTrack Data Audit",
+    "category": "backend",
+    "featured": false,
+    "description": "Auditoría y modelado de datos educativos con consultas SQL avanzadas en PostgreSQL y alojamiento cloud en Supabase.",
+    "tags": ["PostgreSQL", "Supabase", "SQL", "Data Modeling"],
+    "status": "Completado"
+  },
+  {
+    "id": "bulletproof-testing",
+    "title": "Bullet-Proof Testing Suite",
+    "category": "backend",
+    "featured": false,
+    "description": "Suite integral de pruebas unitarias y de integración para APIs FastAPI y TypeScript utilizando Pytest y Jest con informes de cobertura.",
+    "tags": ["Pytest", "Jest", "FastAPI", "TypeScript", "Testing"],
+    "status": "Completado"
+  },
+  {
+    "id": "incident-analyzer",
+    "title": "Centralized Incident File Analyzer",
+    "category": "ai",
+    "featured": false,
+    "description": "Sistema de clasificación y análisis automatizado de incidencias empresariales a partir de archivos CSV con procesamiento Pandas y agente de respuesta continua.",
+    "tags": ["Python", "Pandas", "Automation", "AI Agents"],
+    "status": "Completado"
+  }
+]

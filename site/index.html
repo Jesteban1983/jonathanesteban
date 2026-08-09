@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jonathan Esteban | Full-Stack Developer & AI Engineer · Madrid & Barcelona</title>
+  <meta name="description" content="Jonathan Esteban — Full-Stack Developer & AI Engineer. Especializado en Python, FastAPI, React, Next.js, Agentes de IA con OpenClaw y automatización digital. Disponible para proyectos en España e internacionales.">
+  <meta name="keywords" content="full stack developer Madrid, AI engineer Spain, desarrollador web Barcelona, FastAPI Python, agentes IA OpenClaw, Jonathan Esteban">
+  <meta name="author" content="Jonathan Esteban Barona">
+  <meta name="google-site-verification" content="m7HiJ34wfzUNV">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://jonathanesteban.dev/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jonathanesteban.dev/">
+  <meta property="og:title" content="Jonathan Esteban | Full-Stack Developer & AI Engineer">
+  <meta property="og:description" content="Full-Stack Developer & AI Engineer. Python, FastAPI, React, Next.js, Agentes de IA. Disponible para proyectos remotos mundiales.">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="Jonathan Esteban">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Jonathan Esteban | Full-Stack Developer & AI Engineer">
+  <meta name="twitter:description" content="Full-Stack Developer & AI Engineer. Python · FastAPI · React · Next.js · AI Agents.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+  <!-- Modular CSS -->
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/pages.css">
+  <style>
+    .home-services-section {
+      padding-bottom: clamp(2.25rem, 4vw, 3.25rem);
+    }
+  </style>
+
+  <!-- JSON-LD Stacked Schemas for SEO & GEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jonathan Esteban",
+    "jobTitle": "Full-Stack Developer & AI Engineer",
+    "url": "https://jonathanesteban.dev",
+    "email": "joonathanesteban@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Madrid",
+      "addressCountry": "ES"
+    },
+    "sameAs": [
+      "https://linkedin.com/in/jonathanesteban",
+      "https://github.com/Jesteban1983"
+    ],
+    "knowsAbout": ["Python", "FastAPI", "TypeScript", "React", "Next.js", "PostgreSQL", "AI Agents", "OpenClaw"],
+    "alumniOf": {"@type": "Organization", "name": "4Geeks Academy Madrid"}
+  }
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="sr-only-focusable">Saltar al contenido principal</a>
+
+  <!-- Header Nav -->
+  <header class="nav-header" role="banner">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand" aria-label="Jonathan Esteban Inicio">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Jonathan Esteban
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="/servicios/">Servicios</a></li>
+        <li><a href="/soporte-it/">Soporte IT</a></li>
+        <li><a href="/proyectos/">Proyectos</a></li>
+        <li><a href="/certificaciones/">Certificaciones</a></li>
+        <li><a href="/sobre-mi/">Sobre Mí</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+        <li><a href="/contacto/">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" data-theme-toggle aria-label="Cambiar tema"></button>
+        <a href="/contacto/" class="btn-primary">Contrátame</a>
+        <button class="hamburger-btn" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Drawer -->
+  <nav class="nav-mobile" id="mobileNav" aria-label="Menú móvil">
+    <a href="/servicios/">Servicios & Presupuesto</a>
+    <a href="/soporte-it/">Soporte IT & Operaciones</a>
+    <a href="/proyectos/">Proyectos & Casos</a>
+    <a href="/certificaciones/">Certificaciones</a>
+    <a href="/sobre-mi/">Sobre Mí</a>
+    <a href="/faq/">Preguntas Frecuentes</a>
+    <a href="/contacto/">Contacto</a>
+  </nav>
+
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container-wide">
+        <div class="hero-grid">
+          <div>
+            <span class="badge-status badge-active">Disponible para Proyectos Remotos</span>
+            <h1 class="hero-title">Jonathan<br><em>Esteban</em></h1>
+            <p class="hero-subtitle">Full-Stack Developer & AI Engineer</p>
+            <p class="hero-location">📍 Madrid & Barcelona, España · Remoto Internacional</p>
+            
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <a href="/proyectos/" class="btn-primary">Ver Proyectos</a>
+              <a href="/contacto/" class="btn-secondary">Solicitar Presupuesto</a>
+            </div>
+
+            <div class="hero-stats">
+              <div>
+                <div class="hero-stat-val">16+</div>
+                <div class="hero-stat-lbl">Años Exp. Operativa</div>
+              </div>
+              <div>
+                <div class="hero-stat-val">71%</div>
+                <div class="hero-stat-lbl">Bootcamp 4Geeks</div>
+              </div>
+              <div>
+                <div class="hero-stat-val">10+</div>
+                <div class="hero-stat-val" style="display:inline;">Proyectos</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-avatar-frame">
+            <img src="/assets/img/profile/jonathan-esteban.jpg" alt="Fotografía profesional de Jonathan Esteban Barona">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="section section-alt home-services-section">
+      <div class="container">
+        <div>
+          <p class="section-label">Soluciones Tecnológicas</p>
+          <h2 class="section-title">Servicios Principales</h2>
+          <p class="section-desc">Desarrollo robusto, arquitecturas backend seguras e inteligencia artificial integrada.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+          <div class="card">
+            <h3>💻 Desarrollo Web Full-Stack</h3>
+            <p style="color: var(--text-muted); margin-block: 0.75rem;">Aplicaciones web modernas con React, Next.js, TypeScript y Tailwind CSS.</p>
+            <a href="/servicios/" style="color: var(--primary); font-weight: 600; font-size: 0.875rem;">Saber más →</a>
+          </div>
+          <div class="card">
+            <h3>⚙️ APIs REST & Backend</h3>
+            <p style="color: var(--text-muted); margin-block: 0.75rem;">Servicios con FastAPI, Python, PostgreSQL, Supabase y JWT.</p>
+            <a href="/servicios/" style="color: var(--primary); font-weight: 600; font-size: 0.875rem;">Saber más →</a>
+          </div>
+          <div class="card">
+            <h3>🤖 Agentes de IA & Automatización</h3>
+            <p style="color: var(--text-muted); margin-block: 0.75rem;">Agentes autónomos OpenClaw, Composio MCP y pipelines n8n.</p>
+            <a href="/servicios/" style="color: var(--primary); font-weight: 600; font-size: 0.875rem;">Saber más →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container-wide">
+      <div class="footer-grid">
+        <div>
+          <h4 style="color: var(--text-main); font-size: 1.25rem; margin-bottom: 0.75rem;">Jonathan Esteban</h4>
+          <p style="color: var(--text-muted); font-size: 0.875rem;">Full-Stack Developer & AI Engineer. Soluciones web, backend y automatización de procesos para clientes globales.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="/servicios/">Servicios</a></li>
+            <li><a href="/proyectos/">Proyectos</a></li>
+            <li><a href="/certificaciones/">Certificaciones</a></li>
+            <li><a href="/soporte-it/">Soporte IT</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Empresa & Legal</h4>
+          <ul>
+            <li><a href="/sobre-mi/">Sobre Mí</a></li>
+            <li><a href="/privacy-policy/">Política de Privacidad</a></li>
+            <li><a href="/terms-of-service/">Términos de Servicio</a></li>
+            <li><a href="/data-deletion/">Eliminación de Datos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="mailto:joonathanesteban@gmail.com">joonathanesteban@gmail.com</a></li>
+            <li><a href="https://linkedin.com/in/jonathanesteban" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/Jesteban1983" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Jonathan Esteban · jonathanesteban.dev</div>
+        <div>Desarrollado con HTML, CSS, JavaScript & Serverless Functions</div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/assets/js/main.js"></script>
+</body>
+</html>

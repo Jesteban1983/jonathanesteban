@@ -1,0 +1,38 @@
+[
+  {
+    "id": "fullstack-dev",
+    "title": "Desarrollo Web Full-Stack",
+    "icon": "code",
+    "short_desc": "Sitios web corporativos y aplicaciones web dinámicas a medida optimizadas para velocidad y SEO.",
+    "full_desc": "Desarrollo completo desde el diseño responsive hasta la implementación frontend en React/Next.js y maquetación Tailwind CSS. Sitios accesibles, ultrarrápidos y preparados para posicionar en buscadores y motores de IA.",
+    "features": ["Single & Multi-page apps", "SEO & GEO Optimizado", "Diseño Mobile-First", "Integración con CMS/APIs"],
+    "starting_price": 450
+  },
+  {
+    "id": "backend-api",
+    "title": "APIs REST & Arquitectura Backend",
+    "icon": "server",
+    "short_desc": "Servicios backend de alto rendimiento con FastAPI, Python, PostgreSQL y autenticación JWT.",
+    "full_desc": "Diseño e implementación de arquitectura de servicios backend. Creación de APIs REST bien documentadas con OpenAPI/Swagger, validación estricta de esquemas con Pydantic, ORM con SQLModel y despliegue en PostgreSQL o Supabase.",
+    "features": ["Endpoints RESTful documentados", "Autenticación JWT & OAuth2", "Bases de datos PostgreSQL/Supabase", "Testing unitario con Pytest"],
+    "starting_price": 550
+  },
+  {
+    "id": "ai-agents",
+    "title": "Agentes de IA & Automatización",
+    "icon": "bot",
+    "short_desc": "Construcción de asistentes inteligentes con OpenClaw, Composio MCP y pipelines automatizados.",
+    "full_desc": "Implementación de agentes de IA capaces de conectarse con tus herramientas diarias (Gmail, Google Drive, Calendar, Telegram, CRM). Flujos de trabajo automatizados sin intervención humana para clasificación de incidencias, respuestas e integración de modelos LLM.",
+    "features": ["Agentes OpenClaw personalizados", "Herramientas Composio MCP", "Integraciones con Google Workspace & Telegram", "Pipelines n8n & Python"],
+    "starting_price": 650
+  },
+  {
+    "id": "it-support",
+    "title": "Operaciones Digitales & Soporte IT",
+    "icon": "settings",
+    "short_desc": "Administración de servidores VPS, mantenimiento técnico informático y optimización de datos.",
+    "full_desc": "Respaldo por más de 16 años de experiencia operativa real. Mantenimiento técnico de ordenadores, configuración de redes locales, despliegue de soluciones en servidores Linux/VPS, gestión eficiente de correo empresarial y data entry profesional.",
+    "features": ["Mantenimiento preventivo & correctivo", "Administración VPS & Linux", "Gestión de incidencias IT", "Migración & Organización de Datos"],
+    "starting_price": 300
+  }
+]

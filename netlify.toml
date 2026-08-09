@@ -1,0 +1,41 @@
+[build]
+  publish = "site"
+  functions = "functions"
+
+# === HEADERS DE SEGURIDAD Y PRIVACIDAD ===
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.netlify.com; frame-ancestors 'none'"
+
+# === REGLAS DE REDIRECCIÓN Y RUTAS DE API ===
+[[redirects]]
+  from = "/api/contact-submit"
+  to = "/.netlify/functions/contact-submit"
+  status = 200
+
+[[redirects]]
+  from = "/api/tiktok-oauth-callback"
+  to = "/.netlify/functions/tiktok-oauth-callback"
+  status = 200
+
+[[redirects]]
+  from = "/api/facebook-oauth-callback"
+  to = "/.netlify/functions/facebook-oauth-callback"
+  status = 200
+
+[[redirects]]
+  from = "/api/data-deletion-request"
+  to = "/.netlify/functions/data-deletion-request"
+  status = 200
+
+# Redirección 301 del subdominio de Netlify al dominio propio
+[[redirects]]
+  from = "https://jonathanesteban.netlify.app/*"
+  to = "https://jonathanesteban.dev/:splat"
+  status = 301
+  force = true

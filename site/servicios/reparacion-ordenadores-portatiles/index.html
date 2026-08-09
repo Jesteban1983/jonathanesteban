@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reparacion de Ordenadores y Portatiles | Jonathan Esteban</title>
+  <meta name="description" content="Reparacion de ordenadores y portatiles para pymes, autonomos y profesionales en Barcelona.">
+  <link rel="canonical" href="https://jonathanesteban.dev/servicios/reparacion-ordenadores-portatiles/">
+
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/pages.css">
+
+  <style>
+    .service-hero {
+      display: grid;
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .hero-banner {
+      position: relative;
+      min-height: 280px;
+      border-radius: 1rem;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      display: grid;
+      align-items: end;
+      background: linear-gradient(120deg, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.2)),
+        url('/assets/img/servicios/reparacion/reparacion-portada.jpg') center/cover no-repeat;
+    }
+
+    .hero-banner-content {
+      padding: 1.5rem;
+      max-width: 700px;
+    }
+
+    .hero-banner-content h2 {
+      margin: 0 0 0.5rem;
+      font-size: clamp(1.3rem, 2.8vw, 2rem);
+      color: #ffffff;
+    }
+
+    .hero-banner-content p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .hero-item {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.8rem;
+      align-items: center;
+      justify-items: center;
+      text-align: center;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      width: 100%;
+      min-height: auto;
+      padding: 0.5rem;
+    }
+
+    .hero-item img {
+      width: 130px;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 1px solid var(--border-color);
+    }
+
+    .hero-item h2 {
+      margin: 0 0 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    .hero-item p {
+      margin: 0;
+      color: var(--text-muted);
+      max-width: 28ch;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .detail-grid img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 0.85rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .steps {
+      margin: 1rem 0 0;
+      padding-left: 1.2rem;
+      color: var(--text-main);
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    @media (max-width: 700px) {
+      .hero-banner {
+        min-height: 220px;
+      }
+
+      .hero-points {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-item img {
+        width: 115px;
+        height: 115px;
+      }
+
+      .hero-item {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav-header">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">Jonathan Esteban</a>
+      <ul class="nav-links">
+        <li><a href="/servicios/" class="active">Servicios</a></li>
+        <li><a href="/soporte-it/">Soporte IT</a></li>
+        <li><a href="/proyectos/">Proyectos</a></li>
+        <li><a href="/contacto/">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" data-theme-toggle aria-label="Cambiar tema"></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top: calc(var(--nav-height) + 2.5rem); padding-bottom: 4rem;">
+    <p class="section-label">Servicio Tecnico</p>
+    <h1 class="section-title">Reparacion de Ordenadores y Portatiles</h1>
+    <p class="section-desc">Atencion para fallos de hardware y software en equipos de trabajo de pymes, autonomos y profesionales que no pueden parar su operativa diaria.</p>
+
+    <section class="service-hero" aria-label="Pilares del servicio">
+      <div class="hero-banner">
+        <div class="hero-banner-content">
+          <h2>Reparacion especializada para equipos que no pueden parar</h2>
+          <p>Diagnostico y solucion para portatiles y sobremesa con fallos de hardware o software en entornos profesionales.</p>
+        </div>
+      </div>
+
+      <div class="hero-points">
+        <article class="hero-item">
+          <img src="/assets/img/servicios/servicio-tec-espec-500x120.png" alt="Tecnico profesional con herramientas reparando portatil">
+          <div>
+            <h2>Tecnico profesional</h2>
+            <p>Reparacion con diagnostico previo, explicacion de averia y opciones segun necesidad real del cliente.</p>
+          </div>
+        </article>
+
+        <article class="hero-item">
+          <img src="/assets/img/servicios/recogida-casa-500x120.png" alt="Recogida y entrega de equipo informatico para reparacion">
+          <div>
+            <h2>Recogida en casa</h2>
+            <p>Recogida y devolucion del equipo para reparaciones de taller, ideal cuando no puedes desplazarte.</p>
+          </div>
+        </article>
+
+        <article class="hero-item">
+          <img src="/assets/img/servicios/garantia-satisfac-500x120.png" alt="Garantia de reparacion con comprobante de servicio">
+          <div>
+            <h2>garantia de satisfacion</h2>
+            <p>Garantia del trabajo realizado y pruebas de funcionamiento antes de entrega final del equipo.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section style="margin-top: 3rem;">
+      <h2 style="margin-bottom: 0.75rem;">Detalle real del servicio</h2>
+      <p style="color: var(--text-muted); margin: 0;">Servicio recomendado para equipos con fallos de encendido, pantalla, bateria, conectores, disco o lentitud extrema.</p>
+
+      <ol class="steps">
+        <li>Diagnostico inicial y presupuesto transparente.</li>
+        <li>Reparacion o sustitucion de componente segun viabilidad.</li>
+        <li>Pruebas de carga, estabilidad y temperatura.</li>
+        <li>Actualizacion basica y ajuste de rendimiento.</li>
+        <li>Entrega con recomendaciones de uso y mantenimiento.</li>
+      </ol>
+
+      <div class="detail-grid">
+        <img src="/assets/img/servicios/reparacion/reparacion-sistemas-operativos.png" alt="Compatibilidad y reparacion de distintos sistemas operativos y dispositivos">
+        <img src="/assets/img/servicios/reparacion/reparacion-componentes.jpg" alt="Revision y sustitucion de componentes en reparacion de equipos">
+      </div>
+
+      <a href="/contacto/?prefill=budget&subject=Solicitud%20de%20cotizacion%3A%20Reparacion%20de%20Ordenadores%20y%20Portatiles&message=Hola%20Jonathan%2C%20quiero%20solicitar%20cotizacion%20para%20Reparacion%20de%20Ordenadores%20y%20Portatiles.%0A%0ANecesidad%20principal%3A%20resolver%20averia%20de%20equipo.%0ATipo%20de%20equipo%3A%20portatil%20o%20sobremesa.%0AFallo%20detectado%3A%20describe%20aqui%20el%20problema.%0AUbicacion%3A%20indicar%20zona%20de%20servicio.%0A%0AQuedo%20atento%20a%20tu%20propuesta." class="btn-primary" style="margin-top: 1rem;">Solicitar cotizacion</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container-wide">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Jonathan Esteban</div>
+        <div><a href="/servicios/">Volver a Servicios</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/assets/js/main.js"></script>
+</body>
+</html>

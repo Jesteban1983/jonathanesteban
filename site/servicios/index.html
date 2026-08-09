@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servicios & Calculadora de Presupuestos | Jonathan Esteban</title>
+  <meta name="description" content="Servicios web y automatización para pymes, autónomos y profesionales: landing pages, webs corporativas ligeras, asistentes IA y calculadora de presupuestos.">
+  <link rel="canonical" href="https://jonathanesteban.dev/servicios/">
+
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <style>
+    .support-it-spotlight {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.9fr);
+      align-items: stretch;
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .support-it-copy p {
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .support-it-list {
+      padding-left: 1.1rem;
+      color: var(--text-main);
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .support-it-panel {
+      display: grid;
+      gap: 1rem;
+      align-content: start;
+    }
+
+    .support-it-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .support-it-metric {
+      padding: 1rem;
+      border-radius: 0.9rem;
+      background: color-mix(in srgb, var(--surface-color) 82%, transparent);
+      border: 1px solid var(--border-color);
+    }
+
+    .support-it-metric strong {
+      display: block;
+      font-size: 1.6rem;
+      color: var(--text-main);
+      margin-bottom: 0.25rem;
+    }
+
+    .support-it-metric span {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .support-it-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    @media (max-width: 860px) {
+      .support-it-spotlight {
+        grid-template-columns: 1fr;
+      }
+
+      .support-it-metrics {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .support-it-metrics {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Web Development & AI Engineering",
+    "provider": {
+      "@type": "Person",
+      "name": "Jonathan Esteban",
+      "url": "https://jonathanesteban.dev"
+    }
+  }
+  </script>
+</head>
+<body>
+  <header class="nav-header">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Jonathan Esteban
+      </a>
+      <ul class="nav-links">
+        <li><a href="/servicios/" class="active">Servicios</a></li>
+        <li><a href="/soporte-it/">Soporte IT</a></li>
+        <li><a href="/proyectos/">Proyectos</a></li>
+        <li><a href="/certificaciones/">Certificaciones</a></li>
+        <li><a href="/sobre-mi/">Sobre Mí</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+        <li><a href="/contacto/">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" data-theme-toggle aria-label="Cambiar tema"></button>
+        <a href="/contacto/" class="btn-primary">Contrátame</a>
+        <button class="hamburger-btn" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="container" style="padding-top: calc(var(--nav-height) + 3rem); padding-bottom: 4rem;">
+    <div class="fade-in">
+      <p class="section-label">Servicios para Negocios Pequeños</p>
+      <h1 class="section-title">Soluciones Web Prácticas & Calculadora</h1>
+      <p class="section-desc">Selecciona las funcionalidades que necesitas si eres autónomo, profesional o pyme para obtener una estimación inmediata.</p>
+    </div>
+
+    <!-- Calculator Box -->
+    <div class="calculator-box fade-in" style="margin-block: 3rem;">
+      <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem;">📊 Calculadora de Presupuesto Estimado</h2>
+      
+      <form id="calculatorForm">
+        <div class="form-group">
+          <label>1. Tipo de Servicio Principal:</label>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; margin-top: 0.5rem;">
+            <label class="card" style="padding: 1rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
+              <input type="radio" name="service_type" value="landing" checked> Landing para captar clientes (450 €)
+            </label>
+            <label class="card" style="padding: 1rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
+              <input type="radio" name="service_type" value="fullstack"> Web profesional multipágina (950 €)
+            </label>
+            <label class="card" style="padding: 1rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
+              <input type="radio" name="service_type" value="backend"> Automatización y panel interno (750 €)
+            </label>
+            <label class="card" style="padding: 1rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
+              <input type="radio" name="service_type" value="ai-agent"> Asistente IA para negocio (850 €)
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 1.5rem;">
+          <label>2. Módulos Adicionales:</label>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; margin-top: 0.5rem;">
+            <label class="card" style="padding: 1rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
+              <input type="checkbox" name="addons" value="auth"> Área privada para clientes (+200 €)
+            </label>
+            <label class="card" style="padding: 1rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
+              <input type="checkbox" name="addons" value="database"> Base de datos y formularios avanzados (+250 €)
+            </label>
+            <label class="card" style="padding: 1rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
+              <input type="checkbox" name="addons" value="automation"> Automatizaciones de tareas (n8n) (+300 €)
+            </label>
+          </div>
+        </div>
+
+        <div class="calc-summary">
+          <div>
+            <div style="font-size: 0.875rem; color: var(--text-muted);">Presupuesto Estimado:</div>
+            <div id="estimatedPrice" style="font-size: 2rem; font-weight: 700; color: var(--primary);">450 €</div>
+          </div>
+          <div>
+            <div style="font-size: 0.875rem; color: var(--text-muted);">Plazo de Entrega:</div>
+            <div id="estimatedTime" style="font-size: 1.25rem; font-weight: 600;">5 días hábiles</div>
+          </div>
+          <a href="/contacto/" id="requestProposalBtn" class="btn-primary">Solicitar Esta Propuesta</a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container-wide">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Jonathan Esteban · jonathanesteban.dev</div>
+        <div><a href="/privacy-policy/">Privacidad</a> · <a href="/terms-of-service/">Términos</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/assets/js/main.js"></script>
+</body>
+</html>

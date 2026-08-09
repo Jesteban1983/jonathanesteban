@@ -1,0 +1,65 @@
+[
+  {
+    "id": "bootcamp-4geeks",
+    "title": "AI Engineering — Full Stack + IA",
+    "issuer": "4Geeks Academy Madrid",
+    "date": "Febrero 2026 — Presente",
+    "hours": "Intensivo Bootcamp",
+    "badge": "En Curso (71%)",
+    "description": "Formación de alto rendimiento en desarrollo Full Stack (HTML, CSS, TypeScript, React, Next.js), Backend con Python (FastAPI, SQLModel, PostgreSQL/Supabase) e Ingeniería de IA (Agentes OpenClaw, Composio MCP, Automatización). 4 de 6 hitos completados."
+  },
+  {
+    "id": "cert-adecco-frontend",
+    "title": "Frontend con HTML5, CSS3 y JavaScript",
+    "issuer": "Fundación Adecco",
+    "date": "Noviembre 2025",
+    "hours": "30 horas",
+    "badge": "Oficial",
+    "description": "Desarrollo web moderno, maquetación adaptativa responsive, manipulación del DOM y estándares web W3C."
+  },
+  {
+    "id": "cert-adecco-db",
+    "title": "Bases de Datos",
+    "issuer": "Fundación Adecco",
+    "date": "Noviembre 2025",
+    "hours": "30 horas",
+    "badge": "Oficial",
+    "description": "Fundamentos de modelado relacional, diseño de esquemas, lenguaje SQL y consultas complejas."
+  },
+  {
+    "id": "cert-adecco-java",
+    "title": "Introducción a Java SE",
+    "issuer": "Fundación Adecco",
+    "date": "Agosto 2025",
+    "hours": "30 horas",
+    "badge": "Oficial",
+    "description": "Programación Orientada a Objetos, sintaxis Java Standard Edition, gestión de memoria y estructuras de datos."
+  },
+  {
+    "id": "cert-mintra-backend",
+    "title": "Desarrollo Back-End (Básico)",
+    "issuer": "Ministerio de Trabajo, Perú",
+    "date": "Mayo 2025",
+    "hours": "30 horas",
+    "badge": "Nota: 17/20",
+    "description": "Arquitectura cliente-servidor, principios de APIs REST, lógica de negocio y persistencia de datos."
+  },
+  {
+    "id": "cert-telefonica-htmlcss",
+    "title": "Diseño Web con HTML5 + CSS",
+    "issuer": "Fundación Telefónica Movistar",
+    "date": "Diciembre 2024",
+    "hours": "30 horas",
+    "badge": "Oficial",
+    "description": "Principios de diseño de experiencia de usuario, flexibilidad con CSS Grid/Flexbox y accesibilidad."
+  },
+  {
+    "id": "cert-esic-cybersecurity",
+    "title": "Ciberseguridad Básica",
+    "issuer": "ESIC Business & Marketing School",
+    "date": "Junio – Noviembre 2024",
+    "hours": "Certificado",
+    "badge": "Oficial",
+    "description": "Fundamentos de seguridad en redes, prevención de vulnerabilidades web (OWASP Top 10) y buenas prácticas de protección de datos."
+  }
+]

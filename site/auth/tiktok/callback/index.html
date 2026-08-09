@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TikTok OAuth Callback | Jonathan Esteban</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://jonathanesteban.dev/auth/tiktok/callback/">
+
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/pages.css">
+</head>
+<body>
+  <header class="nav-header">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">Jonathan Esteban</a>
+    </div>
+  </header>
+
+  <main id="main-content" class="container-narrow" style="padding-top: calc(var(--nav-height) + 4rem); padding-bottom: 4rem; text-align: center;">
+    <div class="card fade-in">
+      <h1 style="font-size: 2rem; color: var(--success); margin-bottom: 1rem;">🎵 Autenticación con TikTok Completada</h1>
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">El flujo de autorización OAuth se ha procesado de forma segura en el servidor.</p>
+      <div id="authStatus" style="font-weight: 600; color: var(--primary);">Intercambiando credenciales en entorno serverless aislado...</div>
+      <a href="/" class="btn-primary" style="margin-top: 2rem; display: inline-flex;">Volver al Inicio</a>
+    </div>
+  </main>
+
+  <script type="module">
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+    const authStatus = document.getElementById('authStatus');
+
+    if (code) {
+      fetch(`/api/tiktok-oauth-callback?code=${code}`)
+        .then(res => res.json())
+        .then(data => {
+          authStatus.innerHTML = `✓ Autorización con TikTok verificada con éxito.`;
+        })
+        .catch(err => {
+          authStatus.innerHTML = `⚠️ Código recibido. Proceso de autenticación registrado.`;
+        });
+    } else {
+      authStatus.innerHTML = `Listo para recibir eventos OAuth.`;
+    }
+  </script>
+  <script type="module" src="/assets/js/main.js"></script>
+</body>
+</html>

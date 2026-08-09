@@ -1,0 +1,38 @@
+[
+  {
+    "id": "faq-1",
+    "category": "general",
+    "question": "¿Qué servicios ofrece Jonathan Esteban?",
+    "answer": "Ofrezco soluciones integrales de desarrollo web Full-Stack (React/Next.js), construcción de APIs REST con FastAPI y Python, creación de Agentes de IA autónomos (OpenClaw + Composio MCP), automatización de procesos mediante n8n y soporte informático operativo profesional."
+  },
+  {
+    "id": "faq-2",
+    "category": "servicios",
+    "question": "¿Cómo se gestionan los proyectos y entregables?",
+    "answer": "Todos los proyectos siguen una metodología clara: 1) Análisis de requerimientos y propuesta técnica, 2) Diseño de arquitectura y maquetación, 3) Desarrollo con control de versiones en GitHub, 4) Pruebas y optimización de rendimiento, 5) Despliegue en producción y entrega de documentación completa."
+  },
+  {
+    "id": "faq-3",
+    "category": "tecnica",
+    "question": "¿Qué tecnologías utiliza en el desarrollo web y backend?",
+    "answer": "En el frontend utilizo HTML5/CSS3 moderno, JavaScript ES6+, TypeScript, React, Next.js y Tailwind CSS. En el backend me especializo en Python, FastAPI, Pydantic, SQLModel, PostgreSQL, Supabase y Docker."
+  },
+  {
+    "id": "faq-4",
+    "category": "remoto",
+    "question": "¿Está disponible para colaborar en proyectos remotos fuera de España?",
+    "answer": "Sí, totalmente. Aunque estoy basado en España (Madrid / Barcelona), trabajo habitualmente con empresas y clientes en remoto a nivel internacional, adaptándome a diferentes zonas horarias y canales de comunicación (Slack, Telegram, Google Meet)."
+  },
+  {
+    "id": "faq-5",
+    "category": "legal",
+    "question": "¿Cómo se garantiza la seguridad de los datos y el cumplimiento legal?",
+    "answer": "El sitio y todas las integraciones serverless cumplen estrictamente con la normativa RGPD y LOPD-GDD. Ninguna clave ni token de API se expone en cliente; todo se procesa mediante Netlify Functions en entorno seguro con cifrado HTTPS."
+  },
+  {
+    "id": "faq-6",
+    "category": "presupuesto",
+    "question": "¿Cómo puedo solicitar un presupuesto para mi proyecto?",
+    "answer": "Puedes utilizar la Calculadora de Presupuestos interactiva disponible en la sección /servicios/ o enviarme un mensaje directo a través del formulario de /contacto/. Respondo a todas las consultas en menos de 24 horas."
+  }
+]

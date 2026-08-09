@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instrucciones y Eliminación de Datos | Jonathan Esteban</title>
+  <meta name="description" content="Guía e instrucciones para solicitar la eliminación de datos personales de usuario para aplicaciones conectadas con Meta (Facebook/Instagram) y TikTok Developer API.">
+  <link rel="canonical" href="https://jonathanesteban.dev/data-deletion/">
+
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/legal.css">
+</head>
+<body>
+  <header class="nav-header">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Jonathan Esteban
+      </a>
+      <ul class="nav-links">
+        <li><a href="/servicios/">Servicios</a></li>
+        <li><a href="/proyectos/">Proyectos</a></li>
+        <li><a href="/contacto/">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" data-theme-toggle aria-label="Cambiar tema"></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="container-narrow" style="padding-top: calc(var(--nav-height) + 3rem); padding-bottom: 4rem;">
+    <div class="legal-doc fade-in">
+      <h1>Instrucciones de Eliminación de Datos de Usuario</h1>
+      <div class="legal-meta">Cumplimiento RGPD & Meta / TikTok Developer Platform Rules</div>
+
+      <p>En cumplimiento con las políticas de privacidad de <strong>Meta for Developers (Facebook/Instagram)</strong> y <strong>TikTok Developer Console</strong>, garantizamos a todos los usuarios el derecho a solicitar la eliminación completa e inmediata de sus datos de usuario almacenados a través de nuestras integraciones.</p>
+
+      <h2>Opciones para Solicitar la Eliminación de Datos:</h2>
+
+      <div class="legal-highlight-box">
+        <h3>Opción A: Eliminación Automática desde Meta / Facebook</h3>
+        <ol style="padding-left: 1.25rem;">
+          <li>Accede a tu cuenta de Facebook e ingresa a <strong>Configuración y Privacidad → Configuración</strong>.</li>
+          <li>En el menú lateral, selecciona <strong>Aplicaciones y sitios web</strong>.</li>
+          <li>Busca la aplicación conectada de Jonathan Esteban y haz clic en <strong>Eliminar</strong>.</li>
+          <li>Al revocar el acceso, Meta enviará automáticamente un callback a nuestro endpoint serverless <code style="color: var(--primary);">/api/data-deletion-request</code> y tu registro será eliminado de inmediato.</li>
+        </ol>
+      </div>
+
+      <div class="legal-highlight-box" style="border-left-color: var(--success);">
+        <h3>Opción B: Solicitud Directa por Correo Electrónico</h3>
+        <p>Si deseas solicitar manualmente la eliminación de tus datos o comprobar el estado de una solicitud previa, envía un correo a <a href="mailto:joonathanesteban@gmail.com">joonathanesteban@gmail.com</a> con el asunto <strong>"Solicitud de Eliminación de Datos"</strong> indicando el email asociado. Procesaremos tu solicitud en menos de 24 horas.</p>
+      </div>
+
+      <div id="deletionCodeBox" style="display:none; background: var(--surface-2-color); padding: 1.5rem; border-radius: 0.75rem; border: 1px solid var(--border-color); margin-top: 2rem;">
+        <h3 style="color: var(--success);">✓ Solicitud de Eliminación Registrada</h3>
+        <p>Código de Confirmación: <strong id="confirmationCodeDisplay" style="color: var(--primary);"></strong></p>
+        <p style="font-size: 0.875rem; color: var(--text-muted);">Tus datos han sido procesados y eliminados correctamente de nuestros sistemas serverless.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container-wide">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Jonathan Esteban · jonathanesteban.dev</div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    // Check query params for Meta callback code
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+    if (code) {
+      document.getElementById('deletionCodeBox').style.display = 'block';
+      document.getElementById('confirmationCodeDisplay').textContent = code;
+    }
+  </script>
+  <script type="module" src="/assets/js/main.js"></script>
+</body>
+</html>

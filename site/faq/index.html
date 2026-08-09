@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preguntas Frecuentes (FAQ) & Centro de Ayuda | Jonathan Esteban</title>
+  <meta name="description" content="Respuestas detalladas a las dudas más comunes sobre servicios de desarrollo Full-Stack, APIs REST FastAPI, Agentes de IA, métodos de pago y garantías.">
+  <link rel="canonical" href="https://jonathanesteban.dev/faq/">
+
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/pages.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Qué servicios ofrece Jonathan Esteban?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Desarrollo web Full-Stack con React y Next.js, construcción de APIs REST con FastAPI y PostgreSQL, creación de agentes de IA autónomos con OpenClaw y automatizaciones en n8n."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Está disponible para colaborar en proyectos remotos fuera de España?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, totalmente. Trabajo habitualmente con empresas y clientes en remoto a nivel internacional."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="nav-header">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Jonathan Esteban
+      </a>
+      <ul class="nav-links">
+        <li><a href="/servicios/">Servicios</a></li>
+        <li><a href="/soporte-it/">Soporte IT</a></li>
+        <li><a href="/proyectos/">Proyectos</a></li>
+        <li><a href="/certificaciones/">Certificaciones</a></li>
+        <li><a href="/sobre-mi/">Sobre Mí</a></li>
+        <li><a href="/faq/" class="active">FAQ</a></li>
+        <li><a href="/contacto/">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" data-theme-toggle aria-label="Cambiar tema"></button>
+        <a href="/contacto/" class="btn-primary">Contrátame</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="container" style="padding-top: calc(var(--nav-height) + 3rem); padding-bottom: 4rem;">
+    <div class="fade-in">
+      <p class="section-label">Centro de Ayuda</p>
+      <h1 class="section-title">Preguntas Frecuentes</h1>
+      <p class="section-desc">Encuentra respuestas rápidas sobre la metodología de trabajo, tecnologías y contratación.</p>
+    </div>
+
+    <!-- Search Input -->
+    <div class="form-group fade-in" style="margin-block: 2rem;">
+      <input type="text" id="faqSearchInput" class="form-control" placeholder="🔍 Buscar pregunta o palabra clave (ej: presupuesto, FastAPI, remoto)...">
+    </div>
+
+    <!-- FAQ Accordion Container -->
+    <div id="faqAccordion" class="fade-in">
+      <div class="faq-item" data-category="general">
+        <button class="faq-question">
+          <span>¿Qué servicios ofrece Jonathan Esteban?</span>
+          <span class="faq-icon">▼</span>
+        </button>
+        <div class="faq-answer">
+          Ofrezco desarrollo web Full-Stack con React/Next.js, creación de APIs REST estructuradas en FastAPI/Python, implementación de Agentes de IA autónomos (OpenClaw), automatización de procesos en n8n y soporte informático operativo.
+        </div>
+      </div>
+
+      <div class="faq-item" data-category="servicios">
+        <button class="faq-question">
+          <span>¿Cómo se gestionan los proyectos y entregables?</span>
+          <span class="faq-icon">▼</span>
+        </button>
+        <div class="faq-answer">
+          Siguiendo un flujo riguroso: 1) Análisis de requerimientos y presupuesto, 2) Diseño de arquitectura y prototipado, 3) Desarrollo en GitHub con entregas iterativas, 4) Testing de calidad y 5) Despliegue en producción.
+        </div>
+      </div>
+
+      <div class="faq-item" data-category="tecnica">
+        <button class="faq-question">
+          <span>¿Qué tecnologías principales utiliza en backend y frontend?</span>
+          <span class="faq-icon">▼</span>
+        </button>
+        <div class="faq-answer">
+          Frontend: HTML5, CSS3, JavaScript ES6+, TypeScript, React, Next.js, Tailwind CSS. Backend: Python 3, FastAPI, Pydantic, SQLModel, PostgreSQL, Supabase, Docker y Netlify Serverless Functions.
+        </div>
+      </div>
+
+      <div class="faq-item" data-category="remoto">
+        <button class="faq-question">
+          <span>¿Está disponible para proyectos remotos fuera de España?</span>
+          <span class="faq-icon">▼</span>
+        </button>
+        <div class="faq-answer">
+          Sí, colaboro frecuentemente con empresas y clientes en remoto a nivel internacional, adaptándome a distintas zonas horarias y canales de trabajo.
+        </div>
+      </div>
+
+      <div class="faq-item" data-category="legal">
+        <button class="faq-question">
+          <span>¿Cómo se garantiza el cumplimiento del RGPD y la seguridad de datos?</span>
+          <span class="faq-icon">▼</span>
+        </button>
+        <div class="faq-answer">
+          Todas las integraciones serverless se procesan mediante HTTPS en entornos aislados. Ninguna clave ni token de API se expone en cliente y se garantiza el cumplimiento del derecho de supresión y eliminación de datos.
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container-wide">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Jonathan Esteban · jonathanesteban.dev</div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/assets/js/main.js"></script>
+</body>
+</html>

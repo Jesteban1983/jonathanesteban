@@ -1,0 +1,60 @@
+JONATHAN ESTEBAN
++34 614 739 345 | joonathanesteban@gmail.com | Barcelona (08023)
+linkedin.com/in/jonathanesteban | jonathanesteban.netlify.app
+
+TÉCNICO DE SOPORTE INFORMÁTICO | HELPDESK | IT SUPPORT | N1/N2
+
+Profesional con más de 10 años de experiencia en atención al cliente, soporte técnico presencial (N1/N2), resolución de incidencias informáticas y mantenimiento de equipos. Actualmente en formación como Full Stack Developer e IA Engineer en 4Geeks Academy, combinando experiencia operativa con conocimientos técnicos actualizados en tecnologías web y automatización. Orientado al usuario, resolutivo y con capacidad de aprendizaje rápido. Busco un rol en soporte técnico / helpdesk donde pueda aplicar mi experiencia y seguir desarrollándome en el área tecnológica.
+
+EXPERIENCIA PROFESIONAL
+
+Administrador Técnico / Helpdesk - Soporte Técnico N1/N2
+Servicios Multimedia - Perú | Jun 2007 - Dic 2012 (5 años 7 meses)
+- Administración de cabinas de internet y redes LAN de uso público, gestionando conectividad de 20+ equipos en red
+- Mantenimiento preventivo y correctivo de hardware y software, resolución autónoma de incidencias técnicas
+- Soporte técnico presencial a 100+ clientes/mes: solución de problemas de conectividad, software y uso de equipos
+- Configuración de redes LAN, resolución de incidencias de conectividad y gestión de incidencias en ticketing básico
+- Instalación y configuración de sistemas operativos Windows y software ofimático
+
+Coordinador de Operaciones y Atención al Cliente
+Gordos Fast Food - Perú | Feb 2019 - Oct 2023 (4 años 9 meses)
+- Atención al cliente, gestión de incidencias y reclamaciones con enfoque resolutivo
+- Coordinación de entregas y rutas, optimización de procesos logísticos (reducción de tiempos de entrega en 20%)
+- Gestión administrativa: pagos, reportes, control de inventario, organización de documentación
+- Administración de redes sociales y atención digital (aumento de interacción en 35%)
+- Resolución de problemas operativos bajo presión, coordinación de equipos
+
+FORMACIÓN
+
+Full Stack Developer & IA Engineer | 4Geeks Academy | 2026 - Actualidad
+React, Next.js, Node.js, Python, Git, APIs REST, automatización con IA, bases de datos relacionales
+
+Computación e Informática | Instituto CESCA, Perú | 2003 - 2006
+
+CERTIFICACIONES
+
+- Frontend con HTML5, CSS3 y JavaScript - Fundación Adecco (30h, 2025)
+- Bases de Datos - Fundación Adecco (30h, 2025)
+- Introducción a Java SE - Fundación Adecco (30h, 2025)
+- Desarrollo Back-End, nivel básico - Ministerio de Trabajo, Perú (30h, 2025)
+- Diseño Web con HTML5 + CSS - Fundación Telefónica Movistar (30h, 2024)
+- Curso Básico de Ciberseguridad - ESIC Business & Marketing School (2024)
+- Reparación de Computadoras - Instituto SISE, Perú (2007)
+
+PROYECTOS
+
+TrackFlow - Sistema de gestión y seguimiento (React, Node.js, SQL)
+- Aplicación web para automatización de flujos de trabajo y gestión de tareas
+- Despliegue en Netlify, control de versiones con Git
+
+HABILIDADES TÉCNICAS
+
+Soporte Técnico: Mantenimiento de equipos, redes LAN, troubleshooting, helpdesk N1/N2, atención al usuario, Windows, Office 365
+Ofimática: Excel/Google Sheets, Trello, Canva, gestión de correo y calendarios
+Desarrollo: HTML5, CSS3, JavaScript, Node.js, Express, Git, React (en formación)
+Ciberseguridad: Fundamentos, buenas prácticas, concienciación
+Idiomas: Español nativo | Inglés técnico básico (lectura técnica, en mejora activa)
+
+COMPETENCIAS
+
+Comunicación clara y empática | Organización y multitarea | Aprendizaje rápido | Adaptabilidad | Orientación al cliente | Trabajo en equipo | Resolución de problemas

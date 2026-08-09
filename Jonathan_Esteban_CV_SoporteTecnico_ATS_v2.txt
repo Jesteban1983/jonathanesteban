@@ -1,0 +1,70 @@
+JONATHAN ESTEBAN BARONA
++34 614 739 345 | joonathanesteban@gmail.com | Barcelona (08023)
+linkedin.com/in/jonathanesteban | jonathanesteban.dev
+
+TECNICO DE SOPORTE INFORMATICO N1/N2 | HELPDESK | MANTENIMIENTO IT | TRANSICION A DESARROLLO WEB
+
+PERFIL PROFESIONAL
+Tecnico de soporte informatico con experiencia en atencion a usuarios, resolucion de incidencias N1/N2 y mantenimiento de equipos y redes LAN. Actualmente en formacion como Full Stack Developer e IA Engineer en 4Geeks Academy, integrando soporte tecnico con automatizacion y desarrollo web. Perfil orientado al cliente, resolutivo y con foco en continuidad operativa para pymes.
+
+COMPETENCIAS CLAVE
+- Soporte tecnico N1/N2 presencial y remoto
+- Diagnostico y resolucion de incidencias de hardware/software
+- Mantenimiento preventivo y correctivo de equipos
+- Configuracion de redes LAN y conectividad
+- Instalacion y configuracion de sistemas Windows y software de oficina
+- Gestion basica de incidencias (ticketing)
+- Atencion al cliente y comunicacion tecnica clara
+- Bases de desarrollo web: HTML, CSS, JavaScript, React (en formacion)
+
+EXPERIENCIA PROFESIONAL
+Administrador Tecnico / Helpdesk - Soporte N1/N2
+Servicios Multimedia - Peru | Jun 2007 - Dic 2012
+- Administre cabinas de internet y red LAN de mas de 20 equipos.
+- Realice mantenimiento preventivo/correctivo de hardware y software.
+- Atendi incidencias tecnicas de conectividad, sistema y uso de equipos para mas de 100 clientes al mes.
+- Instale y configure sistemas operativos Windows y software ofimatico.
+- Resolvi incidencias de red local y configuraciones de acceso a internet.
+
+Coordinador de Operaciones y Atencion al Cliente
+Gordos Fast Food - Peru | Feb 2019 - Oct 2023
+- Gestione incidencias y atencion al cliente con enfoque resolutivo.
+- Coordine rutas y entregas, mejorando tiempos operativos en 20%.
+- Ejecute tareas administrativas: pagos, reportes, inventario y documentacion.
+- Gestione atencion digital y redes sociales, aumentando interaccion en 35%.
+- Coordine equipos en entornos de alta demanda y presion.
+
+FORMACION
+Full Stack Developer & IA Engineer (en curso)
+4Geeks Academy | 2026 - Actualidad
+Stack en progreso: React, Next.js, Node.js, Python, APIs REST, Git, SQL
+
+Computacion e Informatica
+Instituto CESCA, Peru | 2003 - 2006
+
+CERTIFICACIONES
+- Frontend con HTML5, CSS3 y JavaScript - Fundacion Adecco (30h, 2025)
+- Bases de Datos - Fundacion Adecco (30h, 2025)
+- Introduccion a Java SE - Fundacion Adecco (30h, 2025)
+- Desarrollo Back-End Basico - Ministerio de Trabajo, Peru (30h, 2025)
+- Diseno Web con HTML5 + CSS - Fundacion Telefonica Movistar (30h, 2024)
+- Curso Basico de Ciberseguridad - ESIC Business & Marketing School (2024)
+- Reparacion de Computadoras - Instituto SISE, Peru (2007)
+
+PROYECTOS TECNICOS
+TrackFlow - Sistema de gestion y seguimiento (en desarrollo)
+- Aplicacion web para gestion de flujos y tareas.
+- Tecnologias: React, Node.js, SQL, Git.
+- Despliegue en Netlify y control de versiones en GitHub.
+
+HERRAMIENTAS
+- Soporte y ofimatica: Windows, Microsoft 365, Google Workspace, Excel/Sheets
+- Operacion: Trello, gestion de correo y calendarios
+- Desarrollo (en progreso): HTML, CSS, JavaScript, React, Node.js, Git
+
+IDIOMAS
+- Espanol: Nativo
+- Ingles: Tecnico basico (lectura tecnica, documentacion)
+
+OBJETIVO PROFESIONAL
+Incorporarme a un rol de Soporte Tecnico / Helpdesk en Barcelona, con opcion de evolucion hacia funciones tecnicas mixtas de soporte + automatizacion + desarrollo web junior.

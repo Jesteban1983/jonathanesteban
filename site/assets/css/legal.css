@@ -1,0 +1,57 @@
+/* === LEGAL & POLICY DOCUMENTATION STYLES === */
+
+.legal-doc {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 1.25rem;
+  padding: clamp(2rem, 5vw, 4rem);
+  line-height: 1.8;
+}
+
+.legal-doc h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  margin-bottom: 0.5rem;
+}
+
+.legal-doc .legal-meta {
+  font-size: 0.875rem;
+  color: var(--text-faint);
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.legal-doc h2 {
+  font-size: 1.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.legal-doc h3 {
+  font-size: 1.15rem;
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.legal-doc p, .legal-doc ul {
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.legal-doc ul {
+  padding-left: 1.5rem;
+}
+
+.legal-doc li {
+  margin-bottom: 0.5rem;
+}
+
+.legal-highlight-box {
+  background-color: var(--surface-2-color);
+  border-left: 4px solid var(--primary);
+  padding: 1.25rem 1.5rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  margin-block: 1.5rem;
+}

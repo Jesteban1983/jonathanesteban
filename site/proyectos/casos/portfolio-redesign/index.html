@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caso de Estudio: Rediseño de Arquitectura Multi-Página | Jonathan Esteban</title>
+  <meta name="description" content="Estudio de caso sobre la transformación de un sitio estático a una arquitectura corporativa MPA optimizada para SEO, GEO e integración con APIs de IA.">
+  <link rel="canonical" href="https://jonathanesteban.dev/proyectos/casos/portfolio-redesign/">
+
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/pages.css">
+</head>
+<body>
+  <header class="nav-header">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Jonathan Esteban
+      </a>
+      <ul class="nav-links">
+        <li><a href="/servicios/">Servicios</a></li>
+        <li><a href="/soporte-it/">Soporte IT</a></li>
+        <li><a href="/proyectos/" class="active">Proyectos</a></li>
+        <li><a href="/certificaciones/">Certificaciones</a></li>
+        <li><a href="/sobre-mi/">Sobre Mí</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+        <li><a href="/contacto/">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" data-theme-toggle aria-label="Cambiar tema"></button>
+        <a href="/contacto/" class="btn-primary">Contrátame</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="container-narrow" style="padding-top: calc(var(--nav-height) + 3rem); padding-bottom: 4rem;">
+    <div class="fade-in">
+      <p class="section-label">Estudio de Caso #1</p>
+      <h1 class="section-title">Rediseño & Arquitectura Corporativa MPA</h1>
+      <p class="section-desc">Cómo migrar una landing monolítica hacia una infraestructura modular multi-página con micro-servicios serverless.</p>
+    </div>
+
+    <div class="card fade-in" style="margin-top: 2rem; line-height: 1.8;">
+      <h2>El Desafío</h2>
+      <p style="color: var(--text-muted);">Las landings page únicas no permiten una indexación profunda ni cumplen con las políticas exigidas por Meta for Developers o TikTok Developer Console para la automatización de video y captura de leads.</p>
+
+      <h2 style="margin-top: 1.5rem;">La Solución</h2>
+      <p style="color: var(--text-muted);">Implementar una estructura limpia de carpetas `site/` con 15+ sub-rutas dinámicas, datasets JSON desacoplados, Netlify Serverless Functions para backend seguro y stacked schemas JSON-LD para posicionamiento en motores de IA (GEO).</p>
+
+      <h2 style="margin-top: 1.5rem;">Resultados</h2>
+      <ul style="color: var(--text-muted); padding-left: 1.5rem;">
+        <li>100% de aislamiento de claves secretas (.env procesado en serverless).</li>
+        <li>Cumplimiento total RGPD, LOPD-GDD y callbacks OAuth de eliminación de datos.</li>
+        <li>Indexación directa en ChatGPT Search, PerplexityBot y Google AI Overviews.</li>
+      </ul>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container-wide">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Jonathan Esteban · jonathanesteban.dev</div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/assets/js/main.js"></script>
+</body>
+</html>

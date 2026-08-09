@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo App en Vivo | Jonathan Esteban</title>
+  <meta name="description" content="Demostración en vivo de aplicación web interactiva desarrollada en TypeScript/JavaScript para probar manipulación de estado y simulaciones de IA.">
+  <link rel="canonical" href="https://jonathanesteban.dev/proyectos/demo-app/">
+
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/pages.css">
+</head>
+<body>
+  <header class="nav-header">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Jonathan Esteban
+      </a>
+      <ul class="nav-links">
+        <li><a href="/servicios/">Servicios</a></li>
+        <li><a href="/soporte-it/">Soporte IT</a></li>
+        <li><a href="/proyectos/" class="active">Proyectos</a></li>
+        <li><a href="/certificaciones/">Certificaciones</a></li>
+        <li><a href="/sobre-mi/">Sobre Mí</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+        <li><a href="/contacto/">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" data-theme-toggle aria-label="Cambiar tema"></button>
+        <a href="/contacto/" class="btn-primary">Contrátame</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="container" style="padding-top: calc(var(--nav-height) + 3rem); padding-bottom: 4rem;">
+    <div class="fade-in">
+      <p class="section-label">Live Interactive Demo</p>
+      <h1 class="section-title">Demostración de App en Vivo</h1>
+      <p class="section-desc">Prueba la lógica de procesamiento dinámico en cliente asistida por simulación de Agente de IA.</p>
+    </div>
+
+    <div class="card fade-in" style="margin-top: 2rem;">
+      <div class="form-group">
+        <label for="demoInput">Introduce un texto o comando para procesar:</label>
+        <textarea id="demoInput" class="form-control" placeholder="Ejemplo: Analizar datos del inventario y clasificar por prioridad..."></textarea>
+      </div>
+
+      <button id="demoRunBtn" class="btn-primary">Ejecutar Simulación de Agente IA</button>
+
+      <div id="demoOutput" style="margin-top: 1.5rem;"></div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container-wide">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Jonathan Esteban · jonathanesteban.dev</div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+/* === DESIGN TOKENS & TAILWIND V4 THEME CONFIGURATION === */
+
+:root {
+  /* Colors - Dark Theme (Default) */
+  --bg-color: #09090f;
+  --surface-color: #0f0f17;
+  --surface-2-color: #141420;
+  --surface-offset-color: #1a1a28;
+  --border-color: #2a2a3f;
+  --border-hover-color: #3b82f6;
+  
+  --text-main: #e2e2f0;
+  --text-muted: #8888aa;
+  --text-faint: #4a4a6a;
+  --text-inverse: #09090f;
+
+  --primary: #3b82f6;
+  --primary-hover: #60a5fa;
+  --primary-dark: #1d4ed8;
+  --primary-highlight: #1e2d4a;
+  
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --error: #f87171;
+
+  /* Typography */
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Courier New', Courier, monospace;
+
+  /* Spacing & Layout */
+  --content-narrow: 640px;
+  --content-default: 960px;
+  --content-wide: 1200px;
+  --nav-height: 64px;
+  
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Light Theme Variables */
+[data-theme="light"] {
+  --bg-color: #f8f9fc;
+  --surface-color: #ffffff;
+  --surface-2-color: #f1f3f9;
+  --surface-offset-color: #e8ebf4;
+  --border-color: #c8cedd;
+  --border-hover-color: #1d4ed8;
+
+  --text-main: #0f1123;
+  --text-muted: #5a6080;
+  --text-faint: #9aa0bb;
+  --text-inverse: #ffffff;
+
+  --primary: #1d4ed8;
+  --primary-hover: #1e40af;
+  --primary-dark: #1e3a8a;
+  --primary-highlight: #dbeafe;
+
+  --success: #16a34a;
+  --warning: #d97706;
+  --error: #dc2626;
+}
