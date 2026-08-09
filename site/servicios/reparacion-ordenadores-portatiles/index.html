@@ -7,7 +7,15 @@
   <meta name="description" content="Reparacion de ordenadores y portatiles para pymes, autonomos y profesionales en Barcelona.">
   <link rel="canonical" href="https://jonathanesteban.dev/servicios/reparacion-ordenadores-portatiles/">
 
-  <link rel="stylesheet" href="/assets/css/tokens.css">
+    <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="stylesheet" href="/assets/css/tokens.css">
   <link rel="stylesheet" href="/assets/css/base.css">
   <link rel="stylesheet" href="/assets/css/layout.css">
   <link rel="stylesheet" href="/assets/css/components.css">
@@ -131,7 +139,9 @@
       }
     }
   </style>
+  
 </head>
+  <a href="#main-content" class="sr-only-focusable">Saltar al contenido principal</a>
 <body>
   <header class="nav-header">
     <div class="nav-inner">
@@ -146,9 +156,21 @@
       </ul>
       <div class="nav-actions">
         <button class="theme-toggle-btn" data-theme-toggle aria-label="Cambiar tema"></button>
+        <button class="hamburger-btn" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
-  </header>
+  
+
+  <nav class="nav-mobile" id="mobileNav" aria-label="Menú móvil">
+    <a href="/servicios/">Servicios & Presupuesto</a>
+    <a href="/proyectos/">Proyectos & Casos</a>
+    <a href="/certificaciones/">Certificaciones</a>
+    <a href="/sobre-mi/">Sobre Mí</a>
+    <a href="/faq/">Preguntas Frecuentes</a>
+    <a href="/contacto/">Contacto</a>
+  </nav></header>
 
   <main class="container" style="padding-top: calc(var(--nav-height) + 2.5rem); padding-bottom: 4rem;">
     <p class="section-label">Servicio Tecnico</p>

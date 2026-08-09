@@ -7,13 +7,24 @@
   <meta name="description" content="Términos y Condiciones de Uso y Contratación del sitio web jonathanesteban.dev y servicios de desarrollo web e IA.">
   <link rel="canonical" href="https://jonathanesteban.dev/terms-of-service/">
 
-  <link rel="stylesheet" href="/assets/css/tokens.css">
+    <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="stylesheet" href="/assets/css/tokens.css">
   <link rel="stylesheet" href="/assets/css/base.css">
   <link rel="stylesheet" href="/assets/css/layout.css">
   <link rel="stylesheet" href="/assets/css/components.css">
   <link rel="stylesheet" href="/assets/css/legal.css">
+  
 </head>
-<body>
+  
+
+  <a href="#main-content" class="sr-only-focusable">Saltar al contenido principal</a><body>
   <header class="nav-header">
     <div class="nav-inner">
       <a href="/" class="nav-brand">
@@ -27,9 +38,22 @@
       </ul>
       <div class="nav-actions">
         <button class="theme-toggle-btn" data-theme-toggle aria-label="Cambiar tema"></button>
+        <button class="hamburger-btn" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
-  </header>
+  
+
+  <!-- Mobile Nav Drawer -->
+  <nav class="nav-mobile" id="mobileNav" aria-label="Menú móvil">
+    <a href="/servicios/">Servicios & Presupuesto</a>
+    <a href="/proyectos/">Proyectos & Casos</a>
+    <a href="/certificaciones/">Certificaciones</a>
+    <a href="/sobre-mi/">Sobre Mí</a>
+    <a href="/faq/">Preguntas Frecuentes</a>
+    <a href="/contacto/">Contacto</a>
+  </nav></header>
 
   <main id="main-content" class="container-narrow" style="padding-top: calc(var(--nav-height) + 3rem); padding-bottom: 4rem;">
     <div class="legal-doc fade-in">
