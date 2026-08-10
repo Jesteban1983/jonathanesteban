@@ -111,9 +111,9 @@
 .nav-mobile {
   display: none;
   position: fixed;
-  top: var(--nav-height);
   inset: 0;
-  z-index: 99;
+  top: var(--nav-height);
+  z-index: 100;
   background-color: var(--bg-color);
   padding: 2rem 1.5rem;
   flex-direction: column;

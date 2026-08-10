@@ -22,10 +22,10 @@
   <link rel="stylesheet" href="/assets/css/pages.css">
   
 </head>
-  
+<body>
+  <a href="#main-content" class="sr-only-focusable">Saltar al contenido principal</a>
 
-  <a href="#main-content" class="sr-only-focusable">Saltar al contenido principal</a><body>
-  <header class="nav-header">
+  <header class="nav-header" role="banner">
     <div class="nav-inner">
       <a href="/" class="nav-brand">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
@@ -46,7 +46,7 @@
         </button>
       </div>
     </div>
-  
+  </header>
 
   <!-- Mobile Nav Drawer -->
   <nav class="nav-mobile" id="mobileNav" aria-label="Menú móvil">
@@ -56,7 +56,7 @@
     <a href="/sobre-mi/">Sobre Mí</a>
     <a href="/faq/">Preguntas Frecuentes</a>
     <a href="/contacto/">Contacto</a>
-  </nav></header>
+  </nav>
 
   <main id="main-content" class="container-narrow" style="padding-top: calc(var(--nav-height) + 3rem); padding-bottom: 4rem;">
     <div class="fade-in">
@@ -79,21 +79,84 @@
         <li>Indexación directa en ChatGPT Search, PerplexityBot y Google AI Overviews.</li>
       </ul>
     </div>
+
+    <div class="card fade-in" style="margin-top: 2rem; line-height: 1.8;">
+      <h2>Stack Tecnológico</h2>
+      <div class="badge-group">
+        <span class="badge">HTML5</span>
+        <span class="badge">CSS3 (Modular)</span>
+        <span class="badge">JavaScript (ES Modules)</span>
+        <span class="badge">Netlify</span>
+        <span class="badge">Serverless Functions</span>
+        <span class="badge">JSON-LD</span>
+        <span class="badge">n8n</span>
+        <span class="badge">Git</span>
+        <span class="badge">VS Code</span>
+      </div>
+    </div>
+
+    <div class="card fade-in" style="margin-top: 2rem; line-height: 1.8;">
+      <h2>Arquitectura de Carpetas</h2>
+      <pre style="color: var(--text-muted); background: rgba(255,255,255,0.04); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6;"><code>site/
+├── index.html                # Home
+├── assets/
+│   ├── css/                  # tokens, base, layout, components, pages
+│   ├── js/                   # main, nav, theme, form, filters, calculator
+│   └── data/                 # JSON datasets (services, projects, certs, faq)
+├── servicios/                # 3 service subpages
+├── proyectos/                # Portfolio + case studies
+├── sobre-mi/                 # About page
+└── contacto/                 # Contact form</code></pre>
+      <p style="color: var(--text-muted); margin-top: 0.75rem;">Cada directorio representa una ruta independiente con su propio <code>index.html</code>, permitiendo escalar sin framework y manteniendo tiempos de carga por debajo de 1s.</p>
+    </div>
+
+    <div class="card fade-in" style="margin-top: 2rem; line-height: 1.8;">
+      <h2>GEO & SEO</h2>
+      <ul style="color: var(--text-muted); padding-left: 1.5rem;">
+        <li style="margin-bottom: 0.5rem;">JSON-LD structured data (Person, Service, WebSite, FAQ)</li>
+        <li style="margin-bottom: 0.5rem;">Optimizado para ChatGPT Search, Perplexity, Google AI Overviews</li>
+        <li style="margin-bottom: 0.5rem;">Meta descriptions únicas por página</li>
+        <li style="margin-bottom: 0.5rem;">Sitemap.xml y robots.txt</li>
+      </ul>
+    </div>
   </main>
 
-    <footer class="footer">
+  <footer class="footer">
     <div class="container-wide">
-      <div class="footer-links">
-        <a href="/legal/aviso-legal/">Aviso Legal</a>
-        <a href="/legal/privacidad/">Privacidad</a>
-        <a href="/legal/cookies/">Cookies</a>
-        <a href="/privacy-policy/">Privacy Policy</a>
-        <a href="/terms-of-service/">Terms of Service</a>
-        <a href="/data-deletion/">Data Deletion</a>
-        <a href="/contacto/">Contacto</a>
+      <div class="footer-grid">
+        <div>
+          <h4 style="color: var(--text-main); font-size: 1.25rem; margin-bottom: 0.75rem;">Jonathan Esteban</h4>
+          <p style="color: var(--text-muted); font-size: 0.875rem;">Sistemas web, backend y automatización con IA. Cada proyecto aquí es prueba de lo que puedo construir para ti.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="/servicios/">Servicios</a></li>
+            <li><a href="/proyectos/">Proyectos</a></li>
+            <li><a href="/certificaciones/">Certificaciones</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Empresa & Legal</h4>
+          <ul>
+            <li><a href="/sobre-mi/">Sobre Mí</a></li>
+            <li><a href="/privacy-policy/">Política de Privacidad</a></li>
+            <li><a href="/terms-of-service/">Términos de Servicio</a></li>
+            <li><a href="/data-deletion/">Eliminación de Datos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="mailto:joonathanesteban@gmail.com">joonathanesteban@gmail.com</a></li>
+            <li><a href="https://linkedin.com/in/jonathanesteban" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/Jesteban1983" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          </ul>
+        </div>
       </div>
       <div class="footer-bottom">
         <div>&copy; 2026 Jonathan Esteban · jonathanesteban.dev</div>
+        <div>Desarrollado con HTML, CSS, JavaScript & Serverless Functions</div>
       </div>
     </div>
   </footer>

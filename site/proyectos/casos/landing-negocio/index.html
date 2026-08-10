@@ -22,10 +22,10 @@
   <link rel="stylesheet" href="/assets/css/pages.css">
   
 </head>
-  
+<body>
+  <a href="#main-content" class="sr-only-focusable">Saltar al contenido principal</a>
 
-  <a href="#main-content" class="sr-only-focusable">Saltar al contenido principal</a><body>
-  <header class="nav-header">
+  <header class="nav-header" role="banner">
     <div class="nav-inner">
       <a href="/" class="nav-brand">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
@@ -46,17 +46,16 @@
         </button>
       </div>
     </div>
-  
+  </header>
 
   <!-- Mobile Nav Drawer -->
   <nav class="nav-mobile" id="mobileNav" aria-label="Menú móvil">
-    <a href="/servicios/">Servicios & Presupuesto</a>
     <a href="/proyectos/">Proyectos & Casos</a>
     <a href="/certificaciones/">Certificaciones</a>
     <a href="/sobre-mi/">Sobre Mí</a>
     <a href="/faq/">Preguntas Frecuentes</a>
     <a href="/contacto/">Contacto</a>
-  </nav></header>
+  </nav>
 
   <main id="main-content" class="container-narrow" style="padding-top: calc(var(--nav-height) + 3rem); padding-bottom: 4rem;">
     <div class="fade-in">
@@ -72,21 +71,92 @@
       <h2 style="margin-top: 1.5rem;">Arquitectura Desarrollada</h2>
       <p style="color: var(--text-muted);">Construido con Python 3, FastAPI, esquemas Pydantic v2, ORM SQLModel sobre PostgreSQL en Supabase y dashboard administrativo en Next.js.</p>
     </div>
+
+    <div class="card fade-in" style="margin-top: 2rem; line-height: 1.8;">
+      <h2>Stack Tecnológico</h2>
+      <div class="badge-group">
+        <span class="badge">Python 3</span>
+        <span class="badge">FastAPI</span>
+        <span class="badge">Pydantic v2</span>
+        <span class="badge">SQLModel</span>
+        <span class="badge">PostgreSQL (Supabase)</span>
+        <span class="badge">Next.js</span>
+        <span class="badge">JWT</span>
+        <span class="badge">Swagger/OpenAPI</span>
+        <span class="badge">Docker</span>
+        <span class="badge">GitHub Actions</span>
+      </div>
+    </div>
+
+    <div class="card fade-in" style="margin-top: 2rem; line-height: 1.8;">
+      <h2>Endpoints de la API</h2>
+      <ul style="color: var(--text-muted); padding-left: 1.5rem;">
+        <li style="margin-bottom: 0.5rem;"><code style="color: var(--text-main);">POST /api/auth/login</code> — Autenticación JWT</li>
+        <li style="margin-bottom: 0.5rem;"><code style="color: var(--text-main);">GET /api/almacenes</code> — Listado multi-almacén (LA, ZGZ)</li>
+        <li style="margin-bottom: 0.5rem;"><code style="color: var(--text-main);">POST /api/inventario/movimiento</code> — Registrar entrada/salida</li>
+        <li style="margin-bottom: 0.5rem;"><code style="color: var(--text-main);">GET /api/inventario/stock?almacen=X</code> — Consulta de stock en tiempo real</li>
+        <li style="margin-bottom: 0.5rem;"><code style="color: var(--text-main);">GET /api/reportes/diario</code> — Reporte agregado</li>
+      </ul>
+    </div>
+
+    <div class="card fade-in" style="margin-top: 2rem; line-height: 1.8;">
+      <h2>Características Clave</h2>
+      <ul style="color: var(--text-muted); padding-left: 1.5rem;">
+        <li style="margin-bottom: 0.5rem;">Control de stock concurrente con transacciones SQL</li>
+        <li style="margin-bottom: 0.5rem;">Esquemas Pydantic v2 con validación estricta</li>
+        <li style="margin-bottom: 0.5rem;">Cache de consultas frecuentes con Redis</li>
+        <li style="margin-bottom: 0.5rem;">Dashboard Next.js con Server Components</li>
+        <li style="margin-bottom: 0.5rem;">Documentación interactiva con Swagger UI</li>
+      </ul>
+    </div>
+
+    <div class="card fade-in" style="margin-top: 2rem; line-height: 1.8;">
+      <h2>Resultados</h2>
+      <ul style="color: var(--text-muted); padding-left: 1.5rem;">
+        <li style="margin-bottom: 0.5rem;">Reducción de errores de inventario en un 95%</li>
+        <li style="margin-bottom: 0.5rem;">Consultas de stock en &lt;50ms</li>
+        <li style="margin-bottom: 0.5rem;">Dashboard operativo en tiempo real</li>
+        <li style="margin-bottom: 0.5rem;">API ready para integración con sistemas ERP</li>
+      </ul>
+    </div>
   </main>
 
-    <footer class="footer">
+  <footer class="footer">
     <div class="container-wide">
-      <div class="footer-links">
-        <a href="/legal/aviso-legal/">Aviso Legal</a>
-        <a href="/legal/privacidad/">Privacidad</a>
-        <a href="/legal/cookies/">Cookies</a>
-        <a href="/privacy-policy/">Privacy Policy</a>
-        <a href="/terms-of-service/">Terms of Service</a>
-        <a href="/data-deletion/">Data Deletion</a>
-        <a href="/contacto/">Contacto</a>
+      <div class="footer-grid">
+        <div>
+          <h4 style="color: var(--text-main); font-size: 1.25rem; margin-bottom: 0.75rem;">Jonathan Esteban</h4>
+          <p style="color: var(--text-muted); font-size: 0.875rem;">Sistemas web, backend y automatización con IA. Cada proyecto aquí es prueba de lo que puedo construir para ti.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="/servicios/">Servicios</a></li>
+            <li><a href="/proyectos/">Proyectos</a></li>
+            <li><a href="/certificaciones/">Certificaciones</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Empresa & Legal</h4>
+          <ul>
+            <li><a href="/sobre-mi/">Sobre Mí</a></li>
+            <li><a href="/privacy-policy/">Política de Privacidad</a></li>
+            <li><a href="/terms-of-service/">Términos de Servicio</a></li>
+            <li><a href="/data-deletion/">Eliminación de Datos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="mailto:joonathanesteban@gmail.com">joonathanesteban@gmail.com</a></li>
+            <li><a href="https://linkedin.com/in/jonathanesteban" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/Jesteban1983" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          </ul>
+        </div>
       </div>
       <div class="footer-bottom">
         <div>&copy; 2026 Jonathan Esteban · jonathanesteban.dev</div>
+        <div>Desarrollado con HTML, CSS, JavaScript & Serverless Functions</div>
       </div>
     </div>
   </footer>

@@ -22,10 +22,10 @@
   <link rel="stylesheet" href="/assets/css/pages.css">
   
 </head>
-  
+<body>
+  <a href="#main-content" class="sr-only-focusable">Saltar al contenido principal</a>
 
-  <a href="#main-content" class="sr-only-focusable">Saltar al contenido principal</a><body>
-  <header class="nav-header">
+  <header class="nav-header" role="banner">
     <div class="nav-inner">
       <a href="/" class="nav-brand">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
@@ -46,17 +46,16 @@
         </button>
       </div>
     </div>
-  
+  </header>
 
   <!-- Mobile Nav Drawer -->
   <nav class="nav-mobile" id="mobileNav" aria-label="Menú móvil">
-    <a href="/servicios/">Servicios & Presupuesto</a>
     <a href="/proyectos/">Proyectos & Casos</a>
     <a href="/certificaciones/">Certificaciones</a>
     <a href="/sobre-mi/">Sobre Mí</a>
     <a href="/faq/">Preguntas Frecuentes</a>
     <a href="/contacto/">Contacto</a>
-  </nav></header>
+  </nav>
 
   <main id="main-content" class="container-narrow" style="padding-top: calc(var(--nav-height) + 3rem); padding-bottom: 4rem;">
     <div class="fade-in">
@@ -69,21 +68,94 @@
       <h2>La Solución Tecnológica</h2>
       <p style="color: var(--text-muted);">Implementación del agente ClawMate con servidor MCP Composio, automatización de publicación de contenido multimedia en YouTube/n8n y alertas inmediatas al dispositivo móvil vía Telegram Bot.</p>
     </div>
+
+    <div class="card fade-in" style="margin-top: 2rem; line-height: 1.8;">
+      <h2>Stack Tecnológico</h2>
+      <div class="badge-group">
+        <span class="badge">Python</span>
+        <span class="badge">OpenClaw</span>
+        <span class="badge">Composio MCP</span>
+        <span class="badge">n8n</span>
+        <span class="badge">Telegram Bot API</span>
+        <span class="badge">Google APIs</span>
+        <span class="badge">Supabase</span>
+        <span class="badge">GitHub Actions</span>
+      </div>
+      <p style="color: var(--text-muted); margin-top: 1rem;">Combinación de agentes autónomos, orquestación MCP y automatización low-code para construir un pipeline completo de captura y cualificación de leads.</p>
+    </div>
+
+    <div class="card fade-in" style="margin-top: 2rem; line-height: 1.8;">
+      <h2>Arquitectura del Sistema</h2>
+      <p style="color: var(--text-muted);">El flujo de datos sigue una cadena de componentes orquestados:</p>
+      <ul style="color: var(--text-muted); padding-left: 1.5rem; margin-top: 0.75rem;">
+        <li><strong style="color: var(--text-main);">ClawMate Agent</strong> — Agente autónomo que interpreta comandos y contexto mediante LLM.</li>
+        <li><strong style="color: var(--text-main);">Composio MCP Server</strong> — Servidor de protocolo MCP que expone herramientas conectadas como servicios.</li>
+        <li><strong style="color: var(--text-main);">Tool Registry</strong> — Registro centralizado de herramientas disponibles (Google Sheets, Gmail, Calendar, YouTube).</li>
+        <li><strong style="color: var(--text-main);">n8n Webhook Pipeline</strong> — Orquestación low-code que encadena triggers, transformaciones y acciones.</li>
+        <li><strong style="color: var(--text-main);">Telegram Bot</strong> — Canal de alertas y notificaciones en tiempo real al dispositivo móvil.</li>
+        <li><strong style="color: var(--text-main);">Google Workspace</strong> — Integración nativa con Gmail, Drive, Calendar y YouTube Data v3.</li>
+      </ul>
+    </div>
+
+    <div class="card fade-in" style="margin-top: 2rem; line-height: 1.8;">
+      <h2>Flujo de Automatización</h2>
+      <ol style="color: var(--text-muted); padding-left: 1.5rem;">
+        <li style="margin-bottom: 0.5rem;">Webhook de n8n recibe trigger (nuevo lead, email, formulario)</li>
+        <li style="margin-bottom: 0.5rem;">Agente ClawMate analiza con contexto LLM</li>
+        <li style="margin-bottom: 0.5rem;">Composio MCP ejecuta herramientas conectadas (Google Sheets, Gmail, Calendar)</li>
+        <li style="margin-bottom: 0.5rem;">Lead cualificado se registra en Supabase</li>
+        <li style="margin-bottom: 0.5rem;">Notificación push vía Telegram Bot</li>
+        <li style="margin-bottom: 0.5rem;">Reporte diario automatizado</li>
+      </ol>
+    </div>
+
+    <div class="card fade-in" style="margin-top: 2rem; line-height: 1.8;">
+      <h2>Resultados</h2>
+      <ul style="color: var(--text-muted); padding-left: 1.5rem;">
+        <li style="margin-bottom: 0.5rem;">Captura y cualificación 24/7 sin intervención humana</li>
+        <li style="margin-bottom: 0.5rem;">Integración con 8+ herramientas de Google Workspace</li>
+        <li style="margin-bottom: 0.5rem;">Alertas en tiempo real al dispositivo móvil</li>
+        <li style="margin-bottom: 0.5rem;">Pipeline completo en n8n con recuperación ante fallos</li>
+      </ul>
+    </div>
   </main>
 
-    <footer class="footer">
+  <footer class="footer">
     <div class="container-wide">
-      <div class="footer-links">
-        <a href="/legal/aviso-legal/">Aviso Legal</a>
-        <a href="/legal/privacidad/">Privacidad</a>
-        <a href="/legal/cookies/">Cookies</a>
-        <a href="/privacy-policy/">Privacy Policy</a>
-        <a href="/terms-of-service/">Terms of Service</a>
-        <a href="/data-deletion/">Data Deletion</a>
-        <a href="/contacto/">Contacto</a>
+      <div class="footer-grid">
+        <div>
+          <h4 style="color: var(--text-main); font-size: 1.25rem; margin-bottom: 0.75rem;">Jonathan Esteban</h4>
+          <p style="color: var(--text-muted); font-size: 0.875rem;">Sistemas web, backend y automatización con IA. Cada proyecto aquí es prueba de lo que puedo construir para ti.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="/servicios/">Servicios</a></li>
+            <li><a href="/proyectos/">Proyectos</a></li>
+            <li><a href="/certificaciones/">Certificaciones</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Empresa & Legal</h4>
+          <ul>
+            <li><a href="/sobre-mi/">Sobre Mí</a></li>
+            <li><a href="/privacy-policy/">Política de Privacidad</a></li>
+            <li><a href="/terms-of-service/">Términos de Servicio</a></li>
+            <li><a href="/data-deletion/">Eliminación de Datos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="mailto:joonathanesteban@gmail.com">joonathanesteban@gmail.com</a></li>
+            <li><a href="https://linkedin.com/in/jonathanesteban" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/Jesteban1983" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          </ul>
+        </div>
       </div>
       <div class="footer-bottom">
         <div>&copy; 2026 Jonathan Esteban · jonathanesteban.dev</div>
+        <div>Desarrollado con HTML, CSS, JavaScript & Serverless Functions</div>
       </div>
     </div>
   </footer>
