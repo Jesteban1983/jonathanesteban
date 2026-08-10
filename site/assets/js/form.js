@@ -95,16 +95,20 @@ export function initContactForm() {
       });
 
       if (response.ok) {
-        form.style.display = 'none';
-        if (successBox) {
-          successBox.style.display = 'block';
-          successBox.focus?.();
-        } else {
-          window.location.href = '/gracias/';
-        }
+        // Redirigir a la página de gracias
+        window.location.href = '/gracias/?email=' + encodeURIComponent(data.email);
       } else {
-        const serverError = await response.json().catch(() => ({}));
-        throw new Error(serverError.error || 'Error al procesar la solicitud');
+        // Try to parse error, fall back to generic message
+        let errorMsg = 'Error al procesar la solicitud';
+        try {
+          const serverError = await response.json();
+          errorMsg = serverError.error || errorMsg;
+        } catch (_) {
+          errorMsg = response.status === 429
+            ? 'Demasiadas solicitudes. Espera unos minutos e inténtalo de nuevo.'
+            : 'Error del servidor (' + response.status + '). Inténtalo de nuevo.';
+        }
+        throw new Error(errorMsg);
       }
     } catch (error) {
       console.error('Contact Form Error:', error);

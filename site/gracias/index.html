@@ -49,7 +49,8 @@
   <main id="main-content" class="container-narrow" style="padding-top: calc(var(--nav-height) + 4rem); padding-bottom: 4rem; text-align: center;">
     <div class="card fade-in">
       <h1 style="font-size: 2.5rem; color: var(--success); margin-bottom: 1rem;">🎉 ¡Mensaje Recibido con Éxito!</h1>
-      <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 1.5rem;">Muchas gracias por ponerte en contacto. He recibido tu solicitud correctamente en el sistema y me pondré en contacto contigo en menos de 24 horas.</p>
+      <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 1.5rem;">Muchas gracias por ponerte en contacto. He recibido tu solicitud correctamente y me pondré en contacto contigo en menos de 24 horas.</p>
+      <p id="confirmEmail" style="font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; display: none;">📧 Te hemos enviado un email de confirmación a <strong id="emailDisplay" style="color: var(--text-main);"></strong></p>
       
       <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
         <a href="/" class="btn-primary">Volver al Inicio</a>
@@ -99,5 +100,18 @@
   </footer>
 
   <script type="module" src="/assets/js/main.js"></script>
+  <script>
+    // Mostrar email de confirmación desde URL params (cuando viene del formulario)
+    const params = new URLSearchParams(window.location.search);
+    const email = params.get('email');
+    if (email) {
+      const confirmEl = document.getElementById('confirmEmail');
+      const emailEl = document.getElementById('emailDisplay');
+      if (confirmEl && emailEl) {
+        emailEl.textContent = email;
+        confirmEl.style.display = 'block';
+      }
+    }
+  </script>
 </body>
 </html>

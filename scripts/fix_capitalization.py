@@ -1,86 +1,129 @@
 #!/usr/bin/env python3
 """Corrige mayúsculas después de punto y dos puntos en textos HTML.
 
-Usa HTMLParser para tocar SOLO nodos de texto (no script/style).
+Usa HTMLParser + html_tools.py para que un error en UN archivo no
+rompa el procesamiento de los demás (try/except, atomic_write, backup).
+
 Ignora emails, URLs, dominios, n8n, abreviaturas y código preformateado.
 NO aplica regla de "primer carácter" para evitar dañar etiquetas inline.
 """
 import os
 import re
+import sys
 from html.parser import HTMLParser
+
+sys.path.insert(0, os.path.dirname(__file__))
+from html_tools import (  # noqa: E402
+    iter_html_files,
+    safe_process,
+    summarize,
+)
+
+
+# ── Funciones auxiliares ──────────────────────────────────────────────────
 
 
 def looks_like_email(text: str) -> bool:
-    return bool(re.match(r'^[\w.+-]+@[\w.-]+\.[a-zA-Z]{2,}$', text.strip()))
+    try:
+        return bool(re.match(r'^[\w.+-]+@[\w.-]+\.[a-zA-Z]{2,}$', text.strip()))
+    except re.error:
+        return False
 
 
 def looks_like_url(text: str) -> bool:
-    return bool(re.match(r'^https?://', text.strip()))
+    try:
+        return bool(re.match(r'^https?://', text.strip()))
+    except re.error:
+        return False
 
 
 def looks_like_domain(text: str) -> bool:
-    return bool(re.match(r'^[\w-]+\.[a-zA-Z]{2,}(/[\w/#.-]*)?$', text.strip()))
+    try:
+        return bool(re.match(r'^[\w-]+\.[a-zA-Z]{2,}(/[\w/#.-]*)?$', text.strip()))
+    except re.error:
+        return False
 
 
 def has_abbreviation_before(text: str, pos: int) -> bool:
     """Check if the word ending at `pos` is an abbreviation like EE.UU. or exp."""
-    before = text[:pos].rstrip()
-    # Get the last "word" considering dots as part of the word
-    # Find the last alphanumeric-or-dot sequence
-    m = re.search(r'([A-Za-zÁÉÍÓÚáéíóúñÑ.]+)$', before)
-    if not m:
+    try:
+        before = text[:pos].rstrip()
+        m = re.search(r'([A-Za-zÁÉÍÓÚáéíóúñÑ.]+)$', before)
+        if not m:
+            return False
+        word = m.group(1).rstrip('.')
+        if not word:
+            return False
+        # All-uppercase short word (EE, UU, USA, etc.)
+        if len(word) <= 5 and word.isupper():
+            return True
+        # Common abbreviations (lowercase or mixed)
+        common = {'exp', 'tel', 'etc', 'ej', 'pág', 'dr', 'dra', 'sr', 'sra',
+                  'ud', 'vd', 'núm', 'vol', 'av', 'prof', 'ilmo', 'ilma',
+                  'n', 's', 'p', 'cap', 'tomo', 'ed'}
+        if word.lower() in common:
+            return True
         return False
-    word = m.group(1).rstrip('.')
-    if not word:
+    except Exception:
+        # Si algo falla al analizar, asumimos que NO es abreviatura
         return False
-    # Case: all-uppercase short word (EE, UU, USA, etc.)
-    if len(word) <= 5 and word.isupper():
-        return True
-    # Common abbreviations (lowercase or mixed)
-    common = {'exp', 'tel', 'etc', 'ej', 'pág', 'dr', 'dra', 'sr', 'sra',
-              'ud', 'vd', 'núm', 'vol', 'av', 'prof', 'ilmo', 'ilma',
-              'n', 's', 'p', 'cap', 'tomo', 'ed'}
-    if word.lower() in common:
-        return True
-    return False
+
+
+def _is_skippable(text: str) -> bool:
+    """Devuelve True si el texto no debe ser modificado."""
+    stripped = text.strip()
+    return (
+        looks_like_email(stripped)
+        or looks_like_url(stripped)
+        or looks_like_domain(stripped)
+        or stripped == 'n8n'
+    )
 
 
 def fix_capitalization(text: str) -> str:
     """Apply capitalization rules to visible text."""
-    stripped = text.strip()
-    # Skip emails, URLs, domains, brand names
-    if (looks_like_email(stripped) or looks_like_url(stripped)
-            or looks_like_domain(stripped) or stripped == 'n8n'):
-        return text
+    try:
+        if _is_skippable(text):
+            return text
+    except Exception:
+        return text  # Si algo falla, devolvemos el texto original
 
     result = text
 
     # 1. Capitalize after period + space (skip abbreviations)
-    def cap_after_period(m):
-        if has_abbreviation_before(result, m.start()):
-            return m.group(0)  # Don't change
-        return m.group(0)[:-1] + m.group(1).upper()
+    try:
+        def cap_after_period(m):
+            try:
+                if has_abbreviation_before(result, m.start()):
+                    return m.group(0)
+            except Exception:
+                pass
+            return m.group(0)[:-1] + m.group(1).upper()
 
-    result = re.sub(
-        r'(?<=[.!?])\s+([a-záéíóúñ])',
-        cap_after_period,
-        result,
-    )
+        result = re.sub(
+            r'(?<=[.!?])\s+([a-záéíóúñ])',
+            cap_after_period,
+            result,
+        )
+    except re.error as exc:
+        print(f"  ⚠ [regex periodo] {exc}")
 
     # 2. Capitalize after colon + space
-    result = re.sub(
-        r'(?<=:)\s+([a-záéíóúñ])',
-        lambda m: m.group(0)[:-1] + m.group(1).upper(),
-        result,
-    )
-
-    # NOTE: No "first character" rule — HTMLParser splits text at inline tags,
-    # so "impulsan" inside <em>impulsan</em> would be wrongly capitalized.
+    try:
+        result = re.sub(
+            r'(?<=:)\s+([a-záéíóúñ])',
+            lambda m: m.group(0)[:-1] + m.group(1).upper(),
+            result,
+        )
+    except re.error as exc:
+        print(f"  ⚠ [regex colon] {exc}")
 
     return result
 
 
 class CapFixer(HTMLParser):
+    """Parseador HTML que corrige mayúsculas solo en texto visible."""
+
     def __init__(self):
         super().__init__(convert_charrefs=True)
         self.out = []
@@ -108,7 +151,11 @@ class CapFixer(HTMLParser):
         if self.in_script_style or self.in_code:
             self.out.append(data)
         else:
-            self.out.append(fix_capitalization(data))
+            try:
+                self.out.append(fix_capitalization(data))
+            except Exception as exc:
+                print(f"  ⚠ [data] {exc}")
+                self.out.append(data)
 
     def handle_comment(self, data):
         self.out.append(f"<!--{data}-->")
@@ -129,69 +176,30 @@ class CapFixer(HTMLParser):
         return "".join(self.out)
 
 
+def process_html(content: str) -> str:
+    """Procesa el contenido HTML completo."""
+    parser = CapFixer()
+    parser.feed(content)
+    parser.close()
+    return parser.result()
+
+
 def main():
-    root = "site"
-    html_files = []
-    for dirpath, dirnames, filenames in os.walk(root):
-        for f in filenames:
-            if f.endswith(".html"):
-                html_files.append(os.path.join(dirpath, f))
-    html_files.sort()
+    root = os.path.join(os.path.dirname(__file__), "..", "site")
+    files = iter_html_files(root)
+    print(f"Procesando {len(files)} archivos HTML...\n")
 
-    # Show dry-run
-    print("=" * 70)
-    print("DRY RUN - Cambios propuestos")
-    print("=" * 70)
-    total_changes = 0
-    for fp in html_files:
-        with open(fp, "r", encoding="utf-8") as f:
-            content = f.read()
-        parser = CapFixer()
-        parser.feed(content)
-        parser.close()
-        new_content = parser.result()
-        if new_content != content:
-            rel = os.path.relpath(fp)
-            # Show only changed lines
-            old_lines = content.split('\n')
-            new_lines = new_content.split('\n')
-            for i, (ol, nl) in enumerate(zip(old_lines, new_lines)):
-                if ol != nl:
-                    print(f"\n{rel}:L{i+1}")
-                    print(f"  - {ol.strip()}")
-                    print(f"  + {nl.strip()}")
-                    total_changes += 1
+    results = {}
+    for fp in files:
+        rel = os.path.relpath(fp)
+        status = safe_process(fp, process_html, backup=True)
+        results[rel] = status
+        if status == "ok":
+            print(f"✓ {rel}")
+        elif status == "error":
+            print(f"✗ {rel} (error)")
 
-    print(f"\n--- Total cambios: {total_changes} ---")
-
-    if total_changes == 0:
-        print("No hay cambios que aplicar.")
-        return
-
-    print("\n" + "=" * 70)
-    confirm = input("¿Aplicar cambios? (s/N): ").strip().lower()
-    if confirm != 's':
-        print("Cancelado por el usuario.")
-        return
-
-    # Apply
-    print("\n" + "=" * 70)
-    print("APLICANDO CAMBIOS")
-    print("=" * 70)
-    fixed = []
-    for fp in html_files:
-        with open(fp, "r", encoding="utf-8") as f:
-            content = f.read()
-        parser = CapFixer()
-        parser.feed(content)
-        parser.close()
-        new_content = parser.result()
-        if new_content != content:
-            with open(fp, "w", encoding="utf-8") as f:
-                f.write(new_content)
-            fixed.append(fp)
-            print(f"✓ {os.path.relpath(fp)}")
-    print(f"\nTotal archivos modificados: {len(fixed)}")
+    summarize(results)
 
 
 if __name__ == "__main__":

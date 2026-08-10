@@ -1,17 +1,32 @@
 #!/usr/bin/env python3
-"""Corrige ortografía (tildes) en el contenido visible de los HTML del sitio.
+"""Corrige tildes en el contenido visible de los HTML del sitio.
 
-Usa HTMLParser para tocar SOLO nodos de texto (no script/style/atributos con código).
-Solo corrige palabras que SIEMPRE llevan tilde (no dependientes de contexto).
+Usa HTMLParser y las utilidades de html_tools.py para que un error en
+UN archivo NO rompa el procesamiento de los demás (try/except, atomic_write).
+
+Solo corrige palabras que SIEMPRE llevan tilde (context-independent).
 """
 import os
 import re
+import sys
 from html.parser import HTMLParser
 
+# Importar utilidades compartidas (desde el mismo directorio)
+sys.path.insert(0, os.path.dirname(__file__))
+from html_tools import (  # noqa: E402
+    TEXT_ATTRS,
+    BOUNDARY,
+    iter_html_files,
+    read_html,
+    atomic_write,
+    safe_process,
+    summarize,
+)
 
-# Corrections that are ALWAYS correct (context-independent):
-# "Xcion" (esdrújula de nombre) siempre lleva tilde.
+# ── Diccionario de correcciones (context-independent) ────────────────────
+# Palabras que SIEMPRE llevan tilde
 CORRECTIONS = {
+    # -ción / -sión (esdrújulas)
     "automatizacion": "automatización",
     "Automatizacion": "Automatización",
     "reparacion": "reparación",
@@ -143,6 +158,11 @@ CORRECTIONS = {
     "Estimacion": "Estimación",
     "metodologia": "metodología",
     "Metodologia": "Metodología",
+    "multi-ubicacion": "multi-ubicación",
+    # -ción largas
+    "comercializacion": "comercialización",
+    "automatizaciones": "automatizaciones",
+    # Esdrújulas
     "terminos": "términos",
     "Terminos": "Términos",
     "termino": "término",
@@ -162,31 +182,11 @@ CORRECTIONS = {
     "tecnico": "técnico",
     "Tecnico": "Técnico",
     "Tecnicas": "Técnicas",
-    "legitima": "legítima",
+    "tecnicas": "técnicas",
     "basica": "básica",
-    "diagnostico": "diagnóstico",
-    "Diagnostico": "Diagnóstico",
-    "limites": "límites",
-    "envios": "envíos",
-    "segun": "según",
-    "Segun": "Según",
-    "pagina": "página",
-    "Pagina": "Página",
-    "exito": "éxito",
-    "Exito": "Éxito",
-    "periodo": "período",
-    "automaticas": "automáticas",
-    "automatica": "automática",
-    "Automatica": "Automática",
-    "automatico": "automático",
-    "Automatico": "Automático",
-    "automaticos": "automáticos",
-    "especifico": "específico",
-    "Especifico": "Específico",
-    "especificos": "específicos",
-    "Especificos": "Específicos",
-    "especifica": "específica",
-    "Especifica": "Específica",
+    "basico": "básico",
+    "basicas": "básicas",
+    "basicos": "básicos",
     "graficos": "gráficos",
     "Graficos": "Gráficos",
     "metricas": "métricas",
@@ -313,29 +313,36 @@ CORRECTIONS = {
     "Tension": "Tensión",
     "adhesion": "adhesión",
     "Adhesion": "Adhesión",
-    "multi-ubicacion": "multi-ubicación",
+    "evolucion": "evolución",
+    "Evolucion": "Evolución",
+    "autonomia": "autonomía",
+    "Autonomia": "Autonomía",
+    "configuracion": "configuración",
+    "Configuracion": "Configuración",
 }
 
-# Order by length descending so longer words are replaced first
+# Ordenado por longitud descendente para reemplazar palabras largas primero
 SORTED = sorted(CORRECTIONS.items(), key=lambda x: -len(x[0]))
-_BOUNDARY = r"(?<![A-Za-zÁÉÍÓÚáéíóúÑñ])"
 
 
 def fix_text(text: str) -> str:
+    """Aplica correcciones de tildes al texto."""
     for wrong, correct in SORTED:
-        text = re.sub(
-            _BOUNDARY + re.escape(wrong) + r"(?![A-Za-zÁÉÍÓÚáéíóúÑñ])",
-            correct,
-            text,
-        )
+        try:
+            text = re.sub(
+                BOUNDARY + re.escape(wrong) + r"(?![A-Za-zÁÉÍÓÚáéíóúÑñ])",
+                correct,
+                text,
+            )
+        except re.error as exc:
+            # Si una regex falla, continuamos con la siguiente
+            print(f"  ⚠ [regex] patrón '{wrong}': {exc}")
     return text
 
 
-# Attributes whose value is natural language (safe to fix)
-TEXT_ATTRS = {"content", "placeholder", "alt", "title", "name"}
+class OrthoFixer(HTMLParser):
+    """Parseador HTML que corrige tildes solo en texto visible y atributos seguros."""
 
-
-class Fixer(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
         self.out = []
@@ -345,16 +352,20 @@ class Fixer(HTMLParser):
         self.out.append(self.get_starttag_text())
         if tag in ("script", "style"):
             self.in_script_style = True
-        # Fix natural-language attribute values
+        # Corregir atributos de lenguaje natural
         if attrs:
             raw = self.get_starttag_text()
             new_raw = raw
             for key, value in attrs:
                 if value and key.lower() in TEXT_ATTRS and key.lower() != "name":
-                    fixed_value = fix_text(value)
-                    if fixed_value != value:
-                        # Replace within the raw tag: key="value"
-                        new_raw = new_raw.replace(f'{key}="{value}"', f'{key}="{fixed_value}"')
+                    try:
+                        fixed_value = fix_text(value)
+                        if fixed_value != value:
+                            new_raw = new_raw.replace(
+                                f'{key}="{value}"', f'{key}="{fixed_value}"'
+                            )
+                    except Exception as exc:
+                        print(f"  ⚠ [attr] {key}={value!r}: {exc}")
             if new_raw != raw:
                 self.out[-1] = new_raw
 
@@ -370,7 +381,11 @@ class Fixer(HTMLParser):
         if self.in_script_style:
             self.out.append(data)
         else:
-            self.out.append(fix_text(data))
+            try:
+                self.out.append(fix_text(data))
+            except Exception as exc:
+                print(f"  ⚠ [data] {exc}")
+                self.out.append(data)
 
     def handle_comment(self, data):
         self.out.append(f"<!--{data}-->")
@@ -391,37 +406,31 @@ class Fixer(HTMLParser):
         return "".join(self.out)
 
 
-def process_html(filepath):
-    with open(filepath, "r", encoding="utf-8") as f:
-        content = f.read()
-    parser = Fixer()
+def process_html(content: str) -> str:
+    """Procesa el contenido HTML completo."""
+    parser = OrthoFixer()
     parser.feed(content)
     parser.close()
-    new_content = parser.result()
-    if new_content != content:
-        with open(filepath, "w", encoding="utf-8") as f:
-            f.write(new_content)
-        return True
-    return False
+    return parser.result()
 
 
 def main():
-    root = "site"
-    html_files = []
-    for dirpath, dirnames, filenames in os.walk(root):
-        for f in filenames:
-            if f.endswith(".html"):
-                html_files.append(os.path.join(dirpath, f))
-    html_files.sort()
+    root = os.path.join(os.path.dirname(__file__), "..", "site")
+    files = iter_html_files(root)
+    print(f"Procesando {len(files)} archivos HTML...\n")
 
-    fixed = []
-    for fp in html_files:
-        if process_html(fp):
-            fixed.append(fp)
-            print(f"FIXED: {fp}")
-        else:
-            print(f"(no changes): {fp}")
-    print(f"\nTotal files modified: {len(fixed)}")
+    results = {}
+    for fp in files:
+        rel = os.path.relpath(fp)
+        status = safe_process(fp, process_html, backup=True)
+        results[rel] = status
+        if status == "ok":
+            print(f"✓ {rel}")
+        elif status == "error":
+            print(f"✗ {rel} (error)")
+        # "same" no se imprime para no saturar
+
+    summarize(results)
 
 
 if __name__ == "__main__":
