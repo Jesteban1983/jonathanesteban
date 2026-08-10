@@ -33,6 +33,65 @@
   to = "/.netlify/functions/data-deletion-request"
   status = 200
 
+[[redirects]]
+  from = "/soporte-it"
+  to = "/servicios/soporte-it/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/soporte-it/*"
+  to = "/servicios/soporte-it/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/legal/privacidad"
+  to = "/privacy-policy/"
+  status = 301
+
+[[redirects]]
+  from = "/legal/privacidad/*"
+  to = "/privacy-policy/"
+  status = 301
+
+# Redirecciones 301 para páginas de servicios antiguas → soporte-it canónico
+[[redirects]]
+  from = "/servicios/formateo-limpieza-optimizacion"
+  to = "/servicios/soporte-it/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/formateo-limpieza-optimizacion/*"
+  to = "/servicios/soporte-it/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/mantenimiento-preventivo-pc"
+  to = "/servicios/soporte-it/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/mantenimiento-preventivo-pc/*"
+  to = "/servicios/soporte-it/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/reparacion-ordenadores-portatiles"
+  to = "/servicios/soporte-it/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/reparacion-ordenadores-portatiles/*"
+  to = "/servicios/soporte-it/"
+  status = 301
+  force = true
+
 # Redirección 301 del subdominio de Netlify al dominio propio
 [[redirects]]
   from = "https://jonathanesteban.netlify.app/*"

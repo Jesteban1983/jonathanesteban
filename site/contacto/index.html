@@ -66,34 +66,92 @@
 
     <div class="card fade-in" style="margin-top: 2rem;">
       <form id="contactForm" novalidate>
-        <input type="text" name="_gotcha" style="display:none;" aria-hidden="true" tabindex="-1">
+        <input type="text" name="company_site" style="position:absolute;left:-9999px;" aria-hidden="true" tabindex="-1" autocomplete="off">
+
+        <div id="formError" role="alert" style="display:none; margin-bottom: 1rem; color: #f87171; font-weight: 600;"></div>
 
         <div class="form-group">
-          <label for="name">Nombre Completo *</label>
+          <label for="name">Nombre completo *</label>
           <input type="text" id="name" name="name" class="form-control" placeholder="Tu nombre y apellidos" required autocomplete="name">
         </div>
 
         <div class="form-group">
-          <label for="email">Correo Electrónico *</label>
-          <input type="email" id="email" name="email" class="form-control" placeholder="tu@email.com" required autocomplete="email">
+          <label for="email">Correo electrónico *</label>
+          <input type="email" id="email" name="email" class="form-control" placeholder="tu@email.com" required autocomplete="email" inputmode="email">
         </div>
 
         <div class="form-group">
-          <label for="subject">Asunto / Servicio de Interés</label>
-          <input type="text" id="subject" name="subject" class="form-control" placeholder="Ej: Desarrollo Web / Agente de IA / Presupuesto">
+          <label for="phone">Teléfono (opcional)</label>
+          <input type="tel" id="phone" name="phone" class="form-control" placeholder="+34 600 000 000" autocomplete="tel" inputmode="tel">
         </div>
 
         <div class="form-group">
-          <label for="message">Detalles del Mensaje *</label>
-          <textarea id="message" name="message" class="form-control" placeholder="Cuéntame sobre las necesidades de tu empresa..." required></textarea>
+          <label for="service">Servicio *</label>
+          <select id="service" name="service" class="form-control" required>
+            <option value="">Selecciona un servicio</option>
+            <option value="desarrollo-web">Desarrollo web</option>
+            <option value="automatizacion">Automatización y agentes IA</option>
+            <option value="soporte-it">Soporte IT</option>
+            <option value="otro">Otro</option>
+          </select>
         </div>
+
+        <div class="form-group">
+          <label for="businessType">Tipo de negocio *</label>
+          <input type="text" id="businessType" name="businessType" class="form-control" placeholder="Ej: clínica, e-commerce, despacho" required>
+        </div>
+
+        <div class="form-group">
+          <label for="budget">Presupuesto orientativo *</label>
+          <select id="budget" name="budget" class="form-control" required>
+            <option value="">Selecciona un rango</option>
+            <option value="menos-1000">Menos de 1.000 EUR</option>
+            <option value="1000-3000">1.000 - 3.000 EUR</option>
+            <option value="3000-7000">3.000 - 7.000 EUR</option>
+            <option value="7000-mas">Más de 7.000 EUR</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="timeline">Plazo deseado *</label>
+          <select id="timeline" name="timeline" class="form-control" required>
+            <option value="">Selecciona un plazo</option>
+            <option value="urgente">Urgente (1-2 semanas)</option>
+            <option value="mes">Dentro de 1 mes</option>
+            <option value="trimestre">1-3 meses</option>
+            <option value="sin-prisa">Sin fecha cerrada</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Asunto / servicio de interés</label>
+          <input type="text" id="subject" name="subject" class="form-control" placeholder="Ej: Integración con CRM y n8n" maxlength="120">
+        </div>
+
+        <div class="form-group">
+          <label for="message">Detalles del mensaje *</label>
+          <textarea id="message" name="message" class="form-control" placeholder="Cuéntame sobre las necesidades de tu empresa..." required maxlength="2000" aria-describedby="messageHelp"></textarea>
+          <small id="messageHelp" style="color: var(--text-muted);">Máximo 2000 caracteres.</small>
+        </div>
+
+        <fieldset class="form-group" style="border: 1px solid var(--border-color); border-radius: 0.75rem; padding: 1rem;">
+          <legend style="padding: 0 0.4rem;">Consentimientos</legend>
+          <label style="display:flex; gap:0.6rem; align-items:flex-start; margin-bottom:0.75rem;">
+            <input type="checkbox" id="consentReply" name="consentReply" required>
+            <span>Acepto que mis datos se utilicen para responder mi solicitud. *</span>
+          </label>
+          <label style="display:flex; gap:0.6rem; align-items:flex-start;">
+            <input type="checkbox" id="consentWhatsapp" name="consentWhatsapp">
+            <span>Acepto contacto posterior por WhatsApp (opcional).</span>
+          </label>
+        </fieldset>
 
         <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 1rem;">
-          Enviar Mensaje Directo 🚀
+          Enviar solicitud
         </button>
 
-        <div id="formSuccess" style="display:none; margin-top: 1.5rem; text-align: center; color: var(--success); font-weight: 600;">
-          ✓ ¡Mensaje enviado con éxito! Te responderé en breve.
+        <div id="formSuccess" role="status" aria-live="polite" style="display:none; margin-top: 1.5rem; text-align: center; color: var(--success); font-weight: 600;">
+          Solicitud enviada con éxito. Te responderé en breve.
         </div>
       </form>
 

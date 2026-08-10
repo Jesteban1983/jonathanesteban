@@ -33,8 +33,11 @@ export function initProjectFilters() {
       const filter = btn.getAttribute('data-filter');
 
       projectCards.forEach(card => {
-        const category = card.getAttribute('data-project-category');
-        if (filter === 'all' || category === filter) {
+        const category = (card.getAttribute('data-project-category') || '')
+          .split(',')
+          .map((item) => item.trim())
+          .filter(Boolean);
+        if (filter === 'all' || category.includes(filter)) {
           card.hidden = false;
           card.removeAttribute('aria-hidden');
           card.classList.add('fade-in');

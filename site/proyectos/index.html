@@ -63,11 +63,13 @@
     </div>
 
     <!-- Category Filters -->
-    <div class="fade-in mt-8 mb-10 flex flex-wrap gap-3" id="projectFilters" role="tablist" aria-label="Filtrar proyectos por categoría">
-      <button class="filter-btn active rounded-full border border-slate-600 bg-cyan-500 px-5 py-2 text-sm font-semibold text-white transition-colors duration-200" data-filter="all" data-state="active">Todos los Proyectos</button>
-      <button class="filter-btn rounded-full border border-slate-700 bg-slate-900/70 px-5 py-2 text-sm font-semibold text-slate-300 transition-colors duration-200 hover:border-cyan-400 hover:text-cyan-200" data-filter="backend" data-state="inactive">Backend & APIs</button>
-      <button class="filter-btn rounded-full border border-slate-700 bg-slate-900/70 px-5 py-2 text-sm font-semibold text-slate-300 transition-colors duration-200 hover:border-cyan-400 hover:text-cyan-200" data-filter="ai" data-state="inactive">Agentes de IA</button>
-      <button class="filter-btn rounded-full border border-slate-700 bg-slate-900/70 px-5 py-2 text-sm font-semibold text-slate-300 transition-colors duration-200 hover:border-cyan-400 hover:text-cyan-200" data-filter="frontend" data-state="inactive">Frontend & React</button>
+    <div class="fade-in mt-8 mb-10 flex flex-wrap gap-3" id="projectFilters" role="tablist" aria-label="Filtrar proyectos por categoria">
+      <button class="filter-btn active rounded-full border border-slate-600 bg-cyan-500 px-5 py-2 text-sm font-semibold text-white transition-colors duration-200" data-filter="all" data-state="active">Todos</button>
+      <button class="filter-btn rounded-full border border-slate-700 bg-slate-900/70 px-5 py-2 text-sm font-semibold text-slate-300 transition-colors duration-200 hover:border-cyan-400 hover:text-cyan-200" data-filter="web" data-state="inactive">Web</button>
+      <button class="filter-btn rounded-full border border-slate-700 bg-slate-900/70 px-5 py-2 text-sm font-semibold text-slate-300 transition-colors duration-200 hover:border-cyan-400 hover:text-cyan-200" data-filter="backend" data-state="inactive">Backend/API</button>
+      <button class="filter-btn rounded-full border border-slate-700 bg-slate-900/70 px-5 py-2 text-sm font-semibold text-slate-300 transition-colors duration-200 hover:border-cyan-400 hover:text-cyan-200" data-filter="automatizacion" data-state="inactive">Automatizacion</button>
+      <button class="filter-btn rounded-full border border-slate-700 bg-slate-900/70 px-5 py-2 text-sm font-semibold text-slate-300 transition-colors duration-200 hover:border-cyan-400 hover:text-cyan-200" data-filter="agentes-ia" data-state="inactive">Agentes IA</button>
+      <button class="filter-btn rounded-full border border-slate-700 bg-slate-900/70 px-5 py-2 text-sm font-semibold text-slate-300 transition-colors duration-200 hover:border-cyan-400 hover:text-cyan-200" data-filter="herramientas" data-state="inactive">Herramientas internas</button>
     </div>
 
     <!-- Projects Grid -->
@@ -80,30 +82,30 @@
         <div class="mb-4 flex flex-wrap gap-2">
           <span class="badge-tech">Python</span><span class="badge-tech">FastAPI</span><span class="badge-tech">PostgreSQL</span><span class="badge-tech">Next.js</span>
         </div>
-        <a href="https://github.com/4GeeksAcademy/Jesteban1983-TrackFlow.git" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-cyan-300 transition-colors hover:text-cyan-200">Ver código en GitHub ↗</a>
+        <a href="/proyectos/trackflow/" class="text-sm font-semibold text-cyan-300 transition-colors hover:text-cyan-200">Ver caso de estudio →</a>
       </article>
 
-      <article class="project-card group rounded-2xl border border-slate-700/80 bg-slate-900/70 p-7 shadow-sm shadow-black/20 transition hover:-translate-y-1 hover:border-cyan-400/80" data-project-category="ai">
+      <article class="project-card group rounded-2xl border border-slate-700/80 bg-slate-900/70 p-7 shadow-sm shadow-black/20 transition hover:-translate-y-1 hover:border-cyan-400/80" data-project-category="automatizacion,agentes-ia">
         <span class="badge-status badge-info">Completado</span>
         <h3 class="mt-3 text-xl font-semibold leading-snug text-slate-100">ClawMate — Agente Personal de IA</h3>
         <p class="my-3 break-words text-sm leading-relaxed text-slate-300">Asistente autónomo con OpenClaw y Composio MCP conectado a Gmail, Drive, Calendar y Telegram.</p>
         <div class="mb-4 flex flex-wrap gap-2">
           <span class="badge-tech">OpenClaw</span><span class="badge-tech">Composio MCP</span><span class="badge-tech">Python</span><span class="badge-tech">Google APIs</span>
         </div>
-        <a href="/proyectos/casos/automatizacion-leads/" class="text-sm font-semibold text-cyan-300 transition-colors hover:text-cyan-200">Ver Estudio de Caso →</a>
+        <a href="/proyectos/clawmate/" class="text-sm font-semibold text-cyan-300 transition-colors hover:text-cyan-200">Ver Estudio de Caso →</a>
       </article>
 
-      <article class="project-card group rounded-2xl border border-slate-700/80 bg-slate-900/70 p-7 shadow-sm shadow-black/20 transition hover:-translate-y-1 hover:border-cyan-400/80" data-project-category="frontend">
+      <article class="project-card group rounded-2xl border border-slate-700/80 bg-slate-900/70 p-7 shadow-sm shadow-black/20 transition hover:-translate-y-1 hover:border-cyan-400/80" data-project-category="web">
         <span class="badge-status badge-info">Completado</span>
         <h3 class="mt-3 text-xl font-semibold leading-snug text-slate-100">Talk to the Machine</h3>
         <p class="my-3 break-words text-sm leading-relaxed text-slate-300">Chat con IA en tiempo real utilizando Groq API y LLaMA 3 con interfaz Next.js.</p>
         <div class="mb-4 flex flex-wrap gap-2">
           <span class="badge-tech">Next.js</span><span class="badge-tech">Groq API</span><span class="badge-tech">LLaMA 3</span>
         </div>
-        <a href="https://github.com/4GeeksAcademy/Jesteban1983-talk-to-the-machine.git" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-cyan-300 transition-colors hover:text-cyan-200">Ver en GitHub ↗</a>
+        <a href="/proyectos/talk-to-the-machine/" class="text-sm font-semibold text-cyan-300 transition-colors hover:text-cyan-200">Ver caso de estudio →</a>
       </article>
 
-      <article class="project-card group rounded-2xl border border-slate-700/80 bg-slate-900/70 p-7 shadow-sm shadow-black/20 transition hover:-translate-y-1 hover:border-cyan-400/80" data-project-category="frontend">
+      <article class="project-card group rounded-2xl border border-slate-700/80 bg-slate-900/70 p-7 shadow-sm shadow-black/20 transition hover:-translate-y-1 hover:border-cyan-400/80" data-project-category="herramientas">
         <span class="badge-status badge-info">Completado</span>
         <h3 class="mt-3 text-xl font-semibold leading-snug text-slate-100">Cinema Seat Manager</h3>
         <p class="my-3 break-words text-sm leading-relaxed text-slate-300">Reserva de butacas con TypeScript puro, gestión de estados del DOM y POO.</p>

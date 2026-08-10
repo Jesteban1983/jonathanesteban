@@ -3,11 +3,13 @@
 export function initContactForm() {
   const form = document.getElementById('contactForm');
   const successBox = document.getElementById('formSuccess');
+  const errorBox = document.getElementById('formError');
 
   if (!form) return;
 
   const subjectInput = form.querySelector('#subject');
   const messageInput = form.querySelector('#message');
+  const serviceInput = form.querySelector('#service');
 
   function applyPrefill() {
     const params = new URLSearchParams(window.location.search);
@@ -21,6 +23,11 @@ export function initContactForm() {
       if (messageInput && urlMessage) messageInput.value = urlMessage;
       localStorage.removeItem('budgetPrefill');
       return;
+    }
+
+    const serviceFromUrl = params.get('service');
+    if (serviceInput && serviceFromUrl) {
+      serviceInput.value = serviceFromUrl;
     }
 
     // Priority 2: Subject-only URL param (from service card "Consultar →")
@@ -38,14 +45,36 @@ export function initContactForm() {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    if (errorBox) {
+      errorBox.style.display = 'none';
+      errorBox.textContent = '';
+    }
+
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalBtnText = submitBtn.innerHTML;
 
     // Check Honeypot
-    const gotcha = form.querySelector('input[name="_gotcha"]');
+    const gotcha = form.querySelector('input[name="company_site"]');
     if (gotcha && gotcha.value !== '') {
       // Bot detected, silently ignore
       form.reset();
+      return;
+    }
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      const firstInvalid = form.querySelector(':invalid');
+      if (firstInvalid) firstInvalid.focus();
+      return;
+    }
+
+    const messageValue = messageInput?.value || '';
+    if (messageValue.length > 2000) {
+      if (errorBox) {
+        errorBox.textContent = 'El mensaje supera el límite de 2000 caracteres.';
+        errorBox.style.display = 'block';
+      }
+      messageInput?.focus();
       return;
     }
 
@@ -54,6 +83,9 @@ export function initContactForm() {
 
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
+    data.consentReply = form.querySelector('#consentReply')?.checked === true;
+    data.consentWhatsapp = form.querySelector('#consentWhatsapp')?.checked === true;
+    data.sourcePath = window.location.pathname;
 
     try {
       const response = await fetch('/api/contact-submit', {
@@ -66,14 +98,20 @@ export function initContactForm() {
         form.style.display = 'none';
         if (successBox) {
           successBox.style.display = 'block';
+          successBox.focus?.();
         } else {
           window.location.href = '/gracias/';
         }
       } else {
-        throw new Error('Error al procesar la solicitud');
+        const serverError = await response.json().catch(() => ({}));
+        throw new Error(serverError.error || 'Error al procesar la solicitud');
       }
     } catch (error) {
       console.error('Contact Form Error:', error);
+      if (errorBox) {
+        errorBox.textContent = error.message || 'Error al enviar. Inténtalo de nuevo.';
+        errorBox.style.display = 'block';
+      }
       submitBtn.innerHTML = `⚠️ Error al enviar — Inténtalo de nuevo`;
       submitBtn.disabled = false;
       setTimeout(() => {
