@@ -5,11 +5,49 @@
   <title>ClawMate | Caso de proyecto</title>
   <meta name="description" content="Caso de ClawMate: agente IA con integraciones y aprobacion humana para acciones sensibles.">
   <link rel="canonical" href="https://jonathanesteban.dev/proyectos/clawmate/">
-  <link rel="stylesheet" href="/assets/css/tokens.css"><link rel="stylesheet" href="/assets/css/base.css"><link rel="stylesheet" href="/assets/css/layout.css"><link rel="stylesheet" href="/assets/css/components.css"><link rel="stylesheet" href="/assets/css/pages.css">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/pages.css">
 </head>
 <body>
   <a href="#main-content" class="sr-only-focusable">Saltar al contenido principal</a>
-  <main id="main-content" class="container-narrow" style="padding-top: 4rem; padding-bottom: 4rem;">
+
+  <header class="nav-header" role="banner">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Jonathan Esteban
+      </a>
+      <ul class="nav-links">
+        <li><a href="/servicios/">Servicios</a></li>
+        <li><a href="/proyectos/" class="active">Proyectos</a></li>
+        <li><a href="/certificaciones/">Certificaciones</a></li>
+        <li><a href="/sobre-mi/">Sobre Mí</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+        <li><a href="/contacto/">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" data-theme-toggle aria-label="Cambiar tema"></button>
+        <button class="hamburger-btn" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Drawer -->
+  <nav class="nav-mobile" id="mobileNav" aria-label="Menú móvil">
+    <a href="/servicios/">Servicios & Presupuesto</a>
+    <a href="/proyectos/">Proyectos & Casos</a>
+    <a href="/certificaciones/">Certificaciones</a>
+    <a href="/sobre-mi/">Sobre Mí</a>
+    <a href="/faq/">Preguntas Frecuentes</a>
+    <a href="/contacto/">Contacto</a>
+  </nav>
+
+  <main id="main-content" class="container-narrow" style="padding-top: calc(var(--nav-height) + 3rem); padding-bottom: 4rem;">
     <p class="section-label">Proyecto</p>
     <h1 class="section-title">ClawMate</h1>
     <p class="section-desc">Agente IA para ejecucion asistida de tareas conectadas con herramientas externas.</p>
@@ -21,7 +59,51 @@
       <p><strong>Limitaciones:</strong> no se promete autonomia absoluta.</p>
       <a href="/contacto/?subject=Quiero%20un%20agente%20IA%20similar%20a%20ClawMate" class="btn-primary">Quiero algo similar</a>
     </section>
+    <div style="margin-top: 2rem; text-align: center;">
+      <a href="/proyectos/" class="btn-primary" style="display: inline-block;">← Volver a Proyectos</a>
+    </div>
   </main>
+
+  <footer class="footer">
+    <div class="container-wide">
+      <div class="footer-grid">
+        <div>
+          <h4 style="color: var(--text-main); font-size: 1.25rem; margin-bottom: 0.75rem;">Jonathan Esteban</h4>
+          <p style="color: var(--text-muted); font-size: 0.875rem;">Sistemas web, backend y automatización con IA. Cada proyecto aquí es prueba de lo que puedo construir para ti.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="/servicios/">Servicios</a></li>
+            <li><a href="/proyectos/">Proyectos</a></li>
+            <li><a href="/certificaciones/">Certificaciones</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Empresa & Legal</h4>
+          <ul>
+            <li><a href="/sobre-mi/">Sobre Mí</a></li>
+            <li><a href="/privacy-policy/">Política de Privacidad</a></li>
+            <li><a href="/terms-of-service/">Términos de Servicio</a></li>
+            <li><a href="/data-deletion/">Eliminación de Datos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="mailto:joonathanesteban@gmail.com">joonathanesteban@gmail.com</a></li>
+            <li><a href="https://linkedin.com/in/jonathanesteban" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/Jesteban1983" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Jonathan Esteban · jonathanesteban.dev</div>
+        <div>Desarrollado con HTML, CSS, JavaScript & Serverless Functions</div>
+      </div>
+    </div>
+  </footer>
+
   <script type="module" src="/assets/js/main.js"></script>
 </body>
 </html>
