@@ -61,20 +61,20 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jonathanesteban.dev/certificaciones/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <loc>https://jonathanesteban.dev/sobre-mi/</loc>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jonathanesteban.dev/sobre-mi/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <loc>https://jonathanesteban.dev/faq/</loc>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://jonathanesteban.dev/contacto/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
