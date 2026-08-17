@@ -1,0 +1,18 @@
+# ── Variables de entorno (contienen claves secretas) ───────────────
+.env
+.env.local
+.env.production
+
+# ── Node / Serverless (si se instalan localmente) ─────────────────
+node_modules/
+.netlify/
+
+# ── Backups generados por scripts de auditoría ─────────────────────
+*.bak
+
+# ── Sistema operativo ──────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~

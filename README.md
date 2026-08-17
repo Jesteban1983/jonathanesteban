@@ -54,11 +54,45 @@ El proyecto está estructurado como una **Plataforma Multi-Página (MPA)** modul
 
 ---
 
+## � Flujo del Formulario de Contacto
+
+El formulario en `/contacto/` sigue este pipeline completo:
+
+```
+Usuario envía → frontend (form.js) → /api/contact-submit (Netlify Function)
+                                        ├── ✅ Validación (campos, email, longitud, honeypot)
+                                        ├── 🚫 Rate limiting (8 solicitudes / 10 min por IP)
+                                        ├── 📧 Email al propietario (Resend → SendGrid fallback)
+                                        ├── ✉️ Auto-respuesta al usuario
+                                        ├── 📱 Telegram notification
+                                        └── 🔄 n8n webhook (opcional)
+```
+
+### Variables de Entorno Requeridas
+
+| Variable | Obligatorio | Descripción |
+|---|---|---|
+| `RESEND_API_KEY` | Sí* | API key de Resend.com (proveedor email primario) |
+| `SENDGRID_API_KEY` | Sí* | API key de SendGrid (fallback automático) |
+| `TELEGRAM_BOT_TOKEN` | No | Token de @BotFather para notificaciones |
+| `TELEGRAM_CHAT_ID` | No | Chat ID numérico para recibir notis |
+| `N8N_WEBHOOK_LEADS_URL` | No | Webhook n8n para automatización de leads |
+| `N8N_WEBHOOK_SECRET` | No | Secreto compartido para webhook |
+| `SENDER_EMAIL_NO_REPLY` | No | Email remitente (default: joonathanesteban@gmail.com) |
+| `RESEND_DOMAIN` | No | Dominio verificado en Resend (default: onboarding@resend.dev) |
+
+> `*` Al menos un proveedor de email (Resend o SendGrid) debe configurarse para que funcione. Resend es gratuito hasta 100 emails/mes.
+
+Las variables se configuran en el panel de Netlify: **Site Settings → Environment variables**.
+
+---
+
 ## 🔒 Seguridad y Gestión de Secretos
 
 - **Cero claves expuestas:** Ningún token de API, client secret u OAuth app secret se encuentra en el frontend.
-- **Serverless Functions:** Todas las solicitudes a Telegram, SendGrid, n8n, Meta API o TikTok API son procesadas exclusivamente en backend mediante Netlify Functions (`functions/`).
-- **Variables de Entorno:** Configuradas en el panel de Netlify (`Site Settings → Environment variables`).
+- **Serverless Functions:** Todas las solicitudes a Telegram, SendGrid/Resend, n8n, Meta API o TikTok API son procesadas exclusivamente en backend mediante Netlify Functions (`functions/`).
+- **Protección antispam:** Honeypot field invisible + rate limiting por IP.
+- **Variables de Entorno:** Configuradas en el panel de Netlify (`Site Settings → Environment variables`). Copia `.env.example` como referencia.
 
 ---
 
@@ -67,6 +101,13 @@ El proyecto está estructurado como una **Plataforma Multi-Página (MPA)** modul
 El despliegue es automático al enviar cambios a la rama `main` de GitHub. La configuración en `netlify.toml` indica:
 - **Publish Directory:** `site`
 - **Functions Directory:** `functions`
+
+### Setup inicial
+
+1. Conecta el repo en Netlify: **Add new site → Import from Git**
+2. Configura las variables de entorno (ver tabla arriba)
+3. Netlify detecta `netlify.toml` automáticamente
+4. Primer deploy: `git push` a `main`
 
 ---
 

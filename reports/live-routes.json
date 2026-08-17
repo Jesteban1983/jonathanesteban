@@ -1,0 +1,166 @@
+{
+  "generated_at": "2026-08-10T11:01:07.126172Z",
+  "rows": [
+    {
+      "route": "/",
+      "status": 200,
+      "final_url": "https://jonathanesteban.dev/",
+      "redirected": false,
+      "title": "Jonathan Esteban | Full-Stack Developer & AI Engineer · Madrid & Barcelona"
+    },
+    {
+      "route": "/servicios/",
+      "status": 200,
+      "final_url": "https://jonathanesteban.dev/servicios/",
+      "redirected": false,
+      "title": "Servicios de Desarrollo Web, IA y Automatización | Jonathan Esteban"
+    },
+    {
+      "route": "/servicios/desarrollo-web/",
+      "status": 404,
+      "final_url": "https://jonathanesteban.dev/servicios/desarrollo-web/",
+      "redirected": false,
+      "title": ""
+    },
+    {
+      "route": "/servicios/automatizacion/",
+      "status": 404,
+      "final_url": "https://jonathanesteban.dev/servicios/automatizacion/",
+      "redirected": false,
+      "title": ""
+    },
+    {
+      "route": "/servicios/soporte-it/",
+      "status": 404,
+      "final_url": "https://jonathanesteban.dev/servicios/soporte-it/",
+      "redirected": false,
+      "title": ""
+    },
+    {
+      "route": "/proyectos/",
+      "status": 200,
+      "final_url": "https://jonathanesteban.dev/proyectos/",
+      "redirected": false,
+      "title": "Portfolio de Proyectos & Casos de Éxito | Jonathan Esteban"
+    },
+    {
+      "route": "/proyectos/trackflow/",
+      "status": 404,
+      "final_url": "https://jonathanesteban.dev/proyectos/trackflow/",
+      "redirected": false,
+      "title": ""
+    },
+    {
+      "route": "/proyectos/clawmate/",
+      "status": 404,
+      "final_url": "https://jonathanesteban.dev/proyectos/clawmate/",
+      "redirected": false,
+      "title": ""
+    },
+    {
+      "route": "/proyectos/talk-to-the-machine/",
+      "status": 404,
+      "final_url": "https://jonathanesteban.dev/proyectos/talk-to-the-machine/",
+      "redirected": false,
+      "title": ""
+    },
+    {
+      "route": "/certificaciones/",
+      "status": 200,
+      "final_url": "https://jonathanesteban.dev/certificaciones/",
+      "redirected": false,
+      "title": "Certificaciones & Formación | Jonathan Esteban"
+    },
+    {
+      "route": "/sobre-mi/",
+      "status": 200,
+      "final_url": "https://jonathanesteban.dev/sobre-mi/",
+      "redirected": false,
+      "title": "Sobre Mí | Jonathan Esteban — Full-Stack Developer & AI Engineer"
+    },
+    {
+      "route": "/contacto/",
+      "status": 200,
+      "final_url": "https://jonathanesteban.dev/contacto/",
+      "redirected": false,
+      "title": "Contacto & Agendamiento | Jonathan Esteban"
+    },
+    {
+      "route": "/faq/",
+      "status": 200,
+      "final_url": "https://jonathanesteban.dev/faq/",
+      "redirected": false,
+      "title": "Preguntas Frecuentes (FAQ) & Centro de Ayuda | Jonathan Esteban"
+    },
+    {
+      "route": "/legal/aviso-legal/",
+      "status": 404,
+      "final_url": "https://jonathanesteban.dev/legal/aviso-legal/",
+      "redirected": false,
+      "title": ""
+    },
+    {
+      "route": "/legal/privacidad/",
+      "status": 404,
+      "final_url": "https://jonathanesteban.dev/legal/privacidad/",
+      "redirected": false,
+      "title": ""
+    },
+    {
+      "route": "/legal/cookies/",
+      "status": 404,
+      "final_url": "https://jonathanesteban.dev/legal/cookies/",
+      "redirected": false,
+      "title": ""
+    },
+    {
+      "route": "/privacy-policy/",
+      "status": 200,
+      "final_url": "https://jonathanesteban.dev/privacy-policy/",
+      "redirected": false,
+      "title": "Política de Privacidad | Jonathan Esteban"
+    },
+    {
+      "route": "/terms-of-service/",
+      "status": 200,
+      "final_url": "https://jonathanesteban.dev/terms-of-service/",
+      "redirected": false,
+      "title": "Términos y Condiciones de Servicio | Jonathan Esteban"
+    },
+    {
+      "route": "/data-deletion/",
+      "status": 200,
+      "final_url": "https://jonathanesteban.dev/data-deletion/",
+      "redirected": false,
+      "title": "Instrucciones y Eliminación de Datos | Jonathan Esteban"
+    },
+    {
+      "route": "/auth/tiktok/callback/",
+      "status": 200,
+      "final_url": "https://jonathanesteban.dev/auth/tiktok/callback/",
+      "redirected": false,
+      "title": "TikTok OAuth Callback | Jonathan Esteban"
+    },
+    {
+      "route": "/auth/facebook/callback/",
+      "status": 200,
+      "final_url": "https://jonathanesteban.dev/auth/facebook/callback/",
+      "redirected": false,
+      "title": "Facebook/Meta OAuth Callback | Jonathan Esteban"
+    },
+    {
+      "route": "/gracias/",
+      "status": 200,
+      "final_url": "https://jonathanesteban.dev/gracias/",
+      "redirected": false,
+      "title": "¡Gracias por tu Mensaje! | Jonathan Esteban"
+    },
+    {
+      "route": "/soporte-it/",
+      "status": 200,
+      "final_url": "https://jonathanesteban.dev/soporte-it/",
+      "redirected": false,
+      "title": "Redirigiendo… | Jonathan Esteban"
+    }
+  ]
+}
