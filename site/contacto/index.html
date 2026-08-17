@@ -88,6 +88,7 @@
     <div class="card fade-in" style="margin-top: 2rem;">
       <form id="contactForm" novalidate>
         <input type="text" name="_gotcha" style="display:none;" aria-hidden="true" tabindex="-1">
+        <input type="text" name="company_site" style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true" tabindex="-1" autocomplete="off">
 
         <div class="form-group">
           <label for="name">Nombre Completo *</label>
@@ -109,10 +110,25 @@
           <textarea id="message" name="message" class="form-control" placeholder="Cuéntame sobre las necesidades de tu empresa..." required></textarea>
         </div>
 
+        <div class="form-group" style="margin-bottom: 0.75rem;">
+          <label style="display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.85rem; cursor: pointer; color: var(--text-muted);">
+            <input type="checkbox" id="consentReply" required style="margin-top: 0.15rem; accent-color: var(--primary);">
+            He leído y acepto la <a href="/privacy-policy/" target="_blank" style="color: var(--primary); text-decoration: underline; margin-left: 0.25rem;">Política de Privacidad</a> *
+          </label>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label style="display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.85rem; cursor: pointer; color: var(--text-muted);">
+            <input type="checkbox" id="consentWhatsapp" style="margin-top: 0.15rem; accent-color: var(--primary);">
+            Acepto que me contacten vía WhatsApp si es necesario
+          </label>
+        </div>
+
         <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 1rem;">
           Enviar Mensaje Directo 🚀
         </button>
 
+        <div id="formError" style="display:none; margin-top: 1rem; padding: 0.75rem; background: #ffebee; color: #c62828; border-radius: 0.5rem; font-size: 0.9rem; text-align: center;"></div>
         <div id="formSuccess" style="display:none; margin-top: 1.5rem; text-align: center; color: var(--success); font-weight: 600;">
           ✓ ¡Mensaje enviado con éxito! Te responderé en breve.
         </div>
