@@ -19,6 +19,19 @@ export function initNav() {
     });
   }
 
+  // Mobile dropdown toggle
+  document.querySelectorAll('.nav-mobile .nav-item-dropdown > a').forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      const parent = toggle.parentElement;
+      const menu = parent.querySelector('.dropdown-menu');
+      if (menu) {
+        const isOpen = menu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+      }
+    });
+  });
+
   // Active Link Highlighting based on current location
   const currentPath = window.location.pathname;
   const navLinks = document.querySelectorAll('.nav-links a, .nav-mobile a');

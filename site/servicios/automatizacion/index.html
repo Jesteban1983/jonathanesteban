@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automatización con IA & n8n | Jonathan Esteban</title>
+  <meta name="description" content="Automatización de procesos empresariales con IA, n8n y agentes autónomos. Conecta tus herramientas, elimina tareas repetitivas y escala tu negocio.">
+  <link rel="canonical" href="https://jonathanesteban.dev/servicios/automatizacion/">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script>
+  tailwind.config = { corePlugins: { container: false } };
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/pages.css">
+
+  <style>
+    .srv-detail-hero {
+      position: relative;
+    }
+    .srv-detail-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4vw, 3.8rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+    }
+    .srv-detail-hero h1 em { font-style: italic; color: var(--primary); }
+    .srv-feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .srv-feature-card {
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 1.75rem;
+      transition: border-color var(--transition-normal), transform var(--transition-normal);
+    }
+    .srv-feature-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+    .srv-feature-card .icon { font-size: 2rem; margin-bottom: 0.75rem; }
+    .srv-feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .srv-feature-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+    .tech-chip {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      background: var(--surface-2-color);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+    }
+    .use-case {
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+    .use-case-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .use-case h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .use-case p { font-size: 0.9rem; color: var(--text-muted); }
+    @media (max-width: 640px) {
+      .srv-detail-hero h1 { font-size: 1.8rem; }
+      .use-case { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="sr-only-focusable">Saltar al contenido principal</a>
+
+  <header class="nav-header">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Jonathan Esteban
+      </a>
+            <ul class="nav-links">
+        <li class="nav-item-dropdown">
+          <a href="/servicios/">Servicios</a>
+          <div class="dropdown-menu">
+            <a href="/servicios/desarrollo-web/">Desarrollo Web</a>
+            <a href="/servicios/automatizacion/">Automatización</a>
+            <a href="/servicios/soporte-it/">Soporte IT</a>
+          </div>
+        </li>
+        <li><a href="/proyectos/">Proyectos</a></li>
+        <li><a href="/sobre-mi/">Sobre Mí</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+        <li><a href="/contacto/">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" data-theme-toggle aria-label="Cambiar tema"></button>
+        <button class="hamburger-btn" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+    <nav class="nav-mobile" id="mobileNav" aria-label="Menu movil">
+    <div class="nav-item-dropdown">
+      <a href="/servicios/">Servicios</a>
+      <div class="dropdown-menu">
+        <a href="/servicios/desarrollo-web/">Desarrollo Web</a>
+        <a href="/servicios/automatizacion/">Automatización</a>
+        <a href="/servicios/soporte-it/">Soporte IT</a>
+      </div>
+    </div>
+    <a href="/proyectos/">Proyectos</a>
+    <a href="/sobre-mi/">Sobre Mí</a>
+    <a href="/faq/">Preguntas Frecuentes</a>
+    <a href="/contacto/">Contacto</a>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- Hero -->
+    <section class="srv-detail-hero hero-base">
+      <div class="container">
+      <nav class="breadcrumbs" aria-label="Miga de pan">
+        <a href="/">Inicio</a>
+        <span class="sep">/</span>
+        <a href="/servicios/">Servicios</a>
+        <span class="sep">/</span>
+        <span class="current">Automatización</span>
+      </nav>
+
+        <div class="fade-in" style="margin-bottom: 2rem;">
+          <a href="/servicios/" style="font-size: 0.85rem; color: var(--primary); font-weight: 600;">&larr; Todos los servicios</a>
+        </div>
+
+        <div class="fade-in" style="margin-bottom: 2rem;">
+          <span class="badge-status badge-info" style="margin-bottom: 1rem; display: inline-block;">🤖 Automatización Inteligente</span>
+          <h1>Automatización con IA <em>& n8n</em></h1>
+          <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 48ch; margin-top: 1rem; line-height: 1.7;">
+            Conecta tus herramientas, elimina tareas repetitivas y deja que la inteligencia artificial gestione lo que ya no deberías hacer tú. Pipelines automatizados que ahorran horas cada semana.
+          </p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
+            <a href="/contacto/?subject=Solicitar%20presupuesto%20-%20Automatizaci%C3%B3n%20IA" class="btn-primary">Solicitar Presupuesto</a>
+            <a href="/proyectos/casos/automatizacion-leads/" class="btn-secondary">Ver Caso de Estudio →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+    <!-- Casos de uso reales -->
+    <div class="fade-in">
+      <p class="section-label">Casos de uso</p>
+      <h2 class="section-title">Procesos que puedes <em>automatizar hoy</em></h2>
+      <p class="section-desc">Situaciones reales de negocio donde la automatización multiplica tu productividad.</p>
+    </div>
+
+    <div class="fade-in" style="margin-top: 2rem;">
+      <div class="use-case">
+        <div class="use-case-num">1</div>
+        <div>
+          <h3>Lead Scoring & Seguimiento Automático</h3>
+          <p>Un formulario de contacto en tu web dispara un workflow en n8n que clasifica el lead, lo envía a tu CRM, programa una tarea de seguimiento en Google Calendar y te notifica por Telegram o WhatsApp. Sin intervención manual.</p>
+        </div>
+      </div>
+      <div class="use-case">
+        <div class="use-case-num">2</div>
+        <div>
+          <h3>Agente de IA para Atención al Cliente</h3>
+          <p>Un asistente autónomo con OpenClaw conectado a Gmail, Google Drive y Telegram. Responde consultas frecuentes, clasifica incidencias, crea tickets y solo te deriva lo que realmente requiere tu atención.</p>
+        </div>
+      </div>
+      <div class="use-case">
+        <div class="use-case-num">3</div>
+        <div>
+          <h3>Facturación & Reportes Automáticos</h3>
+          <p>Cada semana, un pipeline extrae datos de tu base de datos, genera un PDF con métricas clave y lo envía por email a tu equipo. Todo sin que nadie tenga que acordarse de hacerlo.</p>
+        </div>
+      </div>
+      <div class="use-case">
+        <div class="use-case-num">4</div>
+        <div>
+          <h3>Sincronización Multiplataforma</h3>
+          <p>Mantén sincronizados tus contactos, pedidos y facturas entre Shopify, Google Sheets, HubSpot y tu ERP. Los datos fluyen en tiempo real sin duplicados ni errores humanos.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="fade-in" style="margin-top: 4rem;">
+      <p class="section-label">Capacidades</p>
+      <h2 class="section-title">Lo que puedo <em>construir para ti</em></h2>
+    </div>
+
+    <div class="srv-feature-grid fade-in" style="margin-top: 2rem;">
+      <div class="srv-feature-card">
+        <div class="icon">🧠</div>
+        <h3>Agentes de IA Autónomos</h3>
+        <p>Asistentes inteligentes con OpenClaw que se conectan a Gmail, Calendar, Drive, Telegram, Slack y más de 8 servicios. Toman decisiones y ejecutan acciones por sí mismos.</p>
+      </div>
+      <div class="srv-feature-card">
+        <div class="icon">🔗</div>
+        <h3>Workflows n8n Personalizados</h3>
+        <p>Automatizaciones visuales que conectan aplicaciones sin código. Desde notificaciones hasta pipelines complejos con lógica condicional y aprobaciones.</p>
+      </div>
+      <div class="srv-feature-card">
+        <div class="icon">📊</div>
+        <h3>Integración Google Workspace</h3>
+        <p>Conexión directa con Gmail, Google Sheets, Calendar y Drive. Tu agente puede leer correos, actualizar hojas de cálculo y gestionar tu agenda.</p>
+      </div>
+      <div class="srv-feature-card">
+        <div class="icon">💬</div>
+        <h3>Chatbots & Asistentes Conversacionales</h3>
+        <p>Chats inteligentes con memoria que pueden resolver dudas, capturar leads o escalar incidencias. Integrables en tu web, WhatsApp o Telegram.</p>
+      </div>
+      <div class="srv-feature-card">
+        <div class="icon">📋</div>
+        <h3>Clasificación Automática de Incidencias</h3>
+        <p>Un sistema que recibe solicitudes, las categoriza por urgencia y tipo, y las asigna al responsable correspondiente. Ideal para equipos de soporte IT.</p>
+      </div>
+      <div class="srv-feature-card">
+        <div class="icon">📈</div>
+        <h3>Dashboards & Reportes Automatizados</h3>
+        <p>Generación periódica de informes con datos en vivo. Visualiza métricas de negocio sin tener que construirlos manualmente cada vez.</p>
+      </div>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="fade-in" style="margin-top: 4rem; padding: 2rem; background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 1rem;">
+      <p class="section-label" style="text-align: center;">Stack tecnológico</p>
+      <h2 class="section-title" style="text-align: center; font-size: 1.5rem;">Herramientas que <em>utilizo</em></h2>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-top: 1.5rem;">
+        <span class="tech-chip">OpenClaw</span>
+        <span class="tech-chip">n8n</span>
+        <span class="tech-chip">Python</span>
+        <span class="tech-chip">Composio MCP</span>
+        <span class="tech-chip">OpenAI API</span>
+        <span class="tech-chip">Google APIs</span>
+        <span class="tech-chip">Telegram Bot</span>
+        <span class="tech-chip">WhatsApp API</span>
+        <span class="tech-chip">Docker</span>
+        <span class="tech-chip">Supabase</span>
+        <span class="tech-chip">PostgreSQL</span>
+        <span class="tech-chip">FastAPI</span>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="container">
+    <div class="fade-in" style="text-align: center; margin-top: 4rem; margin-bottom: 4rem;">
+      <h2 style="font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 400; margin-bottom: 0.75rem;">¿Listo para <em>automatizar</em>?</h2>
+      <p style="color: var(--text-muted); max-width: 40ch; margin: 0 auto 1.5rem;">Cuéntame qué proceso quieres optimizar y te propongo la solución sin compromiso.</p>
+      <a href="/contacto/?subject=Solicitar%20presupuesto%20-%20Automatizaci%C3%B3n%20IA" class="btn-primary" style="font-size: 1rem; padding: 1rem 2.5rem;">Solicitar Presupuesto →</a>
+    </div>
+    </div>
+  </main>
+
+    <footer class="footer">
+    <div class="container-wide">
+      <div class="footer-grid">
+        <div>
+          <h4 style="color: var(--text-main); font-size: 1.25rem; margin-bottom: 0.75rem;">Jonathan Esteban</h4>
+          <p style="color: var(--text-muted); font-size: 0.875rem;">Desarrollo web, automatización con IA y soporte técnico. Soluciones digitales para negocios que quieren trabajar mejor.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="/servicios/">Servicios</a></li>
+            <li><a href="/proyectos/">Proyectos</a></li>
+            <li><a href="/sobre-mi/">Sobre Mí</a></li>
+            <li><a href="/faq/">FAQ</a></li>
+            <li><a href="/contacto/">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/legal/aviso-legal/">Aviso Legal</a></li>
+            <li><a href="/legal/cookies/">Cookies</a></li>
+            <li><a href="/privacy-policy/">Política de Privacidad</a></li>
+            <li><a href="/terms-of-service/">Términos de Servicio</a></li>
+            <li><a href="/data-deletion/">Eliminación de Datos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="mailto:joonathanesteban@gmail.com">joonathanesteban@gmail.com</a></li>
+            <li><a href="https://linkedin.com/in/jonathanesteban" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/Jesteban1983" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://wa.me/34614739345" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Jonathan Esteban · jonathanesteban.dev</div>
+        <div>Desarrollado con HTML, CSS, JavaScript & Serverless Functions</div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/assets/js/main.js"></script>
+</body>
+</html>

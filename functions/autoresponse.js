@@ -14,7 +14,7 @@ exports.handler = async (event) => {
 
   const emailData = {
     personalizations: [{ to: [{ email: email, name: name }] }],
-    from: { email: process.env.SENDER_EMAIL_NO_REPLY || 'joonathanesteban@gmail.com', name: 'Jonathan Esteban' },
+    from: { email: process.env.SENDER_EMAIL_NO_REPLY || 'noreply@jonathanesteban.dev', name: 'Jonathan Esteban' },
     subject: '¡Hemos recibido tu mensaje correctamente! — Jonathan Esteban',
     content: [{
       type: 'text/html',

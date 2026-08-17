@@ -13,7 +13,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+  tailwind.config = { corePlugins: { container: false } };
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
 
 <link rel="stylesheet" href="/assets/css/tokens.css">
   <link rel="stylesheet" href="/assets/css/base.css">
@@ -37,16 +40,23 @@
   
 
   <!-- Mobile Nav Drawer -->
-  <nav class="nav-mobile" id="mobileNav" aria-label="Menú móvil">
-    <a href="/servicios/">Servicios & Presupuesto</a>
-    <a href="/proyectos/">Proyectos & Casos</a>
-    <a href="/certificaciones/">Certificaciones</a>
+    <nav class="nav-mobile" id="mobileNav" aria-label="Menu movil">
+    <div class="nav-item-dropdown">
+      <a href="/servicios/">Servicios</a>
+      <div class="dropdown-menu">
+        <a href="/servicios/desarrollo-web/">Desarrollo Web</a>
+        <a href="/servicios/automatizacion/">Automatización</a>
+        <a href="/servicios/soporte-it/">Soporte IT</a>
+      </div>
+    </div>
+    <a href="/proyectos/">Proyectos</a>
     <a href="/sobre-mi/">Sobre Mí</a>
     <a href="/faq/">Preguntas Frecuentes</a>
     <a href="/contacto/">Contacto</a>
   </nav></header>
 
-  <main id="main-content" class="container-narrow" style="padding-top: calc(var(--nav-height) + 4rem); padding-bottom: 4rem; text-align: center;">
+  <main id="main-content" style="padding-top: calc(var(--nav-height) + 4rem); padding-bottom: 4rem;">
+    <div class="container container-narrow" style="text-align: center;">
     <div class="card fade-in">
       <h1 style="font-size: 2rem; color: var(--success); margin-bottom: 1rem;">🎵 Autenticación con TikTok Completada</h1>
       <p style="color: var(--text-muted); margin-bottom: 1.5rem;">El flujo de autorización OAuth se ha procesado de forma segura en el servidor.</p>
@@ -74,5 +84,48 @@
     }
   </script>
   <script type="module" src="/assets/js/main.js"></script>
+  <footer class="footer">
+    <div class="container-wide">
+      <div class="footer-grid">
+        <div>
+          <h4 style="color: var(--text-main); font-size: 1.25rem; margin-bottom: 0.75rem;">Jonathan Esteban</h4>
+          <p style="color: var(--text-muted); font-size: 0.875rem;">Desarrollo web, automatización con IA y soporte técnico. Soluciones digitales para negocios que quieren trabajar mejor.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="/servicios/">Servicios</a></li>
+            <li><a href="/proyectos/">Proyectos</a></li>
+            <li><a href="/sobre-mi/">Sobre Mí</a></li>
+            <li><a href="/faq/">FAQ</a></li>
+            <li><a href="/contacto/">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/legal/aviso-legal/">Aviso Legal</a></li>
+            <li><a href="/legal/cookies/">Cookies</a></li>
+            <li><a href="/privacy-policy/">Política de Privacidad</a></li>
+            <li><a href="/terms-of-service/">Términos de Servicio</a></li>
+            <li><a href="/data-deletion/">Eliminación de Datos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="mailto:joonathanesteban@gmail.com">joonathanesteban@gmail.com</a></li>
+            <li><a href="https://linkedin.com/in/jonathanesteban" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/Jesteban1983" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://wa.me/34614739345" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Jonathan Esteban · jonathanesteban.dev</div>
+        <div>Desarrollado con HTML, CSS, JavaScript & Serverless Functions</div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sobre Mí | Jonathan Esteban — Full-Stack Developer & AI Engineer</title>
-  <meta name="description" content="Conoce a Jonathan Esteban Barona: Trayectoria profesional de 16+ años combinando gestión de operaciones reales con desarrollo web moderno e ingeniería de IA en Madrid y Barcelona.">
+  <title>Sobre Mí | Jonathan Esteban — Desarrollador Web & Técnico IT</title>
+  <meta name="description" content="Conoce a Jonathan Esteban: técnico IT en reconversión a desarrollo web e ingeniería de IA. Formación en 4Geeks Academy, certificaciones en frontend, backend, SQL, Java y ciberseguridad.">
   <link rel="canonical" href="https://jonathanesteban.dev/sobre-mi/">
 
   <!-- Google Fonts -->
@@ -13,7 +13,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+  tailwind.config = { corePlugins: { container: false } };
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
 
   <link rel="stylesheet" href="/assets/css/tokens.css">
   <link rel="stylesheet" href="/assets/css/base.css">
@@ -22,16 +25,102 @@
   <link rel="stylesheet" href="/assets/css/pages.css">
 
   <style>
-    .skill-bar-bg { background: var(--surface-2-color); border-radius: 999px; height: 8px; overflow: hidden; }
-    .skill-bar-fill { height: 100%; border-radius: 999px; background: var(--primary); transition: width 0.6s ease; }
-    .timeline-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--primary); border: 2px solid var(--bg-color); flex-shrink: 0; margin-top: 4px; }
-    .timeline-line { position: absolute; left: 5px; top: 18px; bottom: -18px; width: 2px; background: var(--border-color); }
-    .timeline-item:last-child .timeline-line { display: none; }
-    .dash-stat { background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 1rem; padding: 1.25rem; text-align: center; }
-    .dash-stat-value { font-family: var(--font-display); font-size: 1.75rem; color: var(--primary); font-weight: 400; line-height: 1; }
-    .dash-stat-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.35rem; }
-    .cert-chip { font-size: 0.75rem; padding: 0.3rem 0.7rem; border-radius: 999px; background: var(--surface-2-color); border: 1px solid var(--border-color); color: var(--text-muted); display: inline-flex; align-items: center; gap: 0.3rem; }
-    .cert-chip:hover { border-color: var(--primary); color: var(--text-main); }
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+    .cert-card {
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      transition: border-color var(--transition-normal);
+    }
+    .cert-card:hover {
+      border-color: var(--primary);
+    }
+    .cert-card .issuer {
+      font-size: 0.8rem;
+      color: var(--text-faint);
+      margin-bottom: 0.25rem;
+    }
+    .cert-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      line-height: 1.4;
+    }
+    .cert-card .meta {
+      font-size: 0.85rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .cert-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .cert-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--primary) 15%, transparent);
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .value-card {
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 1.5rem;
+    }
+    .value-card .icon {
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .value-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+    .value-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+    .about-bio {
+      max-width: 760px;
+    }
+    .about-bio p {
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      color: var(--text-muted);
+    }
+    .timeline-bar {
+      width: 100%;
+      height: 8px;
+      background: var(--border-color);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .timeline-bar-fill {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 4px;
+    }
+    @media (max-width: 640px) {
+      .cert-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -43,10 +132,16 @@
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
         Jonathan Esteban
       </a>
-      <ul class="nav-links">
-        <li><a href="/servicios/">Servicios</a></li>
+            <ul class="nav-links">
+        <li class="nav-item-dropdown">
+          <a href="/servicios/">Servicios</a>
+          <div class="dropdown-menu">
+            <a href="/servicios/desarrollo-web/">Desarrollo Web</a>
+            <a href="/servicios/automatizacion/">Automatización</a>
+            <a href="/servicios/soporte-it/">Soporte IT</a>
+          </div>
+        </li>
         <li><a href="/proyectos/">Proyectos</a></li>
-        <li><a href="/certificaciones/">Certificaciones</a></li>
         <li><a href="/sobre-mi/" class="active">Sobre Mí</a></li>
         <li><a href="/faq/">FAQ</a></li>
         <li><a href="/contacto/">Contacto</a></li>
@@ -61,219 +156,219 @@
   </header>
 
   <!-- Mobile Nav -->
-  <nav class="nav-mobile" id="mobileNav" aria-label="Menú móvil">
-    <a href="/servicios/">Servicios & Presupuesto</a>
-    <a href="/proyectos/">Proyectos & Casos</a>
-    <a href="/certificaciones/">Certificaciones</a>
+    <nav class="nav-mobile" id="mobileNav" aria-label="Menu movil">
+    <div class="nav-item-dropdown">
+      <a href="/servicios/">Servicios</a>
+      <div class="dropdown-menu">
+        <a href="/servicios/desarrollo-web/">Desarrollo Web</a>
+        <a href="/servicios/automatizacion/">Automatización</a>
+        <a href="/servicios/soporte-it/">Soporte IT</a>
+      </div>
+    </div>
+    <a href="/proyectos/">Proyectos</a>
     <a href="/sobre-mi/">Sobre Mí</a>
     <a href="/faq/">Preguntas Frecuentes</a>
     <a href="/contacto/">Contacto</a>
   </nav>
 
-  <main id="main-content" class="container" style="padding-top: calc(var(--nav-height) + 3rem); padding-bottom: 4rem;">
-    <div class="fade-in">
-      <p class="section-label">Perfil Profesional</p>
-      <h1 class="section-title">Sobre Mí & Dashboard</h1>
-      <p class="section-desc">16+ años de experiencia operativa + formación en Ingeniería de IA. Una trayectoria que combina gestión real con tecnología de vanguardia.</p>
-    </div>
+  <main id="main-content">
+    <section class="hero-base">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Miga de pan">
+          <a href="/">Inicio</a>
+          <span class="sep">/</span>
+          <span class="current">Sobre Mí</span>
+        </nav>
 
-    <!-- Stats Dashboard Row -->
-    <div class="fade-in" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-top: 2rem;">
-      <div class="dash-stat">
-        <div class="dash-stat-value">16+</div>
-        <div class="dash-stat-label">Años Experiencia Operativa</div>
-      </div>
-      <div class="dash-stat">
-        <div class="dash-stat-value">71%</div>
-        <div class="dash-stat-label">Bootcamp 4Geeks Academy</div>
-      </div>
-      <div class="dash-stat">
-        <div class="dash-stat-value">10+</div>
-        <div class="dash-stat-label">Proyectos Realizados</div>
-      </div>
-      <div class="dash-stat">
-        <div class="dash-stat-value">7</div>
-        <div class="dash-stat-label">Certificaciones Técnicas</div>
-      </div>
-      <div class="dash-stat">
-        <div class="dash-stat-value">5</div>
-        <div class="dash-stat-label">Años Soporte Técnico N1/N2</div>
-      </div>
-    </div>
+        <a href="/" class="page-back">← Volver al inicio</a>
 
-    <!-- Two columns: Experience + Education -->
-    <div class="fade-in" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem;">
-
-      <!-- LEFT: Experiencia Laboral -->
-      <div class="card" style="padding: 1.5rem;">
-        <h2 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">💼 Experiencia Laboral</h2>
-        <div style="display: flex; flex-direction: column; gap: 0;">
-          <!-- Item 1 -->
-          <div class="timeline-item" style="position: relative; padding-left: 1.75rem; padding-bottom: 1.5rem;">
-            <div class="timeline-line"></div>
-            <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
-              <div class="timeline-dot"></div>
-              <div>
-                <span class="badge-status badge-active" style="font-size: 0.65rem;">2026 — Presente</span>
-                <h3 style="font-weight: 700; font-size: 0.95rem; margin-top: 0.25rem;">Full-Stack Developer & AI Engineer</h3>
-                <p style="color: var(--text-muted); font-size: 0.85rem;">4Geeks Academy · Madrid</p>
-                <p style="color: var(--text-faint); font-size: 0.8rem; margin-top: 0.25rem;">Python, FastAPI, TypeScript, React, Next.js, PostgreSQL, agentes OpenClaw</p>
-              </div>
-            </div>
-          </div>
-          <!-- Item 2 -->
-          <div class="timeline-item" style="position: relative; padding-left: 1.75rem; padding-bottom: 1.5rem;">
-            <div class="timeline-line"></div>
-            <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
-              <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--text-faint); flex-shrink: 0; margin-top: 4px;"></div>
-              <div>
-                <span class="badge-status" style="font-size: 0.65rem; background: var(--surface-2-color); color: var(--text-muted); border: 1px solid var(--border-color);">2019 — 2023</span>
-                <h3 style="font-weight: 700; font-size: 0.95rem; margin-top: 0.25rem;">Coordinador de Operaciones</h3>
-                <p style="color: var(--text-muted); font-size: 0.85rem;">Gordos Fast Food · Perú</p>
-                <p style="color: var(--text-faint); font-size: 0.8rem; margin-top: 0.25rem;">Optimización rutas -20%, atención al cliente, gestión inventario</p>
-              </div>
-            </div>
-          </div>
-          <!-- Item 3 -->
-          <div class="timeline-item" style="position: relative; padding-left: 1.75rem; padding-bottom: 1.5rem;">
-            <div class="timeline-line"></div>
-            <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
-              <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--text-faint); flex-shrink: 0; margin-top: 4px;"></div>
-              <div>
-                <span class="badge-status" style="font-size: 0.65rem; background: var(--surface-2-color); color: var(--text-muted); border: 1px solid var(--border-color);">2013 — 2018</span>
-                <h3 style="font-weight: 700; font-size: 0.95rem; margin-top: 0.25rem;">Conductor de Transporte Público</h3>
-                <p style="color: var(--text-muted); font-size: 0.85rem;">Transp. Nueva Estrella · Perú</p>
-              </div>
-            </div>
-          </div>
-          <!-- Item 4 -->
-          <div class="timeline-item" style="position: relative; padding-left: 1.75rem; padding-bottom: 0;">
-            <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
-              <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--text-faint); flex-shrink: 0; margin-top: 4px;"></div>
-              <div>
-                <span class="badge-status" style="font-size: 0.65rem; background: var(--surface-2-color); color: var(--text-muted); border: 1px solid var(--border-color);">2007 — 2012</span>
-                <h3 style="font-weight: 700; font-size: 0.95rem; margin-top: 0.25rem;">Administrador Técnico / Helpdesk N1/N2</h3>
-                <p style="color: var(--text-muted); font-size: 0.85rem;">Servicios Multimedia · Perú</p>
-                <p style="color: var(--text-faint); font-size: 0.8rem; margin-top: 0.25rem;">Soporte a 100+ clientes/mes, mantenimiento equipos, redes LAN</p>
-              </div>
-            </div>
-          </div>
+        <div class="fade-in">
+          <p class="section-label">Perfil Profesional</p>
+          <h1 class="section-title">Sobre Mí</h1>
+          <p class="section-desc">Técnico IT en reconversión a desarrollo web e ingeniería de IA. Combino experiencia operativa real con formación técnica actual y certificaciones oficiales.</p>
         </div>
       </div>
+    </section>
 
-      <!-- RIGHT: Formación + Certificaciones -->
-      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-        <!-- Formación -->
-        <div class="card" style="padding: 1.5rem;">
-          <h2 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">🎓 Formación Académica</h2>
-          <div style="display: flex; flex-direction: column; gap: 1rem;">
-            <div style="background: var(--surface-2-color); border: 1px solid var(--border-color); border-radius: 0.75rem; padding: 1rem;">
-              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                <div>
-                  <span class="badge-status badge-active" style="font-size: 0.65rem;">2026 — Actualidad</span>
-                  <h3 style="font-weight: 700; font-size: 0.95rem; margin-top: 0.35rem;">AI Engineering · Full Stack + IA</h3>
-                  <p style="color: var(--text-muted); font-size: 0.8rem;">4Geeks Academy · Madrid, España</p>
-                </div>
-                <span style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">71%</span>
-              </div>
-              <!-- Progress bar -->
-              <div class="skill-bar-bg" style="margin-top: 0.75rem;">
-                <div class="skill-bar-fill" style="width: 71%;"></div>
-              </div>
-              <p style="font-size: 0.75rem; color: var(--text-faint); margin-top: 0.4rem;">194 / 273 tareas completadas · 4/6 hitos</p>
+    <div class="container">
+
+      <!-- Biografía -->
+      <section class="section">
+        <div class="about-bio fade-in">
+          <p>Soy <strong>Jonathan Esteban</strong>, técnico informático y desarrollador web en formación. Vengo del mundo del soporte IT y la gestión operativa, y ahora estoy construyendo soluciones digitales modernas: desarrollo web, automatización con IA y agentes autónomos.</p>
+          <p>Actualmente curso el bootcamp de <strong>AI Engineering en 4Geeks Academy (Madrid)</strong>, donde trabajo con Python, FastAPI, React, Next.js, PostgreSQL y herramientas de IA como OpenClaw y Composio.</p>
+          <p>Mi valor diferencial es combinar la lógica de negocio aprendida en operaciones con la tecnología: no solo escribo código, sino que entiendo qué necesita tu negocio para trabajar mejor. Prefiero soluciones simples y funcionales sobre arquitecturas sobreingenierizadas.</p>
+        </div>
+      </section>
+
+      <!-- Enfoque de trabajo -->
+      <section class="section">
+        <div class="fade-in">
+          <p class="section-label">Enfoque de trabajo</p>
+          <h2 class="section-title">Cómo <em>trabajo</em></h2>
+        </div>
+
+        <div class="values-grid fade-in">
+          <div class="value-card">
+            <div class="icon">🎯</div>
+            <h3>Orientado a resultados</h3>
+            <p>No entrego solo código: entrego soluciones que funcionan para tu negocio. Prefiero cumplir bien lo prometido antes que prometer más de lo que puedo cumplir.</p>
+          </div>
+          <div class="value-card">
+            <div class="icon">⚡</div>
+            <h3>Stack moderno</h3>
+            <p>Next.js, FastAPI, Python, n8n y Composio. Tecnología actual, no legado. Elijo las herramientas según el problema, no al revés.</p>
+          </div>
+          <div class="value-card">
+            <div class="icon">🤝</div>
+            <h3>Comunicación clara</h3>
+            <p>Propuesta detallada, actualizaciones frecuentes y presupuesto cerrado. Sin sorpresas ni tecnicismos innecesarios.</p>
+          </div>
+          <div class="value-card">
+            <div class="icon">🌍</div>
+            <h3>Disponibilidad</h3>
+            <p>Trabajo remoto internacional desde Madrid y Barcelona. También disponible para desplazamientos puntuales cuando el proyecto lo requiere.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Formación Destacada -->
+      <section class="section section-alt" style="padding: 2rem; border-radius: 1rem; margin-bottom: 4rem;">
+        <div class="fade-in">
+          <span class="badge-status badge-active">Bootcamp Actual — Madrid</span>
+          <h2 class="section-title" style="margin-top: 0.75rem;">AI Engineering — Full Stack + IA</h2>
+          <p style="color: var(--text-muted); max-width: 55ch;"><strong>4Geeks Academy</strong> · Febrero 2026 — Presente</p>
+          <p style="color: var(--text-muted); margin-block: 0.75rem; line-height: 1.7; max-width: 55ch;">
+            Formación intensiva en Frontend (HTML, CSS, TypeScript, React, Next.js), Backend (Python, FastAPI, SQLModel, PostgreSQL/Supabase) e Ingeniería de IA (agentes OpenClaw, Composio MCP, automatización n8n).
+          </p>
+          <div style="background: var(--surface-2-color); padding: 1.25rem; border-radius: 0.75rem; border: 1px solid var(--border-color); max-width: 400px;">
+            <div style="font-weight: 600; margin-bottom: 0.5rem;">Progreso: 194 / 273 tareas</div>
+            <div class="timeline-bar">
+              <div class="timeline-bar-fill" style="width: 71%;"></div>
             </div>
-            <div style="background: var(--surface-2-color); border: 1px solid var(--border-color); border-radius: 0.75rem; padding: 1rem;">
-              <span class="badge-status" style="font-size: 0.65rem; background: var(--surface-2-color); color: var(--text-muted); border: 1px solid var(--border-color);">2003 — 2006</span>
-              <h3 style="font-weight: 700; font-size: 0.95rem; margin-top: 0.35rem;">Computación e Informática</h3>
-              <p style="color: var(--text-muted); font-size: 0.8rem;">Instituto CESCA · Perú</p>
-            </div>
+            <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Hitos completados: 4 de 6</div>
           </div>
+        </div>
+      </section>
+
+      <!-- Certificaciones -->
+      <section class="section">
+        <div class="fade-in">
+          <p class="section-label">Acreditación Técnica</p>
+          <h2 class="section-title">Formación &amp; <em>Certificaciones</em></h2>
+          <p class="section-desc">Desarrollo profesional continuo con formación especializada. Cada certificación representa competencia contrastada en un área técnica concreta.</p>
         </div>
 
-        <!-- Certificaciones -->
-        <div class="card" style="padding: 1.5rem;">
-          <h2 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">🏅 Certificaciones</h2>
-          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-            <span class="cert-chip">🎨 Frontend HTML5/CSS3/JS · Adecco 2025</span>
-            <span class="cert-chip">🗄️ Bases de Datos · Adecco 2025</span>
-            <span class="cert-chip">☕ Java SE · Adecco 2025</span>
-            <span class="cert-chip">🔧 Back-End Básico · Min. Trabajo Perú 2025</span>
-            <span class="cert-chip">🌐 Diseño Web HTML5+CSS · Telefónica 2024</span>
-            <span class="cert-chip">🛡️ Ciberseguridad Básica · ESIC 2024</span>
-            <span class="cert-chip">🖥️ Reparación Computadoras · SISE 2007</span>
+        <div class="cert-grid fade-in">
+          <div class="cert-card">
+            <span class="cert-badge">Oficial · 30h</span>
+            <p class="issuer">Fundación Adecco</p>
+            <h3>Frontend con HTML5, CSS3 y JavaScript</h3>
+            <p class="meta">Noviembre 2025</p>
+            <p>Desarrollo web moderno con maquetación responsive, manipulación del DOM y estándares W3C.</p>
           </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Skills Section -->
-    <div class="card fade-in" style="padding: 1.5rem; margin-top: 1.5rem;">
-      <h2 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">⚡ Habilidades Técnicas</h2>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
-        <!-- Languages -->
-        <div>
-          <p style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.75rem;">LENGUAJES</p>
-          <div style="display: grid; gap: 0.6rem;">
-            <div><div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.2rem;"><span>Python</span><span style="color: var(--text-faint);">80%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:80%"></div></div></div>
-            <div><div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.2rem;"><span>TypeScript</span><span style="color: var(--text-faint);">70%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:70%"></div></div></div>
-            <div><div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.2rem;"><span>JavaScript</span><span style="color: var(--text-faint);">70%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:70%"></div></div></div>
-            <div><div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.2rem;"><span>SQL</span><span style="color: var(--text-faint);">65%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:65%"></div></div></div>
-            <div><div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.2rem;"><span>HTML/CSS</span><span style="color: var(--text-faint);">80%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+          <div class="cert-card">
+            <span class="cert-badge">Oficial · 30h</span>
+            <p class="issuer">Fundación Adecco</p>
+            <h3>Bases de Datos (SQL &amp; Relacionales)</h3>
+            <p class="meta">Noviembre 2025</p>
+            <p>Modelado relacional, diseño de esquemas, lenguaje SQL y consultas complejas.</p>
           </div>
-        </div>
-        <!-- Frameworks & Tools -->
-        <div>
-          <p style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.75rem;">FRAMEWORKS & HERRAMIENTAS</p>
-          <div style="display: grid; gap: 0.6rem;">
-            <div><div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.2rem;"><span>FastAPI</span><span style="color: var(--text-faint);">80%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:80%"></div></div></div>
-            <div><div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.2rem;"><span>Next.js / React</span><span style="color: var(--text-faint);">70%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:70%"></div></div></div>
-            <div><div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.2rem;"><span>Tailwind CSS</span><span style="color: var(--text-faint);">80%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:80%"></div></div></div>
-            <div><div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.2rem;"><span>Git/GitHub</span><span style="color: var(--text-faint);">80%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:80%"></div></div></div>
-            <div><div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.2rem;"><span>Supabase</span><span style="color: var(--text-faint);">70%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:70%"></div></div></div>
-          </div>
-        </div>
-      </div>
-      <!-- Tags row -->
-      <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
-        <span class="cert-chip">🐳 Docker</span>
-        <span class="cert-chip">🐧 Linux/VPS</span>
-        <span class="cert-chip">🤖 OpenClaw</span>
-        <span class="cert-chip">🔗 Composio MCP</span>
-        <span class="cert-chip">⚙️ n8n</span>
-        <span class="cert-chip">📊 Pandas</span>
-        <span class="cert-chip">🎨 Figma</span>
-        <span class="cert-chip">☁️ Netlify</span>
-        <span class="cert-chip">🗄️ PostgreSQL</span>
-        <span class="cert-chip">🔐 JWT/OAuth2</span>
-      </div>
-    </div>
 
-    <!-- Idiomas -->
-    <div class="fade-in" style="display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; flex-wrap: wrap;">
-      <div style="text-align: center; padding: 1rem 2rem; background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 0.75rem;">
-        <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-faint);">🇪🇸 Español</p>
-        <p style="font-weight: 700;">Nativo</p>
-      </div>
-      <div style="text-align: center; padding: 1rem 2rem; background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 0.75rem;">
-        <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-faint);">🇬🇧 Inglés</p>
-        <p style="font-weight: 700;">Técnico (en mejora)</p>
-      </div>
+          <div class="cert-card">
+            <span class="cert-badge">Oficial · 30h</span>
+            <p class="issuer">Fundación Adecco</p>
+            <h3>Introducción a Java SE</h3>
+            <p class="meta">Agosto 2025</p>
+            <p>Programación Orientada a Objetos, sintaxis Java SE, gestión de memoria y estructuras de datos.</p>
+          </div>
+
+          <div class="cert-card">
+            <span class="cert-badge">Nota: 17/20</span>
+            <p class="issuer">Ministerio de Trabajo, Perú</p>
+            <h3>Desarrollo Back-End (Básico)</h3>
+            <p class="meta">Mayo 2025</p>
+            <p>Arquitectura cliente-servidor, principios de APIs REST, lógica de negocio y persistencia de datos.</p>
+          </div>
+
+          <div class="cert-card">
+            <span class="cert-badge">Oficial · 30h</span>
+            <p class="issuer">Fundación Telefónica Movistar</p>
+            <h3>Diseño Web con HTML5 + CSS</h3>
+            <p class="meta">Diciembre 2024</p>
+            <p>Principios de UX, diseño flexible con CSS Grid y Flexbox, y accesibilidad web.</p>
+          </div>
+
+          <div class="cert-card">
+            <span class="cert-badge">Oficial</span>
+            <p class="issuer">ESIC Business &amp; Marketing School</p>
+            <h3>Ciberseguridad Básica</h3>
+            <p class="meta">Junio – Noviembre 2024</p>
+            <p>Seguridad en redes, prevención de vulnerabilidades OWASP Top 10 y protección de datos.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="section">
+        <div class="fade-in" style="text-align: center; padding: 3rem 2rem; background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 1.5rem;">
+          <h2 style="font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 400; margin-bottom: 0.75rem;">
+            ¿Hablamos sobre tu <em>proyecto</em>?
+          </h2>
+          <p style="color: var(--text-muted); max-width: 45ch; margin: 0 auto 1.5rem;">
+            Cuéntame qué necesitas y te preparo una propuesta clara sin compromiso.
+          </p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+            <a href="/contacto/" class="btn-primary">Solicitar Presupuesto</a>
+            <a href="/proyectos/" class="btn-secondary">Ver Proyectos →</a>
+          </div>
+        </div>
+      </section>
+
     </div>
   </main>
 
-    <footer class="footer">
+      <footer class="footer">
     <div class="container-wide">
-      <div class="footer-links">
-        <a href="/legal/aviso-legal/">Aviso Legal</a>
-        <a href="/legal/privacidad/">Privacidad</a>
-        <a href="/legal/cookies/">Cookies</a>
-        <a href="/privacy-policy/">Privacy Policy</a>
-        <a href="/terms-of-service/">Terms of Service</a>
-        <a href="/data-deletion/">Data Deletion</a>
-        <a href="/contacto/">Contacto</a>
+      <div class="footer-grid">
+        <div>
+          <h4 style="color: var(--text-main); font-size: 1.25rem; margin-bottom: 0.75rem;">Jonathan Esteban</h4>
+          <p style="color: var(--text-muted); font-size: 0.875rem;">Desarrollo web, automatización con IA y soporte técnico. Soluciones digitales para negocios que quieren trabajar mejor.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="/servicios/">Servicios</a></li>
+            <li><a href="/proyectos/">Proyectos</a></li>
+            <li><a href="/sobre-mi/">Sobre Mí</a></li>
+            <li><a href="/faq/">FAQ</a></li>
+            <li><a href="/contacto/">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/legal/aviso-legal/">Aviso Legal</a></li>
+            <li><a href="/legal/cookies/">Cookies</a></li>
+            <li><a href="/privacy-policy/">Política de Privacidad</a></li>
+            <li><a href="/terms-of-service/">Términos de Servicio</a></li>
+            <li><a href="/data-deletion/">Eliminación de Datos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="mailto:joonathanesteban@gmail.com">joonathanesteban@gmail.com</a></li>
+            <li><a href="https://linkedin.com/in/jonathanesteban" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/Jesteban1983" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://wa.me/34614739345" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+          </ul>
+        </div>
       </div>
       <div class="footer-bottom">
         <div>&copy; 2026 Jonathan Esteban · jonathanesteban.dev</div>
+        <div>Desarrollado con HTML, CSS, JavaScript & Serverless Functions</div>
       </div>
     </div>
   </footer>

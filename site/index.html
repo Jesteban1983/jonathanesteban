@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jonathan Esteban | Full-Stack Developer & AI Engineer · Madrid & Barcelona</title>
-  <meta name="description" content="Jonathan Esteban — Full-Stack Developer & AI Engineer. Especializado en Python, FastAPI, React, Next.js, Agentes de IA con OpenClaw y automatización digital. Disponible para proyectos en España e internacionales.">
-  <meta name="keywords" content="full stack developer Madrid, AI engineer Spain, desarrollador web Barcelona, FastAPI Python, agentes IA OpenClaw, Jonathan Esteban">
+  <title>Jonathan Esteban | Desarrollador Web, Automatización & Soporte IT · Madrid</title>
+  <meta name="description" content="Jonathan Esteban — Desarrollador web en formación (4Geeks) y técnico IT. Desarrollo web, automatización con n8n y agentes de IA para negocios que quieren trabajar mejor. Proyectos reales con demos.">
+  <meta name="keywords" content="desarrollador web Madrid, automatización n8n, agentes IA, soporte IT, FastAPI Python, Jonathan Esteban">
   <meta name="author" content="Jonathan Esteban Barona">
   <meta name="google-site-verification" content="m7HiJ34wfzUNV">
   <meta name="robots" content="index, follow">
@@ -14,15 +14,15 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://jonathanesteban.dev/">
-  <meta property="og:title" content="Jonathan Esteban | Full-Stack Developer & AI Engineer">
-  <meta property="og:description" content="Full-Stack Developer & AI Engineer. Python, FastAPI, React, Next.js, Agentes de IA. Disponible para proyectos remotos mundiales.">
+  <meta property="og:title" content="Jonathan Esteban | Desarrollador Web & Soporte IT">
+  <meta property="og:description" content="Desarrollo web, automatización con n8n y agentes de IA. Proyectos reales con demos en vivo.">
   <meta property="og:locale" content="es_ES">
   <meta property="og:site_name" content="Jonathan Esteban">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Jonathan Esteban | Full-Stack Developer & AI Engineer">
-  <meta name="twitter:description" content="Full-Stack Developer & AI Engineer. Python · FastAPI · React · Next.js · AI Agents.">
+  <meta name="twitter:title" content="Jonathan Esteban | Desarrollador Web & Soporte IT">
+  <meta name="twitter:description" content="Desarrollo web, automatización con n8n y agentes de IA. Proyectos reales con demos.">
 
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico">
@@ -33,13 +33,15 @@
   <!-- Modular CSS -->
   
   <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+  tailwind.config = { corePlugins: { container: false } };
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="/assets/css/tokens.css">
   <link rel="stylesheet" href="/assets/css/base.css">
   <link rel="stylesheet" href="/assets/css/layout.css">
   <link rel="stylesheet" href="/assets/css/components.css">
   <link rel="stylesheet" href="/assets/css/pages.css">
-  </style>
 
   <!-- JSON-LD Stacked Schemas for SEO & GEO -->
   <script type="application/ld+json">
@@ -47,7 +49,7 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Jonathan Esteban",
-    "jobTitle": "Full-Stack Developer & AI Engineer",
+    "jobTitle": "Desarrollador Web & Técnico IT",
     "url": "https://jonathanesteban.dev",
     "email": "joonathanesteban@gmail.com",
     "address": {
@@ -59,7 +61,7 @@
       "https://linkedin.com/in/jonathanesteban",
       "https://github.com/Jesteban1983"
     ],
-    "knowsAbout": ["Python", "FastAPI", "TypeScript", "React", "Next.js", "PostgreSQL", "AI Agents", "OpenClaw"],
+    "knowsAbout": ["Python", "FastAPI", "TypeScript", "React", "Next.js", "PostgreSQL", "AI Agents", "OpenClaw", "n8n"],
     "alumniOf": {"@type": "Organization", "name": "4Geeks Academy Madrid"}
   }
   </script>
@@ -74,10 +76,16 @@
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
         Jonathan Esteban
       </a>
-      <ul class="nav-links" role="list">
-        <li><a href="/servicios/">Servicios</a></li>
+      <ul class="nav-links">
+        <li class="nav-item-dropdown">
+          <a href="/servicios/">Servicios</a>
+          <div class="dropdown-menu">
+            <a href="/servicios/desarrollo-web/">Desarrollo Web</a>
+            <a href="/servicios/automatizacion/">Automatización</a>
+            <a href="/servicios/soporte-it/">Soporte IT</a>
+          </div>
+        </li>
         <li><a href="/proyectos/">Proyectos</a></li>
-        <li><a href="/certificaciones/">Certificaciones</a></li>
         <li><a href="/sobre-mi/">Sobre Mí</a></li>
         <li><a href="/faq/">FAQ</a></li>
         <li><a href="/contacto/">Contacto</a></li>
@@ -93,9 +101,15 @@
 
   <!-- Mobile Nav Drawer -->
   <nav class="nav-mobile" id="mobileNav" aria-label="Menú móvil">
-    <a href="/servicios/">Servicios & Presupuesto</a>
-    <a href="/proyectos/">Proyectos & Casos</a>
-    <a href="/certificaciones/">Certificaciones</a>
+    <div class="nav-item-dropdown">
+      <a href="/servicios/">Servicios</a>
+      <div class="dropdown-menu">
+        <a href="/servicios/desarrollo-web/">Desarrollo Web</a>
+        <a href="/servicios/automatizacion/">Automatización</a>
+        <a href="/servicios/soporte-it/">Soporte IT</a>
+      </div>
+    </div>
+    <a href="/proyectos/">Proyectos</a>
     <a href="/sobre-mi/">Sobre Mí</a>
     <a href="/faq/">Preguntas Frecuentes</a>
     <a href="/contacto/">Contacto</a>
@@ -107,31 +121,28 @@
       <div class="container-wide">
         <div class="hero-grid">
           <div>
-            <span class="badge-status badge-active">Disponible para Proyectos Remotos</span>
-            <h1 class="hero-title">Jonathan<br><em>Esteban</em></h1>
-            <p class="hero-subtitle">Full-Stack Developer & AI Engineer</p>
-            <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; margin-top: 0.75rem; margin-bottom: 1.5rem; max-width: 36rem;">
-              Construyo sistemas —APIs, automatizaciones, agentes de IA— que <strong style="color: var(--text-main);">resuelven problemas reales de negocio</strong>. Cada proyecto aquí abajo es la prueba.
+            <span class="badge-status badge-active">Disponible para Proyectos</span>
+            <h1 class="hero-title">Desarrollo web, <em>automatización</em> y agentes de IA para negocios que quieren trabajar mejor</h1>
+            <p class="hero-subtitle">Construyo aplicaciones web, automatizaciones y agentes de IA aplicando lo que aprendo en 4Geeks Academy. Cada proyecto de esta web es un caso de práctica real, documentado de principio a fin.
             </p>
-            <p class="hero-location">📍 Madrid & Barcelona, España · Remoto Internacional</p>
-            
-            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-              <a href="/proyectos/" class="btn-primary">Ver Proyectos</a>
-              <a href="/contacto/" class="btn-secondary">Solicitar Presupuesto</a>
+            <br>
+            <div class="hero-actions">
+              <a href="/contacto/" class="btn-primary">Solicitar Presupuesto</a>
+              <a href="/servicios/" class="btn-secondary">Ver Servicios →</a>
             </div>
 
             <div class="hero-stats">
               <div>
-                <div class="hero-stat-val">16+</div>
-                <div class="hero-stat-lbl">Años Exp. Operativa</div>
+                <div class="hero-stat-val" data-experience="2021" data-experience-suffix="+ años">5 años</div>
+                <div class="hero-stat-lbl">Experiencia en Soporte técnico</div>
               </div>
               <div>
-                <div class="hero-stat-val">71%</div>
-                <div class="hero-stat-lbl">Bootcamp 4Geeks</div>
+                <div class="hero-stat-val">6</div>
+                <div class="hero-stat-lbl">Proyectos</div>
               </div>
               <div>
-                <div class="hero-stat-val">10+</div>
-                <div class="hero-stat-val" style="display:inline;">Proyectos</div>
+                <div class="hero-stat-val">3</div>
+                <div class="hero-stat-lbl">Areas de servicio</div>
               </div>
             </div>
           </div>
@@ -143,35 +154,110 @@
       </div>
     </section>
 
+    <!-- Servicios (3 categorías) -->
+    <section class="section">
+      <div class="container">
+        <div>
+          <p class="section-label">Qué ofrezco</p>
+          <h2 class="section-title">Tres formas de ayudar a tu  <em>negocio</em></h2>
+          <p class="section-desc">Servicios enfocados en resultados: software que se usa, automatizaciones que ahorran tiempo y soporte que mantiene todo en marcha.</p>
+        </div>
+        <div class="home-services-grid">
+          <a href="/servicios/desarrollo-web/" class="home-service-card">
+            <span class="home-service-icon">💻</span>
+            <h3>Desarrollo Web</h3>
+            <p>Sitios web, landing pages y APIs backend construidos con tecnología moderna y orientados a resultados.</p>
+            <span class="home-service-link">Ver servicio →</span>
+          </a>
+          <a href="/servicios/automatizacion/" class="home-service-card home-service-card--accent">
+            <span class="home-service-badge">NUEVO</span>
+            <span class="home-service-icon">⚙️</span>
+            <h3>Automatización & Agentes de IA</h3>
+            <p>Flujos con n8n, integraciones Composio y agentes autónomos que eliminan tareas repetitivas.</p>
+            <span class="home-service-link">Ver servicio →</span>
+          </a>
+          <a href="/servicios/soporte-it/" class="home-service-card">
+            <span class="home-service-icon">🔧</span>
+            <h3>Soporte IT</h3>
+            <p>Reparación, mantenimiento y formateo de ordenadores en Madrid y Barcelona. Recogida a domicilio.</p>
+            <span class="home-service-link">Ver servicio →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proyectos Destacados -->
+    <section class="section">
+      <div class="container">
+        <div>
+          <p class="section-label">Trabajo reciente</p>
+          <h2 class="section-title">Proyectos que <em>estoy construyendo</em></h2>
+          <p class="section-desc">Casos reales de desarrollo web, backend e inteligencia artificial, documentados de principio a fin.</p>
+        </div>
+
+        <div class="home-projects-grid">
+          <div class="card">
+            <span class="badge-status badge-active">En desarrollo</span>
+            <h3>📦 TrackFlow · Gestión de inventario</h3>
+            <p>API REST con FastAPI, PostgreSQL/Supabase y backoffice Next.js para logística con stock en tiempo real.</p>
+            <div class="home-projects-tags">
+              <span class="badge-tech">Python</span>
+              <span class="badge-tech">FastAPI</span>
+              <span class="badge-tech">Next.js</span>
+              <span class="badge-tech">PostgreSQL</span>
+            </div>
+            <a href="https://github.com/4GeeksAcademy/Jesteban1983-TrackFlow.git" target="_blank" rel="noopener noreferrer" class="home-projects-link">Ver en GitHub →</a>
+          </div>
+
+          <div class="card">
+            <span class="badge-status badge-info">Completado</span>
+            <h3>🤖 ClawMate · Agente personal de IA</h3>
+            <p>Asistente autónomo con OpenClaw y Composio MCP conectado a Gmail, Calendar, Drive y Telegram.</p>
+            <div class="home-projects-tags">
+              <span class="badge-tech">OpenClaw</span>
+              <span class="badge-tech">Composio MCP</span>
+              <span class="badge-tech">Python</span>
+            </div>
+            <a href="/proyectos/casos/automatizacion-leads/" class="home-projects-link">Ver caso de estudio →</a>
+          </div>
+
+          <div class="card">
+            <span class="badge-status badge-info">Completado</span>
+            <h3>💬 Talk to the Machine</h3>
+            <p>Chat con IA en tiempo real usando Groq API y LLaMA 3, con interfaz Next.js responsive.</p>
+            <div class="home-projects-tags">
+              <span class="badge-tech">Next.js</span>
+              <span class="badge-tech">Groq API</span>
+              <span class="badge-tech">LLaMA 3</span>
+            </div>
+            <a href="https://github.com/4GeeksAcademy/Jesteban1983-talk-to-the-machine.git" target="_blank" rel="noopener noreferrer" class="home-projects-link">Ver en GitHub →</a>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+          <a href="/proyectos/" class="btn-secondary">Ver todos los proyectos →</a>
+        </div>
+      </div>
+    </section>
+
     <!-- Featured Projects + Tech Stack (Opción C) -->
     <section class="section section-alt">
       <div class="container">
         <div>
-          <p class="section-label">Trabajo Reciente</p>
-          <h2 class="section-title">Proyectos Destacados</h2>
-          <p class="section-desc">Casos reales de desarrollo web, backend e inteligencia artificial. <strong style="color: var(--text-main);">¿Necesitas algo similar?</strong> Todos estos proyectos pertenecen a áreas que ofrezco como servicio profesional —revisa los casos y <a href="/contacto/" style="color: var(--primary); text-decoration: underline;">solicita tu presupuesto</a>.</p>
+          <p class="section-label">Por qué trabajar conmigo</p>
+          <h2 class="section-title">Software que resuelve problemas, no que los crea</h2>
+          <p class="section-desc">Combino mi experiencia en soporte técnico con lo que aprendo cada día en  <strong style="color: var(--text-main);">4Geeks Academy</strong> . Cada proyecto lo enfoco como lo haría con un encargo real: problema, solución y resultado.<a href="/contacto/" style="color: var(--primary); text-decoration: underline;">solicita tu presupuesto</a>.</p>
         </div>
 
         <!-- Proyecto destacado principal -->
         <div style="background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 1.25rem; padding: 2rem; transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;" onmouseover="this.style.borderColor='var(--primary)'; this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 40px rgba(0,0,0,0.3)'" onmouseout="this.style.borderColor=''; this.style.transform=''; this.style.boxShadow=''">
           <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 1.5rem;">
             <div style="flex: 2; min-width: 260px;">
-              <span class="badge-status badge-active" style="margin-bottom: 0.5rem; display: inline-block;">En desarrollo</span>
-              <h3 style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; margin-bottom: 0.5rem;">📦 TrackFlow — Gestión de Inventario</h3>
-              <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">Sistema completo de inventario para logística con almacenes en EE.UU. y España. API REST con FastAPI, autenticación JWT, stock en tiempo real y backoffice en Next.js.</p>
-              <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem;">
-                <span style="font-size: 0.75rem; background: var(--primary); color: #fff; padding: 0.25rem 0.7rem; border-radius: 999px; font-weight: 600;">Python</span>
-                <span style="font-size: 0.75rem; background: var(--surface-2-color, var(--surface-color)); color: var(--text-muted); border: 1px solid var(--border-color); padding: 0.25rem 0.7rem; border-radius: 999px; font-weight: 600;">FastAPI</span>
-                <span style="font-size: 0.75rem; background: var(--surface-2-color, var(--surface-color)); color: var(--text-muted); border: 1px solid var(--border-color); padding: 0.25rem 0.7rem; border-radius: 999px; font-weight: 600;">PostgreSQL</span>
-                <span style="font-size: 0.75rem; background: var(--surface-2-color, var(--surface-color)); color: var(--text-muted); border: 1px solid var(--border-color); padding: 0.25rem 0.7rem; border-radius: 999px; font-weight: 600;">Next.js</span>
-                <span style="font-size: 0.75rem; background: var(--surface-2-color, var(--surface-color)); color: var(--text-muted); border: 1px solid var(--border-color); padding: 0.25rem 0.7rem; border-radius: 999px; font-weight: 600;">Supabase</span>
-              </div>
-              <div style="display: flex; gap: 1.25rem; flex-wrap: wrap;">
-                <a href="https://github.com/4GeeksAcademy/Jesteban1983-TrackFlow.git" target="_blank" rel="noopener noreferrer" style="font-size: 0.875rem; font-weight: 600; color: var(--primary);">Ver en GitHub →</a>
-              </div>
+              <h3 style="font-family: var(--font-display); font-size: 1.75rem; font-weight: 400; margin-bottom: 0.5rem;">Aprendizaje aplicado</h3>
+              <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 1rem;">Cada proyecto de esta web se construye aplicando lo que aprendo en 4Geeks Academy a problemas reales, no con ejercicios aislados.</p>
+
             </div>
             <div style="flex: 1; min-width: 180px; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 1rem; padding: 1.25rem;">
-              <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-faint); margin-bottom: 0.75rem;">Stack del proyecto</p>
+              <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-faint); margin-bottom: 0.75rem;">Stacks de proyectos</p>
               <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
                 <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.3rem 0.6rem; border-radius: 0.4rem; color: var(--text-muted);">🐍 Python</span>
                 <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.3rem 0.6rem; border-radius: 0.4rem; color: var(--text-muted);">⚡ FastAPI</span>
@@ -188,29 +274,16 @@
         <!-- Grid proyectos secundarios -->
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 1.5rem;">
           <div class="card">
-            <span class="badge-status badge-info" style="margin-bottom: 0.5rem; display: inline-block;">Completado</span>
-            <h3 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 400; margin-bottom: 0.5rem;">🧠 ClawMate — Agente IA</h3>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Asistente autónomo con OpenClaw y Composio MCP conectado a Gmail, Calendar, Drive, Telegram y más de 8 servicios.</p>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem;">
-              <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.2rem 0.5rem; border-radius: 999px; color: var(--text-muted);">OpenClaw</span>
-              <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.2rem 0.5rem; border-radius: 999px; color: var(--text-muted);">Composio MCP</span>
-              <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.2rem 0.5rem; border-radius: 999px; color: var(--text-muted);">Python</span>
-            </div>
-            <a href="/proyectos/casos/automatizacion-leads/" style="font-size: 0.875rem; font-weight: 600; color: var(--primary);">Ver caso de estudio →</a>
+            <h2 style="font-family: var(--font-display); font-size: 1.75rem; font-weight: 400; margin-bottom: 0.5rem;">Comunicación clara</h2>
+            <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 1rem;">Hablo en español de negocios, no en jerga técnica. Sabes siempre en qué punto está tu proyecto.</p>
           </div>
           <div class="card">
-            <span class="badge-status badge-info" style="margin-bottom: 0.5rem; display: inline-block;">Completado</span>
-            <h3 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 400; margin-bottom: 0.5rem;">💬 Talk to the Machine</h3>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Chat conversacional en tiempo real con Groq API y LLaMA 3. Interfaz responsive y fluida construida con Next.js.</p>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem;">
-              <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.2rem 0.5rem; border-radius: 999px; color: var(--text-muted);">Next.js</span>
-              <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.2rem 0.5rem; border-radius: 999px; color: var(--text-muted);">Groq API</span>
-              <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.2rem 0.5rem; border-radius: 999px; color: var(--text-muted);">LLaMA 3</span>
-            </div>
-            <div style="display: flex; gap: 1rem;">
-              <a href="https://github.com/4GeeksAcademy/Jesteban1983-talk-to-the-machine.git" target="_blank" rel="noopener noreferrer" style="font-size: 0.875rem; font-weight: 600; color: var(--primary);">GitHub →</a>
-              <a href="/proyectos/demo-app/" style="font-size: 0.875rem; font-weight: 600; color: var(--text-muted);">Demo →</a>
-            </div>
+            <h2 style="font-family: var(--font-display); font-size: 1.75rem; font-weight: 400; margin-bottom: 0.5rem;">Stack moderno y mantenible</h2>
+            <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 1rem;">Next.js, FastAPI, PostgreSQL, despliegues en Vercel y Supabase. Código que tu equipo puede mantener.</p>
+          </div>
+           <div class="card">
+            <h2 style="font-family: var(--font-display); font-size: 1.75rem; font-weight: 400; margin-bottom: 0.5rem;">IA aplicada, no decorativa</h2>
+            <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 1rem;">Next.js, FastAPI, PostgreSQL, agentes y automatizaciones que conectan con tus herramientas reales — no demos de juguete.</p>
           </div>
         </div>
 
@@ -231,34 +304,46 @@
             <span class="card" style="font-size: 0.8rem; padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-weight: 600;">Figma</span>
             <span class="card" style="font-size: 0.8rem; padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-weight: 600;">n8n</span>
           </div>
-          <div style="text-align: center; margin-top: 2rem;">
-            <a href="/proyectos/" class="btn-secondary">Ver todos los proyectos →</a>
-          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="section section-alt">
+      <div class="container container-narrow">
+        <div class="home-cta">
+          <h2>¿Tienes un proyecto en mente?</h2>
+          <p>Cuéntame qué necesitas y te respondo en menos de 24 horas con una propuesta clara y sin compromiso.</p>
+          <a href="/contacto/" class="btn-primary" style="font-size: 1rem; padding: 1rem 2.4rem;">Solicitar Presupuesto</a>
+          <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-faint);">📧 <a href="mailto:joonathanesteban@gmail.com" style="color: var(--primary);">joonathanesteban@gmail.com</a> · 📱 <a href="https://wa.me/34614739345" target="_blank" rel="noopener noreferrer" style="color:#25D366;">WhatsApp</a></p>
         </div>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer class="footer">
+    <footer class="footer">
     <div class="container-wide">
       <div class="footer-grid">
         <div>
           <h4 style="color: var(--text-main); font-size: 1.25rem; margin-bottom: 0.75rem;">Jonathan Esteban</h4>
-          <p style="color: var(--text-muted); font-size: 0.875rem;">Sistemas web, backend y automatización con IA. Cada proyecto aquí es prueba de lo que puedo construir para ti.</p>
+          <p style="color: var(--text-muted); font-size: 0.875rem;">Desarrollo web, automatización con IA y soporte técnico. Soluciones digitales para negocios que quieren trabajar mejor.</p>
         </div>
         <div class="footer-col">
           <h4>Navegación</h4>
           <ul>
             <li><a href="/servicios/">Servicios</a></li>
             <li><a href="/proyectos/">Proyectos</a></li>
-            <li><a href="/certificaciones/">Certificaciones</a></li>
+            <li><a href="/sobre-mi/">Sobre Mí</a></li>
+            <li><a href="/faq/">FAQ</a></li>
+            <li><a href="/contacto/">Contacto</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Empresa & Legal</h4>
+          <h4>Legal</h4>
           <ul>
-            <li><a href="/sobre-mi/">Sobre Mí</a></li>
+            <li><a href="/legal/aviso-legal/">Aviso Legal</a></li>
+            <li><a href="/legal/cookies/">Cookies</a></li>
             <li><a href="/privacy-policy/">Política de Privacidad</a></li>
             <li><a href="/terms-of-service/">Términos de Servicio</a></li>
             <li><a href="/data-deletion/">Eliminación de Datos</a></li>
@@ -270,6 +355,7 @@
             <li><a href="mailto:joonathanesteban@gmail.com">joonathanesteban@gmail.com</a></li>
             <li><a href="https://linkedin.com/in/jonathanesteban" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
             <li><a href="https://github.com/Jesteban1983" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://wa.me/34614739345" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
           </ul>
         </div>
       </div>

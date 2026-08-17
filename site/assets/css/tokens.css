@@ -29,9 +29,10 @@
   --font-mono: 'Courier New', Courier, monospace;
 
   /* Spacing & Layout */
-  --content-narrow: 640px;
-  --content-default: 960px;
+  --content-narrow: 1200px;
+  --content-default: 1200px;
   --content-wide: 1200px;
+  --gutter-x: 1.5rem;
   --nav-height: 64px;
   
   /* Transitions */

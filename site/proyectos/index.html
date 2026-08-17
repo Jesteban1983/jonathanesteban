@@ -12,7 +12,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+  tailwind.config = { corePlugins: { container: false } };
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
 
   <link rel="stylesheet" href="/assets/css/tokens.css">
   <link rel="stylesheet" href="/assets/css/base.css">
@@ -20,18 +23,25 @@
   <link rel="stylesheet" href="/assets/css/components.css">
   <link rel="stylesheet" href="/assets/css/pages.css">
 </head>
+<body>
+  <a href="#main-content" class="sr-only-focusable">Saltar al contenido principal</a>
 
-  <a href="#main-content" class="sr-only-focusable">Saltar al contenido principal</a><body>
   <header class="nav-header">
     <div class="nav-inner">
       <a href="/" class="nav-brand">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
         Jonathan Esteban
       </a>
-      <ul class="nav-links">
-        <li><a href="/servicios/">Servicios</a></li>
+            <ul class="nav-links">
+        <li class="nav-item-dropdown">
+          <a href="/servicios/">Servicios</a>
+          <div class="dropdown-menu">
+            <a href="/servicios/desarrollo-web/">Desarrollo Web</a>
+            <a href="/servicios/automatizacion/">Automatización</a>
+            <a href="/servicios/soporte-it/">Soporte IT</a>
+          </div>
+        </li>
         <li><a href="/proyectos/" class="active">Proyectos</a></li>
-        <li><a href="/certificaciones/">Certificaciones</a></li>
         <li><a href="/sobre-mi/">Sobre Mí</a></li>
         <li><a href="/faq/">FAQ</a></li>
         <li><a href="/contacto/">Contacto</a></li>
@@ -46,23 +56,44 @@
   </header>
 
   <!-- Mobile Nav Drawer -->
-  <nav class="nav-mobile" id="mobileNav" aria-label="Menú móvil">
-    <a href="/servicios/">Servicios & Presupuesto</a>
-    <a href="/proyectos/">Proyectos & Casos</a>
-    <a href="/certificaciones/">Certificaciones</a>
+    <nav class="nav-mobile" id="mobileNav" aria-label="Menu movil">
+    <div class="nav-item-dropdown">
+      <a href="/servicios/">Servicios</a>
+      <div class="dropdown-menu">
+        <a href="/servicios/desarrollo-web/">Desarrollo Web</a>
+        <a href="/servicios/automatizacion/">Automatización</a>
+        <a href="/servicios/soporte-it/">Soporte IT</a>
+      </div>
+    </div>
+    <a href="/proyectos/">Proyectos</a>
     <a href="/sobre-mi/">Sobre Mí</a>
     <a href="/faq/">Preguntas Frecuentes</a>
     <a href="/contacto/">Contacto</a>
   </nav>
 
-  <main id="main-content" class="container-wide pt-28 pb-16 lg:pt-32">
+  <main id="main-content">
+    <section class="hero-base">
+      <div class="container">
+    <nav class="breadcrumbs" aria-label="Miga de pan">
+      <a href="/">Inicio</a>
+      <span class="sep">/</span>
+      <span class="current">Proyectos</span>
+    </nav>
+
+    <a href="/" class="page-back">← Volver al inicio</a>
+
     <div class="fade-in">
       <p class="section-label">Trabajo Desarrollado</p>
       <h1 class="section-title">Portfolio de Proyectos & Casos</h1>
       <p class="section-desc">Proyectos reales con código en GitHub, demostraciones en vivo y estudios de caso.</p>
     </div>
+      </div>
+    </section>
+
+    <div class="container">
 
     <!-- Category Filters -->
+    <section class="section">
     <div class="fade-in mt-8 mb-10 flex flex-wrap gap-3" id="projectFilters" role="tablist" aria-label="Filtrar proyectos por categoría">
       <button class="filter-btn active rounded-full border border-slate-600 bg-cyan-500 px-5 py-2 text-sm font-semibold text-white transition-colors duration-200" data-filter="all" data-state="active">Todos los Proyectos</button>
       <button class="filter-btn rounded-full border border-slate-700 bg-slate-900/70 px-5 py-2 text-sm font-semibold text-slate-300 transition-colors duration-200 hover:border-cyan-400 hover:text-cyan-200" data-filter="backend" data-state="inactive">Backend & APIs</button>
@@ -74,7 +105,7 @@
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3" id="projectsGrid">
       
       <article class="project-card group rounded-2xl border border-slate-700/80 bg-slate-900/70 p-7 shadow-sm shadow-black/20 transition hover:-translate-y-1 hover:border-cyan-400/80" data-project-category="backend">
-        <span class="badge-status badge-active">En desarrollo</span>
+        <span class="badge-status badge-active">Demo funcional v1.0</span>
         <h3 class="mt-3 text-xl font-semibold leading-snug text-slate-100">TrackFlow — Gestión de Inventario</h3>
         <p class="my-3 break-words text-sm leading-relaxed text-slate-300">API REST con FastAPI, SQLModel, PostgreSQL/Supabase, stock calculado en tiempo real y backoffice Next.js.</p>
         <div class="mb-4 flex flex-wrap gap-2">
@@ -114,21 +145,49 @@
       </article>
 
     </div>
+  </section>
   </main>
 
-    <footer class="footer">
+      <footer class="footer">
     <div class="container-wide">
-      <div class="footer-links">
-        <a href="/legal/aviso-legal/">Aviso Legal</a>
-        <a href="/legal/privacidad/">Privacidad</a>
-        <a href="/legal/cookies/">Cookies</a>
-        <a href="/privacy-policy/">Privacy Policy</a>
-        <a href="/terms-of-service/">Terms of Service</a>
-        <a href="/data-deletion/">Data Deletion</a>
-        <a href="/contacto/">Contacto</a>
+      <div class="footer-grid">
+        <div>
+          <h4 style="color: var(--text-main); font-size: 1.25rem; margin-bottom: 0.75rem;">Jonathan Esteban</h4>
+          <p style="color: var(--text-muted); font-size: 0.875rem;">Desarrollo web, automatización con IA y soporte técnico. Soluciones digitales para negocios que quieren trabajar mejor.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="/servicios/">Servicios</a></li>
+            <li><a href="/proyectos/">Proyectos</a></li>
+            <li><a href="/sobre-mi/">Sobre Mí</a></li>
+            <li><a href="/faq/">FAQ</a></li>
+            <li><a href="/contacto/">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/legal/aviso-legal/">Aviso Legal</a></li>
+            <li><a href="/legal/cookies/">Cookies</a></li>
+            <li><a href="/privacy-policy/">Política de Privacidad</a></li>
+            <li><a href="/terms-of-service/">Términos de Servicio</a></li>
+            <li><a href="/data-deletion/">Eliminación de Datos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="mailto:joonathanesteban@gmail.com">joonathanesteban@gmail.com</a></li>
+            <li><a href="https://linkedin.com/in/jonathanesteban" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/Jesteban1983" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://wa.me/34614739345" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+          </ul>
+        </div>
       </div>
       <div class="footer-bottom">
         <div>&copy; 2026 Jonathan Esteban · jonathanesteban.dev</div>
+        <div>Desarrollado con HTML, CSS, JavaScript & Serverless Functions</div>
       </div>
     </div>
   </footer>

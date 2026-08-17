@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desarrollo Web & Aplicaciones con IA | Jonathan Esteban</title>
+  <meta name="description" content="Desarrollo web, APIs, agentes de IA y automatización. Landing pages, aplicaciones full-stack, backend con FastAPI y asistentes autónomos. Presupuesto sin compromiso.">
+  <link rel="canonical" href="https://jonathanesteban.dev/servicios/desarrollo-web/">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script>
+  tailwind.config = { corePlugins: { container: false } };
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/pages.css">
+
+  <!-- Schema JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Desarrollo Web e IA",
+    "provider": {
+      "@type": "Person",
+      "name": "Jonathan Esteban",
+      "url": "https://jonathanesteban.dev"
+    },
+    "areaServed": ["ES", "US"],
+    "offers": [
+      {"@type": "Offer", "name": "Landing Page / Web Corporativa", "price": "350", "priceCurrency": "EUR"},
+      {"@type": "Offer", "name": "Aplicacion Web Full-Stack", "price": "1200", "priceCurrency": "EUR"},
+      {"@type": "Offer", "name": "API REST + Base de Datos", "price": "700", "priceCurrency": "EUR"},
+      {"@type": "Offer", "name": "Agente de IA Personalizado", "price": "800", "priceCurrency": "EUR"},
+      {"@type": "Offer", "name": "Automatizacion con n8n", "price": "600", "priceCurrency": "EUR"}
+    ]
+  }
+  </script>
+
+  <style>
+    .srv-detail-hero {
+      position: relative;
+    }
+    .srv-detail-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4vw, 3.8rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+    }
+    .srv-detail-hero h1 em { font-style: italic; color: var(--primary); }
+    .srv-feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .srv-feature-card {
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 1.75rem;
+      transition: border-color var(--transition-normal), transform var(--transition-normal);
+    }
+    .srv-feature-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+    .srv-feature-card .icon { font-size: 2rem; margin-bottom: 0.75rem; }
+    .srv-feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .srv-feature-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+    .tech-chip {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      background: var(--surface-2-color);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+    }
+    /* Calculator */
+    .calculator-box {
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: 1.25rem;
+      padding: 2.5rem;
+    }
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+    .calc-option {
+      padding: 1rem;
+      border-radius: 0.75rem;
+      background: var(--surface-2-color);
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.88rem;
+      transition: border-color var(--transition-fast), background var(--transition-fast);
+    }
+    .calc-option:hover { border-color: var(--primary); }
+    .calc-option:has(input:checked) {
+      border-color: var(--primary);
+      background: color-mix(in srgb, var(--primary) 8%, var(--surface-2-color));
+    }
+    .calc-option input:checked + span { color: var(--primary); font-weight: 600; }
+    .calc-summary {
+      background: var(--surface-2-color);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .calc-summary strong { font-size: 1.75rem; color: var(--primary); }
+    @media (max-width: 640px) {
+      .srv-detail-hero h1 { font-size: 1.8rem; }
+      .calc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="sr-only-focusable">Saltar al contenido principal</a>
+
+  <header class="nav-header">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Jonathan Esteban
+      </a>
+      <ul class="nav-links">
+        <li class="nav-item-dropdown">
+          <a href="/servicios/">Servicios</a>
+          <div class="dropdown-menu">
+            <a href="/servicios/desarrollo-web/">Desarrollo Web</a>
+            <a href="/servicios/automatizacion/">Automatización</a>
+            <a href="/servicios/soporte-it/">Soporte IT</a>
+          </div>
+        </li>
+        <li><a href="/proyectos/">Proyectos</a></li>
+        <li><a href="/sobre-mi/">Sobre Mí</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+        <li><a href="/contacto/">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" data-theme-toggle aria-label="Cambiar tema"></button>
+        <button class="hamburger-btn" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="mobileNav" aria-label="Menu movil">
+    <div class="nav-item-dropdown">
+      <a href="/servicios/">Servicios</a>
+      <div class="dropdown-menu">
+        <a href="/servicios/desarrollo-web/">Desarrollo Web</a>
+        <a href="/servicios/automatizacion/">Automatización</a>
+        <a href="/servicios/soporte-it/">Soporte IT</a>
+      </div>
+    </div>
+    <a href="/proyectos/">Proyectos</a>
+    <a href="/sobre-mi/">Sobre Mí</a>
+    <a href="/faq/">Preguntas Frecuentes</a>
+    <a href="/contacto/">Contacto</a>
+  </nav>
+
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="srv-detail-hero hero-base">
+      <div class="container">
+      <nav class="breadcrumbs" aria-label="Miga de pan">
+        <a href="/">Inicio</a>
+        <span class="sep">/</span>
+        <a href="/servicios/">Servicios</a>
+        <span class="sep">/</span>
+        <span class="current">Desarrollo Web</span>
+      </nav>
+      <div class="fade-in" style="margin-bottom: 2rem;">
+        <a href="/servicios/" style="font-size: 0.85rem; color: var(--primary); font-weight: 600;">&larr; Todos los servicios</a>
+      </div>
+
+      <div class="fade-in" style="margin-bottom: 2rem;">
+        <span class="badge-status badge-info" style="margin-bottom: 1rem; display: inline-block;">💻 Desarrollo Web & IA</span>
+        <h1>Desarrollo Web <em>& Aplicaciones con IA</em></h1>
+        <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 48ch; margin-top: 1rem; line-height: 1.7;">
+          Desde landing pages que convierten hasta agentes de IA autónomos. Construyo soluciones web modernas, APIs escalables y automatizaciones inteligentes.
+        </p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
+          <a href="/contacto/?subject=Solicitar%20presupuesto%20-%20Desarrollo%20Web" class="btn-primary">Solicitar Presupuesto</a>
+          <a href="#calculadora" class="btn-secondary">Calcular Presupuesto →</a>
+        </div>
+
+        <!-- Stats -->
+        <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+          <div>
+            <div style="font-size: 1.75rem; font-weight: 700; color: var(--primary);">6+</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Proyectos Web</div>
+          </div>
+          <div>
+            <div style="font-size: 1.75rem; font-weight: 700; color: var(--primary);" data-experience="2021" data-experience-suffix="+">5+</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Años en Soporte técnico</div>
+          </div>
+          <div>
+            <div style="font-size: 1.75rem; font-weight: 700; color: var(--primary);">194/273</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Tareas 4Geeks</div>
+          </div>
+          <div>
+            <div style="font-size: 1.75rem; font-weight: 700; color: var(--primary);">7</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Certificaciones Técnicas</div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="section">
+      <div class="container">
+        <div class="fade-in" style="text-align: center; margin-bottom: 2rem;">
+          <p class="section-label">Qu&eacute; incluye</p>
+          <h2 class="section-title">Desarrollo Web <em>+ Inteligencia Artificial</em></h2>
+          <p class="section-desc">Combino desarrollo web moderno con agentes de IA para crear soluciones completas que resuelven problemas reales de negocio.</p>
+        </div>
+
+        <div class="srv-feature-grid fade-in" style="margin-top: 2rem;">
+          <div class="srv-feature-card">
+            <div class="icon">🌐</div>
+            <h3>Landing Pages & Sitios Corporativos</h3>
+            <p>P&aacute;ginas optimizadas para conversi&oacute;n con dise&ntilde;o responsive, SEO sem&aacute;ntico, formularios inteligentes y despliegue automatizado en Netlify/Vercel.</p>
+          </div>
+          <div class="srv-feature-card">
+            <div class="icon">⚙️</div>
+            <h3>APIs REST & Backend con FastAPI</h3>
+            <p>APIs r&aacute;pidas y seguras con Python y FastAPI, autenticaci&oacute;n JWT, bases de datos PostgreSQL/Supabase y documentaci&oacute;n autom&aacute;tica con Swagger.</p>
+          </div>
+          <div class="srv-feature-card">
+            <div class="icon">🤖</div>
+            <h3>Agentes de IA & Automatizaci&oacute;n</h3>
+            <p>Asistentes aut&oacute;nomos con OpenClaw y Composio MCP. Conexi&oacute;n nativa con Gmail, Drive, Telegram, Slack y m&aacute;s de 8 servicios externos.</p>
+          </div>
+          <div class="srv-feature-card">
+            <div class="icon">📊</div>
+            <h3>Dashboards & Aplicaciones Full-Stack</h3>
+            <p>Plataformas interactivas con Next.js, React, autenticaci&oacute;n de usuarios, paneles de administraci&oacute;n, visualizaci&oacute;n de datos en tiempo real y despliegue.</p>
+          </div>
+          <div class="srv-feature-card">
+            <div class="icon">🔗</div>
+            <h3>Integraci&oacute;n con APIs Externas</h3>
+            <p>Conexi&oacute;n con servicios de pago, CRM, email marketing, redes sociales y automatizaciones n8n. Tu web como centro de tu operaci&oacute;n digital.</p>
+          </div>
+          <div class="srv-feature-card">
+            <div class="icon">🚀</div>
+            <h3>Despliegue & Mantenimiento</h3>
+            <p>Te ayudo a elegir el hosting (Vercel, Netlify, VPS) y configuro dominio, SSL, email profesional y monitorizaci&oacute;n continua. Soporte post-entrega incluido.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALCULADORA DE PRESUPUESTO -->
+    <section class="section section-alt" id="calculadora">
+      <div class="container container-narrow">
+        <div class="fade-in" style="text-align: center; margin-bottom: 2rem;">
+          <p class="section-label">Transparencia</p>
+          <h2 class="section-title">Calcula tu Presupuesto</h2>
+          <p style="color: var(--text-muted); max-width: 48ch; margin: 0 auto;">Selecciona los servicios que necesitas y obt&eacute;n una estimaci&oacute;n orientativa al instante. Sin compromiso.</p>
+        </div>
+
+        <div class="calculator-box fade-in">
+          <div style="display: grid; gap: 1.5rem;" id="calcForm">
+            <!-- Tipo de Proyecto -->
+            <div>
+              <p style="font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem;">1. &iquest;Qu&eacute; tipo de proyecto necesitas?</p>
+              <div class="calc-grid">
+                <label class="calc-option">
+                  <input type="radio" name="projectType" value="landing" checked>
+                  <span>🌐 Landing Page</span>
+                </label>
+                <label class="calc-option">
+                  <input type="radio" name="projectType" value="fullstack">
+                  <span>📦 Full-Stack App</span>
+                </label>
+                <label class="calc-option">
+                  <input type="radio" name="projectType" value="api">
+                  <span>⚙️ API REST</span>
+                </label>
+                <label class="calc-option">
+                  <input type="radio" name="projectType" value="ai-agent">
+                  <span>🤖 Agente IA</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Alcance -->
+            <div>
+              <p style="font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem;">2. &iquest;Qu&eacute; alcance tiene?</p>
+              <div class="calc-grid">
+                <label class="calc-option">
+                  <input type="radio" name="scope" value="basico" checked>
+                  <span>🔰 B&aacute;sico (1-2 p&aacute;ginas)</span>
+                </label>
+                <label class="calc-option">
+                  <input type="radio" name="scope" value="medio">
+                  <span>📄 Medio (3-5 p&aacute;ginas)</span>
+                </label>
+                <label class="calc-option">
+                  <input type="radio" name="scope" value="completo">
+                  <span>🏢 Completo (6+ p&aacute;ginas)</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Extras -->
+            <div>
+              <p style="font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem;">3. Extras opcionales</p>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem;">
+                <label class="calc-option">
+                  <input type="checkbox" name="extra" value="seo">
+                  <span>🔍 SEO b&aacute;sico</span>
+                </label>
+                <label class="calc-option">
+                  <input type="checkbox" name="extra" value="analytics">
+                  <span>📊 Dashboard / Analytics</span>
+                </label>
+                <label class="calc-option">
+                  <input type="checkbox" name="extra" value="auth">
+                  <span>🔐 Autenticaci&oacute;n usuarios</span>
+                </label>
+                <label class="calc-option">
+                  <input type="checkbox" name="extra" value="cms">
+                  <span>📝 CMS / Blog</span>
+                </label>
+                <label class="calc-option">
+                  <input type="checkbox" name="extra" value="ia">
+                  <span>🤖 Integraci&oacute;n IA</span>
+                </label>
+                <label class="calc-option">
+                  <input type="checkbox" name="extra" value="mantenimiento">
+                  <span>🔧 Mantenimiento mensual</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Resumen -->
+          <div class="calc-summary">
+            <div>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.25rem;">Presupuesto estimado</p>
+              <strong id="calcTotal">350 €</strong>
+              <p style="font-size: 0.75rem; color: var(--text-faint); margin-top: 0.25rem;">* Estimaci&oacute;n orientativa. El precio final puede variar seg&uacute;n requisitos espec&iacute;ficos.</p>
+            </div>
+            <a href="/contacto/?subject=Solicitar%20presupuesto%20-%20Desarrollo%20Web" class="btn-primary" style="flex-shrink: 0;">Solicitar Presupuesto Real</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="section">
+      <div class="container">
+        <div class="fade-in" style="text-align: center;">
+          <p class="section-label">Stack tecnol&oacute;gico</p>
+          <h2 class="section-title">Tecnolog&iacute;as que domino</h2>
+          <p style="color: var(--text-muted); max-width: 48ch; margin: 0 auto 2rem;">Selecciono las herramientas adecuadas para cada proyecto, priorizando rendimiento, escalabilidad y mantenibilidad.</p>
+        </div>
+        <div class="fade-in" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem;">
+          <span class="tech-chip">TypeScript</span>
+          <span class="tech-chip">JavaScript</span>
+          <span class="tech-chip">React</span>
+          <span class="tech-chip">Next.js</span>
+          <span class="tech-chip">HTML/CSS</span>
+          <span class="tech-chip">Tailwind CSS</span>
+          <span class="tech-chip">Python</span>
+          <span class="tech-chip">FastAPI</span>
+          <span class="tech-chip">PostgreSQL</span>
+          <span class="tech-chip">Supabase</span>
+          <span class="tech-chip">Docker</span>
+          <span class="tech-chip">Git/GitHub</span>
+          <span class="tech-chip">Netlify</span>
+          <span class="tech-chip">Vercel</span>
+          <span class="tech-chip">Figma</span>
+          <span class="tech-chip">n8n</span>
+          <span class="tech-chip">OpenClaw</span>
+          <span class="tech-chip">Composio MCP</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="section">
+      <div class="container">
+        <div class="fade-in" style="text-align: center; padding: 3rem 2rem; background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 1.5rem;">
+          <h2 style="font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 400; margin-bottom: 0.75rem;">
+            &iquest;Tienes un proyecto en <em>mente</em>?
+          </h2>
+          <p style="color: var(--text-muted); max-width: 45ch; margin: 0 auto 1.5rem;">
+            Cu&eacute;ntame tu idea y te preparo un presupuesto personalizado sin compromiso en menos de 24 horas.
+          </p>
+          <a href="/contacto/?subject=Solicitar%20presupuesto%20-%20Desarrollo%20Web" class="btn-primary">Solicitar Presupuesto</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+    <footer class="footer">
+    <div class="container-wide">
+      <div class="footer-grid">
+        <div>
+          <h4 style="color: var(--text-main); font-size: 1.25rem; margin-bottom: 0.75rem;">Jonathan Esteban</h4>
+          <p style="color: var(--text-muted); font-size: 0.875rem;">Desarrollo web, automatización con IA y soporte técnico. Soluciones digitales para negocios que quieren trabajar mejor.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="/servicios/">Servicios</a></li>
+            <li><a href="/proyectos/">Proyectos</a></li>
+            <li><a href="/sobre-mi/">Sobre Mí</a></li>
+            <li><a href="/faq/">FAQ</a></li>
+            <li><a href="/contacto/">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/legal/aviso-legal/">Aviso Legal</a></li>
+            <li><a href="/legal/cookies/">Cookies</a></li>
+            <li><a href="/privacy-policy/">Política de Privacidad</a></li>
+            <li><a href="/terms-of-service/">Términos de Servicio</a></li>
+            <li><a href="/data-deletion/">Eliminación de Datos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="mailto:joonathanesteban@gmail.com">joonathanesteban@gmail.com</a></li>
+            <li><a href="https://linkedin.com/in/jonathanesteban" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/Jesteban1983" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://wa.me/34614739345" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Jonathan Esteban · jonathanesteban.dev</div>
+        <div>Desarrollado con HTML, CSS, JavaScript & Serverless Functions</div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/assets/js/main.js"></script>
+
+  <!-- Calculadora JS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const prices = {
+        landing: 350,
+        fullstack: 1200,
+        api: 700,
+        'ai-agent': 800
+      };
+      const scopeMultipliers = { basico: 1, medio: 1.5, completo: 2.2 };
+      const extraPrices = {
+        seo: 150, analytics: 300, auth: 400,
+        cms: 350, ia: 500, mantenimiento: 100
+      };
+      const totalEl = document.getElementById('calcTotal');
+      function calculateTotal() {
+        const projectType = document.querySelector('input[name="projectType"]:checked')?.value || 'landing';
+        const scope = document.querySelector('input[name="scope"]:checked')?.value || 'basico';
+        const extras = document.querySelectorAll('input[name="extra"]:checked');
+        let total = (prices[projectType] || 350) * (scopeMultipliers[scope] || 1);
+        extras.forEach(extra => { total += extraPrices[extra.value] || 0; });
+        totalEl.textContent = total.toLocaleString('es-ES') + ' \u20AC';
+      }
+      document.querySelectorAll('#calcForm input').forEach(input => {
+        input.addEventListener('change', calculateTotal);
+      });
+      calculateTotal();
+    });
+  </script>
+</body>
+</html>

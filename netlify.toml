@@ -29,13 +29,51 @@
   status = 200
 
 [[redirects]]
+  from = "/certificaciones/*"
+  to = "/sobre-mi/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/api/data-deletion-request"
   to = "/.netlify/functions/data-deletion-request"
   status = 200
+
+# Redirección 301 de /soporte-it/ a la página unificada de Soporte IT
+[[redirects]]
+  from = "/soporte-it/*"
+  to = "/servicios/soporte-it/"
+  status = 301
+  force = true
+
+# Redirecciones 301 de las páginas IT antiguas a la página unificada
+[[redirects]]
+  from = "/servicios/reparacion-ordenadores-portatiles/*"
+  to = "/servicios/soporte-it/#reparacion"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/formateo-limpieza-optimizacion/*"
+  to = "/servicios/soporte-it/#formateo"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/mantenimiento-preventivo-pc/*"
+  to = "/servicios/soporte-it/#mantenimiento"
+  status = 301
+  force = true
 
 # Redirección 301 del subdominio de Netlify al dominio propio
 [[redirects]]
   from = "https://jonathanesteban.netlify.app/*"
   to = "https://jonathanesteban.dev/:splat"
+  status = 301
+
+# Redirects legales
+[[redirects]]
+  from = "/legal/privacidad/"
+  to = "/privacy-policy/"
   status = 301
   force = true

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soporte IT · Reparación, Mantenimiento y Formateo | Jonathan Esteban</title>
+  <meta name="description" content="Soporte técnico informático en Madrid y Barcelona: reparación de ordenadores y portátiles, mantenimiento preventivo y formateo con limpieza de virus. Diagnóstico gratuito y recogida a domicilio.">
+  <link rel="canonical" href="https://jonathanesteban.dev/servicios/soporte-it/">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script>
+  tailwind.config = { corePlugins: { container: false } };
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/pages.css">
+
+  <style>
+    /* ===== HERO SOPORTE IT ===== */
+    .it-hero {
+      position: relative;
+    }
+    .it-hero__inner {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .it-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin: 1rem 0 1rem;
+    }
+    .it-hero__title em { font-style: italic; color: var(--primary); }
+    .it-hero__subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      line-height: 1.7;
+      max-width: 52ch;
+      margin-bottom: 1.5rem;
+    }
+    .it-hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .it-hero__stats {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      margin-top: 2.25rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-color);
+    }
+    .it-hero__stat-val {
+      display: block;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .it-hero__stats span:last-child { font-size: 0.8rem; color: var(--text-muted); }
+
+    .it-hero__card {
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .it-hero__card h3 { font-size: 1rem; font-weight: 700; }
+    .it-hero__card li {
+      display: flex;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .it-hero__card li::before { content: "✓"; color: var(--success); font-weight: 700; }
+
+    /* ===== TARJETAS DE SERVICIO ===== */
+    .it-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .it-card {
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: 1.25rem;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+    }
+    .it-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+    }
+    .it-card__icon { font-size: 2.1rem; line-height: 1; }
+    .it-card h3 { font-size: 1.2rem; font-weight: 700; }
+    .it-card p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.65; flex: 1; }
+    .it-card ul { list-style: none; display: grid; gap: 0.4rem; }
+    .it-card ul li { font-size: 0.85rem; color: var(--text-main); }
+    .it-card ul li::before { content: "✓ "; color: var(--success); font-weight: 700; }
+    .it-card__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+      margin-top: 0.5rem;
+    }
+    .it-card__price { font-size: 0.9rem; font-weight: 700; color: var(--primary); }
+
+    /* ===== PROCESO ===== */
+    .it-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .it-step {
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .it-step__num {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: color-mix(in srgb, var(--primary) 15%, transparent);
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.75rem;
+    }
+    .it-step h3 { font-size: 1.02rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .it-step p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ===== POR QUÉ ===== */
+    .it-why { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
+    .it-why-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 1.25rem;
+    }
+    .it-why-item .icon { font-size: 1.6rem; line-height: 1; flex-shrink: 0; }
+    .it-why-item h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .it-why-item p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ===== FAQ ===== */
+    .it-faq { display: grid; gap: 0.75rem; margin-top: 1.5rem; }
+    .it-faq details {
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: 0.9rem;
+      padding: 1.1rem 1.25rem;
+    }
+    .it-faq summary {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .it-faq summary::-webkit-details-marker { display: none; }
+    .it-faq summary::after { content: "▾"; color: var(--text-faint); transition: transform 0.2s; }
+    .it-faq details[open] summary::after { transform: rotate(180deg); }
+    .it-faq details p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.65; margin-top: 0.6rem; }
+
+    /* ===== CTA FINAL ===== */
+    .it-cta {
+      text-align: center;
+      padding: 3rem 2rem;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 0%, color-mix(in srgb, var(--primary) 16%, transparent), transparent),
+        var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: 1.5rem;
+    }
+    .it-cta h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 400; margin-bottom: 0.75rem; }
+    .it-cta p { color: var(--text-muted); max-width: 48ch; margin: 0 auto 1.5rem; }
+
+    @media (max-width: 900px) {
+      .it-hero__inner { grid-template-columns: 1fr; }
+      .it-hero__stats { justify-content: center; text-align: center; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Soporte Técnico Informático",
+    "provider": { "@type": "Person", "name": "Jonathan Esteban", "url": "https://jonathanesteban.dev" },
+    "areaServed": ["Madrid", "Barcelona"],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Servicios de Soporte IT",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Reparación de ordenadores y portátiles" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mantenimiento preventivo de PC" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Formateo, limpieza de virus y optimización" } }
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="sr-only-focusable">Saltar al contenido principal</a>
+
+  <header class="nav-header">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">Jonathan Esteban</a>
+      <ul class="nav-links">
+        <li class="nav-item-dropdown">
+          <a href="/servicios/">Servicios</a>
+          <div class="dropdown-menu">
+            <a href="/servicios/desarrollo-web/">Desarrollo Web</a>
+            <a href="/servicios/automatizacion/">Automatización</a>
+            <a href="/servicios/soporte-it/">Soporte IT</a>
+          </div>
+        </li>
+        <li><a href="/proyectos/">Proyectos</a></li>
+        <li><a href="/sobre-mi/">Sobre Mí</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+        <li><a href="/contacto/">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" data-theme-toggle aria-label="Cambiar tema"></button>
+        <button class="hamburger-btn" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="mobileNav" aria-label="Menú móvil">
+    <div class="nav-item-dropdown">
+      <a href="/servicios/">Servicios</a>
+      <div class="dropdown-menu">
+        <a href="/servicios/desarrollo-web/">Desarrollo Web</a>
+        <a href="/servicios/automatizacion/">Automatización</a>
+        <a href="/servicios/soporte-it/">Soporte IT</a>
+      </div>
+    </div>
+    <a href="/proyectos/">Proyectos</a>
+    <a href="/sobre-mi/">Sobre Mí</a>
+    <a href="/faq/">Preguntas Frecuentes</a>
+    <a href="/contacto/">Contacto</a>
+  </nav>
+
+  <main id="main-content">
+    <!-- HERO -->
+    <section class="it-hero hero-base">
+      <div class="container">
+        <div class="it-hero__inner">
+          <div>
+            <span class="badge-status badge-active">Soporte técnico en Madrid y Barcelona</span>
+            <h1 class="it-hero__title">Tu equipo a punto, <em>sin complicaciones</em></h1>
+            <p class="it-hero__subtitle">Reparación, mantenimiento y formateo de ordenadores y portátiles para pymes, autónomos y profesionales. Diagnóstico gratuito, presupuesto transparente y recogida a domicilio.</p>
+            <div class="it-hero__actions">
+              <a href="/contacto/?subject=Soporte%20IT%3A%20Diagn%C3%B3stico%20gratuito" class="btn-primary">Solicitar diagnóstico gratuito</a>
+              <a href="#servicios" class="btn-secondary">Ver servicios →</a>
+            </div>
+            <div class="it-hero__stats">
+              <div><span class="it-hero__stat-val" data-experience="2021" data-experience-suffix="+">5+</span><span>Años en Soporte técnico</span></div>
+              <div><span class="it-hero__stat-val">24h</span><span>Respuesta</span></div>
+              <div><span class="it-hero__stat-val">100%</span><span>Garantía por escrito</span></div>
+            </div>
+          </div>
+          <div class="it-hero__card">
+            <h3>✅ Qué incluye siempre</h3>
+            <ul>
+              <li>Diagnóstico gratuito y sin compromiso</li>
+              <li>Presupuesto cerrado antes de empezar</li>
+              <li>Recogida y entrega a domicilio</li>
+              <li>Garantía por escrito del trabajo</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="section" id="servicios">
+      <div class="container">
+        <div>
+          <p class="section-label">Servicios de soporte IT</p>
+          <h2 class="section-title">Tres formas de <em>devolverte la tranquilidad</em></h2>
+          <p class="section-desc">Elige lo que necesite tu equipo. Si no lo tienes claro, cuéntame el síntoma y te recomiendo la mejor opción.</p>
+        </div>
+
+        <div class="it-grid">
+          <!-- Reparación -->
+          <article class="it-card" id="reparacion">
+            <div class="it-card__icon">🖥️</div>
+            <h3>Reparación de ordenadores y portátiles</h3>
+            <p>Para equipos que no encienden, fallos de pantalla, batería, conectores, disco o lentitud extrema. Diagnóstico y solución de hardware y software.</p>
+            <ul>
+              <li>Diagnóstico inicial gratuito</li>
+              <li>Reparación o sustitución de componentes</li>
+              <li>Pruebas de estabilidad y temperatura</li>
+              <li>Entrega con recomendaciones de uso</li>
+            </ul>
+            <div class="it-card__footer">
+              <span class="it-card__price">Presupuesto gratuito</span>
+              <a href="/contacto/?subject=Solicitar%20cotizaci%C3%B3n%3A%20Reparaci%C3%B3n" class="btn-primary" style="padding: 0.5rem 1.1rem;">Reparar mi equipo →</a>
+            </div>
+          </article>
+
+          <!-- Formateo -->
+          <article class="it-card" id="formateo">
+            <div class="it-card__icon">🧹</div>
+            <h3>Formateo, limpieza de virus y optimización</h3>
+            <p>Para equipos lentos, con virus persistentes, pantallas azules o software inestable. Recupera el rendimiento con una instalación limpia y segura.</p>
+            <ul>
+              <li>Copia de seguridad previa</li>
+              <li>Formateo y reinstalación limpia del sistema</li>
+              <li>Eliminación de malware y antivirus</li>
+              <li>Instalación de drivers y apps esenciales</li>
+            </ul>
+            <div class="it-card__footer">
+              <span class="it-card__price">Presupuesto gratuito</span>
+              <a href="/contacto/?subject=Solicitar%20cotizaci%C3%B3n%3A%20Formateo%20y%20Optimizaci%C3%B3n" class="btn-primary" style="padding: 0.5rem 1.1rem;">Optimizar mi equipo →</a>
+            </div>
+          </article>
+
+          <!-- Mantenimiento -->
+          <article class="it-card" id="mantenimiento">
+            <div class="it-card__icon">🔧</div>
+            <h3>Mantenimiento preventivo de PC</h3>
+            <p>Revisión periódica para evitar averías y alargar la vida útil del equipo. Recomendado cada 4-6 meses para ordenadores de oficina o uso intensivo.</p>
+            <ul>
+              <li>Limpieza interna de polvo y ventiladores</li>
+              <li>Revisión de disco, RAM y temperatura</li>
+              <li>Actualización de sistema y drivers</li>
+              <li>Informe técnico del estado del equipo</li>
+            </ul>
+            <div class="it-card__footer">
+              <span class="it-card__price">Presupuesto gratuito</span>
+              <a href="/contacto/?subject=Solicitar%20cotizaci%C3%B3n%3A%20Mantenimiento%20Preventivo" class="btn-primary" style="padding: 0.5rem 1.1rem;">Prevenir averías →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESO -->
+    <section class="section section-alt">
+      <div class="container">
+        <div style="text-align: center;">
+          <p class="section-label">Cómo funciona</p>
+          <h2 class="section-title">Sencillo y <em>sin letra pequeña</em></h2>
+        </div>
+        <div class="it-steps">
+          <div class="it-step">
+            <div class="it-step__num">1</div>
+            <h3>Recogida a domicilio</h3>
+            <p>Recojo tu equipo en casa u oficina, o me lo traes tú. Madrid y Barcelona.</p>
+          </div>
+          <div class="it-step">
+            <div class="it-step__num">2</div>
+            <h3>Diagnóstico gratuito</h3>
+            <p>Localizo la avería y te explico qué le pasa, en un lenguaje que entiendes.</p>
+          </div>
+          <div class="it-step">
+            <div class="it-step__num">3</div>
+            <h3>Presupuesto y reparación</h3>
+            <p>Solo empiezo cuando apruebas el presupuesto. Sin sorpresas ni costes ocultos.</p>
+          </div>
+          <div class="it-step">
+            <div class="it-step__num">4</div>
+            <h3>Entrega con garantía</h3>
+            <p>Pruebo el equipo, te lo entrego listo y con garantía por escrito del trabajo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- POR QUÉ -->
+    <section class="section">
+      <div class="container">
+        <div style="text-align: center;">
+          <p class="section-label">Por qué elegirme</p>
+          <h2 class="section-title">Un trato <em>cercano y profesional</em></h2>
+        </div>
+        <div class="it-why">
+          <div class="it-why-item">
+            <span class="icon">🎯</span>
+            <div><h3>Transparencia total</h3><p>Diagnóstico gratuito y presupuesto cerrado antes de tocar nada.</p></div>
+          </div>
+          <div class="it-why-item">
+            <span class="icon">🏠</span>
+            <div><h3>Recogida y entrega</h3><p>No pierdes tiempo en desplazamientos: voy a por tu equipo.</p></div>
+          </div>
+          <div class="it-why-item">
+            <span class="icon">🛡️</span>
+            <div><h3>Garantía por escrito</h3><p>Todo el trabajo queda garantizado y documentado.</p></div>
+          </div>
+          <div class="it-why-item">
+            <span class="icon">💬</span>
+            <div><h3>Sin tecnicismos</h3><p>Te explico la avería y la solución para que decidas con criterio.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-alt">
+      <div class="container container-narrow">
+        <div style="text-align: center;">
+          <p class="section-label">Dudas frecuentes</p>
+          <h2 class="section-title">Preguntas <em>comunes</em></h2>
+        </div>
+        <div class="it-faq">
+          <details>
+            <summary>¿Cuánto tarda una reparación?</summary>
+            <p>Depende de la avería. La mayoría de reparaciones y formateos se entregan en 2-4 días laborables. Te doy una estimación concreta en el presupuesto.</p>
+          </details>
+          <details>
+            <summary>¿El diagnóstico tiene coste?</summary>
+            <p>No. El diagnóstico es gratuito y sin compromiso. Solo pagas si apruebas el presupuesto y seguimos adelante.</p>
+          </details>
+          <details>
+            <summary>¿Hacéis copia de seguridad antes de formatear?</summary>
+            <p>Sí. Antes de cualquier formateo hago copia de seguridad de tus documentos importantes para que no pierdas nada.</p>
+          </details>
+          <details>
+            <summary>¿Qué zonas cubrís?</summary>
+            <p>Madrid y Barcelona, con recogida y entrega a domicilio. Para otras zonas, consúltame y vemos opciones.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="section">
+      <div class="container container-narrow">
+        <div class="it-cta">
+          <h2>¿Tu equipo va lento o no enciende?</h2>
+          <p>Cuéntame qué le pasa y te respondo en menos de 24 horas con un diagnóstico orientativo y sin compromiso.</p>
+          <a href="/contacto/?subject=Soporte%20IT%3A%20Diagn%C3%B3stico%20gratuito" class="btn-primary" style="font-size: 1rem; padding: 1rem 2.4rem;">Solicitar diagnóstico gratuito →</a>
+          <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-faint);">📱 También por <a href="https://wa.me/34614739345" target="_blank" rel="noopener noreferrer" style="color:#25D366;">WhatsApp</a> · 📧 <a href="mailto:joonathanesteban@gmail.com" style="color: var(--primary);">joonathanesteban@gmail.com</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container-wide">
+      <div class="footer-grid">
+        <div>
+          <h4 style="color: var(--text-main); font-size: 1.25rem; margin-bottom: 0.75rem;">Jonathan Esteban</h4>
+          <p style="color: var(--text-muted); font-size: 0.875rem;">Desarrollo web, automatización con IA y soporte técnico. Soluciones digitales para negocios que quieren trabajar mejor.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="/servicios/">Servicios</a></li>
+            <li><a href="/proyectos/">Proyectos</a></li>
+            <li><a href="/sobre-mi/">Sobre Mí</a></li>
+            <li><a href="/faq/">FAQ</a></li>
+            <li><a href="/contacto/">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/legal/aviso-legal/">Aviso Legal</a></li>
+            <li><a href="/legal/cookies/">Cookies</a></li>
+            <li><a href="/privacy-policy/">Política de Privacidad</a></li>
+            <li><a href="/terms-of-service/">Términos de Servicio</a></li>
+            <li><a href="/data-deletion/">Eliminación de Datos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="mailto:joonathanesteban@gmail.com">joonathanesteban@gmail.com</a></li>
+            <li><a href="https://linkedin.com/in/jonathanesteban" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/Jesteban1983" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://wa.me/34614739345" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Jonathan Esteban · jonathanesteban.dev</div>
+        <div>Desarrollado con HTML, CSS, JavaScript & Serverless Functions</div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/assets/js/main.js"></script>
+</body>
+</html>

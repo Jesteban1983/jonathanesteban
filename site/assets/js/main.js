@@ -31,6 +31,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+  // === DYNAMIC YEARS CALCULATOR ===
+  // Elementos con data-experience="YYYY" muestran el nº de años transcurridos
+  // desde ese año (se actualiza automáticamente cada año).
+  // Ej.: data-experience="2007" → new Date().getFullYear() - 2007
+  document.querySelectorAll('[data-experience]').forEach(el => {
+    const startYear = parseInt(el.getAttribute('data-experience'), 10);
+    if (!isNaN(startYear)) {
+      const años = new Date().getFullYear() - startYear;
+      const suffix = el.getAttribute('data-experience-suffix') || '';
+      el.textContent = `${años}${suffix}`;
+    }
+  });
+
+  // === COOKIE CONSENT BANNER ===
+  function initCookieBanner() {
+    const hasConsent = localStorage.getItem('cookie-consent');
+    if (hasConsent) return;
+
+    const banner = document.createElement('div');
+    banner.className = 'cookie-banner';
+    banner.innerHTML = `
+      <p>Este sitio web utiliza cookies técnicas y de preferencias para mejorar tu experiencia. Consulta nuestra <a href="/legal/cookies/">Política de Cookies</a> y <a href="/legal/privacidad/">Política de Privacidad</a>.</p>
+      <div class="cookie-banner-actions">
+        <button class="btn btn-outline" id="cookie-decline">Rechazar</button>
+        <button class="btn btn-primary" id="cookie-accept">Aceptar cookies</button>
+      </div>
+    `;
+    document.body.appendChild(banner);
+    // Trigger reflow for transition
+    requestAnimationFrame(() => banner.classList.add('visible'));
+
+    document.getElementById('cookie-accept').addEventListener('click', () => {
+      localStorage.setItem('cookie-consent', 'accepted');
+      banner.classList.remove('visible');
+      setTimeout(() => banner.remove(), 300);
+    });
+
+    document.getElementById('cookie-decline').addEventListener('click', () => {
+      localStorage.setItem('cookie-consent', 'declined');
+      banner.classList.remove('visible');
+      setTimeout(() => banner.remove(), 300);
+    });
+  }
+  initCookieBanner();
+
   // === WHATSAPP FLOATING BUTTON ===
   const waBtn = document.createElement('a');
   waBtn.className = 'whatsapp-float';
