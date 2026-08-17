@@ -39,15 +39,25 @@ export function initNav() {
       }
     });
 
-    mobileNav.querySelectorAll('a').forEach(link => {
-      // Don't close the whole mobile menu when clicking a dropdown TOGGLE
-      // (the link that sits directly inside .nav-item-dropdown and has a .dropdown-menu sibling)
-      const isToggle = link.parentElement?.classList.contains('nav-item-dropdown')
-                    && link.nextElementSibling?.classList.contains('dropdown-menu');
-      if (link.closest('.nav-mobile') && isToggle) return;
-      link.addEventListener('click', () => {
-        closeMenu();
-      });
+    // Event delegation on mobile nav — single listener for all clicks
+    mobileNav.addEventListener('click', (e) => {
+      const link = e.target.closest('a');
+      if (!link) return;
+
+      // If it's the "Servicios" dropdown toggle inside mobile nav
+      const isMobileToggle = link.matches('.nav-mobile .nav-item-dropdown > a');
+      if (isMobileToggle) {
+        e.preventDefault();
+        const menu = link.nextElementSibling;
+        if (menu && menu.classList.contains('dropdown-menu')) {
+          const isOpen = menu.classList.toggle('open');
+          link.setAttribute('aria-expanded', String(isOpen));
+        }
+        return; // ← keep mobile nav open
+      }
+
+      // Any other link → navigate and close the menu
+      closeMenu();
     });
 
     document.addEventListener('keydown', (event) => {
@@ -56,19 +66,6 @@ export function initNav() {
       }
     });
   }
-
-  // Mobile dropdown toggle
-  document.querySelectorAll('.nav-mobile .nav-item-dropdown > a').forEach(toggle => {
-    toggle.addEventListener('click', (e) => {
-      e.preventDefault();
-      const parent = toggle.parentElement;
-      const menu = parent.querySelector('.dropdown-menu');
-      if (menu) {
-        const isOpen = menu.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', String(isOpen));
-      }
-    });
-  });
 
   // Desktop dropdown toggle for touch devices (tablets)
   // Prevents navigation and toggles dropdown via class on touch

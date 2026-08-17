@@ -137,18 +137,33 @@
 @media (max-width: 900px) {
   .hero-grid {
     grid-template-columns: 1fr;
-    text-align: center;
+    text-align: left;
+    gap: 2rem;
+  }
+  .hero-title {
+    text-align: left;
+    text-wrap: pretty;
+  }
+  .hero-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.7;
   }
   .hero-avatar-frame {
     margin-inline: auto;
+    order: -1;
   }
   .hero-location,
-  .hero-actions,
+  .hero-actions {
+    justify-content: flex-start;
+  }
   .hero-stats {
-    justify-content: center;
+    justify-content: flex-start;
+    gap: 2rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
   }
   .hero-description {
-    margin-inline: auto;
+    margin-inline: 0;
   }
 }
 
