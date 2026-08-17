@@ -40,6 +40,11 @@ export function initNav() {
     });
 
     mobileNav.querySelectorAll('a').forEach(link => {
+      // Don't close the whole mobile menu when clicking a dropdown TOGGLE
+      // (the link that sits directly inside .nav-item-dropdown and has a .dropdown-menu sibling)
+      const isToggle = link.parentElement?.classList.contains('nav-item-dropdown')
+                    && link.nextElementSibling?.classList.contains('dropdown-menu');
+      if (link.closest('.nav-mobile') && isToggle) return;
       link.addEventListener('click', () => {
         closeMenu();
       });
@@ -61,6 +66,29 @@ export function initNav() {
       if (menu) {
         const isOpen = menu.classList.toggle('open');
         toggle.setAttribute('aria-expanded', String(isOpen));
+      }
+    });
+  });
+
+  // Desktop dropdown toggle for touch devices (tablets)
+  // Prevents navigation and toggles dropdown via class on touch
+  document.querySelectorAll('.nav-links .nav-item-dropdown > a').forEach(toggle => {
+    toggle.addEventListener('click', function (e) {
+      // Only intercept on touch-capable devices (not real mouse clicks)
+      if ('ontouchstart' in window) {
+        const parent = this.parentElement;
+        const alreadyOpen = parent.classList.contains('dropdown-touch-open');
+        if (alreadyOpen) {
+          // Second tap → let the link navigate normally
+          parent.classList.remove('dropdown-touch-open');
+          return;
+        }
+        e.preventDefault();
+        // Close any other open desktop dropdowns
+        document.querySelectorAll('.nav-links .nav-item-dropdown.dropdown-touch-open').forEach(el => {
+          if (el !== parent) el.classList.remove('dropdown-touch-open');
+        });
+        parent.classList.add('dropdown-touch-open');
       }
     });
   });
