@@ -22,7 +22,7 @@
     "title": "Agentes de IA & Automatización",
     "icon": "bot",
     "short_desc": "Construcción de asistentes inteligentes con OpenClaw, Composio MCP y pipelines automatizados.",
-    "full_desc": "Implementación de agentes de IA capaces de conectarse con tus herramientas diarias (Gmail, Google Drive, Calendar, Telegram, CRM). Flujos de trabajo automatizados sin intervención humana para clasificación de incidencias, respuestas e integración de modelos LLM.",
+    "full_desc": "Implementación de asistentes de IA conectados con herramientas como Gmail, Google Drive, Calendar, Telegram o CRM. Flujos con reglas, registros y aprobación humana para clasificación de incidencias, borradores e integración de modelos LLM.",
     "features": ["Agentes OpenClaw personalizados", "Herramientas Composio MCP", "Integraciones con Google Workspace & Telegram", "Pipelines n8n & Python"],
     "starting_price": 650
   },

@@ -3,7 +3,7 @@
 .legal-doc {
   background-color: var(--surface-color);
   border: 1px solid var(--border-color);
-  border-radius: 1.25rem;
+  border-radius: 0.75rem;
   padding: clamp(2rem, 5vw, 4rem);
   line-height: 1.8;
 }

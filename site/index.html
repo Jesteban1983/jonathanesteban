@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jonathan Esteban | Desarrollador Web, Automatización & Soporte IT · Barcelona</title>
-  <meta name="description" content="Jonathan Esteban — Desarrollador web en formación (4Geeks) y técnico IT. Desarrollo web, automatización con n8n y agentes de IA para negocios que quieren trabajar mejor. Proyectos reales con demos.">
-  <meta name="keywords" content="desarrollador web Barcelona, automatización n8n, agentes IA, soporte IT, FastAPI Python, Jonathan Esteban">
+  <meta name="description" content="Desarrollo web y automatizaciones prácticas para pymes y profesionales. Portfolio verificable, alcance claro y soporte técnico local en Barcelona.">
   <meta name="author" content="Jonathan Esteban Barona">
   <meta name="google-site-verification" content="m7HiJ34wfzUNV">
   <meta name="robots" content="index, follow">
@@ -15,14 +14,17 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://jonathanesteban.dev/">
   <meta property="og:title" content="Jonathan Esteban | Desarrollador Web & Soporte IT">
-  <meta property="og:description" content="Desarrollo web, automatización con n8n y agentes de IA. Proyectos reales con demos en vivo.">
+  <meta property="og:description" content="Desarrollo web y automatizaciones prácticas con alcance claro, portfolio verificable y atención directa desde Barcelona.">
+  <meta property="og:image" content="https://jonathanesteban.dev/assets/img/profile/jonathan-esteban.jpg">
+  <meta property="og:image:alt" content="Jonathan Esteban, desarrollador web y técnico IT en Barcelona">
   <meta property="og:locale" content="es_ES">
   <meta property="og:site_name" content="Jonathan Esteban">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Jonathan Esteban | Desarrollador Web & Soporte IT">
-  <meta name="twitter:description" content="Desarrollo web, automatización con n8n y agentes de IA. Proyectos reales con demos.">
+  <meta name="twitter:description" content="Desarrollo web y automatizaciones prácticas para pymes y profesionales.">
+  <meta name="twitter:image" content="https://jonathanesteban.dev/assets/img/profile/jonathan-esteban.jpg">
 
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico">
@@ -41,6 +43,7 @@
   <link rel="stylesheet" href="/assets/css/base.css">
   <link rel="stylesheet" href="/assets/css/layout.css">
   <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/effects.css">
   <link rel="stylesheet" href="/assets/css/pages.css">
 
   <!-- JSON-LD Stacked Schemas for SEO & GEO -->
@@ -62,7 +65,7 @@
       "https://github.com/Jesteban1983"
     ],
     "knowsAbout": ["Python", "FastAPI", "TypeScript", "React", "Next.js", "PostgreSQL", "AI Agents", "OpenClaw", "n8n"],
-    "alumniOf": {"@type": "Organization", "name": "4Geeks Academy Madrid"}
+    "knowsLanguage": ["es"]
   }
   </script>
   <script type="application/ld+json">
@@ -141,34 +144,73 @@
       <div class="container-wide">
         <div class="hero-grid">
           <div>
-            <span class="badge-status badge-active">Disponible para Proyectos</span>
-            <h1 class="hero-title">Desarrollo web, <em>automatización</em> y agentes de IA para negocios que quieren trabajar mejor</h1>
-            <p class="hero-subtitle">Construyo aplicaciones web, automatizaciones y agentes de IA aplicando lo que aprendo en 4Geeks Academy. Cada proyecto de esta web es un caso de práctica real, documentado de principio a fin.
-            </p>
-            <br>
+            <span class="badge-status badge-active">🟢 Disponible para proyectos</span>
+            <h1 class="hero-title">Desarrollo web y <em>automatizaciones prácticas</em> para pymes y profesionales</h1>
+            <p class="hero-subtitle">Creo webs, integraciones y herramientas internas con un alcance claro. Trabajo desde Barcelona, documento cada entrega y te explico desde el inicio qué puedo resolver y qué necesita otro especialista.</p>
             <div class="hero-actions">
-              <a href="/contacto/" class="btn-primary">Solicitar Presupuesto</a>
-              <a href="/servicios/" class="btn-secondary">Ver Servicios →</a>
+              <a href="/contacto/" class="btn-primary">Cuéntame tu proyecto</a>
+              <a href="/proyectos/" class="btn-secondary">Ver proyectos →</a>
             </div>
 
             <div class="hero-stats">
               <div>
-                <div class="hero-stat-val" data-experience="2021" data-experience-suffix="+">5+</div>
-                <div class="hero-stat-lbl">Experiencia en Soporte técnico</div>
+                <div class="hero-stat-val">5 años</div>
+                <div class="hero-stat-lbl">Soporte técnico local desde 2020</div>
               </div>
               <div>
-                <div class="hero-stat-val">6</div>
-                <div class="hero-stat-lbl">Proyectos</div>
+                <div class="hero-stat-val">+6</div>
+                <div class="hero-stat-lbl">Proyectos publicados en portfolio</div>
               </div>
               <div>
                 <div class="hero-stat-val">3</div>
-                <div class="hero-stat-lbl">Areas de servicio</div>
+                <div class="hero-stat-lbl">Áreas de servicio: Web, Auto e IT</div>
               </div>
             </div>
           </div>
 
-          <div class="hero-avatar-frame">
-            <img src="/assets/img/profile/jonathan-esteban.jpg" alt="Fotografía profesional de Jonathan Esteban Barona">
+          <div class="hero-terminal-wrap">
+            <div class="terminal-window" id="heroTerminal">
+  <!-- Title bar — macOS traffic lights -->
+  <div class="terminal-titlebar">
+    <span class="terminal-dot terminal-dot--red"></span>
+    <span class="terminal-dot terminal-dot--yellow"></span>
+    <span class="terminal-dot terminal-dot--green"></span>
+    <span class="terminal-title">agent@jonathanesteban — bash</span>
+    <span class="terminal-git-branch">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M2.6 13.6l7 7c.8.8 2 .8 2.8 0l6.9-6.9c.8-.8.8-2 0-2.8l-7-7c-.8-.8-2-.8-2.8 0L2.6 10.8c-.8.8-.8 2 0 2.8z"/></svg>
+      main
+    </span>
+  </div>
+  <!-- Tab bar -->
+  <div class="terminal-tabs">
+    <div class="terminal-tab terminal-tab--active" data-terminal-tab="python">
+      <span class="terminal-tab-icon">🐍</span>
+      agent.py
+    </div>
+    <div class="terminal-tab" data-terminal-tab="typescript">
+      <span class="terminal-tab-icon">⚡</span>
+      workflow.ts
+    </div>
+    <div class="terminal-tab" data-terminal-tab="sql">
+      <span class="terminal-tab-icon">🗄️</span>
+      schema.sql
+    </div>
+  </div>
+  <!-- Code area -->
+  <div class="terminal-body">
+    <div class="terminal-code" data-terminal-code></div>
+  </div>
+  <!-- Status bar -->
+  <div class="terminal-statusbar">
+    <span class="terminal-status-item">
+      <span class="terminal-status-dot"></span>
+      Live Session
+    </span>
+    <span class="terminal-status-item" data-terminal-status>Python 3.12.2</span>
+    <span class="terminal-status-spacer"></span>
+    <span class="terminal-status-item">FastAPI + n8n MCP • 99.9% uptime</span>
+  </div>
+</div>
           </div>
         </div>
       </div>
@@ -178,28 +220,28 @@
     <section class="section">
       <div class="container">
         <div>
-          <p class="section-label">Qué ofrezco</p>
-          <h2 class="section-title">Tres formas de ayudar a tu  <em>negocio</em></h2>
-          <p class="section-desc">Servicios enfocados en resultados: software que se usa, automatizaciones que ahorran tiempo y soporte que mantiene todo en marcha.</p>
+          <p class="section-label">Elige tu necesidad</p>
+          <h2 class="section-title">¿Qué necesitas <em>resolver?</em></h2>
+          <p class="section-desc">Cada servicio tiene un alcance distinto. Reviso primero tu caso y te digo qué opción encaja, sin añadir tecnología innecesaria.</p>
         </div>
         <div class="home-services-grid">
           <a href="/servicios/desarrollo-web/" class="home-service-card">
-            <span class="home-service-icon">💻</span>
-            <h3>Desarrollo Web</h3>
-            <p>Sitios web, landing pages y APIs backend construidos con tecnología moderna y orientados a resultados.</p>
-            <span class="home-service-link">Ver servicio →</span>
+            <span class="home-service-icon">01 / WEB</span>
+            <h3>Necesito una web</h3>
+            <p>Landing pages, sitios corporativos, aplicaciones y APIs con diseño adaptable, SEO técnico básico y entrega documentada.</p>
+            <span class="home-service-link">Revisar desarrollo web →</span>
           </a>
           <a href="/servicios/automatizacion/" class="home-service-card home-service-card--accent">
-            <span class="home-service-badge">NUEVO</span>
-            <span class="home-service-icon">⚙️</span>
-            <h3>Automatización & Agentes de IA</h3>
-            <p>Flujos con n8n, integraciones Composio y agentes autónomos que eliminan tareas repetitivas.</p>
-            <span class="home-service-link">Ver servicio →</span>
+            <span class="home-service-badge">EN FORMACIÓN</span>
+            <span class="home-service-icon">02 / AUTO</span>
+            <h3>Quiero automatizar una tarea</h3>
+            <p>Flujos n8n e integraciones con reglas, registro de errores y aprobación humana para las acciones sensibles.</p>
+            <span class="home-service-link">Revisar automatización →</span>
           </a>
           <a href="/servicios/soporte-it/" class="home-service-card">
-            <span class="home-service-icon">🔧</span>
-            <h3>Soporte IT</h3>
-            <p>Reparación, mantenimiento y formateo de ordenadores en Madrid y Barcelona. Recogida a domicilio.</p>
+            <span class="home-service-icon">03 / IT</span>
+            <h3>Tengo una incidencia técnica</h3>
+            <p>Reparación, mantenimiento y formateo de ordenadores en Barcelona y alrededores, con recogida bajo disponibilidad.</p>
             <span class="home-service-link">Ver servicio →</span>
           </a>
         </div>
@@ -210,15 +252,15 @@
     <section class="section">
       <div class="container">
         <div>
-          <p class="section-label">Trabajo reciente</p>
-          <h2 class="section-title">Proyectos que <em>estoy construyendo</em></h2>
-          <p class="section-desc">Casos reales de desarrollo web, backend e inteligencia artificial, documentados de principio a fin.</p>
+          <p class="section-label">Evidencia</p>
+          <h2 class="section-title">Proyectos que puedes <em>revisar</em></h2>
+          <p class="section-desc">Una selección de trabajos de portfolio. Indico su estado y enlazo el código o el caso de estudio cuando está disponible.</p>
         </div>
 
         <div class="home-projects-grid">
           <div class="card">
             <span class="badge-status badge-active">En desarrollo</span>
-            <h3>📦 TrackFlow · Gestión de inventario</h3>
+            <h3>TrackFlow · Gestión de inventario</h3>
             <p>API REST con FastAPI, PostgreSQL/Supabase y backoffice Next.js para logística con stock en tiempo real.</p>
             <div class="home-projects-tags">
               <span class="badge-tech">Python</span>
@@ -231,8 +273,8 @@
 
           <div class="card">
             <span class="badge-status badge-info">Completado</span>
-            <h3>🤖 ClawMate · Agente personal de IA</h3>
-            <p>Asistente autónomo con OpenClaw y Composio MCP conectado a Gmail, Calendar, Drive y Telegram.</p>
+            <h3>ClawMate · Asistente personal de IA</h3>
+            <p>Proyecto de asistente con OpenClaw y Composio MCP conectado a Gmail, Calendar, Drive y Telegram.</p>
             <div class="home-projects-tags">
               <span class="badge-tech">OpenClaw</span>
               <span class="badge-tech">Composio MCP</span>
@@ -243,7 +285,7 @@
 
           <div class="card">
             <span class="badge-status badge-info">Completado</span>
-            <h3>💬 Talk to the Machine</h3>
+            <h3>Talk to the Machine</h3>
             <p>Chat con IA en tiempo real usando Groq API y LLaMA 3, con interfaz Next.js responsive.</p>
             <div class="home-projects-tags">
               <span class="badge-tech">Next.js</span>
@@ -253,89 +295,65 @@
             <a href="https://github.com/4GeeksAcademy/Jesteban1983-talk-to-the-machine.git" target="_blank" rel="noopener noreferrer" class="home-projects-link">Ver en GitHub →</a>
           </div>
         </div>
-        <div style="text-align: center; margin-top: 2rem;">
+        <div class="home-section-action">
           <a href="/proyectos/" class="btn-secondary">Ver todos los proyectos →</a>
         </div>
       </div>
     </section>
 
-    <!-- Featured Projects + Tech Stack (Opción C) -->
+    <!-- Proceso -->
     <section class="section section-alt">
       <div class="container">
         <div>
-          <p class="section-label">Por qué trabajar conmigo</p>
-          <h2 class="section-title">Creo software que resuelve problemas</h2>
-          <p class="section-desc">Combino mi experiencia en soporte técnico con lo que aprendo cada día en  <strong style="color: var(--text-main);">4Geeks Academy</strong> . Cada proyecto lo enfoco como lo haría con un encargo real: problema, solución y resultado.<a href="/contacto/" style="color: var(--primary); text-decoration: underline;">solicita tu presupuesto</a>.</p>
+          <p class="section-label">Proceso</p>
+          <h2 class="section-title">Cómo trabajo: <em>cuatro pasos</em></h2>
+          <p class="section-desc">Antes de empezar acordamos el objetivo, los entregables, el plazo y los límites. Los cambios fuera de alcance se valoran por separado.</p>
         </div>
-
-        <!-- Proyecto destacado principal -->
-        <div style="background: var(--surface-color); border: 1px solid var(--border-color); border-radius: 1.25rem; padding: 2rem; transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;" onmouseover="this.style.borderColor='var(--primary)'; this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 40px rgba(0,0,0,0.3)'" onmouseout="this.style.borderColor=''; this.style.transform=''; this.style.boxShadow=''">
-          <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 1.5rem;">
-            <div style="flex: 2; min-width: 260px;">
-              <h3 style="font-family: var(--font-display); font-size: 1.75rem; font-weight: 400; margin-bottom: 0.5rem;">Aprendizaje aplicado</h3>
-              <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 1rem;">Cada proyecto de esta web se construye aplicando lo que aprendo en 4Geeks Academy a problemas reales, no con ejercicios aislados.</p>
-
-            </div>
-            <div style="flex: 1; min-width: 180px; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 1rem; padding: 1.25rem;">
-              <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-faint); margin-bottom: 0.75rem;">Stacks de proyectos</p>
-              <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
-                <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.3rem 0.6rem; border-radius: 0.4rem; color: var(--text-muted);">🐍 Python</span>
-                <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.3rem 0.6rem; border-radius: 0.4rem; color: var(--text-muted);">⚡ FastAPI</span>
-                <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.3rem 0.6rem; border-radius: 0.4rem; color: var(--text-muted);">🗄️ PostgreSQL</span>
-                <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.3rem 0.6rem; border-radius: 0.4rem; color: var(--text-muted);">⚛️ Next.js</span>
-                <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.3rem 0.6rem; border-radius: 0.4rem; color: var(--text-muted);">🔐 JWT</span>
-                <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.3rem 0.6rem; border-radius: 0.4rem; color: var(--text-muted);">☁️ Supabase</span>
-                <span style="font-size: 0.7rem; background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.3rem 0.6rem; border-radius: 0.4rem; color: var(--text-muted);">🧪 Pytest</span>
-              </div>
-            </div>
-          </div>
+        <div class="home-process-grid">
+          <article class="home-process-step"><span>01</span><h3>Diagnóstico</h3><p>Reviso la necesidad, los usuarios y las restricciones antes de recomendar una solución.</p></article>
+          <article class="home-process-step"><span>02</span><h3>Propuesta</h3><p>Recibes alcance, entregables, plazo, precio y exclusiones por escrito.</p></article>
+          <article class="home-process-step"><span>03</span><h3>Ejecución</h3><p>Trabajo con entregas revisables y comunico bloqueos o decisiones pendientes.</p></article>
+          <article class="home-process-step"><span>04</span><h3>Entrega</h3><p>Incluye pruebas acordadas, despliegue, documentación y período de correcciones.</p></article>
         </div>
+      </div>
+    </section>
 
-        <!-- Grid proyectos secundarios -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 1.5rem;">
-          <div class="card">
-            <h2 style="font-family: var(--font-display); font-size: 1.75rem; font-weight: 400; margin-bottom: 0.5rem;">Comunicación clara</h2>
-            <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 1rem;">Hablo en español de negocios, no en jerga técnica. Sabes siempre en qué punto está tu proyecto.</p>
-          </div>
-          <div class="card">
-            <h2 style="font-family: var(--font-display); font-size: 1.75rem; font-weight: 400; margin-bottom: 0.5rem;">Stack moderno y mantenible</h2>
-            <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 1rem;">Next.js, FastAPI, PostgreSQL, despliegues en Vercel y Supabase. Código que tu equipo puede mantener.</p>
-          </div>
-           <div class="card">
-            <h2 style="font-family: var(--font-display); font-size: 1.75rem; font-weight: 400; margin-bottom: 0.5rem;">IA aplicada, no decorativa</h2>
-            <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 1rem;">Next.js, FastAPI, PostgreSQL, agentes y automatizaciones que conectan con tus herramientas reales — no demos de juguete.</p>
-          </div>
+    <!-- Quién está detrás (tarjeta con botón al fondo) -->
+    <section class="section section-alt">
+      <div class="container">
+        <div>
+          <p class="section-label">Quién está detrás</p>
+          <h2 class="section-title">Experiencia técnica previa, <em>formación actual</em></h2>
+          <p class="section-desc">Soy Jonathan Esteban, técnico IT en reconversión hacia desarrollo web e ingeniería de IA. Mi experiencia previa en soporte aporta diagnóstico y comunicación; mi trabajo actual se demuestra con proyectos, código y formación en curso.</p>
         </div>
-
-        <!-- Tech Stack Bar -->
-        <div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
-          <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-faint); text-align: center; margin-bottom: 1.25rem;">Tecnologías que domino</p>
-          <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem;">
-            <span class="card" style="font-size: 0.8rem; padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-weight: 600;">TypeScript</span>
-            <span class="card" style="font-size: 0.8rem; padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-weight: 600;">React</span>
-            <span class="card" style="font-size: 0.8rem; padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-weight: 600;">Next.js</span>
-            <span class="card" style="font-size: 0.8rem; padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-weight: 600;">Python</span>
-            <span class="card" style="font-size: 0.8rem; padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-weight: 600;">FastAPI</span>
-            <span class="card" style="font-size: 0.8rem; padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-weight: 600;">PostgreSQL</span>
-            <span class="card" style="font-size: 0.8rem; padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-weight: 600;">Supabase</span>
-            <span class="card" style="font-size: 0.8rem; padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-weight: 600;">OpenClaw</span>
-            <span class="card" style="font-size: 0.8rem; padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-weight: 600;">Docker</span>
-            <span class="card" style="font-size: 0.8rem; padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-weight: 600;">Git</span>
-            <span class="card" style="font-size: 0.8rem; padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-weight: 600;">Figma</span>
-            <span class="card" style="font-size: 0.8rem; padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-weight: 600;">n8n</span>
+        <div class="home-profile-band">
+          <div class="home-profile-facts">
+            <div><strong>Base:</strong> Barcelona</div>
+            <div><strong>Formación:</strong> AI Engineering en 4Geeks Academy</div>
+            <div><strong>Forma de trabajo:</strong> comunicación directa y entregas documentadas</div>
           </div>
+          <a href="/sobre-mi/" class="btn-secondary">Conocer mi trayectoria →</a>
         </div>
       </div>
     </section>
 
     <!-- CTA Final -->
     <section class="section section-alt">
-      <div class="container container-narrow">
+      <div class="container">
         <div class="home-cta">
           <h2>¿Tienes un proyecto en mente?</h2>
-          <p>Cuéntame qué necesitas y te respondo en menos de 24 horas con una propuesta clara y sin compromiso.</p>
-          <a href="/contacto/" class="btn-primary" style="font-size: 1rem; padding: 1rem 2.4rem;">Solicitar Presupuesto</a>
-          <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-faint);">📧 <a href="mailto:joonathanesteban@gmail.com" style="color: var(--primary);">joonathanesteban@gmail.com</a> · 📱 <a href="https://wa.me/34614739345" target="_blank" rel="noopener noreferrer" style="color:#25D366;">WhatsApp</a></p>
+          <p>Cuéntame el problema, el plazo y qué resultado esperas. Revisaré la viabilidad y los siguientes pasos antes de preparar una propuesta.</p>
+          <a href="/contacto/" class="btn-primary">Contarme mi necesidad</a>
+          <div class="home-cta-contact">
+            <a href="mailto:joonathanesteban@gmail.com" class="btn-contact email-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              Enviar email
+            </a>
+            <a href="https://wa.me/34614739345" target="_blank" rel="noopener noreferrer" class="btn-contact whatsapp-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.507 14.107l-3.112-1.328a.63.63 0 0 0-.69.11l-.82.82a.63.63 0 0 1-.78.07l-1.8-1.2a2.54 2.54 0 0 1-.9-1.2.63.63 0 0 1 .08-.8l.82-.82a.63.63 0 0 0 .11-.69l-1.33-3.11a.63.63 0 0 0-.96-.1L7.45 7.35a4.41 4.41 0 0 0 1.04 4.88l2.75 2.75a4.41 4.41 0 0 0 4.88 1.04l1.59-1.59a.63.63 0 0 0-.1-.96l.005.007z"/><path d="M21 12a9 9 0 1 1-5.21-8.22"/></svg>
+              Escribir por WhatsApp
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -348,6 +366,10 @@
         <div>
           <h4 style="color: var(--text-main); font-size: 1.25rem; margin-bottom: 0.75rem;">Jonathan Esteban</h4>
           <p style="color: var(--text-muted); font-size: 0.875rem;">Desarrollo web, automatización con IA y soporte técnico. Soluciones digitales para negocios que quieren trabajar mejor.</p>
+          <div class="footer-status">
+            <span class="footer-status-dot"></span>
+            Sistema en producción 24/7
+          </div>
         </div>
         <div class="footer-col">
           <h4>Navegación</h4>
@@ -387,5 +409,6 @@
   </footer>
 
   <script type="module" src="/assets/js/main.js"></script>
+  <script src="/assets/js/terminal-standalone.js"></script>
 </body>
 </html>

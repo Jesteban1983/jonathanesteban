@@ -2,7 +2,7 @@
 /* max-width uses !important to win over Tailwind CDN's responsive container */
 
 .container {
-  max-width: var(--content-default) !important;
+  max-width: var(--content-wide) !important;
   margin-inline: auto;
   padding-inline: var(--gutter-x);
   box-sizing: border-box;
@@ -23,7 +23,12 @@
 }
 
 .section {
-  padding-block: clamp(4rem, 8vw, 6rem);
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+}
+
+/* Avoid doubled gaps when two sections sit back to back */
+.section + .section {
+  padding-top: 0;
 }
 
 .section-alt {
@@ -51,7 +56,7 @@
   font-size: 1.125rem;
   color: var(--text-muted);
   max-width: 55ch;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 /* Header Navigation - Flexbox layout with space-between */
@@ -321,5 +326,29 @@
 @media (max-width: 768px) {
   .footer-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 2rem;
   }
+}
+
+@media (max-width: 520px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.legal-page {
+  padding-top: calc(var(--nav-height) + 3rem);
+  padding-bottom: 4rem;
+}
+
+.footer-brand-title {
+  color: var(--text-main);
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.footer-brand-copy {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  max-width: 34ch;
 }

@@ -10,14 +10,16 @@
   --border-hover-color: #3b82f6;
   
   --text-main: #e2e2f0;
+  --text-secondary: #9494b8;
   --text-muted: #8888aa;
-  --text-faint: #4a4a6a;
+  --text-faint: #76769a;
   --text-inverse: #09090f;
 
   --primary: #3b82f6;
   --primary-hover: #60a5fa;
   --primary-dark: #1d4ed8;
   --primary-highlight: #1e2d4a;
+  --secondary-color: #7bd0ff;
   
   --success: #4ade80;
   --warning: #fbbf24;
@@ -29,8 +31,8 @@
   --font-mono: 'Courier New', Courier, monospace;
 
   /* Spacing & Layout */
-  --content-narrow: 1200px;
-  --content-default: 1200px;
+  --content-narrow: 760px;
+  --content-default: 1080px;
   --content-wide: 1200px;
   --gutter-x: 1.5rem;
   --nav-height: 64px;
@@ -50,14 +52,16 @@
   --border-hover-color: #1d4ed8;
 
   --text-main: #0f1123;
+  --text-secondary: #5a5f85;
   --text-muted: #5a6080;
-  --text-faint: #9aa0bb;
+  --text-faint: #68708f;
   --text-inverse: #ffffff;
 
   --primary: #1d4ed8;
   --primary-hover: #1e40af;
   --primary-dark: #1e3a8a;
   --primary-highlight: #dbeafe;
+  --secondary-color: #0ea5e9;
 
   --success: #16a34a;
   --warning: #d97706;

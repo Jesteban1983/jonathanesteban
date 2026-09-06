@@ -15,7 +15,7 @@
     "title": "ClawMate — Agente Personal de IA",
     "category": "ai",
     "featured": true,
-    "description": "Asistente autónomo de IA integrado con OpenClaw y Composio MCP. Conexiones bidireccionales con 8+ servicios de Google (Gmail, Calendar, Drive), Telegram Bot, 4Geeks Academy API y pipelines automatizados de video.",
+    "description": "Asistente experimental de IA integrado con OpenClaw y Composio MCP. Conexiones con servicios de Google, Telegram Bot, 4Geeks Academy API y flujos automatizados con aprobación para acciones sensibles.",
     "tags": ["OpenClaw", "Composio MCP", "Python", "Google APIs", "Telegram"],
     "case_study_url": "/proyectos/casos/automatizacion-leads/",
     "status": "Completado"

@@ -3,7 +3,7 @@
     "id": "faq-1",
     "category": "general",
     "question": "¿Qué servicios ofrece Jonathan Esteban?",
-    "answer": "Ofrezco soluciones integrales de desarrollo web Full-Stack (React/Next.js), construcción de APIs REST con FastAPI y Python, creación de Agentes de IA autónomos (OpenClaw + Composio MCP), automatización de procesos mediante n8n y soporte informático operativo profesional."
+    "answer": "Ofrezco desarrollo web, APIs con FastAPI y Python, automatizaciones mediante n8n, asistentes de IA con supervisión y soporte informático local en Barcelona. El alcance se define antes de empezar."
   },
   {
     "id": "faq-2",
@@ -21,7 +21,7 @@
     "id": "faq-4",
     "category": "remoto",
     "question": "¿Está disponible para colaborar en proyectos remotos fuera de España?",
-    "answer": "Sí, totalmente. Aunque estoy basado en España (Madrid / Barcelona), trabajo habitualmente con empresas y clientes en remoto a nivel internacional, adaptándome a diferentes zonas horarias y canales de comunicación (Slack, Telegram, Google Meet)."
+    "answer": "Sí. Los proyectos de desarrollo y automatización pueden realizarse en remoto desde Barcelona. Antes de empezar acordamos horarios, canales de comunicación y calendario de entregas."
   },
   {
     "id": "faq-5",
