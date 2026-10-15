@@ -1,0 +1,65 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# jonathanesteban.dev — Netlify deploy config
+# El sitio es Astro (astro-portfolio/). El build genera dist/ dentro de esa
+# carpeta. Netlify debe leer el repo RAIZ y apuntar base a astro-portfolio.
+# Añadido 2026-10-15 para resolver el 404 "Page not found" provocado por el
+# borrado del antiguo netlify.toml (que apuntaba a site/, ya inexistente).
+# ─────────────────────────────────────────────────────────────────────────────
+
+[build]
+  base = "astro-portfolio"
+  command = "npm ci && npm run build"
+  publish = "dist"
+
+# Versión de Node exigida por package.json ("engines": { "node": ">=22.12.0" })
+[build.environment]
+  NODE_VERSION = "22"
+
+# === HEADERS DE SEGURIDAD Y PRIVACIDAD ===
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# === REDIRECCIONES LEGACY (solo para rutas que YA NO existen en el Astro) ===
+# /legal/privacidad/ del sitio antiguo → /privacy-policy/ (Astro)
+[[redirects]]
+  from = "/legal/privacidad/"
+  to = "/privacy-policy/"
+  status = 301
+  force = true
+
+# /servicios/soporte-it/ del sitio antiguo → /servicios/ (índice de servicios)
+[[redirects]]
+  from = "/servicios/soporte-it/*"
+  to = "/servicios/"
+  status = 301
+  force = true
+
+# Páginas de servicio antiguas → /servicios/ (se reorganizaron los nombres)
+[[redirects]]
+  from = "/servicios/reparacion-ordenadores-portatiles/*"
+  to = "/servicios/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/formateo-limpieza-optimizacion/*"
+  to = "/servicios/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/mantenimiento-preventivo-pc/*"
+  to = "/servicios/mantenimiento-pc/"
+  status = 301
+  force = true
+
+# Subdominio Netlify → dominio propio
+[[redirects]]
+  from = "https://jonathanesteban.netlify.app/*"
+  to = "https://jonathanesteban.dev/:splat"
+  status = 301
