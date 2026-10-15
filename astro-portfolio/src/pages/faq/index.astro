@@ -1,0 +1,244 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Preguntas Frecuentes (FAQ) | Jonathan Esteban · Soporte Informático Barcelona" description="Respuestas a las dudas más comunes sobre servicios de soporte informático, precios, cobertura y garantía en Barcelona." canonical="/faq/">
+  <style is:global>
+    .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+      background: none;
+      border: none;
+      color: var(--color-text-main);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+      font-family: inherit;
+    }
+    .faq-icon {
+      font-size: 0.85rem;
+      color: var(--color-text-faint);
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      padding: 0 1.5rem;
+      color: var(--color-text-muted);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding: 0 1.5rem 1.25rem;
+    }
+  </style>
+
+  <script is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Qué servicios de soporte informático ofreces?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Soporte helpdesk N1, mantenimiento y reparación de PC, instalación de sistemas operativos, diagnóstico y configuración de redes, soporte ofimático y licencias originales low-cost."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Ofreces presupuesto sin compromiso?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, todos los presupuestos son sin compromiso. Si el diagnóstico no deriva en reparación, solo se cobran 15€ si no hubo trabajo posterior."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuál es la zona de cobertura?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Trabajo presencial en L'Hospitalet de Llobregat, Barcelona ciudad y municipios cercanos. También ofrezco asistencia remota."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto tardas en responder o venir?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Consultas por email o formulario las respondo en menos de 24 horas. Si es urgente, por WhatsApp en menos de 2 horas en horario laboral. Visitas presenciales en 24-48 horas."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Vienes a mi casa o tengo que llevar el PC?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Las dos opciones son posibles. Puedes traer el equipo a L'Hospitalet o voy presencial a domicilio en Barcelona y alrededores. También ofrezco asistencia remota."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué pasa si no puedes repararlo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Si la reparación no es viable, te lo digo y te aconsejo alternativas. El diagnóstico solo se cobra si no hay reparación (15€). Si no hay solución, no pagas nada."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Atiendes fines de semana o festivos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, para urgencias atiendo sábados por la mañana con cita previa. Domingos y festivos solo para clientes con contrato de mantenimiento."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <main id="main-content">
+    <section class="hero-base">
+      <div class="container">
+        <div class="fade-in">
+          <p class="hero-eyebrow">Centro de ayuda</p>
+          <h1 class="hero-title">Preguntas frecuentes</h1>
+          <p class="hero-lead" style="margin-bottom: 0;">Respuestas rápidas sobre servicios, precios, cobertura y cómo trabajo.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="container" style="padding-bottom: calc(var(--space-section) + 2rem);">
+      <div class="form-group fade-in" style="margin-block: var(--space-4);">
+        <input type="text" id="faqSearchInput" class="form-control" placeholder="Buscar pregunta o palabra clave (ej: presupuesto, garantía, cobertura)...">
+      </div>
+
+      <div id="faqAccordion" class="fade-in">
+        <div class="faq-item" data-category="general">
+          <button class="faq-question">
+            <span>¿Qué servicios de soporte informático ofreces?</span>
+            <span class="faq-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            Ofrezco soporte helpdesk N1 (atención a usuarios e incidencias), mantenimiento y reparación de PC, instalación de sistemas operativos, diagnóstico y configuración de redes, soporte ofimático (M365, Google Workspace) y asesoría de licencias originales low-cost.
+          </div>
+        </div>
+
+        <div class="faq-item" data-category="servicios">
+          <button class="faq-question">
+            <span>¿Ofreces presupuesto sin compromiso?</span>
+            <span class="faq-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            Sí, todos los presupuestos son sin compromiso. Si te hago un diagnóstico y decides no reparar, solo te cobro 15€ por el diagnóstico. Si reparamos, el diagnóstico es gratis.
+          </div>
+        </div>
+
+        <div class="faq-item" data-category="servicios">
+          <button class="faq-question">
+            <span>¿Cuál es la zona de cobertura?</span>
+            <span class="faq-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            Trabajo presencial en L'Hospitalet de Llobregat, Barcelona ciudad y los siguientes municipios del área metropolitana: <strong>Cornellà, Esplugues, El Prat, Sant Boi, Santa Coloma, Badalona, Sant Adrià, Montcada, Cerdanyola, Ripollet, Sant Just, Sant Feliu, Sant Joan Despí</strong> y otras zonas cercanas. Si no estás en la lista, pregúntame igual — probablemente lleguemos a un acuerdo. También ofrezco asistencia remota para incidencias que puedan resolverse sin desplazamiento en toda España.
+          </div>
+        </div>
+
+        <div class="faq-item" data-category="legal">
+          <button class="faq-question">
+            <span>¿Trabajas con particulares o solo empresas?</span>
+            <span class="faq-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            Con ambos. Ayudo a particulares con su PC de casa, y a autónomos y pymes con el día a día informático de su negocio. Para empresas ofrezco bonos de horas y contratos de mantenimiento.
+          </div>
+        </div>
+
+        <div class="faq-item" data-category="legal">
+          <button class="faq-question">
+            <span>¿Tienen garantía tus reparaciones?</span>
+            <span class="faq-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            Sí, todas las reparaciones llevan 15 días de garantía. Si el problema persiste o vuelve a aparecer dentro de ese plazo, lo reviso sin coste adicional.
+          </div>
+        </div>
+
+        <div class="faq-item" data-category="servicios">
+          <button class="faq-question">
+            <span>¿Cuánto tardas en responder o venir?</span>
+            <span class="faq-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            Consultas por email o formulario las respondo en menos de 24 horas (laborables). Si es urgente, escríbeme por WhatsApp y te contesto en cuanto pueda, normalmente en menos de 2 horas en horario laboral. Para visitas presenciales, suelo concertar cita en 24-48 horas.
+          </div>
+        </div>
+
+        <div class="faq-item" data-category="servicios">
+          <button class="faq-question">
+            <span>¿Vienes a mi casa o tengo que llevar el PC?</span>
+            <span class="faq-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            Las dos opciones son posibles. Si el problema es leve o puede esperar, puedes traer el equipo a L'Hospitalet. Si no puedes desplazarte o la incidencia es urgente, voy presencial a tu domicilio u oficina en Barcelona, L'Hospitalet y alrededores. También ofrezco asistencia remota para problemas de software que puedan resolverse por Internet.
+          </div>
+        </div>
+
+        <div class="faq-item" data-category="servicios">
+          <button class="faq-question">
+            <span>¿Qué pasa si no puedes repararlo?</span>
+            <span class="faq-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            Si después del diagnóstico veo que la reparación no es viable o no sale a cuenta, te lo digo claramente y te aconsejo sobre alternativas (recambio, equipo nuevo, etc.). El diagnóstico solo se cobra si no hubo reparación posterior (15 €). Si no encuentro solución, no pagas nada.
+          </div>
+        </div>
+
+        <div class="faq-item" data-category="servicios">
+          <button class="faq-question">
+            <span>¿Atiendes fines de semana o festivos?</span>
+            <span class="faq-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            Sí, para urgencias puedo atender sábados por la mañana con cita previa. Domingos y festivos solo para clientes con contrato de mantenimiento. La respuesta por WhatsApp durante el fin de semana puede ser más lenta, pero si es algo grave, escríbeme igual e intento ayudarte.
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // FAQ Accordion
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.faq-item').forEach(item => {
+        const btn = item.querySelector('.faq-question');
+        btn.addEventListener('click', () => {
+          item.classList.toggle('open');
+        });
+      });
+
+      // FAQ Search
+      const searchInput = document.getElementById('faqSearchInput');
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          const q = e.target.value.toLowerCase();
+          document.querySelectorAll('.faq-item').forEach(item => {
+            const text = item.textContent.toLowerCase();
+            item.style.display = text.includes(q) ? '' : 'none';
+          });
+        });
+      }
+    });
+  </script>
+</Layout>

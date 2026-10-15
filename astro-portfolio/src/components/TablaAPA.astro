@@ -1,0 +1,108 @@
+---
+interface Props {
+  numero?: string;
+  titulo: string;
+  nota?: string;
+}
+const { titulo, nota } = Astro.props;
+---
+
+<figure class="apa-table">
+  <div class="apa-caption">
+    <strong>{titulo}</strong>
+  </div>
+  <slot />
+  {nota && <p class="apa-note"><em>Nota.</em> {nota}</p>}
+</figure>
+
+<style>
+  .apa-table {
+    margin: 2.5rem 0;
+    overflow-x: auto;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    background: #fff;
+    color: #0f172a;
+    box-shadow: 0 8px 24px rgb(15 23 42 / 8%);
+  }
+  :global([data-theme="dark"]) .apa-table {
+    background: var(--color-surface);
+    color: var(--color-text-main);
+    border-color: var(--color-border);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 20%);
+  }
+  .apa-caption {
+    display: block;
+    padding: 1rem 1.25rem;
+    background: #f1f5f9;
+    border-bottom: 1px solid #cbd5e1;
+    text-align: center;
+  }
+  :global([data-theme="dark"]) .apa-caption {
+    background: var(--color-surface-2);
+    border-bottom-color: var(--color-border);
+  }
+  .apa-caption strong {
+    color: #0D3C46;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .035em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+  :global([data-theme="dark"]) .apa-caption strong { color: var(--color-accent); }
+  .apa-table :global(table) {
+    width: 100%;
+    min-width: 560px;
+    border-collapse: collapse;
+    font-size: .95rem;
+    font-variant-numeric: tabular-nums;
+    text-align: left;
+  }
+  .apa-table :global(thead th) {
+    padding: .85rem 1rem;
+    border: 1px solid #0D3C46;
+    background: #0D3C46;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+  }
+  :global([data-theme="dark"]) .apa-table :global(thead th) {
+    border-color: var(--color-primary);
+    background: var(--color-primary-dark);
+  }
+  .apa-table :global(tbody td) {
+    padding: .8rem 1rem;
+    border: 1px solid #cbd5e1;
+    color: #1e293b;
+    line-height: 1.55;
+    text-align: left;
+    vertical-align: top;
+    hyphens: none;
+  }
+  :global([data-theme="dark"]) .apa-table :global(tbody td) {
+    border-color: var(--color-border);
+    color: var(--color-text-main);
+  }
+  .apa-table :global(tbody tr:nth-child(even)) { background: #f8fafc; }
+  :global([data-theme="dark"]) .apa-table :global(tbody tr:nth-child(even)) { background: var(--color-surface-offset); }
+  .apa-table :global(tbody tr:hover) { background: #fff7e8; }
+  :global([data-theme="dark"]) .apa-table :global(tbody tr:hover) { background: color-mix(in srgb, var(--color-accent) 10%, var(--color-surface)); }
+  .apa-note {
+    margin: 0;
+    padding: .85rem 1.25rem 1rem;
+    border-top: 1px solid #cbd5e1;
+    background: #f8fafc;
+    color: #475569;
+    font-size: .875rem;
+    line-height: 1.5;
+    text-align: left;
+  }
+  :global([data-theme="dark"]) .apa-note {
+    border-top-color: var(--color-border);
+    background: var(--color-surface-offset);
+    color: var(--color-text-secondary);
+  }
+  .apa-note em { color: #0D3C46; font-weight: 700; }
+  [data-theme="dark"] .apa-note em { color: var(--color-accent); }
+</style>

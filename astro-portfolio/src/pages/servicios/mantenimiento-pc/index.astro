@@ -1,0 +1,62 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+<Layout title="Mantenimiento y Reparación de PC | Jonathan Esteban · Barcelona" description="Reparación y mantenimiento de ordenadores en Barcelona. Montaje, limpieza, diagnóstico hardware y software, cambio de componentes. Garantía 15 días." canonical="/servicios/mantenimiento-pc/">
+  <style is:global>
+    .service-detail ul { list-style: none; padding: 0; }
+    .service-detail li { display: flex; gap: 0.5rem; align-items: flex-start; font-size: 0.95rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 0.75rem; }
+  </style>
+
+  <main id="main-content">
+    <section class="hero-base">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Miga de pan" style="margin-bottom: var(--space-2);">
+          <a href="/">Inicio</a>
+          <span class="sep">/</span>
+          <a href="/servicios/">Servicios</a>
+          <span class="sep">/</span>
+          <span class="current">Mantenimiento PC</span>
+        </nav>
+        <p class="hero-eyebrow">Servicio</p>
+        <div class="service-hero">
+        <div>
+        <h1 class="hero-title">Mantenimiento y Reparación de PC</h1>
+        <p class="hero-lead" style="margin-bottom: 0;">Limpieza, diagnóstico, montaje y cambio de componentes para ordenadores de sobremesa y portátiles en Barcelona.</p>
+        </div>
+        <figure class="service-hero-img">
+          <img src="/assets/img/servicios/mantenimiento-pc.jpg" alt="Manos sosteniendo un componente dentro de la torre de un PC" width="1000" height="750" fetchpriority="high" />
+        </figure>
+        </div>
+      </div>
+    </section>
+    <div class="container">
+
+      <section class="service-detail" style="margin-block: 2.5rem;">
+        <h2 style="font-size: var(--fs-xl); font-weight: 700; margin-bottom: 1rem;">¿Qué incluye?</h2>
+        <ul>
+          <li>Diagnóstico hardware y software</li>
+          <li>Limpieza física y mantenimiento preventivo</li>
+          <li>Cambio de piezas: discos duros, RAM, fuentes, pantallas</li>
+          <li>Optimización del sistema operativo</li>
+          <li>Eliminación de virus y malware</li>
+          <li>Recuperación de datos básica</li>
+          <li>Asesoramiento para compra de equipos</li>
+        </ul>
+      </section>
+
+      <section class="service-detail" style="margin-block: 2.5rem;">
+        <h2 style="font-size: var(--fs-xl); font-weight: 700; margin-bottom: 1rem;">Precios orientativos</h2>
+        <p style="color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.7;">Diagnóstico: gratuito si se repara conmigo (15 € si no). Limpieza y mantenimiento desde 40 €. Reparaciones con cambio de componente desde 50 € + coste de la pieza.</p>
+      </section>
+
+      <section class="cta-card">
+        <h2 style="font-size: var(--fs-xl); font-weight: 700; margin-bottom: 0.75rem;">¿Necesitas este servicio?</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: 1.5rem;">Contáctame sin compromiso y te preparo un presupuesto.</p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+          <a href="/contacto/" class="btn-primary">Solicitar presupuesto</a>
+          <a href="https://wa.me/34614739345" class="btn-contact whatsapp-btn" target="_blank">WhatsApp</a>
+        </div>
+      </section>
+    </div>
+  </main>
+</Layout>

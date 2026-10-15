@@ -1,0 +1,509 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
+---
+<Layout title="Servicios de Soporte Informático | Jonathan Esteban · Barcelona" description="Servicios de soporte informático en Barcelona: helpdesk N1, mantenimiento de PC, instalación de sistemas, redes, ofimática y licencias low-cost. Presupuesto sin compromiso." canonical="/servicios/">
+  <link rel="stylesheet" href="/leaflet/leaflet.css" />
+  <style is:global>
+    .serv-hero {
+      position: relative;
+    }
+    .serv-hero-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 4rem;
+      align-items: center;
+    }
+    .serv-hero h1 {
+      font-family: var(--font-display);
+      font-size: var(--fs-h1);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: var(--space-3);
+    }
+    .serv-hero h1 em {
+      font-style: italic;
+      color: var(--color-brand);
+    }
+    .serv-hero .hero-lead {
+      margin-bottom: var(--space-4);
+    }
+    .serv-hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .serv-index-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    .serv-index-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+    }
+    .serv-index-card:hover {
+      border-color: var(--color-brand);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+    .serv-index-card .card-icon {
+      margin-bottom: 0.6rem;
+    }
+    .serv-index-card h3 {
+      font-size: var(--fs-h3);
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .serv-index-card p {
+      color: var(--color-text-muted);
+      font-size: var(--fs-sm);
+      line-height: 1.55;
+      margin-bottom: 0.85rem;
+      flex: 1;
+    }
+    .serv-index-card .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-brand);
+      text-decoration: none;
+      transition: gap var(--transition-fast);
+    }
+    .serv-index-card .btn-ghost:hover {
+      gap: 0.55rem;
+    }
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .guide-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+    }
+    .guide-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-accent), color-mix(in srgb, var(--color-accent) 40%, var(--color-border)));
+      border-radius: 1rem 1rem 0 0;
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+    }
+    .guide-card:hover {
+      border-color: var(--color-brand);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+    .guide-card:hover::before {
+      opacity: 1;
+    }
+    .guide-card .card-icon {
+      margin-bottom: 0.5rem;
+    }
+    .guide-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      line-height: 1.3;
+    }
+    .guide-card p {
+      color: var(--color-text-muted);
+      font-size: 0.85rem;
+      line-height: 1.5;
+      margin-bottom: 0.5rem;
+      flex: 1;
+    }
+    .guide-card .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-brand);
+      text-decoration: none;
+      transition: gap var(--transition-fast);
+    }
+    .guide-card .btn-ghost:hover {
+      gap: 0.55rem;
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .process-step {
+      text-align: center;
+      padding: 1.5rem 0.75rem;
+    }
+    .process-step-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: color-mix(in srgb, var(--color-primary) 15%, transparent);
+      color: var(--color-brand);
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin: 0 auto 1rem;
+    }
+    .process-step h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .process-step p {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+    }
+    .zones-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+    }
+    .zones-item {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 1rem;
+      padding: 1.25rem;
+      text-align: center;
+    }
+    .zones-item .icon {
+      margin: 0 auto 0.75rem;
+    }
+    .zones-item strong {
+      display: block;
+      font-size: 1rem;
+      color: var(--color-text-main);
+    }
+    .zones-item span {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+    }
+    .hero-card--map {
+      min-width: 280px;
+    }
+    .hero-card--map .hero-card-title {
+      margin-bottom: 0.4rem;
+    }
+    #coverage-map {
+      background: var(--color-surface-2);
+    }
+    #coverage-map .leaflet-control-attribution { display: none; }
+    .cta-final {
+      text-align: center;
+      padding: 2.25rem 1.75rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 1.5rem;
+    }
+    .cta-final h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    .cta-final p {
+      color: var(--color-text-muted);
+      max-width: 45ch;
+      margin: 0 auto 1.5rem;
+    }
+    @media (max-width: 900px) {
+      .serv-hero-inner { grid-template-columns: 1fr; gap: var(--space-4); }
+      .process-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <script is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Soporte Informático",
+    "provider": {
+      "@type": "Person",
+      "name": "Jonathan Esteban",
+      "url": "https://jonathanesteban.dev"
+    },
+    "offers": [
+      {"@type": "Offer", "name": "Helpdesk N1", "price": "30", "priceCurrency": "EUR"},
+      {"@type": "Offer", "name": "Mantenimiento de PC", "price": "50", "priceCurrency": "EUR"},
+      {"@type": "Offer", "name": "Instalación de Sistemas", "price": "40", "priceCurrency": "EUR"}
+    ]
+  }
+  </script>
+
+  <main id="main-content">
+    <!-- ===== HERO ===== -->
+    <section class="serv-hero hero-base">
+      <div class="container serv-hero-inner">
+        <div>
+          <nav class="breadcrumbs" aria-label="Miga de pan" style="margin-bottom: var(--space-2);">
+            <a href="/">Inicio</a>
+            <span class="sep">/</span>
+            <span class="current">Servicios</span>
+          </nav>
+          <p class="hero-eyebrow">Para particulares, pymes y autónomos</p>
+          <h1>Soporte informático <em>sin complicaciones</em></h1>
+          <p class="hero-lead">Helpdesk, reparación de PC, instalación de sistemas, redes, ofimática y licencias low-cost. Servicio en Barcelona con presupuesto claro y garantía de 15 días.</p>
+          <div class="serv-hero-actions">
+            <a href="#servicios" class="btn-primary">Ver servicios</a>
+            <a href="/contacto/" class="btn-secondary">Solicitar presupuesto</a>
+          </div>
+        </div>
+        <aside class="hero-card hero-card--map" aria-label="Mapa de cobertura">
+          <p class="hero-card-title">Área de cobertura</p>
+          <div id="coverage-map" style="height: 280px; border-radius: 0.75rem; overflow: hidden;"></div>
+          <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 0.5rem;">Passatge de Llunàs 4 · L'Hospitalet <span style="opacity:0.5">·</span> Desplazamiento a Barcelona y alrededores</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===== QUICK GUIDE: ¿Qué te está pasando? ===== -->
+    <section class="section" style="background: var(--color-surface-2);">
+      <div class="container">
+        <div class="fade-in" style="text-align: center;">
+          <p class="section-label">Guía rápida</p>
+          <h2 class="section-title">¿Qué te está <em>pasando?</em></h2>
+          <p class="section-desc" style="margin-inline: auto;">Elige lo que más se parezca a tu situación y te llevo directo al servicio que necesitas.</p>
+        </div>
+        <div class="guide-grid">
+          <a href="/servicios/mantenimiento-pc/" class="guide-card">
+            <div class="card-icon icon-box"><Icon name="wrench" /></div>
+            <h3>Mi PC va muy lento</h3>
+            <p>Se tarda una eternidad en arrancar, las ventanas se congelan o no sé ni por dónde empezar.</p>
+            <span class="btn-ghost">Ver Mantenimiento de PC →</span>
+          </a>
+          <a href="/servicios/helpdesk-n1/" class="guide-card">
+            <div class="card-icon icon-box"><Icon name="headphones" /></div>
+            <h3>No me funciona el correo / impresora / programa</h3>
+            <p>Una incidencia concreta del día a día que me impide trabajar o estudiar.</p>
+            <span class="btn-ghost">Ver Helpdesk N1 →</span>
+          </a>
+          <a href="/servicios/redes/" class="guide-card">
+            <div class="card-icon icon-box"><Icon name="globe" /></div>
+            <h3>El Wi-Fi no llega o va muy mal</h3>
+            <p>Internet va lento, se corta, o hay zonas de la casa/oficina sin cobertura.</p>
+            <span class="btn-ghost">Ver Diagnóstico de Redes →</span>
+          </a>
+          <a href="/servicios/instalacion-sistemas/" class="guide-card">
+            <div class="card-icon icon-box"><Icon name="monitor" /></div>
+            <h3>Necesito formatear / instalar Windows/Linux</h3>
+            <p>Me han dicho que formatee, quiero cambiar de sistema o estreno equipo y quiero dejarlo listo.</p>
+            <span class="btn-ghost">Ver Instalación de Sistemas →</span>
+          </a>
+          <a href="/servicios/ofimatica/" class="guide-card">
+            <div class="card-icon icon-box"><Icon name="file" /></div>
+            <h3>Quiero pasar mis cosas a la nube / configurar el correo</h3>
+            <p>Migrar datos, configurar el email profesional o poner en orden las herramientas de oficina.</p>
+            <span class="btn-ghost">Ver Soporte Ofimático →</span>
+          </a>
+          <a href="/servicios/licencias/" class="guide-card">
+            <div class="card-icon icon-box"><Icon name="key" /></div>
+            <h3>Necesito una licencia de Windows/Office sin pagar un pastón</h3>
+            <p>Me pide activación, no sé dónde conseguirla legal y barata, o quiero cambiar a alternativas gratuitas.</p>
+            <span class="btn-ghost">Ver Licencias Low-Cost →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SERVICES GRID ===== -->
+    <section class="section" id="servicios">
+      <div class="container">
+        <div class="fade-in">
+          <p class="section-label">Qué ofrezco</p>
+          <h2 class="section-title">Servicios de <em>soporte informático</em></h2>
+          <p class="section-desc">Cada servicio tiene un alcance definido. Si no estás seguro de lo que necesitas, háblame y te aconsejo sin compromiso.</p>
+        </div>
+
+        <div class="serv-index-grid fade-in">
+          <a href="/servicios/helpdesk-n1/" class="serv-index-card" style="text-decoration:none;color:inherit;">
+            <div class="card-icon icon-box"><Icon name="headphones" /></div>
+            <h3>Soporte Helpdesk N1</h3>
+            <p>Atención a usuarios, gestión de incidencias, asistencia remota y presencial. Resolución de problemas informáticos del día a día: correo, impresoras, sistemas, cuentas y accesos.</p>
+            <span class="btn-ghost">Ver servicio →</span>
+          </a>
+
+          <a href="/servicios/mantenimiento-pc/" class="serv-index-card" style="text-decoration:none;color:inherit;">
+            <div class="card-icon icon-box"><Icon name="wrench" /></div>
+            <h3>Mantenimiento y Reparación de PC</h3>
+            <p>Montaje, mantenimiento preventivo y correctivo, diagnóstico hardware y software. Limpieza física, cambio de piezas, actualización de componentes y optimización del sistema.</p>
+            <span class="btn-ghost">Ver servicio →</span>
+          </a>
+
+          <a href="/servicios/instalacion-sistemas/" class="serv-index-card" style="text-decoration:none;color:inherit;">
+            <div class="card-icon icon-box"><Icon name="monitor" /></div>
+            <h3>Instalación y Configuración de Sistemas</h3>
+            <p>Windows, Linux, formateos limpios, instalación de controladores, programas esenciales y configuración completa. Deja tu equipo listo para usar desde el primer día.</p>
+            <span class="btn-ghost">Ver servicio →</span>
+          </a>
+
+          <a href="/servicios/redes/" class="serv-index-card" style="text-decoration:none;color:inherit;">
+            <div class="card-icon icon-box"><Icon name="globe" /></div>
+            <h3>Diagnóstico y Configuración de Redes</h3>
+            <p>Problemas de conexión, configuración de routers y switches, cableado, wifi lento, protocolos TCP/IP. Pongo tu red doméstica o de oficina a punto.</p>
+            <span class="btn-ghost">Ver servicio →</span>
+          </a>
+
+          <a href="/servicios/ofimatica/" class="serv-index-card" style="text-decoration:none;color:inherit;">
+            <div class="card-icon icon-box"><Icon name="file" /></div>
+            <h3>Soporte Ofimático y Migración a la Nube</h3>
+            <p>Microsoft 365, Google Workspace, configuración de correo empresarial, calendarios compartidos, almacenamiento en la nube y migración de datos.</p>
+            <span class="btn-ghost">Ver servicio →</span>
+          </a>
+
+          <a href="/servicios/licencias/" class="serv-index-card" style="text-decoration:none;color:inherit;border-color: color-mix(in srgb, var(--color-accent) 40%, transparent);">
+            <div class="card-icon icon-box"><Icon name="key" /></div>
+            <h3>Licencias Originales Low-Cost</h3>
+            <p>Te asesoro para encontrar la licencia más económica para Windows, Office y software esencial. Instalación y activación incluidas. Sin claves falsas, sin riesgo.</p>
+            <span class="btn-ghost">Ver servicio →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ZONAS + METODOLOGÍA ===== -->
+    <section class="section-split section-alt">
+      <div class="container">
+        <div class="fade-in" style="text-align: center;">
+          <p class="section-label">Cobertura</p>
+          <h2 class="section-title">Zonas de <em>servicio</em></h2>
+          <p class="section-desc" style="margin-inline: auto;">Servicio presencial en Barcelona y alrededores. También ofrezco asistencia remota para incidencias leves.</p>
+        </div>
+
+        <div class="zones-grid fade-in">
+          <div class="zones-item">
+            <div class="icon icon-box"><Icon name="pin" /></div>
+            <strong>L'Hospitalet</strong>
+            <span>Presencial sin desplazamiento</span>
+          </div>
+          <div class="zones-item">
+            <div class="icon icon-box"><Icon name="building" /></div>
+            <strong>Barcelona</strong>
+            <span>Desplazamiento incluido</span>
+          </div>
+          <div class="zones-item">
+            <div class="icon icon-box"><Icon name="car" /></div>
+            <strong>Alrededores</strong>
+            <span>Cornellà, Esplugues, El Prat, Sant Boi, Santa Coloma, Badalona, Sant Adrià, Montcada, Cerdanyola, Ripollet, Sant Just, Sant Feliu, Sant Joan Despí y más</span>
+          </div>
+          <div class="zones-item">
+            <div class="icon icon-box"><Icon name="laptop" /></div>
+            <strong>Soporte remoto</strong>
+            <span>Para incidencias leves</span>
+          </div>
+        </div>
+      </div>
+      <div class="container" style="text-align: center;">
+        <div class="fade-in">
+          <p class="section-label">Metodología</p>
+          <h2 class="section-title">Cómo <em>trabajo</em></h2>
+          <p class="section-desc" style="margin-inline: auto;">Un proceso simple y transparente. Sin sorpresas, sin compromiso.</p>
+        </div>
+
+        <div class="process-grid fade-in">
+          <div class="process-step">
+            <div class="process-step-num">1</div>
+            <h3>Escucho & Diagnóstico</h3>
+            <p>Me cuentas el problema, reviso el equipo o la incidencia y te explico las opciones disponibles antes de actuar.</p>
+          </div>
+          <div class="process-step">
+            <div class="process-step-num">2</div>
+            <h3>Presupuesto Claro</h3>
+            <p>Recibes el alcance, el precio y el plazo por escrito. Si hay algo que no incluye, lo sabrás antes de aceptar.</p>
+          </div>
+          <div class="process-step">
+            <div class="process-step-num">3</div>
+            <h3>Reparación & Garantía</h3>
+            <p>Ejecuto el trabajo y te explico qué se hizo. 15 días de garantía: si algo falla, lo reviso sin coste adicional.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FINAL CTA ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-final fade-in">
+          <h2>¿Tienes una <em>incidencia</em> que resolver?</h2>
+          <p>Cuéntame qué te pasa y te responderé con un presupuesto claro y sin compromiso en menos de 24 horas.</p>
+          <a href="/contacto/" class="btn-primary" style="font-size: 1rem; padding: 1rem 2.5rem;">Solicitar Presupuesto →</a>
+          <div class="home-cta-contact" style="margin-top: 1rem;">
+            <a href="mailto:joonathanesteban@gmail.com" class="btn-contact email-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
+              Enviar email
+            </a>
+            <a href="https://wa.me/34614739345" target="_blank" rel="noopener noreferrer" class="btn-contact whatsapp-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.507 14.107l-3.112-1.328a.63.63 0 0 0-.69.11l-.82.82a.63.63 0 0 1-.78.07l-1.8-1.2a2.54 2.54 0 0 1-.9-1.2.63.63 0 0 1 .08-.8l.82-.82a.63.63 0 0 0 .11-.69l-1.33-3.11a.63.63 0 0 0-.96-.1L7.45 7.35a4.41 4.41 0 0 0 1.04 4.88l2.75 2.75a4.41 4.41 0 0 0 4.88 1.04l1.59-1.59a.63.63 0 0 0-.1-.96l.005.007z"/><path d="M21 12a9 9 0 1 1-5.21-8.22"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+(function(){
+  var mapDiv = document.getElementById('coverage-map');
+  if (!mapDiv) return;
+
+  // Load Leaflet.js from local path (Astro strips <script src> tags)
+  var s = document.createElement('script');
+  s.src = '/leaflet/leaflet.js';
+  document.head.appendChild(s);
+
+  var waited = 0;
+  function poll() {
+    if (typeof L !== 'undefined') {
+      try { doMap(); }
+      catch(e) { console.log('Map init error:', e); }
+      return;
+    }
+    if (++waited > 60) return;
+    setTimeout(poll, 250);
+  }
+  setTimeout(poll, 600);
+
+  function doMap() {
+    var map = L.map(mapDiv, {
+      center: [41.377, 2.130],
+      zoom: 12,
+      zoomControl: false,
+      attributionControl: false
+    });
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19, attribution: ''
+    }).addTo(map);
+    var homeIcon = L.divIcon({ html: '<div style="background:#a33;width:18px;height:18px;border:3px solid #fff;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,0.25)"></div>', iconSize: [18, 18], className: '' });
+    var bcnIcon = L.divIcon({ html: '<div style="background:#c47070;width:14px;height:14px;border:2px solid #fff;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,0.2)"></div>', iconSize: [14, 14], className: '' });
+    L.marker([41.3662, 2.0874], { icon: homeIcon }).addTo(map);
+    L.marker([41.388, 2.174], { icon: bcnIcon }).addTo(map);
+    L.circle([41.3662, 2.0874], 10000, {
+      color: '#a33', weight: 1.5, fillColor: '#a33', fillOpacity: 0.12
+    }).addTo(map);
+  }
+})();
+</script>
+</Layout>

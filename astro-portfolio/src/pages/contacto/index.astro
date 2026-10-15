@@ -1,0 +1,151 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Contacto | Jonathan Esteban · Soporte Informático Barcelona" description="Contáctame para presupuestos de soporte informático, reparación de PC, helpdesk o instalación. Respuesta en menos de 24 horas. Barcelona." canonical="/contacto/">
+  <main id="main-content">
+    <section class="hero-base">
+      <div class="container">
+        <div class="fade-in">
+          <p class="hero-eyebrow">Hablemos de tu incidencia</p>
+          <h1 class="hero-title">Contacto</h1>
+          <p class="hero-lead" style="margin-bottom: 0;">Descríbeme tu problema o consulta. Respondo habitualmente en menos de 24 horas.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="container contact-grid">
+      <div class="contact-form-card fade-in">
+        <form id="contactForm" novalidate>
+          <input type="text" name="_gotcha" style="display:none;" aria-hidden="true" tabindex="-1">
+          <input type="text" name="company_site" style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true" tabindex="-1" autocomplete="off">
+
+          <div class="form-group">
+            <label for="name">Nombre Completo <span class="label-accent">*</span></label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Tu nombre y apellidos" required autocomplete="name">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Correo Electrónico <span class="label-accent">*</span></label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="tu@email.com" required autocomplete="email">
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Asunto del Servicio</label>
+            <select id="subject" name="subject" class="form-control">
+              <option value="">Selecciona un servicio...</option>
+              <option value="Helpdesk N1">Soporte Helpdesk N1</option>
+              <option value="Mantenimiento PC">Mantenimiento y Reparación de PC</option>
+              <option value="Instalación Sistemas">Instalación de Sistemas</option>
+              <option value="Redes">Diagnóstico y Configuración de Redes</option>
+              <option value="Ofimática">Soporte Ofimático y Migración</option>
+              <option value="Licencias">Licencias Originales</option>
+              <option value="Otro">Otro / No lo sé</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Describe tu incidencia o consulta <span class="label-accent">*</span></label>
+            <textarea id="message" name="message" class="form-control" placeholder="¿Qué te está pasando? ¿Desde cuándo? ¿Qué equipo tienes? Cuanto más detalle, mejor." required></textarea>
+          </div>
+
+          <div class="form-checkbox-group">
+            <label class="form-checkbox">
+              <input type="checkbox" id="consentReply" required>
+              <span>He leído y acepto la <a href="/privacy-policy/" target="_blank">Política de Privacidad</a> <span class="label-accent">*</span></span>
+            </label>
+            <label class="form-checkbox">
+              <input type="checkbox" id="consentWhatsapp">
+              <span>Acepto que me contacten vía WhatsApp si es necesario</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn-primary form-submit">
+            Enviar mensaje
+          </button>
+
+          <div id="formError" class="form-error"></div>
+          <div id="formSuccess" class="form-success">✓ ¡Mensaje enviado con éxito! Te responderé en breve.</div>
+        </form>
+      </div>
+    </div>
+    <div style="height: 3rem;"></div>
+  </main>
+
+  <!-- Formspree incluye protección anti-bots automática (reCAPTCHA v3 del lado servidor) -->
+  <script>
+    // Contact form handling
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('contactForm');
+      if (!form) return;
+
+      const errorDiv = document.getElementById('formError');
+      const successDiv = document.getElementById('formSuccess');
+      const submitBtn = form.querySelector('button[type="submit"]');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        errorDiv.style.display = 'none';
+        successDiv.style.display = 'none';
+
+        // Validate required fields
+        const name = form.querySelector('#name').value.trim();
+        const email = form.querySelector('#email').value.trim();
+        const message = form.querySelector('#message').value.trim();
+        const consent = form.querySelector('#consentReply').checked;
+
+        if (!name || !email || !message || !consent) {
+          errorDiv.textContent = 'Completa todos los campos obligatorios (*).';
+          errorDiv.style.display = 'block';
+          return;
+        }
+
+        // Email validation
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          errorDiv.textContent = 'Introduce un correo electrónico válido.';
+          errorDiv.style.display = 'block';
+          return;
+        }
+
+        // Loading state
+        submitBtn.classList.add('loading');
+        submitBtn.textContent = 'Enviando...';
+
+        try {
+          const formData = new FormData(form);
+          const res = await fetch('https://formspree.io/f/movzjdbz', {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (res.ok) {
+            successDiv.style.display = 'block';
+            form.reset();
+            submitBtn.textContent = 'Enviar mensaje';
+          } else {
+            errorDiv.textContent = 'Error al enviar el mensaje. Inténtalo de nuevo.';
+            errorDiv.style.display = 'block';
+          }
+        } catch {
+          errorDiv.textContent = 'Error de conexión. Verifica tu internet e inténtalo de nuevo.';
+          errorDiv.style.display = 'block';
+        }
+
+        submitBtn.classList.remove('loading');
+        submitBtn.textContent = 'Enviar mensaje';
+      });
+
+      // Field focus/blur effects for validation feedback
+      form.querySelectorAll('.form-control').forEach(input => {
+        input.addEventListener('blur', () => {
+          if (input.hasAttribute('required') && !input.value.trim()) {
+            input.classList.add('error');
+          } else {
+            input.classList.remove('error');
+          }
+        });
+        input.addEventListener('input', () => input.classList.remove('error'));
+      });
+    });
+  </script>
+</Layout>

@@ -15,4 +15,5 @@ node_modules/
 Thumbs.db
 *.swp
 *.swo
-*~
+*~dist/
+brand/

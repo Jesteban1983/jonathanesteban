@@ -1,0 +1,160 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+---
+
+<Layout
+  title="Jonathan Esteban | Técnico de Soporte Informático en Barcelona"
+  description="Soporte informático para particulares, pymes y autónomos en Barcelona. Helpdesk N1, reparación de PC, instalación de sistemas, redes, ofimática y licencias low-cost. Presupuesto sin compromiso."
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container-wide hero-content">
+      <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="hero-eyebrow">
+          <span class="hero-eyebrow-dot"></span>
+          Disponible para soporte · Barcelona
+        </p>
+        <h1 class="hero-title">Soporte informático para personas y negocios</h1>
+        <p class="hero-lead">Reparación, mantenimiento, diagnóstico y configuración. Sin llamadas a 900, sin esperas, sin tecnicismos innecesarios.</p>
+        <div class="hero-actions">
+          <a href="/contacto/" class="btn-urgency">Tengo un problema ahora →</a>
+          <a href="/contacto/" class="btn-primary">Solicitar presupuesto</a>
+          <a href="/servicios/" class="btn-secondary">Ver servicios</a>
+          <a href="https://wa.me/34614739345" class="btn-secondary" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <figure class="hero-photo">
+          <img src="/assets/img/hero-taller.jpg" alt="Manos conectando un cable de alimentación dentro de un PC abierto" width="900" height="1000" fetchpriority="high" />
+        </figure>
+        <p class="hero-chip hero-chip-1"><span class="hero-chip-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><span><strong>Garantía de 15 días</strong>Desde la entrega</span></p>
+        <p class="hero-chip hero-chip-2"><span class="hero-chip-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span><strong>Presencial en Barcelona</strong>Remoto en toda España</span></p>
+        <p class="hero-chip hero-chip-3"><span class="hero-chip-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><span><strong>Respuesta en menos de 24 h</strong>Presupuesto por escrito</span></p>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tecnologías -->
+  <section class="brand-strip" aria-label="Tecnologías y marcas con las que trabajo">
+    <div class="container-wide">
+      <p class="brand-strip-label">Trabajo con equipos y entornos</p>
+      <ul class="brand-strip-list">
+        <li><span class="brand-ico" style="--ico: url(/assets/img/marcas/windows.svg)" aria-hidden="true"></span>Windows</li>
+        <li><span class="brand-ico" style="--ico: url(/assets/img/marcas/linux.svg)" aria-hidden="true"></span>Linux</li>
+        <li><span class="brand-ico" style="--ico: url(/assets/img/marcas/microsoftoffice.svg)" aria-hidden="true"></span>Microsoft 365</li>
+        <li><span class="brand-ico" style="--ico: url(/assets/img/marcas/google.svg)" aria-hidden="true"></span>Google Workspace</li>
+        <li><span class="brand-ico" style="--ico: url(/assets/img/marcas/tplink.svg)" aria-hidden="true"></span>TP-Link</li>
+        <li><span class="brand-ico" style="--ico: url(/assets/img/marcas/dell.svg)" aria-hidden="true"></span>Dell</li>
+        <li><span class="brand-ico" style="--ico: url(/assets/img/marcas/hp.svg)" aria-hidden="true"></span>HP</li>
+        <li><span class="brand-ico" style="--ico: url(/assets/img/marcas/lenovo.svg)" aria-hidden="true"></span>Lenovo</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section class="section-full" id="servicios">
+    <div class="container">
+      <div>
+        <p class="section-label">Servicios</p>
+        <h2 class="section-title">¿Qué necesitas <em>resolver?</em></h2>
+        <p class="section-desc">Cada servicio tiene un alcance claro. Reviso primero tu caso y te digo qué opción encaja, sin complicaciones innecesarias.</p>
+      </div>
+      <div class="home-services-grid">
+        <a href="/servicios/helpdesk-n1/" class="home-service-card">
+          <span class="icon-box"><Icon name="headphones" /></span>
+          <h3>Soporte Helpdesk N1</h3>
+          <p>Atención a usuarios, gestión de incidencias, asistencia remota y presencial. Resolución de problemas informáticos del día a día.</p>
+          <span class="home-service-link">Ver servicio</span>
+        </a>
+        <a href="/servicios/mantenimiento-pc/" class="home-service-card">
+          <span class="icon-box"><Icon name="wrench" /></span>
+          <h3>Mantenimiento y Reparación de PC</h3>
+          <p>Montaje, mantenimiento preventivo y correctivo, diagnóstico hardware y software. Deja tu equipo a punto.</p>
+          <span class="home-service-link">Ver servicio</span>
+        </a>
+        <a href="/servicios/instalacion-sistemas/" class="home-service-card">
+          <span class="icon-box"><Icon name="monitor" /></span>
+          <h3>Instalación y Configuración de Sistemas</h3>
+          <p>Windows, Linux, periféricos, software y licencias. Configuración completa de tu equipo nuevo o reformateado.</p>
+          <span class="home-service-link">Ver servicio</span>
+        </a>
+        <a href="/servicios/redes/" class="home-service-card">
+          <span class="icon-box"><Icon name="globe" /></span>
+          <h3>Diagnóstico y Configuración de Redes</h3>
+          <p>Routers, switches, cableado, protocolos TCP/IP. Configura tu red doméstica o de oficina para que funcione correctamente.</p>
+          <span class="home-service-link">Ver servicio</span>
+        </a>
+        <a href="/servicios/ofimatica/" class="home-service-card">
+          <span class="icon-box"><Icon name="file" /></span>
+          <h3>Soporte Ofimático y Migración a la Nube</h3>
+          <p>Microsoft 365, Google Workspace, configuración de correo, calendarios y almacenamiento en la nube.</p>
+          <span class="home-service-link">Ver servicio</span>
+        </a>
+        <a href="/servicios/licencias/" class="home-service-card" style="border-color: color-mix(in srgb, var(--color-accent) 40%, transparent);">
+          <span class="home-service-badge">NUEVO</span>
+          <span class="icon-box"><Icon name="key" /></span>
+          <h3>Licencias Originales Low-Cost</h3>
+          <p>Asesoría para encontrar la licencia más económica, instalación y configuración. Sin claves falsas, sin riesgo.</p>
+          <span class="home-service-link">Ver servicio</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mini-sección humana -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="home-about-mini" style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
+        <div style="flex: 0 0 auto;">
+          <img src="/assets/img/profile/jonathan-esteban.jpg" alt="Jonathan Esteban, técnico de soporte informático" width="120" height="120" loading="lazy" style="border-radius: 999px; border: 3px solid var(--color-border); object-fit: cover; aspect-ratio: 1/1;" />
+        </div>
+        <div style="flex: 1;">
+          <p class="section-label" style="margin-bottom: 0.25rem;">Detrás del servicio</p>
+          <h2 style="font-family: var(--font-display); font-size: var(--fs-h3); font-weight: 700; margin-bottom: 0.5rem;">Hola, soy <em style="color: var(--color-brand); font-style: italic;">Jonathan</em></h2>
+          <p style="color: var(--color-text-muted); max-width: 65ch; line-height: 1.6;">Llevo años trabajando con ordenadores, redes y personas. Mi forma de trabajar es directa, sin tecnicismos y con precios claros. Si tu equipo tiene un problema, te ayudo a diagnosticarlo y resolverlo, sin compromiso.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proceso -->
+  <section class="section">
+    <div class="container">
+      <div>
+        <p class="section-label">Proceso</p>
+        <h2 class="section-title">Cómo trabajo: <em>cuatro pasos</em></h2>
+        <p class="section-desc">Antes de empezar acordamos el problema, las soluciones posibles y el presupuesto.</p>
+      </div>
+      <div class="home-process-grid">
+        <article class="home-process-step"><span>01</span><h3>Diagnóstico</h3><p>Reviso el equipo, la incidencia o la necesidad antes de recomendarte nada.</p></article>
+        <article class="home-process-step"><span>02</span><h3>Propuesta</h3><p>Recibes presupuesto, alcance, plazo y garantía por escrito. Sin sorpresas.</p></article>
+        <article class="home-process-step"><span>03</span><h3>Ejecución</h3><p>Trabajo en la solución y te mantengo informado de cada paso.</p></article>
+        <article class="home-process-step"><span>04</span><h3>Entrega</h3><p>Equipo listo, te explico qué se hizo y cómo evitar que vuelva a pasar. 15 días de garantía.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="home-cta">
+        <h2>¿Tienes una incidencia técnica?</h2>
+        <p>Cuéntame qué problema tienes, y revisaré si puedo ayudarte antes de preparar un presupuesto. Sin compromiso.</p>
+        <a href="/contacto/" class="btn-primary">Solicitar presupuesto</a>
+        <div class="home-cta-contact">
+          <a href="mailto:joonathanesteban@gmail.com" class="btn-contact email-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            Enviar email
+          </a>
+          <a href="https://wa.me/34614739345" target="_blank" rel="noopener noreferrer" class="btn-contact whatsapp-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.507 14.107l-3.112-1.328a.63.63 0 0 0-.69.11l-.82.82a.63.63 0 0 1-.78.07l-1.8-1.2a2.54 2.54 0 0 1-.9-1.2.63.63 0 0 1 .08-.8l.82-.82a.63.63 0 0 0 .11-.69l-1.33-3.11a.63.63 0 0 0-.96-.1L7.45 7.35a4.41 4.41 0 0 0 1.04 4.88l2.75 2.75a4.41 4.41 0 0 0 4.88 1.04l1.59-1.59a.63.63 0 0 0-.1-.96l.005.007z"/><path d="M21 12a9 9 0 1 1-5.21-8.22"/></svg>
+            Escribir por WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

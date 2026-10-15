@@ -1,0 +1,2 @@
+# Shared image-generation dependencies are installed once for the lab:
+# IA-ENGINEERING-LAB/tools/gemini-image/requirements.txt

@@ -1,0 +1,106 @@
+---
+title: "Qué hacer si el ordenador no enciende: guía de soluciones paso a paso"
+description: "¿Tu ordenador no enciende? Sigue esta guía práctica para diagnosticar y solucionar los problemas más comunes: fuente de alimentación, placa base, memoria RAM y más."
+pubDate: 2026-10-15
+heroImage: "/assets/img/blog/ordenador-no-enciende-soluciones.png"
+tags: ["blog"]
+author: "Jonathan Esteban"
+draft: false
+---
+
+import TablaAPA from '../../components/TablaAPA.astro';
+
+Seguro que te ha pasado: pulsas el botón de encendido y no pasa nada. Ni luces, ni ventiladores, ni pitidos. El pánico inicial es normal, pero antes de llamar a un técnico hay varias cosas que puedes comprobar tú mismo. En esta guía te explico paso a paso qué hacer si tu ordenador no enciende, desde lo más básico hasta revisiones internas. No necesitas ser experto, solo seguir el orden que te propongo.
+
+## Respuesta rápida
+
+Si tu ordenador no enciende, empieza por lo más sencillo: comprueba que el cable de corriente está bien conectado y que el interruptor de la fuente de alimentación está en la posición I. Prueba otro enchufe. Si sigue sin funcionar, desconecta el cable de corriente, pulsa el botón de encendido durante 30 segundos y vuelve a conectar. Si aún así no arranca, abre la torre y resitúa la memoria RAM y la tarjeta gráfica. Si nada funciona, es posible que tengas un fallo de hardware que deba revisar un profesional.
+
+## Primero, comprueba la **fuente de alimentación**
+
+La **fuente de alimentación** es el componente que reparte la electricidad a todo el equipo. Si falla, el ordenador no recibe energía. Sigue estos pasos en orden:
+
+1. Verifica que el cable de corriente esté bien insertado tanto en la fuente como en el enchufe. A veces un golpe lo afloja.
+2. Comprueba que el interruptor de la fuente (el que tiene un símbolo de I y O) esté en I (encendido).
+3. Prueba un enchufe diferente o conecta otro aparato para asegurarte de que la toma funciona.
+4. Si tienes otro cable de corriente (el mismo que usan los monitores), cámbialo.
+5. Escucha si la fuente emite algún ruido o si al pulsar el botón de encendido los ventiladores se mueven aunque sea un instante. Si no hay ningún movimiento, la fuente puede estar muerta.
+
+## Realiza un **drenaje de carga residual**
+
+A veces la electricidad estática acumulada en los componentes impide que el ordenador arranque. Hacer un **drenaje de carga residual** puede solucionarlo. Es muy sencillo:
+
+1. Apaga el ordenador y desconecta el cable de corriente de la fuente.
+2. Mantén pulsado el botón de encendido del ordenador durante 30 segundos seguidos. Esto descarga los condensadores de la placa base.
+3. Suelta el botón, vuelve a conectar el cable de corriente y pulsa el botón de encendido normalmente.
+
+Si este era el problema, el ordenador arrancará como si nada.
+
+## Revisa los **componentes internos**
+
+Si los pasos anteriores no funcionan, toca abrir la torre. No tengas miedo, es seguro si sigues las precauciones básicas: descarga la electricidad estática tocando una superficie metálica sin pintar y trabaja sobre una superficie limpia.
+
+1. **Resitúa la memoria RAM**: localiza los módulos de RAM, presiona los clips de los extremos hacia fuera para liberarlos, extrae cada módulo con cuidado y vuelve a insertarlos hasta que oigas un clic. A veces un mal contacto impide el arranque.
+2. **Resitúa la tarjeta gráfica**: si tu ordenador tiene una GPU dedicada, sácala y vuélvela a colocar en la ranura PCI-Express. Aprieta bien el tornillo que la sujeta al chasis.
+3. **Comprueba los conectores de la placa base**: asegúrate de que el conector de 24 pines de la fuente está bien encajado y también el conector de 4 u 8 pines para la CPU.
+4. **Revisa el botón de encendido**: los cables frontales que van desde el botón a la placa base a veces se sueltan. Localiza el conector etiquetado como PWR_SW y verifica que está firmemente conectado.
+
+## ¿El ordenador enciende pero no da imagen?
+
+A veces el ordenador parece que arranca (se encienden luces y ventiladores) pero la pantalla sigue negra. Esto también es un tipo de "no enciende" y tiene sus propias soluciones:
+
+- Escucha si el ordenador emite pitidos al arrancar. Cada patrón indica un error distinto (por ejemplo, un pitido largo y dos cortos suele ser problema de RAM o gráfica). Consulta el manual de tu placa base para interpretar los códigos.
+- Asegúrate de que el cable de vídeo está bien conectado al monitor y a la tarjeta gráfica (no a la placa base si usas GPU dedicada).
+- Si tu procesador tiene gráficos integrados, prueba a conectar el monitor directamente a la placa base (quitando la tarjeta gráfica si es necesario).
+- Resitúa la memoria RAM como ya explicamos; este es el causante más frecuente de pantallas negras.
+
+La siguiente tabla resume los síntomas más comunes y sus posibles causas:
+
+<TablaAPA numero="1" titulo="Síntomas y posibles causas cuando el ordenador no enciende" nota="Elaboración propia a partir de Microsoft (2023) y Xataka (2024).">
+
+| Síntoma | Posible causa |
+|---|---|
+| No hay luces ni ventiladores ni pitidos | Fuente de alimentación, cable de corriente o toma de corriente |
+| Luces en la placa base pero no arranca | Placa base, RAM o conexión del botón de encendido |
+| Ventiladores giran pero no hay imagen | RAM, tarjeta gráfica o cable de vídeo |
+| Pitidos al encender | Código de error de la BIOS (consulta el manual) |
+
+</TablaAPA>
+
+## Errores comunes
+
+- **Ignorar el interruptor de la fuente**: muchas fuentes tienen un interruptor trasero que puede estar en posición de apagado sin que te des cuenta.
+- **No probar un cable de corriente diferente**: parece obvio, pero a veces el cable está dañado internamente.
+- **Manipular la RAM sin descargar la estática**: puedes dañar componentes sensibles. Siempre toca una superficie metálica antes.
+- **Cambiar la pila de la placa base sin necesidad**: una pila agotada puede hacer que pierdas la configuración de la BIOS, pero no impide que el ordenador encienda (salvo en casos muy concretos).
+
+## Cuándo conviene llamar a un técnico
+
+Si después de seguir todos los pasos anteriores el ordenador sigue sin encender, es probable que haya un fallo de hardware que requiera herramientas específicas (como un multímetro o una fuente de alimentación de prueba). También deberías llamar a un técnico si:
+
+- Hueles a quemado o ves marcas de calor en algún componente.
+- No te sientes cómodo abriendo el ordenador o manipulando su interior.
+- El ordenador se apaga solo después de unos segundos de encenderse (puede ser sobrecalentamiento o problema de la placa base).
+
+En Barcelona, puedes contactar conmigo y te ayudo a diagnosticarlo sin compromiso.
+
+## Preguntas frecuentes
+
+**¿Puede ser un problema de la placa base?**
+Sí, es posible. Si todo lo demás está bien (fuente, RAM, gráfica, conectores) pero no hay respuesta, la placa base puede estar dañada. Un técnico con un multímetro puede confirmarlo.
+
+**¿El ordenador no enciende después de una tormenta?**
+Es probable que una subida de tensión haya dañado la fuente o la placa base. Siempre es recomendable usar un protector de sobretensión o una regleta con protección.
+
+**¿Debo cambiar la pasta térmica si el ordenador no enciende?**
+No. La pasta térmica ayuda a disipar el calor, pero no impide que el ordenador encienda. Si enciende y se apaga al poco tiempo por sobrecalentamiento, entonces sí podría ser relevante.
+
+## Conclusión
+
+Cuando tu ordenador no enciende, lo peor que puedes hacer es entrar en pánico. Con estos pasos ordenados podrás descartar las causas más habituales sin necesidad de herramientas especiales. Si después de intentarlo todo el problema persiste, no dudes en pedir ayuda profesional. Estoy en Barcelona para ayudarte a recuperar tu equipo. Contáctame y lo solucionamos.
+
+## Referencias
+
+Microsoft. (2023). *Solucionar problemas cuando el equipo no se enciende*. Soporte de Microsoft. https://support.microsoft.com/es-es/windows/solucionar-problemas-cuando-el-equipo-no-se-enciende-...
+
+Xataka. (2024). *Mi PC no enciende: causas y soluciones*. Xataka. https://www.xataka.com/basics/mi-pc-no-encendia-causas-y-soluciones

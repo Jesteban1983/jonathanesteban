@@ -1,0 +1,135 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  image?: string;
+}
+
+const { title, description, canonical, image } = Astro.props;
+const ogImage = image || '/assets/img/profile/jonathan-esteban.jpg';
+const ogUrl = canonical || 'https://jonathanesteban.dev';
+---
+
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <meta name="author" content="Jonathan Esteban Barona">
+  <meta name="google-site-verification" content="m7HiJ34wfzUNV">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href={ogUrl}>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content={ogUrl}>
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:image" content={ogImage}>
+  <meta property="og:image:alt" content="Jonathan Esteban, técnico de soporte informático en Barcelona">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="Jonathan Esteban">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={ogImage}>
+
+  <!-- Favicon — logo de marca -->
+  <link rel="icon" href="/brand/logo-icono.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="/favicon.ico">
+
+  <!-- Google Fonts: Inter (BRAND.md) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- JSON-LD Person Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jonathan Esteban",
+    "jobTitle": "Técnico de Soporte Informático",
+    "url": "https://jonathanesteban.dev",
+    "email": "joonathanesteban@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Barcelona",
+      "addressCountry": "ES"
+    },
+    "sameAs": [
+      "https://linkedin.com/in/jonathanesteban",
+      "https://github.com/Jesteban1983"
+    ],
+    "knowsAbout": ["Soporte Helpdesk N1", "Mantenimiento de PC", "Redes TCP/IP", "Windows", "Linux", "Microsoft 365", "Ciberseguridad Básica"],
+    "knowsLanguage": ["es"]
+  }
+  </script>
+
+  <!-- JSON-LD ProfessionalService Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Jonathan Esteban — Servicios de Soporte Informático",
+    "url": "https://jonathanesteban.dev",
+    "email": "joonathanesteban@gmail.com",
+    "areaServed": "Barcelona",
+    "description": "Soporte informático para particulares, pymes y autónomos: Helpdesk N1, reparación de PC, redes, instalación de sistemas y ofimática en Barcelona.",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Servicios de Soporte Informático",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Soporte Helpdesk N1"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Mantenimiento y Reparación de PC"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Instalación y Configuración de Sistemas"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Diagnóstico y Configuración de Redes"}}
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+  <Header />
+
+  <slot />
+
+  <Footer />
+
+  <!-- JS Modules -->
+  <script type="module" src="/assets/js/main.js" is:inline></script>
+  <script src="/assets/js/terminal-standalone.js" is:inline></script>
+
+  <!-- WhatsApp Float injected by main.js, but we also include inline theme init -->
+  <script>
+    // Prevent FOUC: apply saved theme before paint
+    (function() {
+      var theme = localStorage.getItem('site-theme');
+      if (theme) document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <!-- Botón scroll-to-top -->
+  <button id="scrollToTop" class="scroll-to-top" aria-label="Volver arriba" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+  </button>
+  <script>
+    (function() {
+      var btn = document.getElementById('scrollToTop');
+      if (!btn) return;
+      window.addEventListener('scroll', function() {
+        btn.classList.toggle('visible', window.scrollY > 400);
+      });
+    })();
+  </script>
+</body>
+</html>

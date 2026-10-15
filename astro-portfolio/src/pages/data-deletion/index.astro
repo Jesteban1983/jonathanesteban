@@ -1,0 +1,55 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Eliminación de Datos | Jonathan Esteban" description="Solicitud de eliminación de datos personales del sitio web de Jonathan Esteban según el RGPD." canonical="/data-deletion/">
+  <style is:global>
+    .legal-page { max-width: 720px; margin: 0 auto; }
+    .legal-page h1 {
+      font-family: var(--font-display);
+      font-size: var(--fs-h2);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .legal-page h2 { font-size: 1.15rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.5rem; }
+    .legal-page p, .legal-page li { color: var(--color-text-muted); line-height: 1.8; font-size: 0.92rem; }
+    .legal-page ul { padding-left: 1.25rem; }
+    .legal-page ul li { list-style: disc; margin-bottom: 0.4rem; }
+  </style>
+
+  <main id="main-content">
+    <section class="hero-base">
+      <div class="container legal-page fade-in">
+        <nav class="breadcrumbs" aria-label="Miga de pan">
+          <a href="/">Inicio</a>
+          <span class="sep">/</span>
+          <span class="current">Eliminación de Datos</span>
+        </nav>
+
+        <h1>Solicitud de Eliminación de Datos</h1>
+        <p>En cumplimiento con el Reglamento General de Protección de Datos (RGPD), todo usuario tiene derecho a solicitar la eliminación de sus datos personales almacenados en este sitio web.</p>
+
+        <h2>¿Qué datos almacenamos?</h2>
+        <p>Este sitio web únicamente almacena los datos que el usuario proporciona voluntariamente a través del formulario de contacto: nombre, correo electrónico, asunto y mensaje. No se recogen datos de navegación ni se almacenan cookies de seguimiento sin consentimiento.</p>
+
+        <h2>Cómo solicitar la eliminación</h2>
+        <p>Para solicitar la eliminación de tus datos personales, envía un correo electrónico a <strong>joonathanesteban@gmail.com</strong> con el asunto "Eliminación de Datos - RGPD" e incluye:</p>
+        <ul>
+          <li>Tu nombre completo.</li>
+          <li>El correo electrónico que usaste en el formulario de contacto.</li>
+          <li>Una breve descripción de tu solicitud (opcional pero recomendada).</li>
+        </ul>
+
+        <h2>Plazo de respuesta</h2>
+        <p>Atenderemos tu solicitud en un plazo máximo de 30 días naturales desde la recepción del correo. Recibirás una confirmación una vez los datos hayan sido eliminados.</p>
+
+        <h2>Excepciones</h2>
+        <p>En algunos casos, podemos estar obligados a conservar ciertos datos por requisitos legales (por ejemplo, facturación). En ese caso, te informaremos del motivo y la duración de la conservación.</p>
+
+        <h2>Derecho de reclamación</h2>
+        <p>Si no quedas satisfecho con la respuesta, puedes presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD).</p>
+
+        <a href="mailto:joonathanesteban@gmail.com?subject=Eliminación%20de%20Datos%20-%20RGPD" class="btn-primary" style="margin-top: 1.5rem; display: inline-block;">Solicitar Eliminación de Datos →</a>
+      </div>
+    </section>
+  </main>
+</Layout>

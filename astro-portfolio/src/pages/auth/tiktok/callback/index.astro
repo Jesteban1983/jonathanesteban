@@ -1,0 +1,32 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+---
+<Layout title="Autenticación con TikTok | Jonathan Esteban" description="Página de callback para autenticación OAuth con TikTok." canonical="/auth/tiktok/callback/">
+  <meta http-equiv="refresh" content="0;url=/">
+
+  <main id="main-content">
+    <section class="hero-base" style="min-height: 60vh; display: flex; align-items: center; justify-content: center;">
+      <div class="container" style="text-align: center;">
+        <p style="font-size: 1.1rem; color: var(--color-text-muted);">Procesando autenticación con TikTok...</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (async () => {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get('code');
+        if (code) {
+          const resp = await fetch(`/api/tiktok-oauth-callback?code=${encodeURIComponent(code)}`);
+          if (resp.ok) {
+            const data = await resp.json();
+            if (data.redirect) window.location.href = data.redirect;
+          }
+        }
+      } catch (e) {
+        console.error('TikTok OAuth error:', e);
+      }
+    })();
+  </script>
+</Layout>
