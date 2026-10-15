@@ -111,24 +111,7 @@ list_drafts_json() {
         return 0
     fi
 
-    python3 -c "
-import json, os, re
-from pathlib import Path
-
-drafts = []
-for f in sorted(Path('$drafts_dir').glob('*.mdx')):
-    content = f.read_text()
-    title = ''
-    m = re.search(r'^title:\s*[\"'](.+?)[\"']', content, re.M)
-    if m: title = m.group(1)
-    drafts.append({
-        'slug': f.stem,
-        'title': title,
-        'path': str(f)
-    })
-
-print(json.dumps({'drafts': drafts}, ensure_ascii=False))
-"
+    python3 "$SCRIPT_DIR/list-drafts.py" "$drafts_dir"
 }
 
 # ── main ──

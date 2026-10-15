@@ -7,6 +7,7 @@
 #   ./scripts/blog-publish.sh                      # Publica TODOS los drafts
 #   ./scripts/blog-publish.sh --list               # Lista drafts disponibles
 #   ./scripts/blog-publish.sh --undo <slug>        # Revierte (mueve a drafts otra vez)
+#   ./scripts/blog-publish.sh --topic "..." <slug> # Especifica el tema para marcar CSV
 
 set -euo pipefail
 
@@ -72,9 +73,10 @@ publish_draft() {
     ok "Publicado: $pub_file"
 
     # Marcar en topic bank
-    if [ -f "$TOPIC_BANK" ] && grep -qi "$slug" "$TOPIC_BANK" 2>/dev/null; then
-        sed -i "s/,pendiente$/,publicado/" "$TOPIC_BANK"
-        ok "Topic bank actualizado: $slug → publicado"
+    if python3 "$PROJECT_DIR/scripts/update-topic-bank.py" "$pub_file" "$TOPIC_BANK"; then
+        ok "Topic bank actualizado"
+    else
+        warn "No se pudo actualizar topic bank"
     fi
 
     return 0
@@ -95,8 +97,9 @@ undo_publish() {
     mv "$pub_file" "$draft_file"
     ok "Revertido a draft: $draft_file"
 
-    if [ -f "$TOPIC_BANK" ] && grep -qi "$slug" "$TOPIC_BANK" 2>/dev/null; then
-        sed -i "s/,publicado$/,pendiente/" "$TOPIC_BANK"
+    # Desmarcar en topic bank
+    if python3 "$PROJECT_DIR/scripts/update-topic-bank.py" --undo "$draft_file" "$TOPIC_BANK"; then
+        ok "Topic bank revertido"
     fi
 
     return 0

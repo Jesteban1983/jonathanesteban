@@ -409,8 +409,7 @@ def main() -> int:
     parser.add_argument("--topic", required=True, help="Tema del artículo")
     parser.add_argument("--keyword", default="", help="Palabra clave principal")
     parser.add_argument("--intencion", default="informativa",
-                        choices=["informativa", "guía práctica", "guía", "comparativa", "lista"],
-                        help="Intención del artículo")
+                        help="Intención de búsqueda (p.ej. informativa, guía práctica, comparativa)")
     parser.add_argument("--model", default="deepseek-v4",
                         help="Modelo LiteLLM (deepseek-v4, groq-fast, deepseek-r1)")
     parser.add_argument("--with-image", action="store_true",

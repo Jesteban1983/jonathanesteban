@@ -1,0 +1,133 @@
+---
+title: "Cómo saber si el disco duro está fallando antes de perder datos"
+description: "Guía para detectar a tiempo los síntomas de un disco duro fallando: sonidos, errores, SMART y pasos para proteger tu información antes de que sea tarde."
+pubDate: 2026-10-15
+heroImage: "/assets/img/blog/como-saber-si-el-disco-duro-esta-fallando.png"
+tags: ["blog"]
+author: "Jonathan Esteban"
+draft: false
+---
+
+import TablaAPA from '../../components/TablaAPA.astro';
+
+Un disco duro puede estropearse sin avisar. Pero casi siempre deja señales antes de morir: ruidos, errores al abrir archivos o avisos del sistema. Si aprendes a interpretarlas, puedes salvar tus datos y evitar un disgusto. En esta guía verás cuáles son los primeros síntomas, cómo comprobar la salud de tu disco con herramientas de diagnóstico y qué hacer para proteger tu información. No hace falta ser informático para entenderlo: te lo explico paso a paso y con palabras sencillas.
+
+## Respuesta rápida
+
+Puedes saber si tu disco duro está fallando si escuchas ruidos extraños (clics o zumbidos), notas que el ordenador va muy lento sin motivo, aparecen errores al copiar o abrir archivos, o el sistema operativo te avisa de problemas de disco. Para confirmarlo, usa herramientas como CrystalDiskInfo (Windows) o el programa Disk Utility (macOS) para leer los datos SMART del disco. Si el resultado marca "precaución" o "malo", haz una copia de seguridad ya y cambia el disco.
+
+## Cuáles son los primeros síntomas de un disco duro fallando
+
+Estos son los avisos más habituales. Si notas uno solo, quizá no sea grave. Si notas varios a la vez, el riesgo aumenta.
+
+- Ruidos extraños: clics repetidos, zumbidos o un golpeteo seco al leer o escribir.
+- Ralentización general: el equipo tarda más en arrancar y abrir programas sin razón aparente.
+- Archivos que no abren o se corrompen: documentos, fotos o vídeos que dan error o están incompletos.
+- Errores al copiar o mover archivos: mensajes como "no se puede leer el origen" o "el archivo está dañado".
+- Pantallazos azules en Windows o reinicios repentinos en macOS por errores de disco.
+- Avisos del sistema operativo: Windows Event Viewer o macOS Console registran errores de I/O (entrada/salida).
+
+Estos síntomas no siempre significan que el disco está roto. A veces son por cables mal conectados, sectores defectuosos que el sistema puede reparar o falta de espacio. Pero es mejor revisarlos.
+
+### Cómo diferenciar un fallo físico de un fallo lógico
+
+Un fallo físico es un daño en los componentes del disco (motor, cabezal, platos). Un fallo lógico es un problema en los datos almacenados o en el sistema de archivos. Los ruidos suelen indicar fallo físico. Los errores al abrir archivos pueden ser lógicos o físicos. Para saberlo, una herramienta de diagnóstico te ayuda.
+
+## Cómo comprobar la salud del disco con SMART (en Windows y macOS)
+
+### Qué es SMART
+
+SMART (Self-Monitoring, Analysis and Reporting Technology) es una tecnología que monitoriza la salud del disco duro. Está disponible en casi todos los discos actuales (tanto HDD como SSD) y te da información sobre temperatura, errores de lectura, sectores defectuosos y tiempo de uso. Cada disco tiene una serie de atributos, y cada atributo tiene un umbral. Si un atributo supera su umbral, el disco se marca como "en fallo" o "en riesgo".
+
+### Cómo leer SMART en Windows
+
+1. Descarga e instala CrystalDiskInfo (es gratis y no solicita permisos extraños). Está disponible en la página oficial de CrystalDiskInfo.
+2. Abre el programa. Verás una lista de tus discos duros y su estado general: bueno, precaución o malo.
+3. Revisa los atributos más importantes:
+   - Reallocated Sectors Count: sectores que el disco ha tenido que reubicar porque estaban dañados. Si sube, es mala señal.
+   - Current Pending Sectors: sectores pendientes de reubicar. Si aparece alguno, el disco está acumulando daños.
+   - Uncorrectable Sector Count: sectores que no se pueden corregir. Si aparece aquí, hay daño físico.
+   - Temperature: si el disco supera los 55 °C, el exceso de calor acorta su vida.
+4. Si aparece "precaución" o "malo", haz una copia de seguridad ya y planifica cambiar el disco.
+
+### Cómo leer SMART en macOS
+
+En macOS no hay una herramienta integrada que muestre SMART directamente en la interfaz, pero puedes usar la aplicación gratuita DriveDx o la función "Información del sistema" del propio sistema.
+
+1. Abre "Información del sistema" (mantén pulsada la tecla Opción y ve al menú Apple > Información del sistema).
+2. Ve a la sección "Almacenamiento", selecciona tu disco y busca la línea "Estado SMART".
+3. Si dice "Verificado", el disco está bien. Si dice "En riesgo" o "Fallando", necesitas actuar.
+
+Otra opción es usar DriveDx, que da mucha más información y te avisa de problemas en tiempo real. También es de pago, pero tiene versión de prueba.
+
+## Qué hacer si sospechas que tu disco está fallando (antes de perder datos)
+
+Si tienes dudas, la regla de oro es: copia de seguridad inmediata. No esperes a que el disco falle del todo.
+
+### Haz una copia de seguridad (backup)
+
+1. Conecta un disco externo con el doble de espacio del que uses en tu disco actual.
+2. Copia tus archivos importantes (fotos, documentos, vídeos, correo). Puedes hacerlo manualmente o con programas de copia como Time Machine en macOS o la Herramienta de copia de seguridad en Windows.
+3. Si el disco da errores al copiar algunos archivos, intenta copiarlos uno a uno. A veces son pocos archivos concretos los que están dañados.
+4. No apagues el ordenador mientras copias. Un corte de energía puede empeorar el daño.
+
+### Usa herramientas de reparación (con cuidado)
+
+En Windows puedes usar el comando `chkdsk` para marcar los sectores defectuosos y evitar que se usen. En macOS puedes usar la Utilidad de Discos para reparar el disco si hay errores de formato. Pero ojo: estas herramientas no pueden reparar daño físico. Solo marcan sectores malos y, en algunos casos, recuperan datos. Si el disco tiene daño físico, usarlas puede empeorar el estado. Si oyes ruidos de golpeteo o clics, no fuerces el disco con programas de reparación.
+
+### Cambia el disco antes de que falle del todo
+
+Si el disco muestra síntomas claros de fallo, lo más sensato es sustituirlo. Los discos duros actuales tienen una vida media de entre 3 y 5 años, según el uso y las horas encendidas. Pero no es una regla fija: algunos duran más y otros menos. Si el SMART marca "precaución" o el rendimiento del disco es muy malo, no lo alargues más.
+
+### Qué hacer con los datos si no puedes leerlos
+
+Si el disco no arranca o no lo reconoce el ordenador, no intentes abrirlo en casa. Los discos duros son dispositivos sellados: abrirlos en un entorno no controlado los daña para siempre. En ese caso, lo correcto es acudir a un servicio de recuperación de datos profesional. En España hay varios laboratorios (por ejemplo, Ontrack en Madrid) que pueden recuperar datos de discos con daño físico, aunque el servicio suele ser caro y no siempre exitoso.
+
+## Tabla comparativa: interpretación de los síntomas
+
+<TablaAPA numero="1" titulo="Síntomas de un disco duro fallando y su posible causa" nota="Elaboración propia a partir de los atributos SMART estándar y la experiencia de uso habitual.">
+
+| Síntoma | Posible causa | Acción recomendada |
+|---|---|---|
+| Ruidos de clics o golpeteo | Fallo físico del cabezal o motor | Apagar el disco, no forzarlo, acudir a un servicio profesional |
+| Ralentización general del sistema | Sectores defectuosos o causa lógica (falta de espacio, malware) | Comprobar SMART, hacer backup, liberar espacio |
+| Errores al copiar o abrir archivos | Sectores defectuosos o daño en el sistema de archivos | Copia de seguridad, usar chkdsk/Utilidad de Discos con cuidado |
+| Pantallazos azules o reinicios por disco | Fallo en el controlador o daño físico | Comprobar SMART, buscar en el visor de eventos, cambiar disco |
+| Avisos SMART del sistema | Desgaste del disco supera umbrales | Hacer backup de inmediato, sustituir el disco |
+
+</TablaAPA>
+
+## Errores comunes al diagnosticar un disco duro
+
+- Pensar que los ruidos son normales: un clic seco y repetido nunca lo es. Escucha con atención.
+- Ignorar los avisos SMART. Si el sistema o una herramienta te dice que el disco falla, no lo aplazas.
+- Usar programas de reparación en un disco con daño físico. Puede empeorar el estado y provocar la pérdida total.
+- No hacer copias de seguridad hasta que el disco falla del todo. El backup debe ser una rutina, no una urgencia.
+- Confundir lentitud general con fallo de disco. La lentitud puede deberse a falta de RAM o a malware. Hay que comprobarlo antes de cambiar de disco.
+- Abrir un disco duro en casa para "ver qué tiene". Es imposible reparar un disco con herramientas caseras, y además se daña para siempre.
+
+## Preguntas frecuentes
+
+**¿Cuánto dura un disco duro normal?**
+
+Un disco duro tradicional (HDD) dura de media entre 3 y 5 años de uso activo. Un SSD suele durar más, pero también puede fallar sin aviso. La duración depende de la calidad del disco, la temperatura, los cortes de energía y el uso intensivo.
+
+**¿Puedo recuperar datos de un disco que no arranca?**
+
+En algunos casos sí, pero no es algo que puedas hacer tú en casa si el fallo es físico. Los servicios profesionales de recuperación de datos utilizan equipos especializados y salas limpias para abrir el disco y extraer la información. No es barato, así que la prevención es la mejor estrategia.
+
+**¿Qué diferencia hay entre un HDD y un SSD a la hora de fallar?**
+
+Un HDD tiene partes móviles (platos y cabezal), por lo que es más propenso a fallos físicos por golpes o desgaste. Un SSD no tiene partes móviles, pero puede fallar por degradación de las celdas de memoria o por un fallo del controlador. Ambos pueden fallar sin aviso, así que el backup es igual de necesario en los dos casos.
+
+## Conclusión
+
+Detectar a tiempo un disco duro fallando puede ahorrarte la pérdida de fotos, documentos y recuerdos irreemplazables. Si notas ruidos, ralentización o errores al leer archivos, haz una copia de seguridad ya y usa un programa de diagnóstico para comprobar la salud del disco. Y si el disco ya muestra síntomas claros de daño físico, no lo fuerces: acude a un profesional. Si vives en Barcelona, puedo ayudarte a revisar el estado de tus discos y a montar un sistema de copias de seguridad antes de que sea tarde. Escríbeme y lo miramos.
+
+## Referencias
+
+Backblaze. (2024, 1 febrero). *Backblaze Drive Stats for 2023*. Backblaze. https://www.backblaze.com/blog/backblaze-drive-stats-for-2023/
+
+CrystalMark / Crystal Dew World. (s. f.). *CrystalDiskInfo*. https://crystalmark.info/en/software/crystaldiskinfo/
+
+Microsoft. (2024). *CHKDSK*. https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/chkdsk
