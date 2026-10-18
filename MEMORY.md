@@ -31,7 +31,7 @@
 2. **CARTO** exige API key (marca de agua "API KEY REQUIRED"). Esri World Street Map no.
 3. **Esri Dark Canvas** sale gris y sin etiquetas legibles → no usar.
 4. **404 al enviar el formulario:** `public/assets/js/form.js` tenía un listener a `/api/contact-submit` (no existe). Se eliminó; el `<script>` inline de `contacto/index.astro` es el único manejador.
-5. **Formspree `movzjdbz` devuelve 404 "Form not found"** → el fallback no funciona; hay que crear/actualizar el formulario en Formspree.
+5. **Formspree `movzjdbz` devolvía 404:** Se sustituyó por fallback nativo a Netlify Forms y `contact-recepcionista` ahora es resiliente (guarda en Netlify Blobs, envía email por Resend si hay key, reenvía a n8n si hay webhook, y responde 200 para redirigir a `/gracias/` sin fallar).
 6. **`astro dev` no ejecuta Netlify Functions.** En local el envío se simula (hostname `localhost`, `100.x` o puerto 4321). Para probar de verdad: `netlify dev`.
 7. **Webhook n8n de pruebas** (`/webhook/recepcionista-leads-test`) responde 404 si el workflow no está activo.
 8. **CRLF** en varios `.astro`: `sed -i '...$'` falla en silencio. Usar Python o las herramientas de edición.
@@ -48,6 +48,10 @@
 ---
 
 ## Bitácora
+
+### 2026-10-18 (corrección de error al enviar formulario de contacto)
+- `contact-recepcionista.js`: ya no devuelve 503 si `N8N_WEBHOOK_LEADS_URL` no está definida en Netlify. Ahora valida, registra el lead en consola de Netlify, guarda en Netlify Blobs si está disponible, envía email vía Resend (si `RESEND_API_KEY` existe), reenvía a n8n (si `N8N_WEBHOOK_LEADS_URL` existe) y responde 200 `{ ok: true }`.
+- `contacto/index.astro`: añadido `name="contact" data-netlify="true" data-netlify-honeypot="_gotcha"` y campo oculto `form-name="contact"`. En el cliente, si el endpoint serverless fallase, se realiza fallback a Netlify Forms nativo. Tras el envío correcto, siempre redirige limpiamente a `/gracias/?name=...&email=...`.
 
 ### 2026-10-18 (ejecución del plan SEO/GEO)
 - `Layout.astro`: prop `jsonld`; `BreadcrumbList` automático; `Service` automático en `/servicios/<slug>/`; Inter autoalojada (`@fontsource-variable/inter`), sin Google Fonts; OG por defecto `assets/img/og/og-default.jpg`.

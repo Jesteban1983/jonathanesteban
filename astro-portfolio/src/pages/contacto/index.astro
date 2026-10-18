@@ -20,7 +20,8 @@ import Layout from '../../layouts/Layout.astro';
           <span class="form-shell-title">./soporte.sh</span>
           <span class="form-shell-status">Respuesta &lt; 24h</span>
         </div>
-        <form id="contactForm" novalidate aria-describedby="formError">
+        <form id="contactForm" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="_gotcha" novalidate aria-describedby="formError">
+          <input type="hidden" name="form-name" value="contact" />
           <input type="text" name="_gotcha" style="display:none;" aria-hidden="true" tabindex="-1">
           <input type="text" name="company_site" style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true" tabindex="-1" autocomplete="off">
 
@@ -142,36 +143,51 @@ import Layout from '../../layouts/Layout.astro';
         }
       });
 
-      // Intenta primero el proxy del recepcionista; si falla, Formspree; en entorno local de pruebas/desarrollo simula éxito para verificar el flujo a la página de gracias.
+      // Intenta primero el endpoint del recepcionista; si falla, fallback a Netlify Forms nativo.
       async function proxyFetch(formData) {
+        // 1. Endpoint principal (contact-recepcionista serverless function)
         try {
           const p = await fetch('/.netlify/functions/contact-recepcionista', {
             method: 'POST',
             body: formData,
             headers: { 'Accept': 'application/json' }
           });
-          if (p.ok) return { ok: true, recepcionista: true };
-        } catch { /* fallback */ }
+          if (p.ok) {
+            const data = await p.json().catch(() => ({}));
+            if (data.ok) return { ok: true, source: 'recepcionista' };
+          }
+        } catch (err) {
+          console.warn('[Form] Endpoint recepcionista no disponible:', err);
+        }
 
+        // 2. Fallback: Netlify Forms nativo (Edge)
         try {
-          const f = await fetch('https://formspree.io/f/movzjdbz', {
-            method: 'POST',
-            body: formData,
-            headers: { 'Accept': 'application/json' }
-          });
-          if (f.ok) return { ok: true, recepcionista: false };
-        } catch { /* fallback */ }
+          const bodyParams = new URLSearchParams();
+          for (const [key, val] of formData.entries()) {
+            bodyParams.append(key, String(val));
+          }
+          if (!bodyParams.has('form-name')) bodyParams.append('form-name', 'contact');
 
-        // En desarrollo local (Tailscale / localhost / puerto dev) sin backend serverless:
+          const f = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: bodyParams.toString()
+          });
+          if (f.ok) return { ok: true, source: 'netlify-forms' };
+        } catch (err) {
+          console.warn('[Form] Fallback Netlify Forms no disponible:', err);
+        }
+
+        // 3. Entorno local de desarrollo o Tailscale sin serverless
         const isLocalDev = ['localhost', '127.0.0.1'].includes(window.location.hostname) ||
                            window.location.hostname.startsWith('100.') ||
                            window.location.port === '4321';
         if (isLocalDev) {
           console.info('🧪 [Dev local] Envío simulado con éxito para pruebas:', Object.fromEntries(formData));
-          return { ok: true, recepcionista: false, dev: true };
+          return { ok: true, source: 'dev' };
         }
 
-        return { ok: false, recepcionista: false };
+        return { ok: false };
       }
 
       // Field focus/blur effects for validation feedback

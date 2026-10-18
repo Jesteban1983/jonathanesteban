@@ -150,13 +150,7 @@ export const handler = async (event) => {
     return jsonBad(400, 'Mensaje demasiado largo (máx. 4000 caracteres)');
   }
 
-  // 5) No hay webhook configurado → devolver 503 para que el cliente
-  //    caiga a Formspree (fallback controlado, sin romper el resto).
-  if (!WEBHOOK_URL) {
-    return jsonBad(503, 'webhook n8n no configurado');
-  }
-
-  // 6) Payload limpio hacia n8n (solo datos del cliente, NADA de env/secretos)
+  // 5) Construcción del payload limpio del lead
   const payload = {
     source: 'web-form',
     submittedAt: new Date().toISOString(),
@@ -164,28 +158,78 @@ export const handler = async (event) => {
     email,
     subject: String(body.subject || '').trim(),
     message,
-    consentWhatsapp: body.consentWhatsapp === 'on' || body.consentWhatsapp === true,
+    consentWhatsapp: body.consentWhatsapp === 'on' || body.consentWhatsapp === true || body.consentWhatsapp === 'true',
+    ip,
   };
 
-  // 7) Llamada al webhook n8n con secreto en header
-  try {
-    const n8nRes = await fetch(WEBHOOK_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-n8n-secret': WEBHOOK_SECRET,
-      },
-      body: JSON.stringify(payload),
-    });
+  // Registrar siempre en los logs de Netlify Functions para trazabilidad inmediata
+  console.log('[RECEPCIONISTA] Nuevo lead recibido:', JSON.stringify(payload));
 
-    // El webhook n8n responde 200 si aceptó; cualquier otra cosa → fallback
-    if (!n8nRes.ok) {
-      console.error('[recepcionista] n8n respondió', n8nRes.status);
-      return jsonBad(502, 'El servicio de procesamiento no respondió correctamente');
+  // 6) Guardar en Netlify Blobs si está disponible (persistencia serverless)
+  try {
+    const store = await getBlobStore();
+    if (store) {
+      const leadId = `lead-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
+      await store.setJSON(leadId, payload);
     }
-    return jsonOk({ ok: true });
-  } catch (err) {
-    console.error('[recepcionista] error llamando a n8n:', err);
-    return jsonBad(502, 'El servicio de procesamiento no está disponible');
+  } catch (blobErr) {
+    console.warn('[recepcionista] Netlify Blobs aviso:', blobErr.message);
   }
+
+  // 7) Notificación por email si hay RESEND_API_KEY configurada
+  if (process.env.RESEND_API_KEY) {
+    try {
+      const ownerEmail = process.env.OWNER_EMAIL || 'joonathanesteban@gmail.com';
+      await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          from: 'Jonathan Esteban Portfolio <onboarding@resend.dev>',
+          to: [ownerEmail],
+          reply_to: email,
+          subject: `[Nuevo Contacto Web] ${payload.subject || 'Incidencia'} - ${payload.name}`,
+          html: `
+            <h2>Nuevo mensaje desde jonathanesteban.dev</h2>
+            <p><strong>Nombre:</strong> ${payload.name}</p>
+            <p><strong>Email:</strong> ${payload.email}</p>
+            <p><strong>Asunto:</strong> ${payload.subject || 'Sin especificar'}</p>
+            <p><strong>WhatsApp consent:</strong> ${payload.consentWhatsapp ? 'Sí' : 'No'}</p>
+            <p><strong>Mensaje:</strong></p>
+            <blockquote style="background:#f4f4f4;padding:12px;border-left:4px solid #0052cc;">
+              ${payload.message.replace(/\n/g, '<br>')}
+            </blockquote>
+            <p><small>Fecha: ${payload.submittedAt} · IP: ${payload.ip}</small></p>
+          `
+        })
+      });
+    } catch (mailErr) {
+      console.error('[recepcionista] Error enviando email con Resend:', mailErr);
+    }
+  }
+
+  // 8) Reenvío al webhook n8n (si está configurada la URL)
+  if (WEBHOOK_URL) {
+    try {
+      const n8nRes = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-n8n-secret': WEBHOOK_SECRET,
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!n8nRes.ok) {
+        console.warn('[recepcionista] n8n respondió status', n8nRes.status);
+      }
+    } catch (err) {
+      console.error('[recepcionista] error llamando a n8n:', err.message);
+    }
+  }
+
+  // Confirmar éxito para que el cliente redirija a /gracias/
+  return jsonOk({ ok: true });
 };
