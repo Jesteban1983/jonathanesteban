@@ -1,114 +1,110 @@
-# 🌐 jonathanesteban.dev — Plataforma Corporativa Multi-Página & Serverless
+# 🌐 jonathanesteban.dev — Soporte informático (Astro + Netlify)
 
-> **Sitio Web Oficial:** [https://jonathanesteban.dev](https://jonathanesteban.dev)  
-> **Autor:** Jonathan Esteban Barona — Full-Stack Developer, AI Engineer & Digital Operations Specialist  
-> **Hosting:** Netlify (Git-integrated deployment)
+> **Sitio:** [https://jonathanesteban.dev](https://jonathanesteban.dev)
+> **Autor:** Jonathan Esteban Barona — técnico de soporte informático
+> **Zona:** L'Hospitalet de Llobregat y área metropolitana de Barcelona · servicio a domicilio y en remoto
+> **Hosting:** Netlify (deploy automático desde `main`)
 
 ---
 
-## 🏗️ Arquitectura del Proyecto
+## 🏗️ Arquitectura
 
-El proyecto está estructurado como una **Plataforma Multi-Página (MPA)** modular con micro-servicios serverless:
+Sitio estático con **Astro 7**, **Tailwind 4** (Vite), **MDX** y funciones serverless de Netlify.
 
 ```
 .
-├── site/                                      # Directorio público publicado en Netlify
-│   ├── index.html                             # Homepage / Portal principal
-│   ├── servicios/                             # Servicios comerciales & Calculadora de Presupuestos
-│   ├── proyectos/                             # Portfolio interactivo con filtros por categoría
-│   │   ├── demo-app/                          # App interactiva de demostración en vivo
-│   │   └── casos/                             # Estudios de caso (portfolio-redesign, landing-negocio, automatizacion-leads)
-│   ├── certificaciones/                       # Credenciales, 4Geeks Academy Madrid (71%) & Certificados
-│   ├── soporte-it/                            # Operaciones Digitales & Mantenimiento IT
-│   ├── sobre-mi/                              # Biografía profesional & propuesta de valor
-│   ├── contacto/                              # Formulario de contacto asíncrono
-│   ├── faq/                                   # Centro de Ayuda & FAQ interactivo (GEO / SEO)
-│   ├── privacy-policy/                        # Política de Privacidad (Cumplimiento RGPD/Meta/TikTok)
-│   ├── terms-of-service/                      # Términos y Condiciones del Servicio
-│   ├── data-deletion/                         # Callback e instrucciones de eliminación de datos
-│   ├── auth/                                  # Callbacks de autorización OAuth (TikTok & Facebook)
-│   ├── gracias/                               # Landing de confirmación de conversión
-│   ├── assets/
-│   │   ├── css/                               # CSS modular (tokens, base, layout, components, pages, legal)
-│   │   ├── js/                                # JS ES6 modular (main, nav, theme, faq, filters, form, calculator, tracking, app-demo)
-│   │   ├── data/                              # Datasets JSON (projects, certificates, services, faq)
-│   │   ├── img/                               # Imágenes WebP optimizadas y OpenGraph (1200x630)
-│   │   ├── icons/                             # SVGs vectoriales de tecnologías y servicios
-│   │   └── docs/domain-verification/          # Verificación de dominio Meta/TikTok
-│   ├── robots.txt                             # Directivas SEO y acceso a bots de IA (GPTBot, PerplexityBot, ClaudeBot)
-│   └── sitemap.xml                            # Mapa XML con las 15+ URLs del sitio
-├── functions/                                 # Netlify Serverless Functions (backend aislado)
-│   ├── contact-submit.js                      # Procesamiento de formulario de contacto & honeypot
-│   ├── notify-owner.js                        # Notificaciones instantáneas a Telegram
-│   ├── autoresponse.js                        # Emails de confirmación mediante SendGrid
-│   ├── tiktok-oauth-callback.js               # Token exchange seguro para TikTok Developer Console
-│   ├── facebook-oauth-callback.js             # Token exchange seguro para Meta for Developers
-│   ├── data-deletion-request.js               # Endpoint de eliminación de datos firmado por Facebook/TikTok
-│   └── webhook-n8n.js                         # Proxy autenticado a workflows n8n
-├── .env                                       # Variables de entorno en producción (Gitignored)
-├── .env.example                               # Plantilla de variables de entorno para desarrollo
-├── .gitignore                                 # Protección de archivos sensibles (.env, node_modules)
-├── netlify.toml                               # Configuración de despliegue, publish="site", functions="functions", CSP headers
-└── context.md                                 # Especificación técnica maestra del proyecto (v3.0)
+├── astro-portfolio/                  # Código fuente (base de Netlify)
+│   ├── src/
+│   │   ├── layouts/Layout.astro      # <head> SEO: canonical absoluto, OG, JSON-LD, noindex, skip-link
+│   │   ├── components/               # Header, Footer
+│   │   ├── pages/                    # Rutas (index, servicios/*, sobre-mi, blog, faq, contacto, gracias, legal…)
+│   │   ├── content/blog/             # Artículos MDX (+ drafts/)
+│   │   └── styles/global.css         # Tokens de diseño y utilidades
+│   ├── public/                       # robots.txt, assets, brand, leaflet, favicon
+│   ├── netlify/functions/            # contact-recepcionista.js (proxy → n8n)
+│   ├── scripts/                      # Pipeline del blog (Python/Bash)
+│   ├── docs/                         # Workflow n8n
+│   └── astro.config.mjs              # site, trailingSlash, mdx, sitemap
+├── netlify.toml                      # Build, cabeceras de seguridad/CSP, redirecciones
+├── PLAN-SEO-GEO-v1.md                # ▶ Plan vigente de SEO / GEO / accesibilidad / CRO
+├── PLAN-AGENTE-v2.md                 # Plan de reestructuración original
+├── MEMORY.md                         # Decisiones y gotchas (leer antes de trabajar)
+├── TOOLS.md                          # Comandos y herramientas
+├── BRAND.md · CV-DATA.md · MARKET-ANALYSIS.md · STACK.md · AUDIT.md
+└── WORKFLOW-RECEPCIONISTA.md · BLOG-AUTOMATION.md · FISCALIZACION.md
 ```
 
 ---
 
-## � Flujo del Formulario de Contacto
+## 🚀 Comandos
 
-El formulario en `/contacto/` sigue este pipeline completo:
+Requiere **Node ≥ 22.12** (`export PATH=/home/taisu/.nvm/versions/node/v24.20.0/bin:$PATH`).
+
+```bash
+cd astro-portfolio
+npm install
+npx astro dev --host 0.0.0.0 --port 4321   # desarrollo (accesible por Tailscale)
+npm run build                              # producción → dist/
+npm run preview
+npx netlify dev                            # prueba las Netlify Functions en local
+```
+
+Más en [`TOOLS.md`](TOOLS.md).
+
+---
+
+## 🔎 SEO y GEO — estado
+
+| Elemento | Estado |
+|---|---|
+| `robots.txt` | ✅ Permite buscadores y bots de IA (GPTBot, OAI-SearchBot, PerplexityBot, ClaudeBot, Google-Extended…); bloquea `/gracias/`, `/auth/`, `/certificaciones/` |
+| Sitemap | ✅ `@astrojs/sitemap` → `/sitemap-index.xml` |
+| Canonical / OG | ✅ URLs absolutas desde `Layout.astro`; imagen OG de marca 1200×630 |
+| Rendimiento | ✅ Inter autoalojada, caché inmutable, CSP ajustada |
+| `noindex` | ✅ gracias, auth, certificaciones |
+| JSON-LD | ✅ `Person`, `ProfessionalService`, `BreadcrumbList`, `Service` (por servicio), `Article` (blog), `FAQPage` (/faq/) |
+| Accesibilidad | ✅ skip-link, foco visible, ARIA en FAQ/formulario/mapa, contraste AA en tokens · ⏳ Lighthouse |
+| `llms.txt` | ✅ `public/llms.txt` |
+| Google Business Profile | ⏳ Acción de Jonathan |
+
+Hoja de ruta completa: [`PLAN-SEO-GEO-v1.md`](PLAN-SEO-GEO-v1.md).
+
+---
+
+## ✉️ Flujo del formulario de contacto
 
 ```
-Usuario envía → frontend (form.js) → /api/contact-submit (Netlify Function)
-                                        ├── ✅ Validación (campos, email, longitud, honeypot)
-                                        ├── 🚫 Rate limiting (8 solicitudes / 10 min por IP)
-                                        ├── 📧 Email al propietario (Resend → SendGrid fallback)
-                                        ├── ✉️ Auto-respuesta al usuario
-                                        ├── 📱 Telegram notification
-                                        └── 🔄 n8n webhook (opcional)
+/contacto/ ──► /.netlify/functions/contact-recepcionista ──► webhook n8n (recepcionista IA)
+     │                  (honeypot + rate-limit)                        │
+     │                                                                 └─► borrador → aprobación por Telegram
+     ├─ fallback: Formspree
+     └─ éxito ──► /gracias/?name=…&email=…   (noindex)
 ```
 
-### Variables de Entorno Requeridas
+| Variable | Descripción |
+|---|---|
+| `N8N_WEBHOOK_LEADS_URL` | Webhook n8n del recepcionista |
+| `N8N_WEBHOOK_SECRET` | Secreto compartido (header, nunca en el body) |
 
-| Variable | Obligatorio | Descripción |
-|---|---|---|
-| `RESEND_API_KEY` | Sí* | API key de Resend.com (proveedor email primario) |
-| `SENDGRID_API_KEY` | Sí* | API key de SendGrid (fallback automático) |
-| `TELEGRAM_BOT_TOKEN` | No | Token de @BotFather para notificaciones |
-| `TELEGRAM_CHAT_ID` | No | Chat ID numérico para recibir notis |
-| `N8N_WEBHOOK_LEADS_URL` | No | Webhook n8n para automatización de leads |
-| `N8N_WEBHOOK_SECRET` | No | Secreto compartido para webhook |
-| `SENDER_EMAIL_NO_REPLY` | No | Email remitente (default: joonathanesteban@gmail.com) |
-| `RESEND_DOMAIN` | No | Dominio verificado en Resend (default: onboarding@resend.dev) |
-
-> `*` Al menos un proveedor de email (Resend o SendGrid) debe configurarse para que funcione. Resend es gratuito hasta 100 emails/mes.
-
-Las variables se configuran en el panel de Netlify: **Site Settings → Environment variables**.
+Se configuran en Netlify (*Site settings → Environment variables*) y en `astro-portfolio/.env` para local. `astro dev` **no** ejecuta Functions: en local el envío se simula.
 
 ---
 
-## 🔒 Seguridad y Gestión de Secretos
+## 🔒 Seguridad y privacidad
 
-- **Cero claves expuestas:** Ningún token de API, client secret u OAuth app secret se encuentra en el frontend.
-- **Serverless Functions:** Todas las solicitudes a Telegram, SendGrid/Resend, n8n, Meta API o TikTok API son procesadas exclusivamente en backend mediante Netlify Functions (`functions/`).
-- **Protección antispam:** Honeypot field invisible + rate limiting por IP.
-- **Variables de Entorno:** Configuradas en el panel de Netlify (`Site Settings → Environment variables`). Copia `.env.example` como referencia.
-
----
-
-## 🚀 Despliegue en Netlify
-
-El despliegue es automático al enviar cambios a la rama `main` de GitHub. La configuración en `netlify.toml` indica:
-- **Publish Directory:** `site`
-- **Functions Directory:** `functions`
-
-### Setup inicial
-
-1. Conecta el repo en Netlify: **Add new site → Import from Git**
-2. Configura las variables de entorno (ver tabla arriba)
-3. Netlify detecta `netlify.toml` automáticamente
-4. Primer deploy: `git push` a `main`
+- Ningún secreto en el frontend; el proxy serverless guarda las claves.
+- Cabeceras HSTS, CSP, `X-Frame-Options`, `Permissions-Policy` en `netlify.toml`.
+- **No se publica dirección personal ni ubicación exacta**; el mapa muestra zona de cobertura.
+- Cookies: banner de consentimiento; políticas en `/legal/cookies/` y `/privacy-policy/`.
 
 ---
 
-*Desarrollado para jonathanesteban.dev*
+## 🤖 Trabajo con agentes
+
+1. Leer [`MEMORY.md`](MEMORY.md) y las reglas de `astro-portfolio/AGENTS.md`.
+2. Seguir la fase vigente de [`PLAN-SEO-GEO-v1.md`](PLAN-SEO-GEO-v1.md); no avanzar sin validación de Jonathan.
+3. Al terminar: `npm run build`, actualizar `MEMORY.md`, `TOOLS.md` y este README si cambia algo.
+
+---
+
+*Desarrollado para jonathanesteban.dev. El README anterior (arquitectura `site/` + `functions/`) está en el historial de git.*

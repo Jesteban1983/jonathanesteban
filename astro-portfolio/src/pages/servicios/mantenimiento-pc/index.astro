@@ -1,7 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 ---
-<Layout title="Mantenimiento y Reparación de PC | Jonathan Esteban · Barcelona" description="Reparación y mantenimiento de ordenadores en Barcelona. Montaje, limpieza, diagnóstico hardware y software, cambio de componentes. Garantía 15 días." canonical="/servicios/mantenimiento-pc/">
+<Layout title="Reparación de Ordenadores a Domicilio | L'Hospitalet" description="Reparación y mantenimiento de PC y portátiles a domicilio en L'Hospitalet y Barcelona: diagnóstico, limpieza y componentes. Garantía de 15 días y presupuesto previo." canonical="/servicios/mantenimiento-pc/">
   <style is:global>
     .service-detail ul { list-style: none; padding: 0; }
     .service-detail li { display: flex; gap: 0.5rem; align-items: flex-start; font-size: 0.95rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 0.75rem; }
@@ -31,6 +31,10 @@ import Layout from '../../../layouts/Layout.astro';
     </section>
     <div class="container">
 
+      <section class="service-summary" style="margin-block: 2rem 0;" aria-label="Resumen del servicio">
+        <p style="font-size: 1.05rem; line-height: 1.7; padding: 1.25rem 1.5rem; border-left: 4px solid var(--color-brand); background: var(--color-surface); border-radius: 0 0.5rem 0.5rem 0;"><strong>En resumen:</strong> La reparación y mantenimiento de ordenadores incluye diagnóstico, limpieza y cambio de componentes, a domicilio en L'Hospitalet y Barcelona. La limpieza y mantenimiento cuesta desde 40 €, el diagnóstico es gratuito si lo reparo conmigo (15 € si no) y toda reparación incluye 15 días de garantía.</p>
+      </section>
+
       <section class="service-detail" style="margin-block: 2.5rem;">
         <h2 style="font-size: var(--fs-xl); font-weight: 700; margin-bottom: 1rem;">¿Qué incluye?</h2>
         <ul>
@@ -48,6 +52,15 @@ import Layout from '../../../layouts/Layout.astro';
         <h2 style="font-size: var(--fs-xl); font-weight: 700; margin-bottom: 1rem;">Precios orientativos</h2>
         <p style="color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.7;">Diagnóstico: gratuito si se repara conmigo (15 € si no). Limpieza y mantenimiento desde 40 €. Reparaciones con cambio de componente desde 50 € + coste de la pieza.</p>
       </section>
+
+      <nav class="service-related" style="margin-block: 2.5rem;" aria-label="Artículos y servicios relacionados">
+        <h2 style="font-size: var(--fs-xl); font-weight: 700; margin-bottom: 1rem;">Te puede interesar</h2>
+        <ul style="list-style: disc; padding-left: 1.25rem; display: grid; gap: 0.5rem;">
+          <li><a href="/blog/ordenador-lento/">Ordenador lento: causas y soluciones</a></li>
+          <li><a href="/blog/como-saber-si-el-disco-duro-esta-fallando/">Cómo saber si tu disco duro está fallando</a></li>
+          <li><a href="/blog/ordenador-no-enciende-soluciones/">Mi ordenador no enciende: qué revisar</a></li>
+        </ul>
+      </nav>
 
       <section class="cta-card">
         <h2 style="font-size: var(--fs-xl); font-weight: 700; margin-bottom: 0.75rem;">¿Necesitas este servicio?</h2>

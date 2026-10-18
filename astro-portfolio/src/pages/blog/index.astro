@@ -7,10 +7,11 @@ posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 ---
 
 <Layout
-  title="Blog | Jonathan Esteban — Soporte Informático en Barcelona"
-  description="Artículos sobre soporte IT, mantenimiento de PC, redes, ofimática y tecnología para pymes y particulares en Barcelona."
+  canonical="/blog/"
+  title="Blog de Soporte Informático: Guías Prácticas | Barcelona"
+  description="Guías claras sobre PC lento, Wi-Fi, discos duros, redes y ofimática para particulares y pymes de Barcelona, escritas por un técnico informático en activo."
 >
-  <main class="container-wide" style="padding-block: 6rem 4rem;">
+  <main id="main-content" class="container-wide" style="padding-block: 6rem 4rem;">
     <header class="blog-index-header">
       <img src="/brand/logo-horizontal-descriptor.svg" alt="Jonathan Esteban — Soporte Informático en Barcelona" class="blog-index-logo" height="48">
       <h1 class="blog-index-title">Blog</h1>
@@ -23,7 +24,7 @@ posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
           <article class="blog-card">
             <a href={`/blog/${post.id}/`} class="blog-card-link">
               {post.data.heroImage && (
-                <img src={post.data.heroImage} alt="" class="blog-card-img" loading="lazy" />
+                <img src={post.data.heroImage} alt={post.data.title} class="blog-card-img" loading="lazy" width="600" height="315" />
               )}
               <div class="blog-card-body">
                 <time datetime={post.data.pubDate.toISOString()} class="blog-card-date">
@@ -92,12 +93,15 @@ posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
     font-weight: 600;
     margin-bottom: 0.5rem;
     line-height: 1.3;
+    text-align: left;
   }
   .blog-card-desc {
     font-size: var(--fs-sm);
     color: var(--color-text-secondary);
     line-height: 1.6;
     margin-bottom: 1rem;
+    text-align: justify;
+    text-justify: inter-word;
   }
   .blog-card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
   .blog-tag {

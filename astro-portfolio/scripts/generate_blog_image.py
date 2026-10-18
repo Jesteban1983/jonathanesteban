@@ -1,8 +1,14 @@
 #!/usr/bin/env python3
-"""Blog-specific wrapper around the shared IA-ENGINEERING-LAB image generator."""
+"""Blog-specific wrapper around the shared IA-ENGINEERING-LAB image generator.
+
+Usa DeepInfra + FLUX por defecto (vía la API compatible OpenAI de DeepInfra).
+El prompt de escena lo refina Groq (refine-image-prompt.py) antes de llegar
+aquí para garantizar una imagen de calidad sin texto ni errores de composición.
+"""
 from __future__ import annotations
 
 import argparse
+import os
 import re
 import subprocess
 import sys
@@ -10,6 +16,9 @@ from pathlib import Path
 
 LAB_ROOT = Path(__file__).resolve().parents[4]
 SHARED_GENERATOR = LAB_ROOT / "tools" / "gemini-image" / "generate_image.py"
+# El generador compartido necesita requests/Pillow → usar el venv dedicado
+VENV_IMAGE_PY = LAB_ROOT / ".venv-image/bin/python"
+DEEPINFRA_MODEL = "black-forest-labs/FLUX-1-dev"
 BLOG_STYLE = (
     "Premium editorial photograph for a technology support blog. Contemporary 2026 hardware, "
     "calm Mediterranean workspace, natural soft morning light, full-frame 35mm photography, "
@@ -25,6 +34,9 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--slug", required=True, help="article slug, e.g. ordenador-lento")
     parser.add_argument("--scene", required=True, help="specific scene description, preferably in English")
+    parser.add_argument("--provider", choices=("deepinfra", "gemini", "elevenlabs", "replicate"),
+                        default=os.environ.get("BLOG_IMAGE_PROVIDER", "deepinfra"),
+                        help="image provider (default: deepinfra/FLUX)")
     parser.add_argument("--output", type=Path, help="optional output path; defaults to public/assets/img/blog/<slug>.png")
     args = parser.parse_args()
     if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", args.slug):
@@ -44,6 +56,8 @@ def main() -> int:
         prompt,
         "--output",
         str(output),
+        "--provider",
+        args.provider,
         "--aspect-ratio",
         "16:9",
         "--format",
@@ -55,7 +69,14 @@ def main() -> int:
         "--min-height",
         "900",
     ]
-    return subprocess.run(command, cwd=project_root, check=False).returncode
+    if args.provider == "deepinfra":
+        command += ["--model", DEEPINFRA_MODEL]
+    # Usar el venv del generador de imágenes (instala requests/Pillow/google-genai)
+    python_bin = str(VENV_IMAGE_PY) if VENV_IMAGE_PY.is_file() else sys.executable
+    return subprocess.run(
+        [python_bin, *command[1:]],
+        cwd=project_root, check=False
+    ).returncode
 
 
 if __name__ == "__main__":

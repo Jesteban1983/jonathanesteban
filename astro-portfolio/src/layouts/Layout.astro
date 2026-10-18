@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import '@fontsource-variable/inter';
 import '../styles/global.css';
 
 export interface Props {
@@ -8,24 +9,83 @@ export interface Props {
   description: string;
   canonical?: string;
   image?: string;
+  noindex?: boolean;
+  jsonld?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { title, description, canonical, image } = Astro.props;
-const ogImage = image || '/assets/img/profile/jonathan-esteban.jpg';
-const ogUrl = canonical || 'https://jonathanesteban.dev';
+const { title, description, canonical, image, noindex = false, jsonld } = Astro.props;
+const SITE = 'https://jonathanesteban.dev';
+const abs = (u: string) => (/^https?:\/\//.test(u) ? u : SITE + (u.startsWith('/') ? u : '/' + u));
+const ogImage = abs(image || '/assets/img/og/og-default.jpg');
+const ogUrl = abs(canonical || Astro.url.pathname);
+
+// ── BreadcrumbList automático (a partir de la URL) ──
+const BC_NAMES: Record<string, string> = {
+  servicios: 'Servicios', 'helpdesk-n1': 'Helpdesk N1', 'mantenimiento-pc': 'Mantenimiento y Reparación de PC',
+  'instalacion-sistemas': 'Instalación y Configuración de Sistemas', redes: 'Redes', ofimatica: 'Ofimática y Nube',
+  licencias: 'Licencias Low-Cost', 'sobre-mi': 'Sobre mí', blog: 'Blog', faq: 'Preguntas frecuentes',
+  contacto: 'Contacto', legal: 'Legal', 'aviso-legal': 'Aviso Legal', cookies: 'Cookies',
+  'privacy-policy': 'Política de Privacidad', 'terms-of-service': 'Términos del Servicio', 'data-deletion': 'Eliminación de Datos',
+};
+const segments = Astro.url.pathname.split('/').filter(Boolean);
+const crumbs = [{ name: 'Inicio', url: SITE + '/' }];
+segments.forEach((seg, i) => {
+  const isLast = i === segments.length - 1;
+  crumbs.push({
+    name: isLast ? title.split(' | ')[0].split(' — ')[0] : (BC_NAMES[seg] || seg),
+    url: SITE + '/' + segments.slice(0, i + 1).join('/') + '/',
+  });
+});
+const breadcrumbLd = !noindex && segments.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: c.url })),
+} : null;
+
+// ── Service JSON-LD automático en /servicios/<slug>/ ──
+const isServicePage = segments[0] === 'servicios' && segments.length === 2;
+const serviceLd = isServicePage ? {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: title.split(' | ')[0],
+  description,
+  url: ogUrl,
+  serviceType: title.split(' | ')[0],
+  provider: { '@type': 'ProfessionalService', name: 'Jonathan Esteban — Soporte Informático', url: SITE },
+  areaServed: [
+    { '@type': 'City', name: "L'Hospitalet de Llobregat" },
+    { '@type': 'City', name: 'Barcelona' },
+    { '@type': 'AdministrativeArea', name: 'Baix Llobregat' },
+  ],
+  availableChannel: { '@type': 'ServiceChannel', serviceType: 'A domicilio y en remoto' },
+} : null;
+
+const extraLd = [breadcrumbLd, serviceLd, ...(Array.isArray(jsonld) ? jsonld : jsonld ? [jsonld] : [])].filter(Boolean);
 ---
 
 <!DOCTYPE html>
-<html lang="es" data-theme="light">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
+  <script is:inline>
+    // Inicialización inmediata antes de pintar para eliminar FOUC y destellos de color
+    (function() {
+      try {
+        var saved = localStorage.getItem('site-theme');
+        var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {}
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
   <meta name="description" content={description}>
   <meta name="author" content="Jonathan Esteban Barona">
   <meta name="google-site-verification" content="m7HiJ34wfzUNV">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1'}>
   <link rel="canonical" href={ogUrl}>
+  <meta name="theme-color" content="#0b1220">
+  <link rel="sitemap" type="application/xml" href="/sitemap-index.xml">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -33,7 +93,9 @@ const ogUrl = canonical || 'https://jonathanesteban.dev';
   <meta property="og:title" content={title}>
   <meta property="og:description" content={description}>
   <meta property="og:image" content={ogImage}>
-  <meta property="og:image:alt" content="Jonathan Esteban, técnico de soporte informático en Barcelona">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Jonathan Esteban — soporte informático a domicilio en L'Hospitalet y Barcelona">
   <meta property="og:locale" content="es_ES">
   <meta property="og:site_name" content="Jonathan Esteban">
 
@@ -47,10 +109,7 @@ const ogUrl = canonical || 'https://jonathanesteban.dev';
   <link rel="icon" href="/brand/logo-icono.svg" type="image/svg+xml">
   <link rel="alternate icon" href="/favicon.ico">
 
-  <!-- Google Fonts: Inter (BRAND.md) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Inter autoalojada (@fontsource-variable/inter): sin peticiones a Google Fonts -->
 
   <!-- JSON-LD Person Schema -->
   <script type="application/ld+json">
@@ -83,7 +142,10 @@ const ogUrl = canonical || 'https://jonathanesteban.dev';
     "name": "Jonathan Esteban — Servicios de Soporte Informático",
     "url": "https://jonathanesteban.dev",
     "email": "joonathanesteban@gmail.com",
-    "areaServed": "Barcelona",
+    "areaServed": [{"@type":"City","name":"L'Hospitalet de Llobregat"},{"@type":"City","name":"Barcelona"},{"@type":"AdministrativeArea","name":"Baix Llobregat"}],
+    "priceRange": "€€",
+    "image": "https://jonathanesteban.dev/assets/img/profile/jonathan-esteban.jpg",
+    "inLanguage": "es",
     "description": "Soporte informático para particulares, pymes y autónomos: Helpdesk N1, reparación de PC, redes, instalación de sistemas y ofimática en Barcelona.",
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -97,8 +159,10 @@ const ogUrl = canonical || 'https://jonathanesteban.dev';
     }
   }
   </script>
+  {extraLd.map((ld) => <script type="application/ld+json" set:html={JSON.stringify(ld)} />)}
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Saltar al contenido</a>
   <Header />
 
   <slot />
@@ -109,14 +173,6 @@ const ogUrl = canonical || 'https://jonathanesteban.dev';
   <script type="module" src="/assets/js/main.js" is:inline></script>
   <script src="/assets/js/terminal-standalone.js" is:inline></script>
 
-  <!-- WhatsApp Float injected by main.js, but we also include inline theme init -->
-  <script>
-    // Prevent FOUC: apply saved theme before paint
-    (function() {
-      var theme = localStorage.getItem('site-theme');
-      if (theme) document.documentElement.setAttribute('data-theme', theme);
-    })();
-  </script>
 
   <!-- Botón scroll-to-top -->
   <button id="scrollToTop" class="scroll-to-top" aria-label="Volver arriba" onclick="window.scrollTo({top:0,behavior:'smooth'})">

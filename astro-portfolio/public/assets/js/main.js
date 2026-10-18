@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTracking();
   initDemoApp();
 
-  // Scroll Animations Observer
+  // Scroll Animations Observer: elementos ya en viewport se muestran de inmediato para evitar destellos
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -27,9 +27,16 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  }, { threshold: 0.05, rootMargin: '0px 0px 40px 0px' });
 
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  document.querySelectorAll('.fade-in').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      el.classList.add('visible');
+    } else {
+      observer.observe(el);
+    }
+  });
 
   // === DYNAMIC YEARS CALCULATOR ===
   // Elementos con data-experience="YYYY" muestran el nº de años transcurridos

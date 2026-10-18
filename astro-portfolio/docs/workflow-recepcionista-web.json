@@ -1,0 +1,113 @@
+{
+  "name": "Recepcionista IA — Web form (Fase 1)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "recepcionista-leads",
+        "responseMode": "onReceived",
+        "authentication": "headerAuth",
+        "headerAuthType": "value",
+        "headerAuthName": "x-n8n-secret",
+        "headerAuthValue": "={{ $env.N8N_WEBHOOK_SECRET }}",
+        "options": {}
+      },
+      "id": "webhook-form",
+      "name": "Webhook — formulario web",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "recepcionista-leads"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. PRE-PROCESO: normalizar + construir el prompt del agente\nconst input = $input.all();\nif (!input.length) return [];\nconst d = input[0].json;\n\nconst clean = (v) => String(v || '').trim();\nconst msg = clean(d.message);\nconst name = clean(d.name);\nconst email = clean(d.email).toLowerCase();\nif (!msg) return [];\n\n// Contenido del negocio embebido (contexto anclado, sin inventar)\nconst systemPrompt = 'Eres el recepcionista de Jonathan Esteban, un tecnico de\\nsoporte informatico en Barcelona. Tu trabajo: LEER los mensajes entrantes\\ny CLASIFICARLOS antes de decidir si merecen respuesta.\\n\\nSERVICIOS REALES (no inventes otros):\\n- Helpdesk N1\\n- Mantenimiento y Reparacion de PC\\n- Instalacion de Sistemas\\n- Diagnostico y Configuracion de Redes\\n- Soporte Ofimatico y Migracion\\n- Licencias Originales\\n\\nCONDICIONES REALES: garantia de 15 dias, respuesta habitual en menos de 24h,\\nservicio en Barcelona.\\n\\nREGLAS DE ORO (clasificacion de confianza - NO respondas a todo):\\n1. Si el mensaje pide un servicio, un presupuesto o cuenta una incidencia -> LEAD_REAL.\\n2. Si huele a fraude (pago por adelantado, urgencia falsa, enlaces raros,\\n   \"soy un oficial\", cifras extranas, promesas de dinero facil) -> FRAUDE\\n   y NUNCA propongas responder.\\n3. Si es personal/amigo/spam/irrelevante -> NO_COMERCIAL y NO respondas.\\n4. Si piden algo que no esta en tus datos (precio muy raro, garantia que\\n   no das) -> DUDA y NO inventes: deriva al humano.\\n5. Si es ambiguo/corto/otro idioma -> AMBIGUO con borrador conservador.\\n\\nFORMATO DE SALIDA - SOLO JSON, sin markdown, sin texto extra:\\n{\\n  \"clasificacion\": \"LEAD_REAL | FRAUDE | NO_COMERCIAL | DUDA | AMBIGUO\",\\n  \"justificacion\": \"una linea explicando por que\",\\n  \"servicio\": \"servicio detectado o null\",\\n  \"borrador\": \"respuesta en espanol, cercana y sin jerga, SOLO si\\n  clasificacion=LEAD_REAL o AMBIGUO; si no, cadena vacia\",\\n  \"pedir_datos\": [\"campos que faltan, p.ej. que equipo y desde cuando\"]\\n}';\n\nreturn [{\n  json: {\n    source: d.source || 'web-form',\n    name, email, subject: clean(d.subject),\n    message: msg,\n    consentWhatsapp: !!d.consentWhatsapp,\n    submittedAt: d.submittedAt || new Date().toISOString(),\n    systemPrompt,\n    userMessage: 'Mensaje de ' + (name || 'un visitante') + ' (' + email + '):\\nAsunto: ' + (clean(d.subject) || 'sin asunto') + '\\nMensaje: ' + msg.slice(0, 3500)\n  }\n}];"
+      },
+      "id": "preproceso",
+      "name": "1. PRE-PROCESO + prompt del agente",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [220, 0]
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:4000/v1/chat/completions",
+        "method": "POST",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Authorization", "value": "=Bearer {{ $env.LITELLM_MASTER_KEY }}" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={ \"model\": \"deepseek-v4\", \"temperature\": 0.4, \"max_tokens\": 800, \"messages\": [ { \"role\": \"system\", \"content\": $json.systemPrompt }, { \"role\": \"user\", \"content\": $json.userMessage } ] }",
+        "options": {}
+      },
+      "id": "agente",
+      "name": "2. AGENTE INICIAL (DeepSeek v4)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [440, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "// 3. CLASIFICACION: parsear el JSON que devolvio el LLM y decidir la ruta\nconst items = $input.all();\nif (!items.length) return [];\nconst ai = items[0].json;\nconst content = ai.choices?.[0]?.message?.content || ai.output || '{}';\n\nlet parsed = {};\ntry { parsed = JSON.parse(content); } catch {\n  const m = content.match(/{[\\s\\S]*}/);\n  if (m) { try { parsed = JSON.parse(m[0]); } catch {} }\n}\n\nconst cls = String(parsed.clasificacion || 'AMBIGUO').toUpperCase();\nconst leading = ['LEAD_REAL', 'AMBIGUO'].includes(cls);\n\nreturn [{\n  json: {\n    ...items[0].json,\n    clasificacion: cls,\n    justificacion: parsed.justificacion || '',\n    servicio: parsed.servicio || '',\n    borrador: leading ? String(parsed.borrador || '') : '',\n    pedir_datos: Array.isArray(parsed.pedir_datos) ? parsed.pedir_datos : [],\n    respondible: leading,\n    raw_clasificado: parsed\n  }\n}];"
+      },
+      "id": "clasificacion",
+      "name": "3. CLASIFICACION (JSON del agente)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [660, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "// 4. APROBACION: montar el aviso para Telegram con el borrador\nconst items = $input.all();\nif (!items.length) return [];\nconst d = items[0].json;\n\nconst header = d.clasificacion === 'FRAUDE'\n  ? '⚠️ FRAUDE detectado — NO responder'\n  : d.clasificacion === 'NO_COMERCIAL'\n    ? '🗑️ No comercial / spam — NO responder'\n    : '📩 Nuevo lead — revisar borrador';\n\nconst lines = [\n  header,\n  'De: ' + d.name + ' <' + d.email + '>',\n  'Asunto: ' + (d.subject || '—'),\n  'Servicio: ' + (d.servicio || '—'),\n  '',\n  'Mensaje: ' + d.message.slice(0, 600)\n];\nif (['LEAD_REAL', 'AMBIGUO'].includes(d.clasificacion) && d.borrador) {\n  lines.push('', '--- Borrador ---', d.borrador);\n}\n\nreturn [{ json: { ...d, telegramText: lines.join('\\n'), aprobar: ['LEAD_REAL', 'AMBIGUO'].includes(d.clasificacion) } }];"
+      },
+      "id": "aprobacion",
+      "name": "4. Preparar aviso de aprobacion",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [880, 0]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $env.TELEGRAM_ADMIN_ID }}",
+        "text": "={{ $json.telegramText }}",
+        "additionalFields": {
+          "parse_mode": "HTML",
+          "reply_markup": "={\"inline_keyboard\":[[{\"text\":\"✅ Aprobar y enviar\",\"callback_data\":\"aprob_\"},{\"text\":\"❌ Descartar\",\"callback_data\":\"rechaz_\"}]]}"
+        }
+      },
+      "id": "telegram-aprobar",
+      "name": "5. Enviar a Telegram (aprobacion)",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.1,
+      "position": [1100, 0],
+      "credentials": {
+        "telegramApi": { "id": "REEMPLAZAR-EN-UI", "name": "Telegram account" }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook — formulario web": {
+      "main": [[{ "node": "1. PRE-PROCESO + prompt del agente", "type": "main", "index": 0 }]]
+    },
+    "1. PRE-PROCESO + prompt del agente": {
+      "main": [[{ "node": "2. AGENTE INICIAL (DeepSeek v4)", "type": "main", "index": 0 }]]
+    },
+    "2. AGENTE INICIAL (DeepSeek v4)": {
+      "main": [[{ "node": "3. CLASIFICACION (JSON del agente)", "type": "main", "index": 0 }]]
+    },
+    "3. CLASIFICACION (JSON del agente)": {
+      "main": [[{ "node": "4. Preparar aviso de aprobacion", "type": "main", "index": 0 }]]
+    },
+    "4. Preparar aviso de aprobacion": {
+      "main": [[{ "node": "5. Enviar a Telegram (aprobacion)", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "staticData": null,
+  "tags": [],
+  "pinData": {}
+}

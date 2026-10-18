@@ -1,46 +1,53 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 ---
-<Layout title="Contacto | Jonathan Esteban · Soporte Informático Barcelona" description="Contáctame para presupuestos de soporte informático, reparación de PC, helpdesk o instalación. Respuesta en menos de 24 horas. Barcelona." canonical="/contacto/">
+<Layout title="Contacto y Presupuesto de Soporte Informático | Barcelona" description="Pide presupuesto sin compromiso para reparar tu ordenador, configurar tu red o instalar Windows. Respuesta en menos de 24 h laborables en L'Hospitalet y Barcelona." canonical="/contacto/">
   <main id="main-content">
     <section class="hero-base">
       <div class="container">
         <div class="fade-in">
           <p class="hero-eyebrow">Hablemos de tu incidencia</p>
           <h1 class="hero-title">Contacto</h1>
-          <p class="hero-lead" style="margin-bottom: 0;">Descríbeme tu problema o consulta. Respondo habitualmente en menos de 24 horas.</p>
+          <p class="hero-lead" style="margin-bottom: 0; white-space: nowrap; max-width: none;">Descríbeme tu problema o consulta. Respondo habitualmente en menos de 24 horas.</p>
         </div>
       </div>
     </section>
 
     <div class="container contact-grid">
       <div class="contact-form-card fade-in">
-        <form id="contactForm" novalidate>
+        <div class="form-shell-head">
+          <div class="form-shell-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+          <span class="form-shell-title">./soporte.sh</span>
+          <span class="form-shell-status">Respuesta &lt; 24h</span>
+        </div>
+        <form id="contactForm" novalidate aria-describedby="formError">
           <input type="text" name="_gotcha" style="display:none;" aria-hidden="true" tabindex="-1">
           <input type="text" name="company_site" style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true" tabindex="-1" autocomplete="off">
 
-          <div class="form-group">
-            <label for="name">Nombre Completo <span class="label-accent">*</span></label>
-            <input type="text" id="name" name="name" class="form-control" placeholder="Tu nombre y apellidos" required autocomplete="name">
-          </div>
+          <div class="form-row form-row-3">
+            <div class="form-group">
+              <label for="name">Nombre Completo <span class="label-accent">*</span></label>
+              <input type="text" id="name" name="name" class="form-control" placeholder="Tu nombre y apellidos" required autocomplete="name">
+            </div>
 
-          <div class="form-group">
-            <label for="email">Correo Electrónico <span class="label-accent">*</span></label>
-            <input type="email" id="email" name="email" class="form-control" placeholder="tu@email.com" required autocomplete="email">
-          </div>
+            <div class="form-group">
+              <label for="email">Correo Electrónico <span class="label-accent">*</span></label>
+              <input type="email" id="email" name="email" class="form-control" placeholder="tu@email.com" required autocomplete="email" inputmode="email">
+            </div>
 
-          <div class="form-group">
-            <label for="subject">Asunto del Servicio</label>
-            <select id="subject" name="subject" class="form-control">
-              <option value="">Selecciona un servicio...</option>
-              <option value="Helpdesk N1">Soporte Helpdesk N1</option>
-              <option value="Mantenimiento PC">Mantenimiento y Reparación de PC</option>
-              <option value="Instalación Sistemas">Instalación de Sistemas</option>
-              <option value="Redes">Diagnóstico y Configuración de Redes</option>
-              <option value="Ofimática">Soporte Ofimático y Migración</option>
-              <option value="Licencias">Licencias Originales</option>
-              <option value="Otro">Otro / No lo sé</option>
-            </select>
+            <div class="form-group">
+              <label for="subject">Asunto del Servicio</label>
+              <select id="subject" name="subject" class="form-control">
+                <option value="">Selecciona un servicio...</option>
+                <option value="Helpdesk N1">Soporte Helpdesk N1</option>
+                <option value="Mantenimiento PC">Mantenimiento y Reparación de PC</option>
+                <option value="Instalación Sistemas">Instalación de Sistemas</option>
+                <option value="Redes">Diagnóstico y Configuración de Redes</option>
+                <option value="Ofimática">Soporte Ofimático y Migración</option>
+                <option value="Licencias">Licencias Originales</option>
+                <option value="Otro">Otro / No lo sé</option>
+              </select>
+            </div>
           </div>
 
           <div class="form-group">
@@ -63,13 +70,19 @@ import Layout from '../../layouts/Layout.astro';
             Enviar mensaje
           </button>
 
-          <div id="formError" class="form-error"></div>
-          <div id="formSuccess" class="form-success">✓ ¡Mensaje enviado con éxito! Te responderé en breve.</div>
+          <div id="formError" class="form-error" role="alert" aria-live="assertive"></div>
+          <div id="formSuccess" class="form-success" role="status" aria-live="polite">✓ ¡Mensaje enviado con éxito! Te responderé en breve.</div>
         </form>
       </div>
     </div>
     <div style="height: 3rem;"></div>
   </main>
+
+  <style>
+    /* En la página de contacto acercamos el form al hero para un
+       espacio de interlineado cómodo (el resto del sitio usa 3rem). */
+    .hero-base { padding-bottom: 1.5rem; }
+  </style>
 
   <!-- Formspree incluye protección anti-bots automática (reCAPTCHA v3 del lado servidor) -->
   <script>
@@ -110,41 +123,69 @@ import Layout from '../../layouts/Layout.astro';
         submitBtn.classList.add('loading');
         submitBtn.textContent = 'Enviando...';
 
+        // ── Envío al recepcionista AI (Netlify Function) con fallback a Formspree ──
+        // El proxy valida (honeypot + rate-limit) y reenvía a n8n. Si el
+        // proxy no responde (o no está desplegado aún), caemos a Formspree
+        // para no perder el mensaje: la producción nunca se rompe.
+        let res = await proxyFetch(new FormData(form));
+
+        if (res && res.ok) {
+          form.reset();
+          const targetUrl = '/gracias/?email=' + encodeURIComponent(email) + '&name=' + encodeURIComponent(name);
+          window.location.href = targetUrl;
+          return;
+        } else {
+          errorDiv.textContent = 'Error al enviar el mensaje. Inténtalo de nuevo.';
+          errorDiv.style.display = 'block';
+          submitBtn.classList.remove('loading');
+          submitBtn.textContent = 'Enviar mensaje';
+        }
+      });
+
+      // Intenta primero el proxy del recepcionista; si falla, Formspree; en entorno local de pruebas/desarrollo simula éxito para verificar el flujo a la página de gracias.
+      async function proxyFetch(formData) {
         try {
-          const formData = new FormData(form);
-          const res = await fetch('https://formspree.io/f/movzjdbz', {
+          const p = await fetch('/.netlify/functions/contact-recepcionista', {
             method: 'POST',
             body: formData,
             headers: { 'Accept': 'application/json' }
           });
+          if (p.ok) return { ok: true, recepcionista: true };
+        } catch { /* fallback */ }
 
-          if (res.ok) {
-            successDiv.style.display = 'block';
-            form.reset();
-            submitBtn.textContent = 'Enviar mensaje';
-          } else {
-            errorDiv.textContent = 'Error al enviar el mensaje. Inténtalo de nuevo.';
-            errorDiv.style.display = 'block';
-          }
-        } catch {
-          errorDiv.textContent = 'Error de conexión. Verifica tu internet e inténtalo de nuevo.';
-          errorDiv.style.display = 'block';
+        try {
+          const f = await fetch('https://formspree.io/f/movzjdbz', {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+          });
+          if (f.ok) return { ok: true, recepcionista: false };
+        } catch { /* fallback */ }
+
+        // En desarrollo local (Tailscale / localhost / puerto dev) sin backend serverless:
+        const isLocalDev = ['localhost', '127.0.0.1'].includes(window.location.hostname) ||
+                           window.location.hostname.startsWith('100.') ||
+                           window.location.port === '4321';
+        if (isLocalDev) {
+          console.info('🧪 [Dev local] Envío simulado con éxito para pruebas:', Object.fromEntries(formData));
+          return { ok: true, recepcionista: false, dev: true };
         }
 
-        submitBtn.classList.remove('loading');
-        submitBtn.textContent = 'Enviar mensaje';
-      });
+        return { ok: false, recepcionista: false };
+      }
 
       // Field focus/blur effects for validation feedback
       form.querySelectorAll('.form-control').forEach(input => {
         input.addEventListener('blur', () => {
           if (input.hasAttribute('required') && !input.value.trim()) {
             input.classList.add('error');
+            input.setAttribute('aria-invalid', 'true');
           } else {
             input.classList.remove('error');
+            input.removeAttribute('aria-invalid');
           }
         });
-        input.addEventListener('input', () => input.classList.remove('error'));
+        input.addEventListener('input', () => { input.classList.remove('error'); input.removeAttribute('aria-invalid'); });
       });
     });
   </script>

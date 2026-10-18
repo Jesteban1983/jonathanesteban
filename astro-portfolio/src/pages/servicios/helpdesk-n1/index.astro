@@ -1,7 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 ---
-<Layout title="Soporte Helpdesk N1 | Jonathan Esteban · Barcelona" description="Servicio de helpdesk nivel 1 en Barcelona. Atención a usuarios, gestión de incidencias, asistencia remota y presencial. Soporte informático para empresas y particulares." canonical="/servicios/helpdesk-n1/">
+<Layout title="Soporte Helpdesk N1 a Domicilio y en Remoto | Barcelona" description="Helpdesk nivel 1 en L'Hospitalet y Barcelona: incidencias, correo, impresoras y software, en remoto o a domicilio. Desde 30 €/h y respuesta en menos de 24 h." canonical="/servicios/helpdesk-n1/">
   <style is:global>
     .service-detail ul { list-style: none; padding: 0; }
     .service-detail li { display: flex; gap: 0.5rem; align-items: flex-start; font-size: 0.95rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 0.75rem; }
@@ -31,6 +31,10 @@ import Layout from '../../../layouts/Layout.astro';
     </section>
     <div class="container">
 
+      <section class="service-summary" style="margin-block: 2rem 0;" aria-label="Resumen del servicio">
+        <p style="font-size: 1.05rem; line-height: 1.7; padding: 1.25rem 1.5rem; border-left: 4px solid var(--color-brand); background: var(--color-surface); border-radius: 0 0.5rem 0.5rem 0;"><strong>En resumen:</strong> El soporte helpdesk N1 resuelve las incidencias informáticas del día a día: correo, impresoras, software y accesos. Lo presto en remoto o a domicilio en L'Hospitalet y Barcelona, desde 30 €/h, con respuesta en menos de 24 horas laborables y presupuesto cerrado para proyectos concretos.</p>
+      </section>
+
       <section class="service-detail" style="margin-block: 2.5rem;">
         <h2 style="font-size: var(--fs-xl); font-weight: 700; margin-bottom: 1rem;">¿Qué incluye?</h2>
         <ul>
@@ -48,6 +52,15 @@ import Layout from '../../../layouts/Layout.astro';
         <h2 style="font-size: var(--fs-xl); font-weight: 700; margin-bottom: 1rem;">Precios orientativos</h2>
         <p style="color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.7;">Desde 30 €/h para soporte puntual. Presupuesto cerrado para proyectos concretos.</p>
       </section>
+
+      <nav class="service-related" style="margin-block: 2.5rem;" aria-label="Artículos y servicios relacionados">
+        <h2 style="font-size: var(--fs-xl); font-weight: 700; margin-bottom: 1rem;">Te puede interesar</h2>
+        <ul style="list-style: disc; padding-left: 1.25rem; display: grid; gap: 0.5rem;">
+          <li><a href="/blog/ordenador-lento/">Mi ordenador va lento: causas y soluciones</a></li>
+          <li><a href="/blog/ordenador-no-enciende-soluciones/">Mi ordenador no enciende: qué revisar</a></li>
+          <li><a href="/servicios/ofimatica/">Servicio de ofimática y nube</a></li>
+        </ul>
+      </nav>
 
       <section class="cta-card">
         <h2 style="font-size: var(--fs-xl); font-weight: 700; margin-bottom: 0.75rem;">¿Necesitas este servicio?</h2>

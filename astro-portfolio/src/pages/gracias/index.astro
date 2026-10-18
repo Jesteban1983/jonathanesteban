@@ -1,16 +1,91 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 ---
-<Layout title="¡Gracias por tu Mensaje! | Jonathan Esteban · Soporte Informático" description="Mensaje recibido correctamente. Te responderé en menos de 24 horas.">
-  <main class="container-narrow" style="padding-top: calc(var(--nav-height) + 4rem); padding-bottom: 4rem; text-align: center;">
-    <div class="card fade-in">
-      <h1 style="font-size: var(--fs-h2); color: var(--color-brand); margin-bottom: 1rem;">¡Mensaje recibido!</h1>
-      <p style="font-size: 1.15rem; color: var(--color-text-muted); margin-bottom: 1.5rem;">Gracias por escribirme. He recibido tu mensaje correctamente y te responderé en menos de 24 horas.</p>
+<Layout title="¡Gracias por tu Mensaje! | Jonathan Esteban · Soporte Informático" description="Mensaje recibido correctamente. Te responderé en menos de 24 horas laborables." canonical="/gracias/" noindex={true}>
+  <main id="main-content" class="container-narrow" style="padding-top: calc(var(--nav-height) + 3rem); padding-bottom: 4rem;">
+    <div class="card fade-in" style="padding: 2.5rem 2rem; text-align: center; max-width: 680px; margin: 0 auto;">
       
-      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+      <!-- Icono de éxito animado -->
+      <div style="width: 72px; height: 72px; margin: 0 auto 1.5rem; border-radius: 50%; background: color-mix(in srgb, var(--color-success) 15%, transparent); border: 2px solid var(--color-success); display: flex; align-items: center; justify-content: center; color: var(--color-success);">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+
+      <p class="hero-eyebrow" style="margin-bottom: 0.5rem; justify-content: center;">
+        <span class="hero-eyebrow-dot"></span>
+        Mensaje enviado correctamente
+      </p>
+
+      <h1 id="thankTitle" style="font-size: var(--fs-h2); color: var(--color-text); margin-bottom: 1rem; font-weight: 700;">
+        ¡Gracias por contactar!
+      </h1>
+
+      <p id="thankSubtitle" style="font-size: 1.1rem; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 2rem;">
+        He recibido tu consulta. Revisaré los detalles de tu incidencia y te responderé en menos de <strong>24 horas laborables</strong>.
+      </p>
+
+      <!-- Pasos siguientes -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; text-align: left; margin-bottom: 2rem;">
+        <div style="background: var(--color-surface); padding: 1rem; border-radius: 0.5rem; border: 1px solid var(--color-border);">
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-brand); margin-bottom: 0.25rem;">01. REVISIÓN</div>
+          <div style="font-size: 0.875rem; color: var(--color-text-muted);">Analizo la avería o solicitud que has descrito.</div>
+        </div>
+        <div style="background: var(--color-surface); padding: 1rem; border-radius: 0.5rem; border: 1px solid var(--color-border);">
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-brand); margin-bottom: 0.25rem;">02. PROPUESTA</div>
+          <div style="font-size: 0.875rem; color: var(--color-text-muted);">Te indico solución recomendada y presupuesto claro.</div>
+        </div>
+        <div style="background: var(--color-surface); padding: 1rem; border-radius: 0.5rem; border: 1px solid var(--color-border);">
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-brand); margin-bottom: 0.25rem;">03. ACCIÓN</div>
+          <div style="font-size: 0.875rem; color: var(--color-text-muted);">Coordinamos asistencia remota o presencial.</div>
+        </div>
+      </div>
+
+      <!-- Aviso urgencia WhatsApp -->
+      <div style="background: color-mix(in srgb, #25D366 8%, transparent); border: 1px solid color-mix(in srgb, #25D366 25%, transparent); border-radius: 0.625rem; padding: 1rem 1.25rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
+        <div style="text-align: left; font-size: 0.9rem; color: var(--color-text-muted);">
+          <strong style="color: var(--color-text); display: block;">¿Es una urgencia crítica?</strong>
+          Si necesitas asistencia inmediata, puedes contactarme directamente por WhatsApp.
+        </div>
+        <a href="https://wa.me/34614739345?text=Hola%20Jonathan,%20he%20enviado%20un%20formulario%20de%20soporte%20pero%20tengo%20una%20urgencia" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="font-size: 0.85rem; padding: 0.5rem 1rem; border-color: #25D366; color: var(--color-text);">
+          Abrir WhatsApp →
+        </a>
+      </div>
+
+      <!-- Botones principales -->
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
         <a href="/" class="btn-primary">Volver al Inicio</a>
         <a href="/servicios/" class="btn-secondary">Ver Servicios</a>
       </div>
     </div>
   </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const name = params.get('name');
+      const email = params.get('email');
+
+      const titleEl = document.getElementById('thankTitle');
+      const subEl = document.getElementById('thankSubtitle');
+
+      if (name && titleEl) {
+        titleEl.textContent = `¡Gracias, ${name}!`;
+      }
+
+      if (email && subEl) {
+        subEl.innerHTML = `He recibido tu mensaje correctamente. Te responderé a <strong>${escapeHtml(email)}</strong> en menos de <strong>24 horas laborables</strong>.`;
+      }
+
+      function escapeHtml(str) {
+        return str.replace(/[&<>"']/g, m => ({
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#039;'
+        })[m]);
+      }
+    });
+  </script>
 </Layout>

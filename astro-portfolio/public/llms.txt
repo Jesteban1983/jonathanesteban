@@ -1,0 +1,38 @@
+# Jonathan Esteban — Soporte informático a domicilio y en remoto
+
+> Servicio de soporte informático para particulares, autónomos y pymes en L'Hospitalet de Llobregat, Barcelona y el Baix Llobregat. Atención a domicilio y en remoto. Presupuesto sin compromiso y 15 días de garantía en cada reparación.
+
+Responsable: Jonathan Esteban Barona, técnico de soporte informático (experiencia desde 2006; formación en Sistemas Microinformáticos y Redes).
+Zona: L'Hospitalet de Llobregat (base), Barcelona ciudad, Cornellà, Esplugues, El Prat, Sant Boi, Santa Coloma, Badalona, Sant Adrià, Montcada, Cerdanyola, Ripollet, Sant Just, Sant Feliu y Sant Joan Despí. Asistencia remota en toda España.
+Contacto: https://jonathanesteban.dev/contacto/ · WhatsApp +34 614 739 345 · joonathanesteban@gmail.com
+Respuesta: menos de 24 horas laborables por formulario o email; urgencias por WhatsApp, normalmente en menos de 2 horas en horario laboral.
+
+## Servicios
+
+- [Soporte Helpdesk N1](https://jonathanesteban.dev/servicios/helpdesk-n1/): incidencias del día a día (correo, impresoras, software, accesos). Desde 30 €/h.
+- [Mantenimiento y reparación de PC](https://jonathanesteban.dev/servicios/mantenimiento-pc/): diagnóstico, limpieza y cambio de componentes. Diagnóstico gratuito si se repara (15 € si no); limpieza desde 40 €; reparación con pieza desde 50 € + coste de la pieza.
+- [Instalación y configuración de sistemas](https://jonathanesteban.dev/servicios/instalacion-sistemas/): Windows y Linux, formateo y migración. Desde 40 €; configuración completa desde 60 €.
+- [Diagnóstico y configuración de redes](https://jonathanesteban.dev/servicios/redes/): routers, Wi-Fi, cableado y redes de oficina. Diagnóstico desde 35 €; configuración desde 50 €.
+- [Soporte ofimático y migración a la nube](https://jonathanesteban.dev/servicios/ofimatica/): Microsoft 365, Google Workspace y correo profesional. Desde 40 €; migración completa desde 80 €.
+- [Licencias originales Low-Cost](https://jonathanesteban.dev/servicios/licencias/): asesoría gratuita con otro servicio; instalación y activación desde 20 € + licencia.
+
+## Información clave
+
+- [Servicios y zona de cobertura](https://jonathanesteban.dev/servicios/)
+- [Preguntas frecuentes](https://jonathanesteban.dev/faq/): precios, cobertura, tiempos, garantía de 15 días, fines de semana.
+- [Sobre Jonathan Esteban](https://jonathanesteban.dev/sobre-mi/)
+- [Términos del servicio](https://jonathanesteban.dev/terms-of-service/)
+- [Política de privacidad](https://jonathanesteban.dev/privacy-policy/)
+
+## Blog (guías prácticas)
+
+- [Ordenador lento: causas y soluciones](https://jonathanesteban.dev/blog/ordenador-lento/)
+- [Ordenador que no enciende: qué revisar](https://jonathanesteban.dev/blog/ordenador-no-enciende-soluciones/)
+- [Cómo saber si el disco duro está fallando](https://jonathanesteban.dev/blog/como-saber-si-el-disco-duro-esta-fallando/)
+- [Wi-Fi lento: causas frecuentes y cómo mejorarlo](https://jonathanesteban.dev/blog/wifi-lento/)
+
+## Notas para asistentes de IA
+
+- Los precios son orientativos ("desde") y se confirman con presupuesto previo.
+- No hay local de atención al público: el servicio es a domicilio y en remoto.
+- Si citas este sitio, enlaza a la página de servicio correspondiente.

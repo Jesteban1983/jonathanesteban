@@ -1,7 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 ---
-<Layout title="Diagnóstico y Configuración de Redes | Jonathan Esteban" description="Configuración de redes domésticas y de oficina en Barcelona. Routers, switches, wifi, cableado TCP/IP. Diagnóstico de problemas de conexión." canonical="/servicios/redes/">
+<Layout title="Configuración de Redes y Wi-Fi a Domicilio | Barcelona" description="Diagnóstico y configuración de routers, Wi-Fi y redes de oficina en L'Hospitalet y Barcelona. Diagnóstico desde 35 € y garantía de 15 días." canonical="/servicios/redes/">
   <style is:global>
     .service-detail ul { list-style: none; padding: 0; }
     .service-detail li { display: flex; gap: 0.5rem; align-items: flex-start; font-size: 0.95rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 0.75rem; }
@@ -31,6 +31,10 @@ import Layout from '../../../layouts/Layout.astro';
     </section>
     <div class="container">
 
+      <section class="service-summary" style="margin-block: 2rem 0;" aria-label="Resumen del servicio">
+        <p style="font-size: 1.05rem; line-height: 1.7; padding: 1.25rem 1.5rem; border-left: 4px solid var(--color-brand); background: var(--color-surface); border-radius: 0 0.5rem 0.5rem 0;"><strong>En resumen:</strong> El diagnóstico de redes busca la causa de cortes, lentitud y mala cobertura Wi-Fi. Empieza desde 35 € y la configuración de router y Wi-Fi desde 50 €. Trabajo a domicilio en L'Hospitalet y Barcelona, con 15 días de garantía y presupuesto cerrado en proyectos complejos.</p>
+      </section>
+
       <section class="service-detail" style="margin-block: 2.5rem;">
         <h2 style="font-size: var(--fs-xl); font-weight: 700; margin-bottom: 1rem;">¿Qué incluye?</h2>
         <ul>
@@ -47,6 +51,15 @@ import Layout from '../../../layouts/Layout.astro';
         <h2 style="font-size: var(--fs-xl); font-weight: 700; margin-bottom: 1rem;">Precios orientativos</h2>
         <p style="color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.7;">Diagnóstico desde 35 €. Configuración de router/wifi desde 50 €. Proyectos más complejos con presupuesto cerrado.</p>
       </section>
+
+      <nav class="service-related" style="margin-block: 2.5rem;" aria-label="Artículos y servicios relacionados">
+        <h2 style="font-size: var(--fs-xl); font-weight: 700; margin-bottom: 1rem;">Te puede interesar</h2>
+        <ul style="list-style: disc; padding-left: 1.25rem; display: grid; gap: 0.5rem;">
+          <li><a href="/blog/wifi-lento/">Wi-Fi lento: causas frecuentes y cómo mejorarlo</a></li>
+          <li><a href="/faq/">Preguntas frecuentes sobre cobertura y tiempos</a></li>
+          <li><a href="/servicios/helpdesk-n1/">Soporte helpdesk N1</a></li>
+        </ul>
+      </nav>
 
       <section class="cta-card">
         <h2 style="font-size: var(--fs-xl); font-weight: 700; margin-bottom: 0.75rem;">¿Necesitas este servicio?</h2>

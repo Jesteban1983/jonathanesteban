@@ -1,0 +1,58 @@
+{
+  "tema": "Cuánto cuesta mantener un ordenador al año (coste mantenimiento PC) en 2026",
+  "resumen": "El coste anual de mantenimiento de un ordenador varía entre 50 y 300 € según uso y antigüedad, incluyendo limpieza física, suscripciones de software (antivirus, suite ofimática), repuestos y posibles reparaciones. Para usuarios no técnicos en Barcelona, se recomienda presupuestar entre 100 y 200 €/año para un equipo de uso mixto, y algo más si es gaming o profesional, teniendo en cuenta la subida de precios en componentes y servicios técnicos locales.",
+  "datosClave": [
+    "Limpieza física profesional (polvo, pasta térmica): 40-80 € una vez al año en tiendas de Barcelona.",
+    "Suscripción antivirus (p.ej., Bitdefender, Norton): 30-60 €/año (versiones básicas).",
+    "Suite ofimática (Microsoft 365): 69 €/año (suscripción personal) o alternativas gratuitas como LibreOffice (sin coste).",
+    "Repuestos comunes (fuente de alimentación, SSD, ventilador): entre 30 y 150 € si fallan, pero no siempre anual.",
+    "Coste energético aproximado: 15-40 €/año para un PC de sobremesa de uso medio (8 h/día) en España (tarifa media 0,15 €/kWh).",
+    "Suscripciones de almacenamiento en la nube (Google Drive, iCloud): 20-100 €/año, parte opcional del mantenimiento.",
+    "Seguro opcional de dispositivos: 30-80 €/año, pocos lo contratan."
+  ],
+  "versionesVigentes": "Windows 11 (versión 24H2), Microsoft Office 2024/365, LibreOffice 24.8, antivirus actualizados a enero 2026.",
+  "especificacionesRelevantes": [
+    "Un PC de sobremesa gaming consume 300-500 W; uno de oficina 100-200 W.",
+    "La pasta térmica debe renovarse cada 1-2 años en CPUs de alto rendimiento.",
+    "Los discos SSD tienen una vida media de 5-10 años, pero el sistema operativo y software se degradan con el tiempo.",
+    "Coste de mano de obra en Barcelona para reparaciones: 50-80 €/hora (precio orientativo 2026)."
+  ],
+  "fuentesPotenciales": [
+    {
+      "sitio": "Página oficial de Microsoft 365",
+      "tipo": "documentación oficial"
+    },
+    {
+      "sitio": "Bitdefender / Norton / Avast (páginas de precios)",
+      "tipo": "documentación oficial"
+    },
+    {
+      "sitio": "OCU (Organización de Consumidores y Usuarios) - informes sobre costes de informática",
+      "tipo": "asociación de consumidores"
+    },
+    {
+      "sitio": "Foro de Hardware Libre (España) / Barcelonahardware",
+      "tipo": "foro técnico"
+    },
+    {
+      "sitio": "Artículos de prensa técnica (Xataka, MuyComputer) sobre costes de mantenimiento",
+      "tipo": "prensa especializada"
+    }
+  ],
+  "erroresComunes": [
+    "Creer que un antivirus gratuito cubre todas las necesidades (la protección completa suele ser de pago).",
+    "Pensar que limpiar el polvo con aspiradora casera basta (puede dañar componentes; mejor aire comprimido o servicio profesional).",
+    "Asumir que una licencia de Office comprada una vez vale para siempre (versiones modernas requieren suscripción o compra de licencia perpetua, pero solo para una versión mayor).",
+    "Ignorar las copias de seguridad externas (el coste de perder datos puede superar cualquier mantenimiento).",
+    "Subestimar el coste eléctrico acumulado durante varios años."
+  ],
+  "pasosPracticos": [
+    "Limpieza externa mensual con paño suave y aire comprimido en rendijas; limpieza interna anual (o bianual si el PC está en ambiente limpio).",
+    "Actualizar sistema operativo y software semanalmente; reinstalar sistema cada 1-2 años para evitar acumulación de basura digital.",
+    "Mantener un presupuesto anual de 100-200 € para imprevistos (fallos de disco, fuente, etc.).",
+    "Contratar un servicio de mantenimiento remoto o presencial (en Barcelona hay técnicos locales que ofrecen paquetes anuales por 80-150 €).",
+    "Utilizar fuentes de alimentación de calidad y protectores de sobretensión para alargar la vida del equipo."
+  ],
+  "riesgoTecnico": "El principal riesgo para el usuario no técnico es no hacer copias de seguridad y perder datos críticos, o intentar limpiar el interior sin conocimientos y dañar componentes (p.ej., doblar pines o provocar cortocircuitos).",
+  "enfoqueRecomendado": "Ofrecer una comparativa clara por perfiles de usuario (oficina, gaming, estudiante) con rangos de costes anuales, destacando que el mantenimiento preventivo es más barato que una reparación. Incluir consejos para ahorrar (alternativas gratuitas, autolimpieza segura) y enlazar a servicios de confianza en Barcelona."
+}

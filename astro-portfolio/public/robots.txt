@@ -1,11 +1,17 @@
 User-agent: *
 Allow: /
+Disallow: /gracias/
+Disallow: /auth/
+Disallow: /certificaciones/
 
-# Directivas explícitas para Motores de Búsqueda Generativos (GEO / AI Engines)
+# Motores generativos (GEO): permitidos para citar el contenido
 User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: PerplexityBot
@@ -23,4 +29,4 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-Sitemap: https://jonathanesteban.dev/sitemap.xml
+Sitemap: https://jonathanesteban.dev/sitemap-index.xml

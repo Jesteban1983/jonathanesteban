@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Icon from '../../components/Icon.astro';
 ---
-<Layout title="Servicios de Soporte Informático | Jonathan Esteban · Barcelona" description="Servicios de soporte informático en Barcelona: helpdesk N1, mantenimiento de PC, instalación de sistemas, redes, ofimática y licencias low-cost. Presupuesto sin compromiso." canonical="/servicios/">
+<Layout title="Servicios de Soporte Informático a Domicilio | Barcelona" description="Reparación de PC, redes, instalación de Windows y soporte ofimático a domicilio y en remoto en L'Hospitalet y Barcelona. Presupuesto gratis y 15 días de garantía." canonical="/servicios/">
   <link rel="stylesheet" href="/leaflet/leaflet.css" />
   <style is:global>
     .serv-hero {
@@ -202,15 +202,223 @@ import Icon from '../../components/Icon.astro';
       color: var(--color-text-muted);
     }
     .hero-card--map {
-      min-width: 280px;
+      min-width: 320px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 1.25rem;
+      padding: 1.25rem;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+    .hero-card--map .hero-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
     }
     .hero-card--map .hero-card-title {
-      margin-bottom: 0.4rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--color-text-main);
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .coverage-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #10b981;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+    }
+    .coverage-status-badge .pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      animation: statusPulse 2s infinite;
+    }
+    @keyframes statusPulse {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+    .map-frame-container {
+      position: relative;
+      border-radius: 0.9rem;
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.08);
     }
     #coverage-map {
+      height: 300px;
+      width: 100%;
       background: var(--color-surface-2);
     }
-    #coverage-map .leaflet-control-attribution { display: none; }
+    /* Transición suave para el mapa al cambiar de tema */
+    #coverage-map .leaflet-tile-pane {
+      transition: filter 0.3s ease;
+    }
+    /* En modo oscuro: convierte las teselas en un mapa dark de alto contraste donde las calles y los nombres se leen con claridad */
+    html[data-theme="dark"] #coverage-map .leaflet-tile-pane {
+      filter: brightness(0.85) invert(1) contrast(1.25) hue-rotate(185deg) saturate(0.8);
+    }
+    .leaflet-tooltip {
+      background: var(--color-surface) !important;
+      color: var(--color-text-main) !important;
+      border: 1px solid var(--color-border) !important;
+      border-radius: 0.5rem !important;
+      font-size: 0.75rem !important;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+      padding: 0.4rem 0.65rem !important;
+    }
+    .leaflet-tooltip-top:before {
+      border-top-color: var(--color-surface) !important;
+    }
+    .leaflet-tooltip-bottom:before {
+      border-bottom-color: var(--color-surface) !important;
+    }
+    .map-circle-tooltip {
+      background: rgba(13, 60, 70, 0.9) !important;
+      color: #F1F5F9 !important;
+      border: 1px solid rgba(63, 169, 189, 0.4) !important;
+      font-size: 0.72rem !important;
+      font-weight: 500 !important;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .leaflet-bar {
+      border: none !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+      border-radius: 8px !important;
+      overflow: hidden;
+    }
+    .leaflet-bar a {
+      background-color: var(--color-surface) !important;
+      color: var(--color-text-main) !important;
+      border-bottom: 1px solid var(--color-border) !important;
+      width: 28px !important;
+      height: 28px !important;
+      line-height: 28px !important;
+      transition: background var(--transition-fast);
+    }
+    .leaflet-bar a:hover {
+      background-color: var(--color-surface-offset) !important;
+      color: var(--color-brand) !important;
+    }
+    /* Floating map badges */
+    .map-overlay-badge--top {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 1000;
+      pointer-events: none;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      background: rgba(13, 60, 70, 0.88);
+      color: #F1F5F9;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.3rem 0.65rem;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(63, 169, 189, 0.4);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .map-overlay-badge--bottom {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      z-index: 1000;
+      pointer-events: none;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      background: rgba(13, 60, 70, 0.88);
+      color: #F1F5F9;
+      font-size: 0.72rem;
+      padding: 0.35rem 0.65rem;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(63, 169, 189, 0.3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    /* Coverage chips */
+    .coverage-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.65rem;
+    }
+    .coverage-chip {
+      font-size: 0.72rem;
+      font-weight: 500;
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-secondary);
+      padding: 0.2rem 0.55rem;
+      border-radius: 0.4rem;
+    }
+    .coverage-chip.highlight {
+      border-color: var(--color-brand);
+      color: var(--color-brand);
+      background: color-mix(in srgb, var(--color-brand) 10%, transparent);
+      font-weight: 600;
+    }
+    /* Animated Radar Beacon */
+    .beacon-wrapper {
+      position: relative;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .beacon-ripple {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(63, 169, 189, 0.35);
+      animation: beaconRipple 2.2s infinite cubic-bezier(0, 0.2, 0.8, 1);
+    }
+    .beacon-center {
+      position: relative;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #3FA9BD;
+      border: 2.5px solid #ffffff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+    }
+    @keyframes beaconRipple {
+      0% { transform: scale(0.4); opacity: 0.95; }
+      100% { transform: scale(2.6); opacity: 0; }
+    }
+    .beacon-city-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #0D3C46;
+      border: 2px solid #3FA9BD;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+    }
+    html[data-theme="dark"] .beacon-city-dot {
+      background: #F1F5F9;
+      border-color: #3FA9BD;
+    }
     .cta-final {
       text-align: center;
       padding: 2.25rem 1.75rem;
@@ -272,9 +480,43 @@ import Icon from '../../components/Icon.astro';
           </div>
         </div>
         <aside class="hero-card hero-card--map" aria-label="Mapa de cobertura">
-          <p class="hero-card-title">Área de cobertura</p>
-          <div id="coverage-map" style="height: 280px; border-radius: 0.75rem; overflow: hidden;"></div>
-          <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 0.5rem;">Passatge de Llunàs 4 · L'Hospitalet <span style="opacity:0.5">·</span> Desplazamiento a Barcelona y alrededores</p>
+          <div class="hero-card-header">
+            <p class="hero-card-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-brand);"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+              Área de Cobertura
+            </p>
+            <span class="coverage-status-badge">
+              <span class="pulse-dot"></span> Servicio Activo
+            </span>
+          </div>
+
+          <div class="map-frame-container">
+            <div id="coverage-map" role="region" aria-label="Mapa de la zona de cobertura: L'Hospitalet de Llobregat, Barcelona y Baix Llobregat. La lista de municipios está debajo del mapa."></div>
+            <div class="map-overlay-badge--top">
+              <span>📍</span> <strong>Base:</strong> L'Hospitalet de Llobregat
+            </div>
+            <div class="map-overlay-badge--bottom">
+              <span>🚗 <strong>Radio presencial:</strong> ~15-20 km</span>
+              <span>⚡ <strong>Remoto:</strong> Toda España</span>
+            </div>
+          </div>
+
+          <div class="coverage-chips">
+            <span class="coverage-chip highlight">L'Hospitalet</span>
+            <span class="coverage-chip">Barcelona</span>
+            <span class="coverage-chip">Cornellà</span>
+            <span class="coverage-chip">Esplugues</span>
+            <span class="coverage-chip">El Prat</span>
+            <span class="coverage-chip">Sant Boi</span>
+            <span class="coverage-chip">Badalona</span>
+            <span class="coverage-chip">+ Alrededores</span>
+          </div>
+
+          <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 0.65rem; line-height: 1.45;">
+            <p style="margin: 0;">
+              ✨ <strong style="color: var(--color-text-main);">Servicio a domicilio y en remoto:</strong> Me desplazo directamente a tu ubicación para que no tengas que desconectar ni cargar con tu equipo.
+            </p>
+          </div>
         </aside>
       </div>
     </section>
@@ -389,7 +631,7 @@ import Icon from '../../components/Icon.astro';
         <div class="fade-in" style="text-align: center;">
           <p class="section-label">Cobertura</p>
           <h2 class="section-title">Zonas de <em>servicio</em></h2>
-          <p class="section-desc" style="margin-inline: auto;">Servicio presencial en Barcelona y alrededores. También ofrezco asistencia remota para incidencias leves.</p>
+          <p class="section-desc" style="margin-inline: auto;">Servicio técnico cómodo y sin complicaciones: me desplazo directamente a tu domicilio o empresa en Hospitalet de Llobregat, Barcelona y área metropolitana, o te atiendo al instante en remoto.</p>
         </div>
 
         <div class="zones-grid fade-in">
@@ -487,22 +729,92 @@ import Icon from '../../components/Icon.astro';
   setTimeout(poll, 600);
 
   function doMap() {
+    var getTheme = function() {
+      return document.documentElement.getAttribute('data-theme') || 'light';
+    };
+    var currentTheme = getTheme();
+
     var map = L.map(mapDiv, {
-      center: [41.377, 2.130],
-      zoom: 12,
-      zoomControl: false,
-      attributionControl: false
+      center: [41.370, 2.125],
+      zoom: 11,
+      zoomControl: true,
+      attributionControl: true,
+      scrollWheelZoom: false
     });
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19, attribution: ''
+
+    if (map.zoomControl) {
+      map.zoomControl.setPosition('topright');
+    }
+
+    // High quality, 100% keyless street map from Esri ArcGIS (full detail, readable names in light & dark mode)
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri'
     }).addTo(map);
-    var homeIcon = L.divIcon({ html: '<div style="background:#a33;width:18px;height:18px;border:3px solid #fff;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,0.25)"></div>', iconSize: [18, 18], className: '' });
-    var bcnIcon = L.divIcon({ html: '<div style="background:#c47070;width:14px;height:14px;border:2px solid #fff;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,0.2)"></div>', iconSize: [14, 14], className: '' });
-    L.marker([41.3662, 2.0874], { icon: homeIcon }).addTo(map);
-    L.marker([41.388, 2.174], { icon: bcnIcon }).addTo(map);
-    L.circle([41.3662, 2.0874], 10000, {
-      color: '#a33', weight: 1.5, fillColor: '#a33', fillOpacity: 0.12
+
+    // 1. Dual-layered coverage radius (displacement zone)
+    // Outer subtle boundary (~15.5 km)
+    L.circle([41.368, 2.120], {
+      radius: 15500,
+      color: '#3FA9BD',
+      weight: 1,
+      fillColor: '#3FA9BD',
+      fillOpacity: 0.04,
+      dashArray: '3, 6',
+      interactive: false
     }).addTo(map);
+
+    // Core displacement zone (~12.5 km)
+    var coverageCircle = L.circle([41.368, 2.120], {
+      radius: 12500,
+      color: '#3FA9BD',
+      weight: 2,
+      fillColor: '#3FA9BD',
+      fillOpacity: 0.12,
+      dashArray: '6, 6'
+    }).addTo(map);
+
+    coverageCircle.bindTooltip("Área metropolitana · Desplazamiento presencial incluido", {
+      direction: 'center',
+      className: 'map-circle-tooltip'
+    });
+
+    // 2. Animated Radar Beacon at Base (L'Hospitalet de Llobregat)
+    var beaconIcon = L.divIcon({
+      html: '<div class="beacon-wrapper"><div class="beacon-ripple"></div><div class="beacon-center"></div></div>',
+      iconSize: [24, 24],
+      iconAnchor: [12, 12],
+      className: ''
+    });
+
+    var baseMarker = L.marker([41.360, 2.100], { icon: beaconIcon }).addTo(map);
+    baseMarker.bindTooltip("<strong>Centro de Operaciones</strong><br>L'Hospitalet de Llobregat · Soporte a domicilio y remoto", {
+      direction: 'top',
+      offset: [0, -10]
+    });
+
+    // 3. Key Metropolitan Hubs
+    var createCityDot = function(coords, name, desc) {
+      var dotIcon = L.divIcon({
+        html: '<div class="beacon-city-dot"></div>',
+        iconSize: [10, 10],
+        iconAnchor: [5, 5],
+        className: ''
+      });
+      var marker = L.marker(coords, { icon: dotIcon }).addTo(map);
+      marker.bindTooltip("<strong>" + name + "</strong><br>" + desc, {
+        direction: 'top',
+        offset: [0, -6]
+      });
+      return marker;
+    };
+
+    createCityDot([41.388, 2.170], "Barcelona", "Desplazamiento presencial incluido");
+    createCityDot([41.356, 2.072], "Cornellà / Baix Llobregat", "Desplazamiento presencial incluido");
+    createCityDot([41.442, 2.235], "Badalona / Barcelonès Nord", "Desplazamiento presencial incluido");
+
+    // Fit view comfortably
+    map.fitBounds(coverageCircle.getBounds(), { padding: [18, 18] });
   }
 })();
 </script>

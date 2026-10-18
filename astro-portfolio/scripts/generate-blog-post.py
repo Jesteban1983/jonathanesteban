@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-generate-blog-post.py — Generador de artículos para el blog de soporte IT.
+Generate-blog-post.py — Generador de artículos para el blog de soporte IT.
 Usa el agente redactor (PROMPT A de BLOG-AUTOMATION.md) vía LiteLLM.
 
 Uso:
@@ -9,8 +9,16 @@ Uso:
   # Solo generar (modo borrador)
   python3 generate-blog-post.py --topic "PC lento causas" --keyword "pc lento" --intencion "guía práctica"
   
-  # Generar con imagen (necesita GEMINI_API_KEY)
+  # Generar con imagen (DeepInfra/FLUX por defecto)
   python3 generate-blog-post.py --topic "..." --keyword "..." --intencion "..." --with-image
+  
+  # Con investigación previa (research-topic.py) + imagen
+  python3 generate-blog-post.py --topic "..." --keyword "..." --intencion "..." \
+      --research research.json --with-image
+
+  # Con prompt de imagen ya refinado por Groq (refine-image-prompt.py)
+  python3 generate-blog-post.py --topic "..." --keyword "..." --intencion "..." \
+      --image-prompt "prompt refinado en inglés" --with-image
 
 Salida:
   - Crea archivo en src/content/blog/drafts/<slug>.mdx
@@ -23,6 +31,7 @@ import argparse
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -39,6 +48,7 @@ DRAFTS_DIR = CONTENT_DIR / "drafts"
 PUBLIC_IMG_DIR = PROJECT_ROOT / "public" / "assets" / "img" / "blog"
 LLM_INVOKE = Path.home() / "scripts" / "llm-invoke.sh"
 GENERATE_IMAGE = SCRIPT_DIR / "generate_blog_image.py"
+REFINE_PROMPT = SCRIPT_DIR / "refine-image-prompt.py"
 TOPIC_BANK = PROJECT_ROOT / "blog-topic-bank.csv"
 CONFIG_FILE = Path.home() / ".nova-config.json"
 
@@ -273,15 +283,19 @@ def validate_article(data: dict) -> list[str]:
     return errors
 
 
-def generate_image(slug: str, scene_prompt: str) -> bool:
+def generate_image(slug: str, scene_prompt: str, provider: str | None = None) -> bool:
     """Genera imagen para el artículo usando el generador compartido."""
     if not GENERATE_IMAGE.is_file():
         print(f"⚠️ No encontrado generador de imágenes: {GENERATE_IMAGE}", file=sys.stderr)
         return False
 
+    cmd = [sys.executable, str(GENERATE_IMAGE), "--slug", slug, "--scene", scene_prompt]
+    if provider:
+        cmd += ["--provider", provider]
+
     try:
         result = subprocess.run(
-            [sys.executable, str(GENERATE_IMAGE), "--slug", slug, "--scene", scene_prompt],
+            cmd,
             capture_output=True,
             text=True,
             timeout=120,
@@ -326,7 +340,7 @@ author: "Jonathan Esteban"
 draft: true
 ---
 
-import TablaAPA from '../../components/TablaAPA.astro';
+import TablaAPA from '../../../components/TablaAPA.astro';
 
 """
     content = frontmatter + data["markdown"]
@@ -413,7 +427,13 @@ def main() -> int:
     parser.add_argument("--model", default="deepseek-v4",
                         help="Modelo LiteLLM (deepseek-v4, groq-fast, deepseek-r1)")
     parser.add_argument("--with-image", action="store_true",
-                        help="Generar imagen para el artículo")
+                        help="Generar imagen para el artículo (DeepInfra/FLUX)")
+    parser.add_argument("--research", type=Path, default=None,
+                        help="Brief JSON de research-topic.py para alimentar la redacción")
+    parser.add_argument("--image-prompt", default=None,
+                        help="Prompt de escena ya refinado por Groq (refine-image-prompt.py)")
+    parser.add_argument("--image-provider", default=None,
+                        help="Provider de imagen (deepinfra por defecto; gemini, elevenlabs, replicate)")
     parser.add_argument("--publish", action="store_true",
                         help="Publicar directamente (sin pasar por drafts)")
     parser.add_argument("--force", action="store_true",
@@ -438,8 +458,22 @@ def main() -> int:
 # Intención de búsqueda: {args.intencion}
 # Año actual: {datetime.now().year}
 # Artículos ya publicados (evita repetir enfoque): {existing_str}
+"""
+    # Añadir research brief si se proporcionó
+    if args.research and args.research.is_file():
+        try:
+            brief = json.loads(args.research.read_text(encoding="utf-8"))
+            user_prompt += f"""
+# INVESTIGACIÓN PREVIA (brief de research-topic.py — ÚSALA como base de los datos)
+{json.dumps(brief, ensure_ascii=False, indent=2)}
+"""
+        except (json.JSONDecodeError, OSError) as e:
+            print(f"⚠️ No se pudo leer el research brief: {e}", file=sys.stderr)
 
-Genera el artículo completo siguiendo las instrucciones exactamente. Devuelve SOLO el JSON."""
+    user_prompt += """
+Genera el artículo completo siguiendo las instrucciones exactamente. Si hay un
+brief de investigación, basa en él cada dato, cifra o versión que menciones y
+añade las fuentes ya investigadas a la sección de Referencias. Devuelve SOLO el JSON."""
     # ── Invocar LLM ───────────────────────────────────────────────────────
     raw_output = invoke_litellm(BLOG_STYLE_PROMPT, user_prompt, args.model)
     if not raw_output:
@@ -477,15 +511,32 @@ Genera el artículo completo siguiendo las instrucciones exactamente. Devuelve S
 
     # ── Generar imagen (opcional) ─────────────────────────────────────────
     if args.with_image:
-        scene = data.get("imagePrompt", f"Blog illustration about {args.topic}")
-        print(f"   Generando imagen...", file=sys.stderr)
-        generate_image(slug, scene)
+        # El prompt de escena puede venir refinado por Groq (refine-image-prompt.py)
+        scene = args.image_prompt or data.get("imagePrompt", f"Blog illustration about {args.topic}")
+        provider = args.image_provider or "deepinfra"
+
+        # Si no se proporcionó un prompt ya refinado, refinarlo con Groq primero
+        if not args.image_prompt and REFINE_PROMPT.is_file():
+            print(f"   Refinando prompt de imagen con Groq...", file=sys.stderr)
+            try:
+                refine_result = subprocess.run(
+                    [sys.executable, str(REFINE_PROMPT), "--topic", args.topic, "--scene", scene],
+                    capture_output=True, text=True, timeout=45,
+                )
+                if refine_result.returncode == 0:
+                    scene = refine_result.stdout.strip()
+                    print(f"   ✓ Prompt refinado por Groq", file=sys.stderr)
+            except (subprocess.TimeoutExpired, OSError) as e:
+                print(f"   ⚠️ No se pudo refinar prompt: {e}. Usando prompt original.", file=sys.stderr)
+
+        print(f"   Generando imagen (provider: {provider})...", file=sys.stderr)
+        if not generate_image(slug, scene, provider=provider):
+            print("❌ Fallo al generar imagen — el draft se guardó igualmente", file=sys.stderr)
     
     # ── Si publish, mover a producción ────────────────────────────────────
     if args.publish:
         pub_path = CONTENT_DIR / f"{slug}.mdx"
         if out_path.exists():
-            import shutil
             shutil.move(str(out_path), str(pub_path))
             print(f"✅ Publicado: {pub_path}", file=sys.stderr)
             data["published_path"] = str(pub_path)
@@ -499,6 +550,7 @@ Genera el artículo completo siguiendo las instrucciones exactamente. Devuelve S
         "wordCount": len(data.get("markdown", "").split()),
         "draftPath": str(out_path),
         "imagePrompt": data.get("imagePrompt", ""),
+        "researchBrief": str(args.research) if args.research else "",
     }
     if args.publish:
         result["publishedPath"] = str(pub_path)
