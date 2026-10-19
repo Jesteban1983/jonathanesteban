@@ -1,10 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Icon from '../../components/Icon.astro';
 ---
 <Layout
-  title="Sobre Mí | Jonathan Esteban — Técnico de Soporte Informático en Barcelona"
-  description="Técnico de soporte informático en Barcelona y Cataluña para particulares, autónomos y pymes. Reparación de PC, redes, sistemas y ofimática con trato directo y sin tecnicismos."
+  title="Sobre Mí | Jonathan Esteban — Técnico de Soporte Informático en Cataluña"
+  description="Conoce a Jonathan Esteban. Soporte técnico informático para particulares, autónomos y pymes en Barcelona y Cataluña. Trato directo, presupuesto por escrito y garantía de 15 días."
   canonical="/sobre-mi/"
   image="/assets/img/profile/jonathan-esteban.jpg"
 >
@@ -56,23 +55,14 @@ import Icon from '../../components/Icon.astro';
       border-radius: 50%;
       background: #10b981;
     }
-    .about-pills-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.65rem;
-      margin-top: 1.5rem;
+    .about-bio-text p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--color-text-muted);
+      margin-bottom: 1.25rem;
     }
-    .about-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      padding: 0.45rem 0.9rem;
-      border-radius: 0.6rem;
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      color: var(--color-text-main);
+    .about-bio-text p:last-child {
+      margin-bottom: 0;
     }
     .pillars-grid {
       display: grid;
@@ -85,7 +75,6 @@ import Icon from '../../components/Icon.astro';
       border: 1px solid var(--color-border);
       border-radius: 1.25rem;
       padding: 1.75rem;
-      position: relative;
       transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
     }
     .pillar-card:hover {
@@ -93,18 +82,10 @@ import Icon from '../../components/Icon.astro';
       transform: translateY(-3px);
       box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.15);
     }
-    .pillar-num {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--color-brand);
-      margin-bottom: 0.75rem;
-      display: inline-block;
-    }
     .pillar-card h3 {
       font-size: 1.15rem;
       font-weight: 700;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.65rem;
       color: var(--color-text-main);
     }
     .pillar-card p {
@@ -113,76 +94,48 @@ import Icon from '../../components/Icon.astro';
       line-height: 1.65;
       margin: 0;
     }
-    .about-tech-grid {
+    .tech-domains-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-    .about-tech-item {
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: 0.85rem;
-      padding: 1rem 0.75rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.6rem;
-      text-align: center;
-      transition: transform var(--transition-normal), border-color var(--transition-normal);
-    }
-    .about-tech-item:hover {
-      border-color: var(--color-brand);
-      transform: translateY(-2px);
-    }
-    .about-tech-item span {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--color-text-main);
-    }
-    .about-tech-icon {
-      width: 32px;
-      height: 32px;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-    }
-    .timeline-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.25rem;
       margin-top: 2rem;
     }
-    .timeline-card {
+    .tech-domain-card {
       background: var(--color-surface);
       border: 1px solid var(--color-border);
       border-radius: 1rem;
-      padding: 1.5rem;
-      border-left: 4px solid var(--color-brand);
+      padding: 1.25rem 1.5rem;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 1.5rem;
+      align-items: center;
+      transition: border-color var(--transition-normal);
     }
-    .timeline-card .date {
-      font-size: 0.8rem;
+    .tech-domain-card:hover {
+      border-color: var(--color-brand);
+    }
+    .tech-domain-title {
       font-weight: 700;
+      font-size: 0.95rem;
       color: var(--color-brand);
-      margin-bottom: 0.25rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
     }
-    .timeline-card h3 {
+    .tech-domain-desc {
+      font-size: 0.92rem;
+      color: var(--color-text-main);
+      margin: 0;
+      line-height: 1.5;
+    }
+    .coverage-highlight-box {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 1.25rem;
+      padding: 2rem;
+      border-left: 4px solid var(--color-brand);
+      margin-top: 1.5rem;
+    }
+    .coverage-highlight-box p {
       font-size: 1.05rem;
-      font-weight: 700;
-      margin-bottom: 0.25rem;
-    }
-    .timeline-card .role {
-      font-size: 0.86rem;
-      font-weight: 600;
-      color: var(--color-text-secondary);
-      margin-bottom: 0.5rem;
-    }
-    .timeline-card p {
-      font-size: 0.88rem;
+      line-height: 1.75;
       color: var(--color-text-muted);
-      line-height: 1.6;
       margin: 0;
     }
     @media (max-width: 860px) {
@@ -194,11 +147,15 @@ import Icon from '../../components/Icon.astro';
         max-width: 240px;
         margin: 0 auto;
       }
+      .tech-domain-card {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
     }
   </style>
 
   <main id="main-content">
-    <!-- ===== HERO / PRESENTACIÓN ===== -->
+    <!-- ===== SECCIÓN 1: HERO / CABECERA ===== -->
     <section class="hero-base">
       <div class="container">
         <div class="about-hero-grid fade-in">
@@ -208,29 +165,21 @@ import Icon from '../../components/Icon.astro';
               <span class="sep">/</span>
               <span class="current">Sobre Mí</span>
             </nav>
-            <p class="hero-eyebrow">Técnico de Soporte Informático · Barcelona</p>
-            <h1 class="hero-title" style="margin-bottom: 1rem;">Informática <em>sin tecnicismos</em>, con precios claros y trato directo</h1>
+            <p class="hero-eyebrow">SOPORTE INFORMÁTICO PRESENCIAL Y REMOTO · CATALUÑA</p>
+            <h1 class="hero-title" style="margin-bottom: 1rem;">Informática sin tecnicismos, precios claros y trato directo</h1>
             <p class="hero-lead" style="max-width: none; line-height: 1.75;">
-              Soy <strong>Jonathan Esteban</strong>. Ayudo a particulares, autónomos y pequeñas empresas en Cataluña (área metropolitana de Barcelona y asistencia remota para toda España) a que sus ordenadores, redes y herramientas de oficina funcionen de forma estable, segura y sin interrupciones.
+              Hola, soy <strong>Jonathan Esteban</strong>. Ayudo a particulares, autónomos y pequeños negocios a que sus ordenadores, redes y herramientas de trabajo funcionen como deben. Sin centralitas, sin esperas y explicándote siempre qué le pasa a tu equipo en un idioma que entiendas.
             </p>
 
-            <div class="about-pills-list">
-              <span class="about-pill">📍 Barcelona y Área Metropolitana</span>
-              <span class="about-pill">🚗 Servicio a domicilio</span>
-              <span class="about-pill">⚡ Asistencia remota</span>
-              <span class="about-pill">🛡️ 15 días de garantía</span>
-            </div>
-
-            <div style="display: flex; gap: 1rem; margin-top: 1.75rem; flex-wrap: wrap;">
-              <a href="/contacto/" class="btn-primary">Solicitar presupuesto</a>
-              <a href="/servicios/" class="btn-secondary">Ver servicios</a>
-              <a href="https://wa.me/34614739345" target="_blank" rel="noopener noreferrer" class="btn-secondary">WhatsApp directo</a>
+            <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+              <a href="/contacto/" class="btn-primary">Solicitar diagnóstico →</a>
+              <a href="https://wa.me/34614739345" target="_blank" rel="noopener noreferrer" class="btn-secondary">Escribir por WhatsApp</a>
             </div>
           </div>
 
           <aside class="about-photo-card">
             <div class="about-photo-wrapper">
-              <img src="/assets/img/profile/jonathan-esteban.jpg" alt="Jonathan Esteban — Técnico de Soporte Informático en Barcelona" width="300" height="300" loading="eager" />
+              <img src="/assets/img/profile/jonathan-esteban.jpg" alt="Jonathan Esteban — Técnico de Soporte Informático" width="300" height="300" loading="eager" />
             </div>
             <div class="about-status-pill">
               <span class="pulse-dot"></span>
@@ -244,156 +193,119 @@ import Icon from '../../components/Icon.astro';
       </div>
     </section>
 
-    <!-- ===== PILARES DE TRABAJO (VENTAJAS COMPETITIVAS) ===== -->
+    <!-- ===== SECCIÓN 2: MI ENFOQUE ===== -->
     <section class="section section-alt">
       <div class="container">
+        <div class="fade-in" style="max-width: 820px; margin: 0 auto;">
+          <p class="section-label">DETRÁS DEL SERVICIO</p>
+          <h2 class="section-title" style="margin-bottom: 1.5rem;">Un técnico de confianza al que puedes llamar directamente</h2>
+          <div class="about-bio-text">
+            <p>
+              Todos hemos pasado por la frustración de que un ordenador falle justo cuando más lo necesitamos, que el Wi-Fi se corte en mitad de una reunión o que el servicio técnico oficial nos tenga horas al teléfono hablando con tecnicismos para acabar cobrando una factura sorpresa.
+            </p>
+            <p>
+              Mi trabajo consiste exactamente en lo contrario. Llevo años montando, diagnosticando, reparando y optimizando equipos informáticos y redes domésticas o de oficina. Tanto si tienes un ordenador lento que necesita una segunda vida, como si eres un autónomo o pyme que necesita poner en orden sus correos corporativos, copias de seguridad o licencias, me encargo de solucionarlo de principio a fin.
+            </p>
+            <p>
+              Antes de tocar un tornillo o cambiar una configuración, reviso tu caso, te explico las opciones reales (si algo no vale la pena repararlo, te lo diré con total honestidad) y te entrego un presupuesto cerrado por escrito.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECCIÓN 3: MIS 4 COMPROMISOS CONTIGO ===== -->
+    <section class="section">
+      <div class="container">
         <div class="fade-in" style="text-align: center; max-width: 720px; margin: 0 auto;">
-          <p class="section-label">Ventajas competitivas</p>
-          <h2 class="section-title">Pilares de mi <em>forma de trabajar</em></h2>
-          <p class="section-desc">Cero jerga innecesaria, costes pactados por adelantado y garantía real en cada intervención.</p>
+          <p class="section-label">VALORES Y METODOLOGÍA</p>
+          <h2 class="section-title">Cómo garantizo tu tranquilidad</h2>
         </div>
 
         <div class="pillars-grid fade-in">
           <div class="pillar-card">
-            <span class="pillar-num">01</span>
-            <h3>Diagnóstico honesto</h3>
-            <p>Revisión previa exhaustiva antes de cobrar o cambiar piezas sin sentido. Si tu equipo tiene solución rápida o no merece la pena invertir, te lo digo con total franqueza.</p>
+            <h3>🔍 Diagnóstico honesto</h3>
+            <p>No cambio piezas por cambiar ni te vendo licencias que no necesitas. Si tu equipo tiene una solución sencilla o económica, esa será siempre mi primera recomendación.</p>
           </div>
 
           <div class="pillar-card">
-            <span class="pillar-num">02</span>
-            <h3>Presupuesto cerrado por escrito</h3>
-            <p>Sabes el importe exacto y los tiempos de resolución antes de tocar el equipo o empezar la reparación. Sin sorpresas desagradables ni cargos imprevistos en la factura.</p>
+            <h3>📋 Presupuesto cerrado por escrito</h3>
+            <p>Sabrás cuánto cuesta, qué incluye y cuánto tardará antes de que empiece a trabajar. Cero sorpresas en la factura final.</p>
           </div>
 
           <div class="pillar-card">
-            <span class="pillar-num">03</span>
-            <h3>Explicaciones en tu idioma</h3>
-            <p>Hablamos claro, sin tecnicismos ni palabras complejas. Te explico exactamente qué ha fallado, qué pasos se han dado para arreglarlo y cómo evitar que vuelva a ocurrir.</p>
+            <h3>🗣️ Cero tecnicismos innecesarios</h3>
+            <p>Te explico cuál era el fallo, cómo lo he resuelto y qué pautas seguir para que no vuelva a ocurrir, de forma clara y directa.</p>
           </div>
 
           <div class="pillar-card">
-            <span class="pillar-num">04</span>
-            <h3>Garantía de 15 días</h3>
-            <p>Todas las reparaciones e intervenciones cuentan con 15 días de garantía desde la entrega. Si la incidencia reaparece, la reviso y corrijo sin ningún coste adicional.</p>
+            <h3>🛡️ Garantía real de 15 días</h3>
+            <p>Todo mi trabajo cuenta con 15 días de garantía desde la entrega. Si la incidencia por la que me llamaste vuelve a dar problemas, lo reviso sin coste adicional.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== ENTORNOS Y TECNOLOGÍAS ===== -->
-    <section class="section">
-      <div class="container">
-        <div class="fade-in" style="text-align: center; max-width: 680px; margin: 0 auto;">
-          <p class="section-label">Ecosistemas de soporte</p>
-          <h2 class="section-title">Entornos y tecnologías <em>de trabajo</em></h2>
-          <p class="section-desc">Mantenimiento, configuración y resolución de averías en los principales sistemas operativos, marcas de hardware y suites de productividad.</p>
-        </div>
-
-        <div class="about-tech-grid fade-in">
-          <div class="about-tech-item">
-            <div class="about-tech-icon" style="background-image: url(/assets/img/marcas/windows.svg);"></div>
-            <span>Windows</span>
-          </div>
-          <div class="about-tech-item">
-            <div class="about-tech-icon" style="background-image: url(/assets/img/marcas/linux.svg);"></div>
-            <span>Linux</span>
-          </div>
-          <div class="about-tech-item">
-            <div class="about-tech-icon" style="background-image: url(/assets/img/marcas/microsoftoffice.svg);"></div>
-            <span>Microsoft 365</span>
-          </div>
-          <div class="about-tech-item">
-            <div class="about-tech-icon" style="background-image: url(/assets/img/marcas/google.svg);"></div>
-            <span>Google Workspace</span>
-          </div>
-          <div class="about-tech-item">
-            <div class="about-tech-icon" style="background-image: url(/assets/img/marcas/tplink.svg);"></div>
-            <span>Redes TCP/IP & TP-Link</span>
-          </div>
-          <div class="about-tech-item">
-            <div class="about-tech-icon" style="background-image: url(/assets/img/marcas/dell.svg);"></div>
-            <span>Dell</span>
-          </div>
-          <div class="about-tech-item">
-            <div class="about-tech-icon" style="background-image: url(/assets/img/marcas/hp.svg);"></div>
-            <span>HP</span>
-          </div>
-          <div class="about-tech-item">
-            <div class="about-tech-icon" style="background-image: url(/assets/img/marcas/lenovo.svg);"></div>
-            <span>Lenovo</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== TRAYECTORIA Y EXPERIENCIA ===== -->
+    <!-- ===== SECCIÓN 4: ENTORNOS Y TECNOLOGÍAS ===== -->
     <section class="section section-alt">
       <div class="container">
-        <div class="fade-in">
-          <p class="section-label">Trayectoria técnica</p>
-          <h2 class="section-title">Experiencia y <em>atención al usuario</em></h2>
-          <p class="section-desc">Años en primera línea resolviendo incidencias reales de hardware, redes locales y sistemas.</p>
-        </div>
+        <div class="fade-in" style="max-width: 860px; margin: 0 auto;">
+          <p class="section-label">CAPACIDAD TÉCNICA</p>
+          <h2 class="section-title">Equipos, sistemas y entornos con los que trabajo a diario</h2>
 
-        <div class="timeline-grid fade-in">
-          <div class="timeline-card">
-            <p class="date">2026 — Presente</p>
-            <h3>Jonathan Esteban · Soporte IT</h3>
-            <p class="role">Técnico Informático Autónomo</p>
-            <p>Soporte helpdesk Nivel 1, mantenimiento preventivo y correctivo de ordenadores, configuración de redes locales y asesoría en software y licencias en el área de Barcelona y remoto.</p>
-          </div>
+          <div class="tech-domains-list">
+            <div class="tech-domain-card">
+              <span class="tech-domain-title">Sistemas</span>
+              <p class="tech-domain-desc">Windows 10 y 11 · Linux (Ubuntu, Mint, Fedora, Debian) · Dual Boot</p>
+            </div>
 
-          <div class="timeline-card">
-            <p class="date">2024 — 2026</p>
-            <h3>Soporte Operativo &amp; Digital</h3>
-            <p class="role">Soporte técnico y gestión de equipos</p>
-            <p>Mantenimiento de sistemas informáticos, resolución de incidencias de software, migración de datos y asistencia directa a usuarios.</p>
-          </div>
+            <div class="tech-domain-card">
+              <span class="tech-domain-title">Hardware</span>
+              <p class="tech-domain-desc">Diagnóstico de placas y componentes · Ampliación SSD/RAM · Mantenimiento térmico avanzado · PCs de sobremesa y portátiles (Dell, HP, Lenovo, Asus, Acer)</p>
+            </div>
 
-          <div class="timeline-card">
-            <p class="date">2017 — 2024</p>
-            <h3>Gestión Operativa &amp; Sistemas</h3>
-            <p class="role">Administración y continuidad técnica</p>
-            <p>Mantenimiento de equipos de punto de venta (TPVs), resolución de incidencias de conectividad de red local y coordinación con proveedores tecnológicos.</p>
-          </div>
+            <div class="tech-domain-card">
+              <span class="tech-domain-title">Redes y Conectividad</span>
+              <p class="tech-domain-desc">Routers · Switches · Puntos de acceso Wi-Fi / Mesh · Cableado estructurado · Configuración TCP/IP y DNS</p>
+            </div>
 
-          <div class="timeline-card">
-            <p class="date">2007 — 2012</p>
-            <h3>Locutorios de Internet</h3>
-            <p class="role">Administrador Técnico de Redes y Equipos</p>
-            <p>Mantenimiento integral de 10 a 15 equipos en red local, instalación y clonado de sistemas operativos, resolución de cableado estructurado TCP/IP y servidores de control.</p>
-          </div>
+            <div class="tech-domain-card">
+              <span class="tech-domain-title">Ofimática y Nube</span>
+              <p class="tech-domain-desc">Microsoft 365 · Google Workspace · Configuración de dominios y correo profesional · Copias de seguridad en la nube</p>
+            </div>
 
-          <div class="timeline-card">
-            <p class="date">2006</p>
-            <h3>Laboratorio de Cómputo</h3>
-            <p class="role">Soporte técnico y ensamblaje</p>
-            <p>Mantenimiento preventivo de hardware, sustitución de componentes, instalación de programas y atención técnica en laboratorio informático.</p>
+            <div class="tech-domain-card">
+              <span class="tech-domain-title">Software y Licencias</span>
+              <p class="tech-domain-desc">Activación de licencias originales verificadas · Alternativas Open Source · Limpieza de malware y optimización de arranque</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== CTA FINAL ===== -->
+    <!-- ===== SECCIÓN 5: COBERTURA Y MODALIDADES ===== -->
     <section class="section">
       <div class="container">
-        <div class="home-cta fade-in">
-          <h2>¿Tienes una incidencia o consulta técnica?</h2>
-          <p>Cuéntame qué le ocurre a tu ordenador o a la red de tu oficina y te responderé con una valoración clara y sin compromiso.</p>
-          <div class="home-cta-contact">
-            <a href="/contacto/" class="btn-primary">Solicitar Presupuesto</a>
-            <a href="/servicios/" class="btn-secondary">Explorar Servicios</a>
+        <div class="fade-in" style="max-width: 820px; margin: 0 auto;">
+          <h2 class="section-title">¿Dónde doy servicio?</h2>
+          <div class="coverage-highlight-box">
+            <p>
+              Ofrezco <strong>asistencia presencial en Cataluña (Barcelona y toda el Área Metropolitana)</strong> desplazándome directamente a tu domicilio u oficina, y <strong>asistencia remota inmediata en toda España</strong> para incidencias de software, configuración de correo, lentitud del sistema o activación de licencias.
+            </p>
           </div>
-          <div class="home-cta-contact" style="margin-top: 0.75rem;">
-            <a href="mailto:joonathanesteban@gmail.com" class="btn-contact email-btn">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
-              joonathanesteban@gmail.com
-            </a>
-            <a href="https://wa.me/34614739345" target="_blank" rel="noopener noreferrer" class="btn-contact whatsapp-btn">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.507 14.107l-3.112-1.328a.63.63 0 0 0-.69.11l-.82.82a.63.63 0 0 1-.78.07l-1.8-1.2a2.54 2.54 0 0 1-.9-1.2.63.63 0 0 1 .08-.8l.82-.82a.63.63 0 0 0 .11-.69l-1.33-3.11a.63.63 0 0 0-.96-.1L7.45 7.35a4.41 4.41 0 0 0 1.04 4.88l2.75 2.75a4.41 4.41 0 0 0 4.88 1.04l1.59-1.59a.63.63 0 0 0-.1-.96l.005.007z"/><path d="M21 12a9 9 0 1 1-5.21-8.22"/></svg>
-              WhatsApp directo
-            </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECCIÓN 6: CTA FINAL ===== -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="home-cta fade-in">
+          <h2>¿Tu equipo va lento o tienes una incidencia ahora mismo?</h2>
+          <p>Cuéntame qué ocurre y te diré cómo podemos solucionarlo hoy mismo, sin compromiso.</p>
+          <div class="home-cta-contact">
+            <a href="/contacto/" class="btn-primary">Solicitar presupuesto</a>
+            <a href="https://wa.me/34614739345" target="_blank" rel="noopener noreferrer" class="btn-secondary">WhatsApp directo</a>
           </div>
         </div>
       </div>

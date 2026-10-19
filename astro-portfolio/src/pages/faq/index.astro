@@ -1,246 +1,375 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cobras por dar un presupuesto o por la primera consulta?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Cuéntame tu problema por WhatsApp, correo o mediante el formulario y te daré una orientación inicial sin coste. Si el equipo requiere un diagnóstico técnico profundo (desmontaje o pruebas avanzadas de hardware) para localizar la avería, te informaré antes de cualquier coste de revisión. Siempre tendrás un presupuesto por escrito antes de autorizar la reparación."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué cubre exactamente la garantía de 15 días?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Desde el momento en que te entrego el equipo o doy por resuelta la incidencia, tienes 15 días naturales de garantía sobre la mano de obra y la configuración realizada. Si el mismo fallo vuelve a aparecer durante ese periodo, lo reviso y soluciono sin cobrarte nada adicional. (En caso de piezas físicas nuevas, estas cuentan además con la garantía oficial del fabricante)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa si mi ordenador no tiene arreglo o no compensa repararlo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mi prioridad es la honestidad. Si tras revisar tu equipo veo que el coste de las piezas supera el valor del ordenador o que no te va a ofrecer un rendimiento duradero, te lo diré claramente para que no tires el dinero, y te asesoraré sobre cómo recuperar tus datos o qué equipo nuevo/reacondicionado te conviene."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué métodos de pago aceptas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Puedes abonar el servicio una vez finalizado el trabajo mediante Bizum, transferencia bancaria o efectivo, recibiendo siempre el comprobante o documento del servicio realizado."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿En qué zonas ofreces soporte presencial a domicilio u oficina?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Me desplazo de forma presencial por el Área Metropolitana de Barcelona (Cataluña), incluyendo Barcelona capital, L'Hospitalet, Cornellà, Esplugues, El Prat, Sant Boi, Sant Just, Sant Joan Despí, Badalona, Santa Coloma y municipios cercanos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo funciona el soporte informático remoto y es seguro?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para problemas de software (configuración de correo, impresoras, lentitud, instalación de programas o activación de licencias) no necesitas esperar a una visita presencial. Utilizo herramientas seguras de asistencia remota donde tú mismo me das acceso temporal con un código de un solo uso, ves en todo momento en tu pantalla lo que estoy haciendo y, al terminar, la conexión se cierra por completo sin que nadie pueda volver a entrar sin tu permiso."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tardas en responder y en acudir a una urgencia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Respondo a todas las solicitudes en menos de 24 horas (habitualmente en el mismo día si me escribes por WhatsApp en horario laboral). Las asistencias remotas suelen resolverse en el mismo día, y las visitas presenciales se agendan en el hueco más cercano que te venga bien."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Mis archivos y fotos están seguros si tienes que formatear o reparar mi PC?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Totalmente. Antes de realizar cualquier formateo o reinstalación de sistema (Windows o Linux), te consulto qué carpetas, documentos o fotografías necesitas conservar para hacer una copia de seguridad previa (backup) y devolverte el ordenador con tu información intacta. Además, cumplo estrictamente con el secreto profesional y la normativa de protección de datos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Las licencias Low-Cost de Windows y Office son 100% legales y originales?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. No utilizo cracks, activadores piratas ni programas ilegales que ponen en riesgo tu ordenador con virus o dejan de funcionar al cabo de un mes. Te asesoro para adquirir licencias originales verificadas (OEM/Retail o canal de reutilización legal europea) a una fracción del precio habitual, dejándolas activadas oficialmente en los servidores de Microsoft."
+      }
+    }
+  ]
+};
 ---
-<Layout title="Preguntas Frecuentes de Soporte Informático | Barcelona" description="Dudas sobre precios, zona de cobertura, tiempos de respuesta y garantía de 15 días del soporte informático a domicilio en L'Hospitalet y Barcelona." canonical="/faq/">
+
+<Layout
+  title="Preguntas Frecuentes (FAQ) | Soporte Informático · Jonathan Esteban"
+  description="Resuelve tus dudas sobre el servicio de soporte informático: precios, garantía de 15 días, asistencia remota o a domicilio en Cataluña y licencias originales."
+  canonical="/faq/"
+  jsonld={faqJsonLd}
+>
   <style is:global>
-    .faq-question {
-      width: 100%;
+    .faq-category-section {
+      margin-top: 3rem;
+    }
+    .faq-category-header {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--color-border);
+    }
+    .faq-category-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--color-brand);
+      margin: 0;
+    }
+    .faq-details-list {
+      display: grid;
+      gap: 1rem;
+    }
+    .faq-details-item {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 1rem;
+      overflow: hidden;
+      transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+    }
+    .faq-details-item[open] {
+      border-color: var(--color-brand);
+      box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.08);
+    }
+    .faq-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: 1rem;
       padding: 1.25rem 1.5rem;
-      background: none;
-      border: none;
-      color: var(--color-text-main);
-      font-size: 1rem;
+      font-size: 1.02rem;
       font-weight: 600;
+      color: var(--color-text-main);
       cursor: pointer;
-      text-align: left;
+      list-style: none;
+      user-select: none;
+    }
+    .faq-summary::-webkit-details-marker {
+      display: none;
+    }
+    .faq-summary:hover {
+      color: var(--color-brand);
+    }
+    .faq-chevron {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      color: var(--color-text-faint);
+      transition: transform 0.25s ease, color 0.25s ease;
+    }
+    .faq-details-item[open] .faq-chevron {
+      transform: rotate(180deg);
+      color: var(--color-brand);
+    }
+    .faq-content {
+      padding: 0 1.5rem 1.35rem;
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      border-top: 1px solid transparent;
+    }
+    .faq-content p {
+      margin: 0;
+    }
+    .faq-search-box {
+      max-width: 600px;
+      margin: 2rem auto 0;
+      position: relative;
+    }
+    .faq-search-input {
+      width: 100%;
+      padding: 0.85rem 1.25rem 0.85rem 2.85rem;
+      border-radius: 0.85rem;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text-main);
+      font-size: 0.95rem;
       font-family: inherit;
     }
-    .faq-icon {
-      font-size: 0.85rem;
+    .faq-search-input:focus {
+      outline: none;
+      border-color: var(--color-brand);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-brand) 18%, transparent);
+    }
+    .faq-search-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
       color: var(--color-text-faint);
-      flex-shrink: 0;
-      transition: transform 0.3s ease;
-    }
-    .faq-item.open .faq-icon {
-      transform: rotate(180deg);
-    }
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease, padding 0.3s ease;
-      padding: 0 1.5rem;
-      color: var(--color-text-muted);
-      font-size: 0.92rem;
-      line-height: 1.7;
-    }
-    .faq-item.open .faq-answer {
-      max-height: 300px;
-      padding: 0 1.5rem 1.25rem;
+      pointer-events: none;
     }
   </style>
 
-  <script is:inline type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "¿Qué servicios de soporte informático ofreces?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Soporte helpdesk N1, mantenimiento y reparación de PC, instalación de sistemas operativos, diagnóstico y configuración de redes, soporte ofimático y licencias originales low-cost."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Ofreces presupuesto sin compromiso?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sí, todos los presupuestos son sin compromiso. Si el diagnóstico no deriva en reparación, solo se cobran 15€ si no hubo trabajo posterior."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Cuál es la zona de cobertura?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Trabajo presencial en L'Hospitalet de Llobregat, Barcelona ciudad y municipios cercanos. También ofrezco asistencia remota."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Cuánto tardas en responder o venir?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Consultas por email o formulario las respondo en menos de 24 horas. Si es urgente, por WhatsApp en menos de 2 horas en horario laboral. Visitas presenciales en 24-48 horas."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Vienes a mi casa o tengo que llevar el PC?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Las dos opciones son posibles. Puedes traer el equipo a L'Hospitalet o voy presencial a domicilio en Barcelona y alrededores. También ofrezco asistencia remota."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Qué pasa si no puedes repararlo?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Si la reparación no es viable, te lo digo y te aconsejo alternativas. El diagnóstico solo se cobra si no hay reparación (15€). Si no hay solución, no pagas nada."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Atiendes fines de semana o festivos?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sí, para urgencias atiendo sábados por la mañana con cita previa. Domingos y festivos solo para clientes con contrato de mantenimiento."
-        }
-      }
-    ]
-  }
-  </script>
-
   <main id="main-content">
+    <!-- ===== HERO / CABECERA ===== -->
     <section class="hero-base">
-      <div class="container">
-        <div class="fade-in">
-          <p class="hero-eyebrow">Centro de ayuda</p>
-          <h1 class="hero-title">Preguntas frecuentes</h1>
-          <p class="hero-lead" style="margin-bottom: 0;">Respuestas rápidas sobre servicios, precios, cobertura y cómo trabajo.</p>
+      <div class="container fade-in" style="text-align: center; max-width: 760px; margin: 0 auto;">
+        <nav class="breadcrumbs" aria-label="Miga de pan" style="margin-bottom: var(--space-2); justify-content: center;">
+          <a href="/">Inicio</a>
+          <span class="sep">/</span>
+          <span class="current">Preguntas Frecuentes</span>
+        </nav>
+        <p class="hero-eyebrow">DUDAS HABITUALES</p>
+        <h1 class="hero-title" style="margin-bottom: 1rem;">Preguntas Frecuentes</h1>
+        <p class="hero-lead" style="line-height: 1.75; margin: 0 auto;">
+          Todo lo que necesitas saber sobre cómo trabajo, presupuestos, garantías y desplazamientos antes de contratar un servicio.
+        </p>
+
+        <!-- Buscador en tiempo real -->
+        <div class="faq-search-box">
+          <svg class="faq-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="faqSearchInput" class="faq-search-input" placeholder="Buscar una duda o servicio (ej. garantía, bizum, remoto...)" aria-label="Buscar en preguntas frecuentes" />
         </div>
       </div>
     </section>
 
-    <div class="container" style="padding-bottom: calc(var(--space-section) + 2rem);">
-      <div class="form-group fade-in" style="margin-block: var(--space-4);">
-        <label for="faqSearchInput" class="sr-only">Buscar en las preguntas frecuentes</label>
-        <input type="search" id="faqSearchInput" class="form-control" placeholder="Buscar pregunta o palabra clave (ej: presupuesto, garantía, cobertura)...">
+    <!-- ===== PREGUNTAS Y RESPUESTAS ===== -->
+    <section class="section" style="padding-top: 1rem;">
+      <div class="container fade-in" style="max-width: 820px; margin: 0 auto;">
+        
+        <!-- CATEGORÍA 1: Presupuestos, Precios y Garantía -->
+        <div class="faq-category-section">
+          <div class="faq-category-header">
+            <h2 class="faq-category-title">Presupuestos, Precios y Garantía</h2>
+          </div>
+          <div class="faq-details-list">
+            <details class="faq-details-item" open>
+              <summary class="faq-summary">
+                <span>¿Cobras por dar un presupuesto o por la primera consulta?</span>
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="faq-content">
+                <p>No. Cuéntame tu problema por WhatsApp, correo o mediante el formulario y te daré una orientación inicial sin coste. Si el equipo requiere un diagnóstico técnico profundo (desmontaje o pruebas avanzadas de hardware) para localizar la avería, te informaré antes de cualquier coste de revisión. Siempre tendrás un presupuesto por escrito antes de autorizar la reparación.</p>
+              </div>
+            </details>
+
+            <details class="faq-details-item">
+              <summary class="faq-summary">
+                <span>¿Qué cubre exactamente la garantía de 15 días?</span>
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="faq-content">
+                <p>Desde el momento en que te entrego el equipo o doy por resuelta la incidencia, tienes 15 días naturales de garantía sobre la mano de obra y la configuración realizada. Si el mismo fallo vuelve a aparecer durante ese periodo, lo reviso y soluciono sin cobrarte nada adicional. (En caso de piezas físicas nuevas, estas cuentan además con la garantía oficial del fabricante).</p>
+              </div>
+            </details>
+
+            <details class="faq-details-item">
+              <summary class="faq-summary">
+                <span>¿Qué pasa si mi ordenador no tiene arreglo o no compensa repararlo?</span>
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="faq-content">
+                <p>Mi prioridad es la honestidad. Si tras revisar tu equipo veo que el coste de las piezas supera el valor del ordenador o que no te va a ofrecer un rendimiento duradero, te lo diré claramente para que no tires el dinero, y te asesoraré sobre cómo recuperar tus datos o qué equipo nuevo/reacondicionado te conviene.</p>
+              </div>
+            </details>
+
+            <details class="faq-details-item">
+              <summary class="faq-summary">
+                <span>¿Qué métodos de pago aceptas?</span>
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="faq-content">
+                <p>Puedes abonar el servicio una vez finalizado el trabajo mediante Bizum, transferencia bancaria o efectivo, recibiendo siempre el comprobante o documento del servicio realizado.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <!-- CATEGORÍA 2: Desplazamiento y Asistencia Remota -->
+        <div class="faq-category-section">
+          <div class="faq-category-header">
+            <h2 class="faq-category-title">Desplazamiento y Asistencia Remota</h2>
+          </div>
+          <div class="faq-details-list">
+            <details class="faq-details-item">
+              <summary class="faq-summary">
+                <span>¿En qué zonas ofreces soporte presencial a domicilio u oficina?</span>
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="faq-content">
+                <p>Me desplazo de forma presencial por el <strong>Área Metropolitana de Barcelona (Cataluña)</strong>, incluyendo Barcelona capital, L'Hospitalet, Cornellà, Esplugues, El Prat, Sant Boi, Sant Just, Sant Joan Despí, Badalona, Santa Coloma y municipios cercanos.</p>
+              </div>
+            </details>
+
+            <details class="faq-details-item">
+              <summary class="faq-summary">
+                <span>¿Cómo funciona el soporte informático remoto y es seguro?</span>
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="faq-content">
+                <p>Para problemas de software (configuración de correo, impresoras, lentitud, instalación de programas o activación de licencias) no necesitas esperar a una visita presencial. Utilizo herramientas seguras de asistencia remota donde tú mismo me das acceso temporal con un código de un solo uso, ves en todo momento en tu pantalla lo que estoy haciendo y, al terminar, la conexión se cierra por completo sin que nadie pueda volver a entrar sin tu permiso.</p>
+              </div>
+            </details>
+
+            <details class="faq-details-item">
+              <summary class="faq-summary">
+                <span>¿Cuánto tardas en responder y en acudir a una urgencia?</span>
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="faq-content">
+                <p>Respondo a todas las solicitudes en <strong>menos de 24 horas</strong> (habitualmente en el mismo día si me escribes por WhatsApp en horario laboral). Las asistencias remotas suelen resolverse en el mismo día, y las visitas presenciales se agendan en el hueco más cercano que te venga bien.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <!-- CATEGORÍA 3: Datos, Privacidad y Licencias -->
+        <div class="faq-category-section">
+          <div class="faq-category-header">
+            <h2 class="faq-category-title">Datos, Privacidad y Licencias</h2>
+          </div>
+          <div class="faq-details-list">
+            <details class="faq-details-item">
+              <summary class="faq-summary">
+                <span>¿Mis archivos y fotos están seguros si tienes que formatear o reparar mi PC?</span>
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="faq-content">
+                <p>Totalmente. Antes de realizar cualquier formateo o reinstalación de sistema (Windows o Linux), te consulto qué carpetas, documentos o fotografías necesitas conservar para hacer una copia de seguridad previa (backup) y devolverte el ordenador con tu información intacta. Además, cumplo estrictamente con el secreto profesional y la normativa de protección de datos.</p>
+              </div>
+            </details>
+
+            <details class="faq-details-item">
+              <summary class="faq-summary">
+                <span>¿Las licencias Low-Cost de Windows y Office son 100% legales y originales?</span>
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="faq-content">
+                <p>Sí. No utilizo <em>cracks</em>, activadores piratas ni programas ilegales que ponen en riesgo tu ordenador con virus o dejan de funcionar al cabo de un mes. Te asesoro para adquirir licencias originales verificadas (OEM/Retail o canal de reutilización legal europea) a una fracción del precio habitual, dejándolas activadas oficialmente en los servidores de Microsoft.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+
       </div>
+    </section>
 
-      <div id="faqAccordion" class="fade-in">
-        <div class="faq-item" data-category="general">
-          <button class="faq-question" type="button" aria-expanded="false">
-            <span>¿Qué servicios de soporte informático ofreces?</span>
-            <span class="faq-icon" aria-hidden="true">▼</span>
-          </button>
-          <div class="faq-answer">
-            Ofrezco soporte helpdesk N1 (atención a usuarios e incidencias), mantenimiento y reparación de PC, instalación de sistemas operativos, diagnóstico y configuración de redes, soporte ofimático (M365, Google Workspace) y asesoría de licencias originales low-cost.
-          </div>
-        </div>
-
-        <div class="faq-item" data-category="servicios">
-          <button class="faq-question" type="button" aria-expanded="false">
-            <span>¿Ofreces presupuesto sin compromiso?</span>
-            <span class="faq-icon" aria-hidden="true">▼</span>
-          </button>
-          <div class="faq-answer">
-            Sí, todos los presupuestos son sin compromiso. Si te hago un diagnóstico y decides no reparar, solo te cobro 15€ por el diagnóstico. Si reparamos, el diagnóstico es gratis.
-          </div>
-        </div>
-
-        <div class="faq-item" data-category="servicios">
-          <button class="faq-question" type="button" aria-expanded="false">
-            <span>¿Cuál es la zona de cobertura?</span>
-            <span class="faq-icon" aria-hidden="true">▼</span>
-          </button>
-          <div class="faq-answer">
-            Trabajo presencial en L'Hospitalet de Llobregat, Barcelona ciudad y los siguientes municipios del área metropolitana: <strong>Cornellà, Esplugues, El Prat, Sant Boi, Santa Coloma, Badalona, Sant Adrià, Montcada, Cerdanyola, Ripollet, Sant Just, Sant Feliu, Sant Joan Despí</strong> y otras zonas cercanas. Si no estás en la lista, pregúntame igual — probablemente lleguemos a un acuerdo. También ofrezco asistencia remota para incidencias que puedan resolverse sin desplazamiento en toda España.
-          </div>
-        </div>
-
-        <div class="faq-item" data-category="legal">
-          <button class="faq-question" type="button" aria-expanded="false">
-            <span>¿Trabajas con particulares o solo empresas?</span>
-            <span class="faq-icon" aria-hidden="true">▼</span>
-          </button>
-          <div class="faq-answer">
-            Con ambos. Ayudo a particulares con su PC de casa, y a autónomos y pymes con el día a día informático de su negocio. Para empresas ofrezco bonos de horas y contratos de mantenimiento.
-          </div>
-        </div>
-
-        <div class="faq-item" data-category="legal">
-          <button class="faq-question" type="button" aria-expanded="false">
-            <span>¿Tienen garantía tus reparaciones?</span>
-            <span class="faq-icon" aria-hidden="true">▼</span>
-          </button>
-          <div class="faq-answer">
-            Sí, todas las reparaciones llevan 15 días de garantía. Si el problema persiste o vuelve a aparecer dentro de ese plazo, lo reviso sin coste adicional.
-          </div>
-        </div>
-
-        <div class="faq-item" data-category="servicios">
-          <button class="faq-question" type="button" aria-expanded="false">
-            <span>¿Cuánto tardas en responder o venir?</span>
-            <span class="faq-icon" aria-hidden="true">▼</span>
-          </button>
-          <div class="faq-answer">
-            Consultas por email o formulario las respondo en menos de 24 horas (laborables). Si es urgente, escríbeme por WhatsApp y te contesto en cuanto pueda, normalmente en menos de 2 horas en horario laboral. Para visitas presenciales, suelo concertar cita en 24-48 horas.
-          </div>
-        </div>
-
-        <div class="faq-item" data-category="servicios">
-          <button class="faq-question" type="button" aria-expanded="false">
-            <span>¿Vienes a mi casa o tengo que llevar el PC?</span>
-            <span class="faq-icon" aria-hidden="true">▼</span>
-          </button>
-          <div class="faq-answer">
-            Las dos opciones son posibles. Si el problema es leve o puede esperar, puedes traer el equipo a L'Hospitalet. Si no puedes desplazarte o la incidencia es urgente, voy presencial a tu domicilio u oficina en Barcelona, L'Hospitalet y alrededores. También ofrezco asistencia remota para problemas de software que puedan resolverse por Internet.
-          </div>
-        </div>
-
-        <div class="faq-item" data-category="servicios">
-          <button class="faq-question" type="button" aria-expanded="false">
-            <span>¿Qué pasa si no puedes repararlo?</span>
-            <span class="faq-icon" aria-hidden="true">▼</span>
-          </button>
-          <div class="faq-answer">
-            Si después del diagnóstico veo que la reparación no es viable o no sale a cuenta, te lo digo claramente y te aconsejo sobre alternativas (recambio, equipo nuevo, etc.). El diagnóstico solo se cobra si no hubo reparación posterior (15 €). Si no encuentro solución, no pagas nada.
-          </div>
-        </div>
-
-        <div class="faq-item" data-category="servicios">
-          <button class="faq-question" type="button" aria-expanded="false">
-            <span>¿Atiendes fines de semana o festivos?</span>
-            <span class="faq-icon" aria-hidden="true">▼</span>
-          </button>
-          <div class="faq-answer">
-            Sí, para urgencias puedo atender sábados por la mañana con cita previa. Domingos y festivos solo para clientes con contrato de mantenimiento. La respuesta por WhatsApp durante el fin de semana puede ser más lenta, pero si es algo grave, escríbeme igual e intento ayudarte.
+    <!-- ===== CTA FINAL ===== -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="home-cta fade-in">
+          <h2>¿Tienes otra duda que no aparezca aquí?</h2>
+          <p>Escríbeme directamente por WhatsApp o por correo y te respondo en el mismo día, sin ningún compromiso.</p>
+          <div class="home-cta-contact">
+            <a href="/contacto/" class="btn-primary">Hacer una consulta</a>
+            <a href="https://wa.me/34614739345" target="_blank" rel="noopener noreferrer" class="btn-secondary">Escribir por WhatsApp</a>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </main>
 
-  <script>
-    // FAQ Accordion
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.faq-item').forEach(item => {
-        const btn = item.querySelector('.faq-question');
-        btn.addEventListener('click', () => {
-          const open = item.classList.toggle('open');
-          btn.setAttribute('aria-expanded', String(open));
+  <script is:inline>
+    // Buscador interactivo en vivo sobre acordeones
+    document.addEventListener('DOMContentLoaded', function() {
+      var search = document.getElementById('faqSearchInput');
+      if (!search) return;
+
+      search.addEventListener('input', function(e) {
+        var query = e.target.value.toLowerCase().trim();
+        var items = document.querySelectorAll('.faq-details-item');
+        
+        items.forEach(function(item) {
+          var text = item.textContent.toLowerCase();
+          if (query === '' || text.indexOf(query) !== -1) {
+            item.style.display = '';
+            if (query !== '') item.open = true;
+          } else {
+            item.style.display = 'none';
+          }
         });
       });
-
-      // FAQ Search
-      const searchInput = document.getElementById('faqSearchInput');
-      if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-          const q = e.target.value.toLowerCase();
-          document.querySelectorAll('.faq-item').forEach(item => {
-            const text = item.textContent.toLowerCase();
-            item.style.display = text.includes(q) ? '' : 'none';
-          });
-        });
-      }
     });
   </script>
 </Layout>
