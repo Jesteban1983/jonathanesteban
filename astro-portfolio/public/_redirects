@@ -1,8 +1,32 @@
-# Redirecciones etapa anterior (desarrollo web, automatización, proyectos)
-/servicios/desarrollo-web/* /servicios/ 301!
-/servicios/desarrollo-web /servicios/ 301!
-/servicios/automatizacion/* /servicios/ 301!
-/servicios/automatizacion /servicios/ 301!
-/proyectos/* / 301!
-/proyectos / 301!
-/sitemap.xml /sitemap-index.xml 301!
+# ─────────────────────────────────────────────────────────────────────────────
+# Redirecciones de la etapa anterior
+# ─────────────────────────────────────────────────────────────────────────────
+
+# 1) Servicios y proyectos RETIRADOS (desarrollo web, automatización, IA, portfolio)
+#    410 Gone = "eliminado para siempre": Google y los auditores SEO los
+#    desindexan antes que con un 301. Se muestra la página 404 propia.
+/servicios/desarrollo-web/*      /404.html  410!
+/servicios/desarrollo-web        /404.html  410!
+/servicios/automatizacion/*      /404.html  410!
+/servicios/automatizacion        /404.html  410!
+/servicios/automatizaciones/*    /404.html  410!
+/servicios/automatizaciones      /404.html  410!
+/proyectos/*                     /404.html  410!
+/proyectos                       /404.html  410!
+
+# 2) URLs antiguas de soporte IT → página equivalente actual (301 permanente)
+/servicios/soporte-it/*                          /servicios/helpdesk-n1/        301!
+/servicios/soporte-it                            /servicios/helpdesk-n1/        301!
+/soporte-it/*                                    /servicios/                    301!
+/soporte-it                                      /servicios/                    301!
+/servicios/formateo-limpieza-optimizacion/*      /servicios/instalacion-sistemas/ 301!
+/servicios/formateo-limpieza-optimizacion        /servicios/instalacion-sistemas/ 301!
+/servicios/mantenimiento-preventivo-pc/*         /servicios/mantenimiento-pc/   301!
+/servicios/mantenimiento-preventivo-pc           /servicios/mantenimiento-pc/   301!
+/servicios/reparacion-ordenadores-portatiles/*   /servicios/mantenimiento-pc/   301!
+/servicios/reparacion-ordenadores-portatiles     /servicios/mantenimiento-pc/   301!
+/legal/privacidad/*                              /privacy-policy/               301!
+/legal/privacidad                                /privacy-policy/               301!
+
+# 3) Sitemap antiguo → sitemap actual
+/sitemap.xml  /sitemap-index.xml  301!

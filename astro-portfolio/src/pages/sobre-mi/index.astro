@@ -89,24 +89,58 @@ import Icon from '../../components/Icon.astro';
       border-radius: 9999px;
     }
 
-    /* Sección 2: Mi Enfoque Split Layout */
-    .about-split-layout {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
+    /* Encabezados de sección con el tamaño original (var(--fs-h2)) y espaciado ajustado */
+    .about-section-header {
+      margin-bottom: 1.75rem;
+      width: 100%;
     }
-    @media (min-width: 960px) {
-      .about-split-layout {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
-        gap: 4rem;
-        align-items: start;
+    .about-section-header .section-label {
+      margin-bottom: 0.35rem;
+    }
+    .about-section-header .section-title {
+      font-family: var(--font-display);
+      font-size: var(--fs-h2);
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      word-spacing: -0.04em;
+      line-height: 1.2;
+      margin-bottom: 0.35rem;
+    }
+    .about-section-header .section-desc {
+      font-size: var(--fs-lg);
+      letter-spacing: -0.01em;
+      word-spacing: -0.02em;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+      max-width: none;
+      margin-bottom: 0;
+    }
+    @media (min-width: 860px) {
+      .about-section-header .section-title {
+        white-space: nowrap;
+      }
+      .about-section-header .section-desc {
+        white-space: nowrap;
+      }
+      .home-cta h2,
+      .home-cta p {
+        white-space: nowrap;
+        max-width: none;
       }
     }
+    @media (max-width: 859px) {
+      .about-section-header .section-title,
+      .about-section-header .section-desc {
+        text-wrap: balance;
+        white-space: normal;
+      }
+    }
+
     .about-bio-card {
       background: var(--color-surface);
       border: 1px solid var(--color-border);
       border-radius: 1.25rem;
-      padding: 2rem;
+      padding: 2.25rem;
       box-shadow: var(--shadow-sm);
     }
     .about-bio-card p {
@@ -232,8 +266,11 @@ import Icon from '../../components/Icon.astro';
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
-      border-left: 4px solid var(--color-brand);
       box-shadow: var(--shadow-sm);
+      transition: border-color var(--transition-normal);
+    }
+    .coverage-banner-card:hover {
+      border-color: var(--color-brand);
     }
     @media (min-width: 860px) {
       .coverage-banner-card {
@@ -332,35 +369,31 @@ import Icon from '../../components/Icon.astro';
     </section>
 
     <!-- ===== SECCIÓN 2: MI ENFOQUE ===== -->
-    <section class="section section-alt">
+    <section class="section section-alt about-section">
       <div class="container-wide">
-        <div class="about-split-layout fade-in">
-          <div class="about-split-header">
-            <p class="section-label">DETRÁS DEL SERVICIO</p>
-            <h2 class="section-title">Un técnico de confianza al que puedes llamar directamente</h2>
-            <p class="section-desc">Atención cercana, explicaciones comprensibles y soluciones pensadas para durar.</p>
-          </div>
-          <div class="about-split-content">
-            <div class="about-bio-card">
-              <p>
-                Todos hemos pasado por la frustración de que un ordenador falle justo cuando más lo necesitamos, que el Wi-Fi se corte en mitad de una reunión o que el servicio técnico oficial nos tenga horas al teléfono hablando con tecnicismos para acabar cobrando una factura sorpresa.
-              </p>
-              <p>
-                Mi trabajo consiste exactamente en lo contrario. Llevo años montando, diagnosticando, reparando y optimizando equipos informáticos y redes domésticas o de oficina. Tanto si tienes un ordenador lento que necesita una segunda vida, como si eres un autónomo o pyme que necesita poner en orden sus correos corporativos, copias de seguridad o licencias, me encargo de solucionarlo de principio a fin.
-              </p>
-              <p>
-                Antes de tocar un tornillo o cambiar una configuración, reviso tu caso, te explico las opciones reales (si algo no vale la pena repararlo, te lo diré con total honestidad) y te entrego un presupuesto cerrado por escrito.
-              </p>
-            </div>
-          </div>
+        <div class="about-section-header fade-in">
+          <p class="section-label">DETRÁS DEL SERVICIO</p>
+          <h2 class="section-title">Un técnico de confianza al que puedes llamar directamente</h2>
+          <p class="section-desc">Atención cercana, explicaciones comprensibles y soluciones pensadas para durar.</p>
+        </div>
+        <div class="about-bio-card fade-in">
+          <p>
+            Todos hemos pasado por la frustración de que un ordenador falle justo cuando más lo necesitamos, que el Wi-Fi se corte en mitad de una reunión o que el servicio técnico oficial nos tenga horas al teléfono hablando con tecnicismos para acabar cobrando una factura sorpresa.
+          </p>
+          <p>
+            Mi trabajo consiste exactamente en lo contrario. Llevo años montando, diagnosticando, reparando y optimizando equipos informáticos y redes domésticas o de oficina. Tanto si tienes un ordenador lento que necesita una segunda vida, como si eres un autónomo o pyme que necesita poner en orden sus correos corporativos, copias de seguridad o licencias, me encargo de solucionarlo de principio a fin.
+          </p>
+          <p>
+            Antes de tocar un tornillo o cambiar una configuración, reviso tu caso, te explico las opciones reales (si algo no vale la pena repararlo, te lo diré con total honestidad) y te entrego un presupuesto cerrado por escrito.
+          </p>
         </div>
       </div>
     </section>
 
     <!-- ===== SECCIÓN 3: MIS 4 COMPROMISOS CONTIGO ===== -->
-    <section class="section">
+    <section class="section about-section">
       <div class="container-wide">
-        <div class="fade-in">
+        <div class="about-section-header fade-in">
           <p class="section-label">VALORES Y METODOLOGÍA</p>
           <h2 class="section-title">Cómo garantizo tu tranquilidad</h2>
           <p class="section-desc">Cuatro principios innegociables para trabajar con total claridad de principio a fin.</p>
@@ -399,9 +432,9 @@ import Icon from '../../components/Icon.astro';
     </section>
 
     <!-- ===== SECCIÓN 4: ENTORNOS Y TECNOLOGÍAS ===== -->
-    <section class="section section-alt">
+    <section class="section section-alt about-section">
       <div class="container-wide">
-        <div class="fade-in">
+        <div class="about-section-header fade-in">
           <p class="section-label">CAPACIDAD TÉCNICA</p>
           <h2 class="section-title">Equipos, sistemas y entornos con los que trabajo a diario</h2>
           <p class="section-desc">Especialización práctica tanto en entornos domésticos como en pequeñas empresas y despachos.</p>
@@ -457,7 +490,7 @@ import Icon from '../../components/Icon.astro';
     </section>
 
     <!-- ===== SECCIÓN 5: COBERTURA Y MODALIDADES ===== -->
-    <section class="section">
+    <section class="section about-section">
       <div class="container-wide">
         <div class="coverage-banner-card fade-in">
           <div class="coverage-banner-left">
@@ -479,7 +512,7 @@ import Icon from '../../components/Icon.astro';
     </section>
 
     <!-- ===== SECCIÓN 6: CTA FINAL ===== -->
-    <section class="section section-alt">
+    <section class="section section-alt about-section">
       <div class="container-wide">
         <div class="home-cta fade-in">
           <h2>¿Tu equipo va lento o tienes una incidencia ahora mismo?</h2>

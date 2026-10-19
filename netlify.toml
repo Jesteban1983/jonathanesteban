@@ -28,7 +28,7 @@
     # imágenes inline,
     # conexiones a tu propio dominio + Formspree (fallback) + el proxy interno.
     # Ajusta si añades un CDN externo (Google Fonts, etc.) en el futuro.
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://server.arcgisonline.com https://services.arcgisonline.com; font-src 'self' data:; connect-src 'self' https://formspree.io https://n8n.jonathanesteban.dev; base-uri 'self'; form-action 'self' https://formspree.io; frame-ancestors 'none'"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://server.arcgisonline.com https://services.arcgisonline.com; font-src 'self' data:; connect-src 'self' https://formspree.io; base-uri 'self'; form-action 'self' https://formspree.io; frame-ancestors 'none'"
 
 # === CACHÉ (rendimiento / Core Web Vitals) ===
 # /_astro/* lleva hash en el nombre → inmutable. Assets estáticos: 1 año.
@@ -58,83 +58,9 @@
 # Se sirven en /.netlify/functions/<nombre> tanto en local (netlify dev) como
 # en producción.
 
-# === REDIRECCIONES LEGACY (solo para rutas que YA NO existen en el Astro) ===
-# /legal/privacidad/ del sitio antiguo → /privacy-policy/ (Astro)
-[[redirects]]
-  from = "/legal/privacidad/"
-  to = "/privacy-policy/"
-  status = 301
-  force = true
-
-# /servicios/soporte-it/ del sitio antiguo → /servicios/ (índice de servicios)
-[[redirects]]
-  from = "/servicios/soporte-it/*"
-  to = "/servicios/"
-  status = 301
-  force = true
-
-# Páginas de servicio antiguas → /servicios/ (se reorganizaron los nombres)
-[[redirects]]
-  from = "/servicios/reparacion-ordenadores-portatiles/*"
-  to = "/servicios/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/servicios/formateo-limpieza-optimizacion/*"
-  to = "/servicios/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/servicios/mantenimiento-preventivo-pc/*"
-  to = "/servicios/mantenimiento-pc/"
-  status = 301
-  force = true
-
-# Rutas de la etapa anterior eliminadas (Desarrollo Web, Automatización, Proyectos)
-[[redirects]]
-  from = "/servicios/desarrollo-web/*"
-  to = "/servicios/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/servicios/desarrollo-web"
-  to = "/servicios/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/servicios/automatizacion/*"
-  to = "/servicios/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/servicios/automatizacion"
-  to = "/servicios/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/proyectos/*"
-  to = "/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/proyectos"
-  to = "/"
-  status = 301
-  force = true
-
-# Alias sitemap estándar
-[[redirects]]
-  from = "/sitemap.xml"
-  to = "/sitemap-index.xml"
-  status = 301
-  force = true
+# === REDIRECCIONES LEGACY ===
+# Todas las redirecciones de URLs antiguas viven en astro-portfolio/public/_redirects
+# (410 para servicios retirados, 301 para URLs de soporte IT renombradas).
 
 # Subdominio Netlify → dominio propio
 [[redirects]]

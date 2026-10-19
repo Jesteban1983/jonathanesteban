@@ -1,19 +1,83 @@
-# ── Variables de entorno (contienen claves secretas) ───────────────
+# ═══════════════════════════════════════════════════════════════════
+# DevSecOps .gitignore — jonathanesteban.dev
+# Máxima seguridad: solo código y assets estrictamente necesarios para prod.
+# ═══════════════════════════════════════════════════════════════════
+
+# ── 1. Secretos y credenciales ─────────────────────────────────────
 .env
-.env.local
-.env.production
-
-# ── Node / Serverless (si se instalan localmente) ─────────────────
-node_modules/
+.env.*
+*.env
+!.env.example
 .netlify/
+.netlify
 
-# ── Backups generados por scripts de auditoría ─────────────────────
+# ── 2. Memoria, prompts y configuraciones de agentes IA ───────────
+MEMORY.md
+memory.md
+AGENT.md
+agent.md
+AGENTS.md
+agents.md
+CLAUDE.md
+claude.md
+*AGENT*.md
+*AGENTS*.md
+BLOG-CONTENT-TEMPLATE.md
+BLOG-AUTOMATION.md
+
+# ── 3. Planes, auditorías y metodologías internas ─────────────────
+PLAN-*.md
+plan-*.md
+PLAN*.md
+plan*.md
+WORKFLOW-*.md
+workflow-*.md
+WORKFLOW-*.json
+workflow-*.json
+FISCALIZACION.md
+fiscalizacion.md
+AUDIT.md
+audit.md
+MARKET-ANALYSIS.md
+STACK.md
+TOOLS.md
+LINK-MATRIX.csv
+*.csv
+
+# ── 4. Datos personales y currículums ─────────────────────────────
+CV-DATA.md
+cv-data.md
+*.pdf
+
+# ── 5. Documentación interna y scripts de generación ──────────────
+docs/
+scripts/
+requirements-image.txt
+
+# ── 6. Pipelines y artefactos temporales ────────────────────────────
+.blog-pipeline-state.json
+.blog-pipeline-tmp/
+__pycache__/
+*.py[cod]
+*$py.class
 *.bak
 
-# ── Sistema operativo ──────────────────────────────────────────────
+# ── 7. Build outputs, dependencias y caches ────────────────────────
+node_modules/
+dist/
+.astro/
+
+# ── 8. Logs ────────────────────────────────────────────────────────
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# ── 9. Editores y SO ───────────────────────────────────────────────
+.vscode/
+.idea/
 .DS_Store
 Thumbs.db
 *.swp
 *.swo
 *~
-dist/
