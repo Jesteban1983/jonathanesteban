@@ -1,10 +1,75 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
 
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Vale la pena sustituir el disco duro por un SSD y ampliar la memoria RAM en mi ordenador?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "En la inmensa mayoría de los casos, sí. Si tu equipo tiene un procesador decente pero tarda varios minutos en arrancar o abrir programas, cambiar el viejo disco mecánico (HDD) por una unidad de estado sólido (SSD) y ampliar la memoria RAM multiplica la velocidad por 5 o 10 veces, dejándolo prácticamente como nuevo a una fracción del coste de comprar un ordenador nuevo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Por qué mi ordenador o portátil se sobrecalienta, hace ruido excesivo o se apaga solo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Con el tiempo, el polvo y las pelusas obstruyen los disipadores y ventiladores, y la pasta térmica original del procesador se reseca y cristaliza perdiendo su capacidad conductora. Una limpieza interna exhaustiva y la aplicación de pasta térmica de alto rendimiento reduce drásticamente las temperaturas de trabajo, elimina el ruido molesto y previene fallos graves en la placa base."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué hacéis si mi PC no enciende, emite pitidos o la pantalla se queda en negro?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Realizo un diagnóstico paso a paso de los componentes críticos: comprobación de tensiones en la fuente de alimentación, tests a los módulos de memoria RAM, inspección de la placa base, tarjeta gráfica y estado de los discos. Te indico con exactitud qué pieza está fallando y el coste cerrado de repararla o sustituirla antes de hacer cualquier intervención."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo actualizar mi ordenador a Windows 11 si dice que no cumple los requisitos mínimos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Muchos equipos con hardware potente son descartados por Microsoft debido a requisitos artificiales (como la versión del chip TPM o la generación del procesador). Analizo tu equipo y configuro una instalación limpia y optimizada de Windows 11 sin riesgos ni bloqueos, asegurando total fluidez y la recepción periódica de actualizaciones de seguridad oficiales."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo elimináis virus, malware o publicidad invasiva sin perder mis datos personales?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Efectúo un escaneo y desinfección profunda fuera del arranque del sistema operativo para erradicar troyanos, ransomware, malware espía, mineros y adware publicitario. Recupero archivos de sistema dañados y desactivo programas sospechosos del inicio, conservando siempre intactos tus documentos, fotos y archivos de trabajo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Instaláis y dais soporte a sistemas Linux (Ubuntu, Mint, Debian) o Dual Boot con Windows?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Domino tanto distribuciones enfocadas al usuario final (como Linux Mint o Ubuntu, perfectas para revitalizar equipos antiguos) como entornos profesionales (Debian, Fedora). Puedo instalar Linux como sistema principal o configurar un arranque dual (Dual Boot) para que elijas entre Windows o Linux al encender el equipo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Mi conexión Wi-Fi es inestable o no llega a ciertas habitaciones u oficinas, ¿cómo lo solucionáis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Los repetidores Wi-Fi convencionales suelen saturar la señal y recortar la velocidad a la mitad. Tras analizar la distribución física del espacio y las interferencias de canales, propongo e instalo soluciones profesionales: redes Wi-Fi Mesh con roaming continuo inteligente, cableado Ethernet estructurado de categoría superior o dispositivos PLC de alta velocidad para cobertura total y sin cortes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Me ayudáis a configurar el correo profesional de mi empresa con dominio propio en Outlook o el móvil?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Por supuesto. Configuro cuentas de correo corporativo con tu propio dominio (@tuempresa.com) en Microsoft 365, Google Workspace o servidores de hosting estándar. Sincronizo bandejas de entrada, contactos y calendarios en ordenadores, teléfonos móviles y tablets, y configuro registros DNS (SPF, DKIM, DMARC) para garantizar que tus correos no acaben en la carpeta de spam."
+      }
+    },
     {
       "@type": "Question",
       "name": "¿Cobras por dar un presupuesto o por la primera consulta?",
@@ -27,14 +92,6 @@ const faqJsonLd = {
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Mi prioridad es la honestidad. Si tras revisar tu equipo veo que el coste de las piezas supera el valor del ordenador o que no te va a ofrecer un rendimiento duradero, te lo diré claramente para que no tires el dinero, y te asesoraré sobre cómo recuperar tus datos o qué equipo nuevo/reacondicionado te conviene."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Qué métodos de pago aceptas?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Puedes abonar el servicio una vez finalizado el trabajo mediante Bizum, transferencia bancaria o efectivo, recibiendo siempre el comprobante o documento del servicio realizado."
       }
     },
     {
@@ -83,30 +140,139 @@ const faqJsonLd = {
 
 <Layout
   title="Preguntas Frecuentes (FAQ) | Soporte Informático · Jonathan Esteban"
-  description="Resuelve tus dudas sobre el servicio de soporte informático: precios, garantía de 15 días, asistencia remota o a domicilio en Cataluña y licencias originales."
+  description="Resuelve tus dudas sobre soporte informático en Cataluña: reparación de PC, ampliación SSD/RAM, redes Wi-Fi, asistencia remota, licencias originales y garantía de 15 días."
   canonical="/faq/"
   jsonld={faqJsonLd}
 >
   <style is:global>
-    .faq-category-section {
-      margin-top: 3rem;
+    /* Estilos de la página FAQ alineados al sistema de diseño global */
+    .faq-hero-container {
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
     }
-    .faq-category-header {
+    .faq-search-box {
+      max-width: 640px;
+      margin: 2rem auto 0;
+      position: relative;
+    }
+    .faq-search-input {
+      width: 100%;
+      padding: 0.95rem 1.25rem 0.95rem 3rem;
+      border-radius: 0.85rem;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text-main);
+      font-size: 1rem;
+      font-family: inherit;
+      box-shadow: var(--shadow-sm);
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+    .faq-search-input:focus {
+      outline: none;
+      border-color: var(--color-brand);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-brand) 20%, transparent);
+    }
+    .faq-search-icon {
+      position: absolute;
+      left: 1.15rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--color-text-faint);
+      pointer-events: none;
+    }
+    .faq-search-counter {
+      margin-top: 0.75rem;
+      font-size: var(--fs-xs);
+      color: var(--color-text-muted);
+      font-weight: 500;
+    }
+
+    /* Layout principal de categorías y acordeones */
+    .faq-layout-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 960px) {
+      .faq-layout-grid {
+        grid-template-columns: 280px minmax(0, 1fr);
+        gap: 3.5rem;
+        align-items: start;
+      }
+    }
+
+    /* Barra lateral de navegación rápida por categorías */
+    .faq-sidebar-sticky {
+      position: sticky;
+      top: calc(var(--nav-height) + 2rem);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 1.25rem;
+      padding: 1.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .faq-sidebar-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-faint);
+      padding: 0.25rem 0.5rem 0.5rem;
+      margin-bottom: 0.25rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .faq-sidebar-link {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      padding: 0.6rem 0.75rem;
+      border-radius: 0.6rem;
+      transition: background var(--transition-fast), color var(--transition-fast);
+    }
+    .faq-sidebar-link:hover, .faq-sidebar-link.active {
+      color: var(--color-brand);
+      background: color-mix(in srgb, var(--color-brand) 10%, transparent);
+    }
+
+    /* Grupos de Categorías */
+    .faq-category-block {
+      margin-bottom: 3rem;
+      scroll-margin-top: calc(var(--nav-height) + 2rem);
+    }
+    .faq-category-block:last-child {
+      margin-bottom: 0;
+    }
+    .faq-category-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-brand);
+      margin-bottom: 0.5rem;
+    }
+    .faq-category-heading {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--color-text-main);
       margin-bottom: 1.25rem;
       padding-bottom: 0.75rem;
       border-bottom: 2px solid var(--color-border);
     }
-    .faq-category-title {
-      font-family: var(--font-display);
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--color-brand);
-      margin: 0;
-    }
-    .faq-details-list {
+
+    /* Acordeones */
+    .faq-accordion-list {
       display: grid;
       gap: 1rem;
     }
@@ -115,17 +281,21 @@ const faqJsonLd = {
       border: 1px solid var(--color-border);
       border-radius: 1rem;
       overflow: hidden;
-      transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+      box-shadow: var(--shadow-sm);
+      transition: border-color var(--transition-normal), box-shadow var(--transition-normal), transform var(--transition-fast);
+    }
+    .faq-details-item:hover {
+      border-color: color-mix(in srgb, var(--color-brand) 50%, var(--color-border));
     }
     .faq-details-item[open] {
       border-color: var(--color-brand);
-      box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.08);
+      box-shadow: var(--shadow-hover);
     }
     .faq-summary {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      gap: 1.25rem;
       padding: 1.25rem 1.5rem;
       font-size: 1.02rem;
       font-weight: 600;
@@ -161,189 +331,316 @@ const faqJsonLd = {
     .faq-content p {
       margin: 0;
     }
-    .faq-search-box {
-      max-width: 600px;
-      margin: 2rem auto 0;
-      position: relative;
-    }
-    .faq-search-input {
-      width: 100%;
-      padding: 0.85rem 1.25rem 0.85rem 2.85rem;
-      border-radius: 0.85rem;
-      border: 1px solid var(--color-border);
+
+    /* Mensaje sin resultados */
+    .faq-empty-state {
+      text-align: center;
+      padding: 3rem 1.5rem;
       background: var(--color-surface);
+      border: 1px dashed var(--color-border);
+      border-radius: 1rem;
+      color: var(--color-text-muted);
+    }
+    .faq-empty-state h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
       color: var(--color-text-main);
-      font-size: 0.95rem;
-      font-family: inherit;
-    }
-    .faq-search-input:focus {
-      outline: none;
-      border-color: var(--color-brand);
-      box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-brand) 18%, transparent);
-    }
-    .faq-search-icon {
-      position: absolute;
-      left: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--color-text-faint);
-      pointer-events: none;
     }
   </style>
 
   <main id="main-content">
     <!-- ===== HERO / CABECERA ===== -->
     <section class="hero-base">
-      <div class="container fade-in" style="text-align: center; max-width: 760px; margin: 0 auto;">
-        <nav class="breadcrumbs" aria-label="Miga de pan" style="margin-bottom: var(--space-2); justify-content: center;">
-          <a href="/">Inicio</a>
-          <span class="sep">/</span>
-          <span class="current">Preguntas Frecuentes</span>
-        </nav>
-        <p class="hero-eyebrow">DUDAS HABITUALES</p>
-        <h1 class="hero-title" style="margin-bottom: 1rem;">Preguntas Frecuentes</h1>
-        <p class="hero-lead" style="line-height: 1.75; margin: 0 auto;">
-          Todo lo que necesitas saber sobre cómo trabajo, presupuestos, garantías y desplazamientos antes de contratar un servicio.
-        </p>
+      <div class="container-wide fade-in">
+        <div class="faq-hero-container">
+          <nav class="breadcrumbs" aria-label="Miga de pan" style="margin-bottom: var(--space-2); justify-content: center;">
+            <a href="/">Inicio</a>
+            <span class="sep">/</span>
+            <span class="current">Preguntas Frecuentes</span>
+          </nav>
+          <p class="hero-eyebrow">
+            <span class="hero-eyebrow-dot"></span>
+            DUDAS HABITUALES
+          </p>
+          <h1 class="hero-title">Preguntas Frecuentes</h1>
+          <p class="hero-lead">
+            Todo lo que necesitas saber sobre mis servicios, reparaciones, hardware, redes, garantías y asistencia remota antes de contratar.
+          </p>
 
-        <!-- Buscador en tiempo real -->
-        <div class="faq-search-box">
-          <svg class="faq-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-          <input type="text" id="faqSearchInput" class="faq-search-input" placeholder="Buscar una duda o servicio (ej. garantía, bizum, remoto...)" aria-label="Buscar en preguntas frecuentes" />
+          <!-- Buscador en tiempo real -->
+          <div class="faq-search-box">
+            <svg class="faq-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input
+              type="text"
+              id="faqSearchInput"
+              class="faq-search-input"
+              placeholder="Buscar por servicio o duda (ej. ssd, sobrecalentamiento, wifi, windows 11, garantía...)"
+              aria-label="Buscar en preguntas frecuentes"
+            />
+            <p id="faqSearchCounter" class="faq-search-counter" aria-live="polite"></p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== PREGUNTAS Y RESPUESTAS ===== -->
+    <!-- ===== CUERPO DE PREGUNTAS Y RESPUESTAS ===== -->
     <section class="section" style="padding-top: 1rem;">
-      <div class="container fade-in" style="max-width: 820px; margin: 0 auto;">
-        
-        <!-- CATEGORÍA 1: Presupuestos, Precios y Garantía -->
-        <div class="faq-category-section">
-          <div class="faq-category-header">
-            <h2 class="faq-category-title">Presupuestos, Precios y Garantía</h2>
-          </div>
-          <div class="faq-details-list">
-            <details class="faq-details-item" open>
-              <summary class="faq-summary">
-                <span>¿Cobras por dar un presupuesto o por la primera consulta?</span>
-                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-              </summary>
-              <div class="faq-content">
-                <p>No. Cuéntame tu problema por WhatsApp, correo o mediante el formulario y te daré una orientación inicial sin coste. Si el equipo requiere un diagnóstico técnico profundo (desmontaje o pruebas avanzadas de hardware) para localizar la avería, te informaré antes de cualquier coste de revisión. Siempre tendrás un presupuesto por escrito antes de autorizar la reparación.</p>
-              </div>
-            </details>
+      <div class="container-wide fade-in">
+        <div class="faq-layout-grid">
+          
+          <!-- Navegación Rápida Lateral -->
+          <aside class="faq-sidebar">
+            <nav class="faq-sidebar-sticky" aria-label="Navegación de preguntas frecuentes">
+              <span class="faq-sidebar-title">Temas y Servicios</span>
+              <a href="#cat-servicios" class="faq-sidebar-link active">
+                <Icon name="wrench" size={16} />
+                <span>Servicios y Averías</span>
+              </a>
+              <a href="#cat-presupuestos" class="faq-sidebar-link">
+                <Icon name="file" size={16} />
+                <span>Presupuestos y Garantía</span>
+              </a>
+              <a href="#cat-desplazamiento" class="faq-sidebar-link">
+                <Icon name="pin" size={16} />
+                <span>Zonas y Soporte Remoto</span>
+              </a>
+              <a href="#cat-seguridad" class="faq-sidebar-link">
+                <Icon name="shield" size={16} />
+                <span>Datos y Licencias</span>
+              </a>
+            </nav>
+          </aside>
 
-            <details class="faq-details-item">
-              <summary class="faq-summary">
-                <span>¿Qué cubre exactamente la garantía de 15 días?</span>
-                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-              </summary>
-              <div class="faq-content">
-                <p>Desde el momento en que te entrego el equipo o doy por resuelta la incidencia, tienes 15 días naturales de garantía sobre la mano de obra y la configuración realizada. Si el mismo fallo vuelve a aparecer durante ese periodo, lo reviso y soluciono sin cobrarte nada adicional. (En caso de piezas físicas nuevas, estas cuentan además con la garantía oficial del fabricante).</p>
-              </div>
-            </details>
+          <!-- Listado de Preguntas por Categoría -->
+          <div class="faq-content-main">
+            
+            <!-- CATEGORÍA 1: Servicios y Reparaciones Frecuentes -->
+            <div class="faq-category-block" id="cat-servicios">
+              <span class="faq-category-badge">
+                <Icon name="wrench" size={16} />
+                Hardware, Redes y Sistemas
+              </span>
+              <h2 class="faq-category-heading">Consultas Frecuentes sobre Servicios</h2>
 
-            <details class="faq-details-item">
-              <summary class="faq-summary">
-                <span>¿Qué pasa si mi ordenador no tiene arreglo o no compensa repararlo?</span>
-                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-              </summary>
-              <div class="faq-content">
-                <p>Mi prioridad es la honestidad. Si tras revisar tu equipo veo que el coste de las piezas supera el valor del ordenador o que no te va a ofrecer un rendimiento duradero, te lo diré claramente para que no tires el dinero, y te asesoraré sobre cómo recuperar tus datos o qué equipo nuevo/reacondicionado te conviene.</p>
-              </div>
-            </details>
+              <div class="faq-accordion-list">
+                <details class="faq-details-item" open>
+                  <summary class="faq-summary">
+                    <span>¿Vale la pena sustituir el disco duro por un SSD y ampliar la memoria RAM en mi ordenador?</span>
+                    <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+                  </summary>
+                  <div class="faq-content">
+                    <p>En la inmensa mayoría de los casos, sí. Si tu equipo tiene un procesador decente pero tarda varios minutos en arrancar o abrir programas, cambiar el viejo disco mecánico (HDD) por una unidad de estado sólido (SSD) y ampliar la memoria RAM multiplica la velocidad por 5 o 10 veces, dejándolo prácticamente como nuevo a una fracción del coste de comprar un ordenador nuevo.</p>
+                  </div>
+                </details>
 
-            <details class="faq-details-item">
-              <summary class="faq-summary">
-                <span>¿Qué métodos de pago aceptas?</span>
-                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-              </summary>
-              <div class="faq-content">
-                <p>Puedes abonar el servicio una vez finalizado el trabajo mediante Bizum, transferencia bancaria o efectivo, recibiendo siempre el comprobante o documento del servicio realizado.</p>
+                <details class="faq-details-item">
+                  <summary class="faq-summary">
+                    <span>¿Por qué mi ordenador o portátil se sobrecalienta, hace ruido excesivo o se apaga solo?</span>
+                    <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+                  </summary>
+                  <div class="faq-content">
+                    <p>Con el tiempo, el polvo y las pelusas obstruyen los disipadores y ventiladores, y la pasta térmica original del procesador se reseca y cristaliza perdiendo su capacidad conductora. Una limpieza interna exhaustiva y la aplicación de pasta térmica de alto rendimiento reduce drásticamente las temperaturas de trabajo, elimina el ruido molesto y previene fallos graves en la placa base.</p>
+                  </div>
+                </details>
+
+                <details class="faq-details-item">
+                  <summary class="faq-summary">
+                    <span>¿Qué hacéis si mi PC no enciende, emite pitidos o la pantalla se queda en negro?</span>
+                    <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+                  </summary>
+                  <div class="faq-content">
+                    <p>Realizo un diagnóstico paso a paso de los componentes críticos: comprobación de tensiones en la fuente de alimentación, tests a los módulos de memoria RAM, inspección de la placa base, tarjeta gráfica y estado de los discos. Te indico con exactitud qué pieza está fallando y el coste cerrado de repararla o sustituirla antes de hacer cualquier intervención.</p>
+                  </div>
+                </details>
+
+                <details class="faq-details-item">
+                  <summary class="faq-summary">
+                    <span>¿Puedo actualizar mi ordenador a Windows 11 si dice que no cumple los requisitos mínimos?</span>
+                    <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+                  </summary>
+                  <div class="faq-content">
+                    <p>Sí. Muchos equipos con hardware potente son descartados por Microsoft debido a requisitos artificiales (como la versión del chip TPM o la generación del procesador). Analizo tu equipo y configuro una instalación limpia y optimizada de Windows 11 sin riesgos ni bloqueos, asegurando total fluidez y la recepción periódica de actualizaciones de seguridad oficiales.</p>
+                  </div>
+                </details>
+
+                <details class="faq-details-item">
+                  <summary class="faq-summary">
+                    <span>¿Cómo elimináis virus, malware o publicidad invasiva sin perder mis datos personales?</span>
+                    <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+                  </summary>
+                  <div class="faq-content">
+                    <p>Efectúo un escaneo y desinfección profunda fuera del arranque del sistema operativo para erradicar troyanos, ransomware, malware espía, mineros y adware publicitario. Recupero archivos de sistema dañados y desactivo programas sospechosos del inicio, conservando siempre intactos tus documentos, fotos y archivos de trabajo.</p>
+                  </div>
+                </details>
+
+                <details class="faq-details-item">
+                  <summary class="faq-summary">
+                    <span>¿Instaláis y dais soporte a sistemas Linux (Ubuntu, Mint, Debian) o Dual Boot con Windows?</span>
+                    <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+                  </summary>
+                  <div class="faq-content">
+                    <p>Sí. Domino tanto distribuciones enfocadas al usuario final (como Linux Mint o Ubuntu, perfectas para revitalizar equipos antiguos) como entornos profesionales (Debian, Fedora). Puedo instalar Linux como sistema principal o configurar un arranque dual (Dual Boot) para que elijas entre Windows o Linux al encender el equipo.</p>
+                  </div>
+                </details>
+
+                <details class="faq-details-item">
+                  <summary class="faq-summary">
+                    <span>Mi conexión Wi-Fi es inestable o no llega a ciertas habitaciones u oficinas, ¿cómo lo solucionáis?</span>
+                    <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+                  </summary>
+                  <div class="faq-content">
+                    <p>Los repetidores Wi-Fi convencionales suelen saturar la señal y recortar la velocidad a la mitad. Tras analizar la distribución física del espacio y las interferencias de canales, propongo e instalo soluciones profesionales: redes Wi-Fi Mesh con roaming continuo inteligente, cableado Ethernet estructurado de categoría superior o dispositivos PLC de alta velocidad para cobertura total y sin cortes.</p>
+                  </div>
+                </details>
+
+                <details class="faq-details-item">
+                  <summary class="faq-summary">
+                    <span>¿Me ayudáis a configurar el correo profesional de mi empresa con dominio propio en Outlook o el móvil?</span>
+                    <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+                  </summary>
+                  <div class="faq-content">
+                    <p>Por supuesto. Configuro cuentas de correo corporativo con tu propio dominio (@tuempresa.com) en Microsoft 365, Google Workspace o servidores de hosting estándar. Sincronizo bandejas de entrada, contactos y calendarios en ordenadores, teléfonos móviles y tablets, y configuro registros DNS (SPF, DKIM, DMARC) para garantizar que tus correos no acaben en la carpeta de spam.</p>
+                  </div>
+                </details>
               </div>
-            </details>
+            </div>
+
+            <!-- CATEGORÍA 2: Presupuestos y Garantía (Sin métodos de pago) -->
+            <div class="faq-category-block" id="cat-presupuestos">
+              <span class="faq-category-badge">
+                <Icon name="file" size={16} />
+                Transparencia Comercial
+              </span>
+              <h2 class="faq-category-heading">Presupuestos y Garantía</h2>
+
+              <div class="faq-accordion-list">
+                <details class="faq-details-item">
+                  <summary class="faq-summary">
+                    <span>¿Cobras por dar un presupuesto o por la primera consulta?</span>
+                    <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+                  </summary>
+                  <div class="faq-content">
+                    <p>No. Cuéntame tu problema por WhatsApp, correo o mediante el formulario y te daré una orientación inicial sin coste. Si el equipo requiere un diagnóstico técnico profundo (desmontaje o pruebas avanzadas de hardware) para localizar la avería, te informaré antes de cualquier coste de revisión. Siempre tendrás un presupuesto por escrito antes de autorizar la reparación.</p>
+                  </div>
+                </details>
+
+                <details class="faq-details-item">
+                  <summary class="faq-summary">
+                    <span>¿Qué cubre exactamente la garantía de 15 días?</span>
+                    <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+                  </summary>
+                  <div class="faq-content">
+                    <p>Desde el momento en que te entrego el equipo o doy por resuelta la incidencia, tienes 15 días naturales de garantía sobre la mano de obra y la configuración realizada. Si el mismo fallo vuelve a aparecer durante ese periodo, lo reviso y soluciono sin cobrarte nada adicional. (En caso de piezas físicas nuevas, estas cuentan además con la garantía oficial del fabricante).</p>
+                  </div>
+                </details>
+
+                <details class="faq-details-item">
+                  <summary class="faq-summary">
+                    <span>¿Qué pasa si mi ordenador no tiene arreglo o no compensa repararlo?</span>
+                    <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+                  </summary>
+                  <div class="faq-content">
+                    <p>Mi prioridad es la honestidad. Si tras revisar tu equipo veo que el coste de las piezas supera el valor del ordenador o que no te va a ofrecer un rendimiento duradero, te lo diré claramente para que no tires el dinero, y te asesoraré sobre cómo recuperar tus datos o qué equipo nuevo/reacondicionado te conviene.</p>
+                  </div>
+                </details>
+              </div>
+            </div>
+
+            <!-- CATEGORÍA 3: Desplazamiento y Asistencia Remota -->
+            <div class="faq-category-block" id="cat-desplazamiento">
+              <span class="faq-category-badge">
+                <Icon name="pin" size={16} />
+                Ubicación y Métodos
+              </span>
+              <h2 class="faq-category-heading">Desplazamiento y Soporte Remoto</h2>
+
+              <div class="faq-accordion-list">
+                <details class="faq-details-item">
+                  <summary class="faq-summary">
+                    <span>¿En qué zonas ofreces soporte presencial a domicilio u oficina?</span>
+                    <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+                  </summary>
+                  <div class="faq-content">
+                    <p>Me desplazo de forma presencial por el <strong>Área Metropolitana de Barcelona (Cataluña)</strong>, incluyendo Barcelona capital, L'Hospitalet, Cornellà, Esplugues, El Prat, Sant Boi, Sant Just, Sant Joan Despí, Badalona, Santa Coloma y municipios cercanos.</p>
+                  </div>
+                </details>
+
+                <details class="faq-details-item">
+                  <summary class="faq-summary">
+                    <span>¿Cómo funciona el soporte informático remoto y es seguro?</span>
+                    <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+                  </summary>
+                  <div class="faq-content">
+                    <p>Para problemas de software (configuración de correo, impresoras, lentitud, instalación de programas o activación de licencias) no necesitas esperar a una visita presencial. Utilizo herramientas seguras de asistencia remota donde tú mismo me das acceso temporal con un código de un solo uso, ves en todo momento en tu pantalla lo que estoy haciendo y, al terminar, la conexión se cierra por completo sin que nadie pueda volver a entrar sin tu permiso.</p>
+                  </div>
+                </details>
+
+                <details class="faq-details-item">
+                  <summary class="faq-summary">
+                    <span>¿Cuánto tardas en responder y en acudir a una urgencia?</span>
+                    <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+                  </summary>
+                  <div class="faq-content">
+                    <p>Respondo a todas las solicitudes en <strong>menos de 24 horas</strong> (habitualmente en el mismo día si me escribes por WhatsApp en horario laboral). Las asistencias remotas suelen resolverse en el mismo día, y las visitas presenciales se agendan en el hueco más cercano que te venga bien.</p>
+                  </div>
+                </details>
+              </div>
+            </div>
+
+            <!-- CATEGORÍA 4: Datos, Privacidad y Licencias -->
+            <div class="faq-category-block" id="cat-seguridad">
+              <span class="faq-category-badge">
+                <Icon name="shield" size={16} />
+                Privacidad y Confianza
+              </span>
+              <h2 class="faq-category-heading">Datos, Privacidad y Licencias</h2>
+
+              <div class="faq-accordion-list">
+                <details class="faq-details-item">
+                  <summary class="faq-summary">
+                    <span>¿Mis archivos y fotos están seguros si tienes que formatear o reparar mi PC?</span>
+                    <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+                  </summary>
+                  <div class="faq-content">
+                    <p>Totalmente. Antes de realizar cualquier formateo o reinstalación de sistema (Windows o Linux), te consulto qué carpetas, documentos o fotografías necesitas conservar para hacer una copia de seguridad previa (backup) y devolverte el ordenador con tu información intacta. Además, cumplo estrictamente con el secreto profesional y la normativa de protección de datos.</p>
+                  </div>
+                </details>
+
+                <details class="faq-details-item">
+                  <summary class="faq-summary">
+                    <span>¿Las licencias Low-Cost de Windows y Office son 100% legales y originales?</span>
+                    <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+                  </summary>
+                  <div class="faq-content">
+                    <p>Sí. No utilizo <em>cracks</em>, activadores piratas ni programas ilegales que ponen en riesgo tu ordenador con virus o dejan de funcionar al cabo de un mes. Te asesoro para adquirir licencias originales verificadas (OEM/Retail o canal de reutilización legal europea) a una fracción del precio habitual, dejándolas activadas oficialmente en los servidores de Microsoft.</p>
+                  </div>
+                </details>
+              </div>
+            </div>
+
+            <div id="faqNoResults" class="faq-empty-state" style="display: none;">
+              <h3>No se encontraron preguntas coincidentes</h3>
+              <p>¿Tienes una duda específica? Escríbeme directamente por WhatsApp o formulario y te responderé en breve.</p>
+              <div style="margin-top: 1rem; display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+                <a href="/contacto/" class="btn-primary">Hacer una consulta</a>
+                <a href="https://wa.me/34614739345" target="_blank" rel="noopener noreferrer" class="btn-secondary">Escribir por WhatsApp</a>
+              </div>
+            </div>
+
           </div>
         </div>
-
-        <!-- CATEGORÍA 2: Desplazamiento y Asistencia Remota -->
-        <div class="faq-category-section">
-          <div class="faq-category-header">
-            <h2 class="faq-category-title">Desplazamiento y Asistencia Remota</h2>
-          </div>
-          <div class="faq-details-list">
-            <details class="faq-details-item">
-              <summary class="faq-summary">
-                <span>¿En qué zonas ofreces soporte presencial a domicilio u oficina?</span>
-                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-              </summary>
-              <div class="faq-content">
-                <p>Me desplazo de forma presencial por el <strong>Área Metropolitana de Barcelona (Cataluña)</strong>, incluyendo Barcelona capital, L'Hospitalet, Cornellà, Esplugues, El Prat, Sant Boi, Sant Just, Sant Joan Despí, Badalona, Santa Coloma y municipios cercanos.</p>
-              </div>
-            </details>
-
-            <details class="faq-details-item">
-              <summary class="faq-summary">
-                <span>¿Cómo funciona el soporte informático remoto y es seguro?</span>
-                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-              </summary>
-              <div class="faq-content">
-                <p>Para problemas de software (configuración de correo, impresoras, lentitud, instalación de programas o activación de licencias) no necesitas esperar a una visita presencial. Utilizo herramientas seguras de asistencia remota donde tú mismo me das acceso temporal con un código de un solo uso, ves en todo momento en tu pantalla lo que estoy haciendo y, al terminar, la conexión se cierra por completo sin que nadie pueda volver a entrar sin tu permiso.</p>
-              </div>
-            </details>
-
-            <details class="faq-details-item">
-              <summary class="faq-summary">
-                <span>¿Cuánto tardas en responder y en acudir a una urgencia?</span>
-                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-              </summary>
-              <div class="faq-content">
-                <p>Respondo a todas las solicitudes en <strong>menos de 24 horas</strong> (habitualmente en el mismo día si me escribes por WhatsApp en horario laboral). Las asistencias remotas suelen resolverse en el mismo día, y las visitas presenciales se agendan en el hueco más cercano que te venga bien.</p>
-              </div>
-            </details>
-          </div>
-        </div>
-
-        <!-- CATEGORÍA 3: Datos, Privacidad y Licencias -->
-        <div class="faq-category-section">
-          <div class="faq-category-header">
-            <h2 class="faq-category-title">Datos, Privacidad y Licencias</h2>
-          </div>
-          <div class="faq-details-list">
-            <details class="faq-details-item">
-              <summary class="faq-summary">
-                <span>¿Mis archivos y fotos están seguros si tienes que formatear o reparar mi PC?</span>
-                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-              </summary>
-              <div class="faq-content">
-                <p>Totalmente. Antes de realizar cualquier formateo o reinstalación de sistema (Windows o Linux), te consulto qué carpetas, documentos o fotografías necesitas conservar para hacer una copia de seguridad previa (backup) y devolverte el ordenador con tu información intacta. Además, cumplo estrictamente con el secreto profesional y la normativa de protección de datos.</p>
-              </div>
-            </details>
-
-            <details class="faq-details-item">
-              <summary class="faq-summary">
-                <span>¿Las licencias Low-Cost de Windows y Office son 100% legales y originales?</span>
-                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-              </summary>
-              <div class="faq-content">
-                <p>Sí. No utilizo <em>cracks</em>, activadores piratas ni programas ilegales que ponen en riesgo tu ordenador con virus o dejan de funcionar al cabo de un mes. Te asesoro para adquirir licencias originales verificadas (OEM/Retail o canal de reutilización legal europea) a una fracción del precio habitual, dejándolas activadas oficialmente en los servidores de Microsoft.</p>
-              </div>
-            </details>
-          </div>
-        </div>
-
       </div>
     </section>
 
     <!-- ===== CTA FINAL ===== -->
     <section class="section section-alt">
-      <div class="container">
+      <div class="container-wide">
         <div class="home-cta fade-in">
-          <h2>¿Tienes otra duda que no aparezca aquí?</h2>
-          <p>Escríbeme directamente por WhatsApp o por correo y te respondo en el mismo día, sin ningún compromiso.</p>
+          <h2>¿Tienes otra duda que no aparece aquí?</h2>
+          <p>Pregúntame directamente sin ningún tipo de compromiso. Responderé lo antes posible con una solución clara.</p>
           <div class="home-cta-contact">
-            <a href="/contacto/" class="btn-primary">Hacer una consulta</a>
-            <a href="https://wa.me/34614739345" target="_blank" rel="noopener noreferrer" class="btn-secondary">Escribir por WhatsApp</a>
+            <a href="/contacto/" class="btn-primary">Contactar ahora</a>
+            <a href="https://wa.me/34614739345" target="_blank" rel="noopener noreferrer" class="btn-secondary">WhatsApp directo</a>
           </div>
         </div>
       </div>
@@ -351,24 +648,61 @@ const faqJsonLd = {
   </main>
 
   <script is:inline>
-    // Buscador interactivo en vivo sobre acordeones
-    document.addEventListener('DOMContentLoaded', function() {
-      var search = document.getElementById('faqSearchInput');
-      if (!search) return;
+    // Buscador interactivo de preguntas y respuestas con filtrado dinámico
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('faqSearchInput');
+      const counterEl = document.getElementById('faqSearchCounter');
+      const noResultsEl = document.getElementById('faqNoResults');
+      const allItems = Array.from(document.querySelectorAll('.faq-details-item'));
+      const categoryBlocks = Array.from(document.querySelectorAll('.faq-category-block'));
 
-      search.addEventListener('input', function(e) {
-        var query = e.target.value.toLowerCase().trim();
-        var items = document.querySelectorAll('.faq-details-item');
+      if (!searchInput) return;
+
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.trim().toLowerCase();
         
-        items.forEach(function(item) {
-          var text = item.textContent.toLowerCase();
-          if (query === '' || text.indexOf(query) !== -1) {
+        if (!query) {
+          allItems.forEach(item => {
             item.style.display = '';
-            if (query !== '') item.open = true;
-          } else {
-            item.style.display = 'none';
-          }
+            // Restaurar estado inicial cerrado salvo el primero
+          });
+          categoryBlocks.forEach(block => block.style.display = '');
+          if (noResultsEl) noResultsEl.style.display = 'none';
+          if (counterEl) counterEl.textContent = '';
+          return;
+        }
+
+        let visibleCount = 0;
+
+        categoryBlocks.forEach(block => {
+          const itemsInBlock = Array.from(block.querySelectorAll('.faq-details-item'));
+          let blockHasVisible = false;
+
+          itemsInBlock.forEach(item => {
+            const summaryText = item.querySelector('summary')?.textContent.toLowerCase() || '';
+            const contentText = item.querySelector('.faq-content')?.textContent.toLowerCase() || '';
+            const matches = summaryText.includes(query) || contentText.includes(query);
+
+            if (matches) {
+              item.style.display = '';
+              item.open = true;
+              blockHasVisible = true;
+              visibleCount++;
+            } else {
+              item.style.display = 'none';
+              item.open = false;
+            }
+          });
+
+          block.style.display = blockHasVisible ? '' : 'none';
         });
+
+        if (noResultsEl) {
+          noResultsEl.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+        if (counterEl) {
+          counterEl.textContent = visibleCount === 1 ? '1 pregunta encontrada' : `${visibleCount} preguntas encontradas`;
+        }
       });
     });
   </script>
