@@ -192,7 +192,7 @@ export const handler = async (event) => {
   // 7) Notificación por email si hay RESEND_API_KEY configurada
   if (process.env.RESEND_API_KEY) {
     try {
-      const ownerEmail = process.env.OWNER_EMAIL || 'joonathanesteban@gmail.com';
+      const ownerEmail = process.env.OWNER_EMAIL || 'contacto@jonathanesteban.dev';
       await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
