@@ -26,7 +26,7 @@ const articleLd = {
   inLanguage: 'es',
   mainEntityOfPage: `${SITE}/blog/${post.id}/`,
   author: { '@type': 'Person', name: post.data.author, url: SITE + '/sobre-mi/' },
-  publisher: { '@type': 'Organization', name: 'Jonathan Esteban — Soporte Informático', url: SITE, logo: { '@type': 'ImageObject', url: SITE + '/brand/logo-icono.svg' } },
+  publisher: { '@type': 'Organization', name: 'Jonathan Esteban — Soporte Informático', url: SITE, logo: { '@type': 'ImageObject', url: SITE + '/assets/img/brand/logo-icono.svg' } },
 };
 const RELATED: Record<string, { href: string; label: string }[]> = {
   'ordenador-lento': [{ href: '/servicios/mantenimiento-pc/', label: 'Mantenimiento y reparación de PC' }, { href: '/servicios/instalacion-sistemas/', label: 'Instalación y configuración de sistemas' }],
@@ -72,7 +72,7 @@ const relatedServices = RELATED[post.id] || [{ href: '/servicios/', label: 'Todo
       <footer class="blog-post-footer">
         <hr class="blog-post-hr">
         <div class="blog-post-author-bio">
-          <img src="/brand/logo-icono.svg" alt="" class="author-avatar" width="48" height="48">
+          <img src="/assets/img/brand/logo-icono.svg" alt="" class="author-avatar" width="48" height="48">
           <div>
             <strong>Jonathan Esteban</strong> — técnico de soporte informático en Barcelona.
             Llevo desde 2006 en el mundo de la informática y atiendo a particulares y pymes
