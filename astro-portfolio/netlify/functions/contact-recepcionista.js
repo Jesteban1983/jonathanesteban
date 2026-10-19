@@ -75,14 +75,27 @@ async function checkRateLimit(ip) {
 }
 
 function parseBody(event) {
-  const raw = event.body || '';
-  const ct = event.headers['content-type'] || '';
+  let raw = event.body || '';
+  if (event.isBase64Encoded) {
+    try {
+      raw = Buffer.from(raw, 'base64').toString('utf8');
+    } catch {}
+  }
+  const ct = (event.headers['content-type'] || '').toLowerCase();
   try {
     if (ct.includes('application/json')) return JSON.parse(raw);
     if (ct.includes('application/x-www-form-urlencoded')) {
       return Object.fromEntries(new URLSearchParams(raw));
     }
-    // Intentar JSON aunque no venga el header (fetch con body formData a veces)
+    // Si viene como multipart/form-data
+    if (ct.includes('multipart/form-data') || raw.includes('Content-Disposition: form-data')) {
+      const result = {};
+      const matches = raw.matchAll(/name="([^"]+)"\r?\n\r?\n([\s\S]*?)\r?\n--/g);
+      for (const match of matches) {
+        result[match[1]] = match[2].trim();
+      }
+      if (Object.keys(result).length > 0) return result;
+    }
     try { return JSON.parse(raw); } catch { /* siguiente intento */ }
     return Object.fromEntries(new URLSearchParams(raw));
   } catch (err) {

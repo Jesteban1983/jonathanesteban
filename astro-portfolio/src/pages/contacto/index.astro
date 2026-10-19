@@ -124,11 +124,17 @@ import Layout from '../../layouts/Layout.astro';
         submitBtn.classList.add('loading');
         submitBtn.textContent = 'Enviando...';
 
-        // ── Envío al recepcionista AI (Netlify Function) con fallback a Formspree ──
-        // El proxy valida (honeypot + rate-limit) y reenvía a n8n. Si el
-        // proxy no responde (o no está desplegado aún), caemos a Formspree
-        // para no perder el mensaje: la producción nunca se rompe.
-        let res = await proxyFetch(new FormData(form));
+        const payload = {
+          name,
+          email,
+          subject: (form.querySelector('#subject')?.value || '').trim(),
+          message,
+          consentWhatsapp: form.querySelector('#consentWhatsapp')?.checked || false,
+          _gotcha: form.querySelector('input[name="_gotcha"]')?.value || '',
+          company_site: form.querySelector('input[name="company_site"]')?.value || ''
+        };
+
+        let res = await proxyFetch(payload);
 
         if (res && res.ok) {
           form.reset();
@@ -136,46 +142,55 @@ import Layout from '../../layouts/Layout.astro';
           window.location.href = targetUrl;
           return;
         } else {
-          errorDiv.textContent = 'Error al enviar el mensaje. Inténtalo de nuevo.';
+          errorDiv.textContent = res?.error || 'Error al enviar el mensaje. Inténtalo de nuevo.';
           errorDiv.style.display = 'block';
           submitBtn.classList.remove('loading');
           submitBtn.textContent = 'Enviar mensaje';
         }
       });
 
-      // Intenta primero el endpoint del recepcionista; si falla, fallback a Netlify Forms nativo.
-      async function proxyFetch(formData) {
-        // 1. Endpoint principal (contact-recepcionista serverless function)
+      // Intenta enviar como JSON al endpoint del recepcionista; si falla, fallback urlencoded
+      async function proxyFetch(data) {
+        // 1. Endpoint principal: JSON a contact-recepcionista
         try {
           const p = await fetch('/.netlify/functions/contact-recepcionista', {
             method: 'POST',
-            body: formData,
-            headers: { 'Accept': 'application/json' }
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify(data)
           });
-          if (p.ok) {
-            const data = await p.json().catch(() => ({}));
-            if (data.ok) return { ok: true, source: 'recepcionista' };
+          const resData = await p.json().catch(() => ({}));
+          if (p.ok && resData.ok) {
+            return { ok: true, source: 'recepcionista' };
+          }
+          if (!p.ok && resData.error) {
+            console.warn('[Form] Error devuelto por recepcionista:', resData.error);
+            return { ok: false, error: resData.error };
           }
         } catch (err) {
-          console.warn('[Form] Endpoint recepcionista no disponible:', err);
+          console.warn('[Form] Endpoint recepcionista error de conexión:', err);
         }
 
-        // 2. Fallback: Netlify Forms nativo (Edge)
+        // 2. Fallback urlencoded hacia la función
         try {
           const bodyParams = new URLSearchParams();
-          for (const [key, val] of formData.entries()) {
+          for (const [key, val] of Object.entries(data)) {
             bodyParams.append(key, String(val));
           }
-          if (!bodyParams.has('form-name')) bodyParams.append('form-name', 'contact');
 
-          const f = await fetch('/', {
+          const f = await fetch('/.netlify/functions/contact-recepcionista', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: bodyParams.toString()
           });
-          if (f.ok) return { ok: true, source: 'netlify-forms' };
+          if (f.ok) {
+            const data2 = await f.json().catch(() => ({}));
+            if (data2.ok) return { ok: true, source: 'recepcionista-urlencoded' };
+          }
         } catch (err) {
-          console.warn('[Form] Fallback Netlify Forms no disponible:', err);
+          console.warn('[Form] Fallback urlencoded no disponible:', err);
         }
 
         // 3. Entorno local de desarrollo o Tailscale sin serverless
@@ -183,7 +198,7 @@ import Layout from '../../layouts/Layout.astro';
                            window.location.hostname.startsWith('100.') ||
                            window.location.port === '4321';
         if (isLocalDev) {
-          console.info('🧪 [Dev local] Envío simulado con éxito para pruebas:', Object.fromEntries(formData));
+          console.info('🧪 [Dev local] Envío simulado con éxito para pruebas:', data);
           return { ok: true, source: 'dev' };
         }
 
