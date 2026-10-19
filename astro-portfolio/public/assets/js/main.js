@@ -3,21 +3,15 @@
 import { initTheme } from './theme.js';
 import { initNav } from './nav.js';
 import { initFAQ } from './faq.js';
-import { initProjectFilters } from './filters.js';
 import { initContactForm } from './form.js';
-import { initCalculator } from './calculator.js';
 import { initTracking } from './tracking.js';
-import { initDemoApp } from './app-demo.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initNav();
   initFAQ();
-  initProjectFilters();
   initContactForm();
-  initCalculator();
   initTracking();
-  initDemoApp();
 
   // Scroll Animations Observer: elementos ya en viewport se muestran de inmediato para evitar destellos
   const observer = new IntersectionObserver((entries) => {

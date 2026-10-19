@@ -49,6 +49,13 @@
 
 ## Bitácora
 
+### 2026-10-19 (limpieza de migración, privacidad geográfica y reescritura de sobre-mí)
+- **Privacidad geográfica:** Eliminadas referencias a direcciones físicas exactas; unificado en `Barcelona y Área Metropolitana (Cataluña)` y `Barcelona, Cataluña (España)` en páginas legales (`aviso-legal`, `privacy-policy`, `terms-of-service`).
+- **Eliminación de activos heredados:** Eliminados `calculator.js`, `filters.js`, `app-demo.js` y referencias en `main.js` y `form.js`.
+- **Unificación de Footer:** Retirado enlace a GitHub, eliminados textos `Sistema en producción 24/7` y `Desarrollado con HTML, CSS, JavaScript & Serverless Functions`. Añadido: `Soporte Técnico Informático en Cataluña (Área de Barcelona) · Atención presencial y remota`.
+- **Reescritura de `/sobre-mi/`:** Enfoque 100% en Técnico de Soporte Informático, eliminadas referencias a bootcamps/transición/certificados de programación/Madrid. Añadidos 4 pilares de ventajas competitivas (diagnóstico honesto, presupuesto cerrado por escrito, sin tecnicismos, garantía 15 días) y los 8 entornos técnicos de soporte.
+- **Redirecciones 301 y Schema.org:** Añadidas reglas 301 en `netlify.toml` y `public/_redirects` para `/servicios/desarrollo-web*`, `/servicios/automatizacion*`, `/proyectos*` y `/sitemap.xml -> /sitemap-index.xml`. Añadido bloque `ComputerRepair` JSON-LD en la Home sin dirección física y con `areaServed: Cataluña, España`.
+
 ### 2026-10-18 (corrección de error al enviar formulario de contacto)
 - `contact-recepcionista.js`: ya no devuelve 503 si `N8N_WEBHOOK_LEADS_URL` no está definida en Netlify. Ahora valida, registra el lead en consola de Netlify, guarda en Netlify Blobs si está disponible, envía email vía Resend (si `RESEND_API_KEY` existe), reenvía a n8n (si `N8N_WEBHOOK_LEADS_URL` existe) y responde 200 `{ ok: true }`.
 - `contacto/index.astro`: añadido `name="contact" data-netlify="true" data-netlify-honeypot="_gotcha"` y campo oculto `form-name="contact"`. En el cliente, si el endpoint serverless fallase, se realiza fallback a Netlify Forms nativo. Tras el envío correcto, siempre redirige limpiamente a `/gracias/?name=...&email=...`.

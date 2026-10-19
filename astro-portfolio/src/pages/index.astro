@@ -1,12 +1,80 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
+
+const computerRepairSchema = {
+  "@context": "https://schema.org",
+  "@type": "ComputerRepair",
+  "name": "Jonathan Esteban — Soporte Técnico Informático",
+  "url": "https://jonathanesteban.dev",
+  "email": "joonathanesteban@gmail.com",
+  "telephone": "+34614739345",
+  "areaServed": "Cataluña, España",
+  "priceRange": "€€",
+  "image": "https://jonathanesteban.dev/assets/img/profile/jonathan-esteban.jpg",
+  "description": "Soporte informático y reparación de ordenadores a domicilio y en remoto en Cataluña (Área de Barcelona). Helpdesk N1, mantenimiento de PC, instalación de sistemas, redes, ofimática y licencias originales.",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicios de Soporte Informático",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Soporte Helpdesk N1",
+          "url": "https://jonathanesteban.dev/servicios/helpdesk-n1/"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Mantenimiento y Reparación de PC",
+          "url": "https://jonathanesteban.dev/servicios/mantenimiento-pc/"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Instalación y Configuración de Sistemas",
+          "url": "https://jonathanesteban.dev/servicios/instalacion-sistemas/"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Diagnóstico y Configuración de Redes",
+          "url": "https://jonathanesteban.dev/servicios/redes/"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Soporte Ofimático y Migración a la Nube",
+          "url": "https://jonathanesteban.dev/servicios/ofimatica/"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Licencias Originales Low-Cost",
+          "url": "https://jonathanesteban.dev/servicios/licencias/"
+        }
+      }
+    ]
+  }
+};
 ---
 
 <Layout
   canonical="/"
   title="Técnico Informático a Domicilio en L'Hospitalet y Barcelona"
   description="Técnico informático a domicilio y en remoto en L'Hospitalet y Barcelona. Reparación de PC, redes y Windows. Presupuesto sin compromiso y 15 días de garantía."
+  jsonld={computerRepairSchema}
 >
   <!-- Hero -->
   <section class="hero">

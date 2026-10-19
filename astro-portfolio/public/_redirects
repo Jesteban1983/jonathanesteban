@@ -1,0 +1,8 @@
+# Redirecciones etapa anterior (desarrollo web, automatización, proyectos)
+/servicios/desarrollo-web/* /servicios/ 301!
+/servicios/desarrollo-web /servicios/ 301!
+/servicios/automatizacion/* /servicios/ 301!
+/servicios/automatizacion /servicios/ 301!
+/proyectos/* / 301!
+/proyectos / 301!
+/sitemap.xml /sitemap-index.xml 301!

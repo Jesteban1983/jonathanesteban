@@ -97,6 +97,50 @@
   status = 301
   force = true
 
+# Rutas de la etapa anterior eliminadas (Desarrollo Web, Automatización, Proyectos)
+[[redirects]]
+  from = "/servicios/desarrollo-web/*"
+  to = "/servicios/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/desarrollo-web"
+  to = "/servicios/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/automatizacion/*"
+  to = "/servicios/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/automatizacion"
+  to = "/servicios/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/proyectos/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/proyectos"
+  to = "/"
+  status = 301
+  force = true
+
+# Alias sitemap estándar
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap-index.xml"
+  status = 301
+  force = true
+
 # Subdominio Netlify → dominio propio
 [[redirects]]
   from = "https://jonathanesteban.netlify.app/*"
