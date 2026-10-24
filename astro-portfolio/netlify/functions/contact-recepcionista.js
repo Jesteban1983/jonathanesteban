@@ -258,18 +258,22 @@ export const handler = async (event) => {
   // 9) Reenvío a Google Sheets vía Apps Script (opción recomendada sin límites)
   if (GOOGLE_SHEET_WEBHOOK_URL) {
     try {
-      await fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+      const gRes = await fetch(GOOGLE_SHEET_WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           secret: GOOGLE_SHEET_SECRET,
           ...payload,
         }),
+        redirect: 'follow',
       });
-      console.log('[recepcionista] Lead sincronizado con Google Sheets');
+      const gText = await gRes.text().catch(() => '');
+      console.log('[recepcionista] Google Sheets status:', gRes.status, 'respuesta:', gText);
     } catch (gErr) {
       console.error('[recepcionista] Error enviando a Google Sheets:', gErr.message);
     }
+  } else {
+    console.warn('[recepcionista] AVISO: GOOGLE_SHEET_WEBHOOK_URL no está configurada en las variables de Netlify Functions');
   }
 
   // 10) Reenvío a Google Form (Headless FormResponse si está configurado)
