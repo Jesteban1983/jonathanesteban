@@ -19,6 +19,18 @@
 const WEBHOOK_URL = process.env.N8N_WEBHOOK_LEADS_URL || '';
 const WEBHOOK_SECRET = process.env.N8N_WEBHOOK_SECRET || '';
 
+// Google Sheets (Google Apps Script Webhook - Ilimitado y recomendado)
+const GOOGLE_SHEET_WEBHOOK_URL = process.env.GOOGLE_SHEET_WEBHOOK_URL || '';
+const GOOGLE_SHEET_SECRET = process.env.GOOGLE_SHEET_SECRET || '';
+
+// Google Forms (Headless direct POST - Ilimitado alternativo)
+const GOOGLE_FORM_ACTION_URL = process.env.GOOGLE_FORM_ACTION_URL || '';
+const GOOGLE_FORM_ENTRY_NAME = process.env.GOOGLE_FORM_ENTRY_NAME || '';
+const GOOGLE_FORM_ENTRY_EMAIL = process.env.GOOGLE_FORM_ENTRY_EMAIL || '';
+const GOOGLE_FORM_ENTRY_SUBJECT = process.env.GOOGLE_FORM_ENTRY_SUBJECT || '';
+const GOOGLE_FORM_ENTRY_MESSAGE = process.env.GOOGLE_FORM_ENTRY_MESSAGE || '';
+const GOOGLE_FORM_ENTRY_WHATSAPP = process.env.GOOGLE_FORM_ENTRY_WHATSAPP || '';
+
 // Ventana de rate-limit (ms) y máx de envíos por IP dentro de la ventana.
 const RATE_WINDOW_MS = 5 * 60 * 1000; // 5 minutos
 const RATE_MAX = 3;                  // 3 envíos por IP
@@ -240,6 +252,44 @@ export const handler = async (event) => {
       }
     } catch (err) {
       console.error('[recepcionista] error llamando a n8n:', err.message);
+    }
+  }
+
+  // 9) Reenvío a Google Sheets vía Apps Script (opción recomendada sin límites)
+  if (GOOGLE_SHEET_WEBHOOK_URL) {
+    try {
+      await fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          secret: GOOGLE_SHEET_SECRET,
+          ...payload,
+        }),
+      });
+      console.log('[recepcionista] Lead sincronizado con Google Sheets');
+    } catch (gErr) {
+      console.error('[recepcionista] Error enviando a Google Sheets:', gErr.message);
+    }
+  }
+
+  // 10) Reenvío a Google Form (Headless FormResponse si está configurado)
+  if (GOOGLE_FORM_ACTION_URL) {
+    try {
+      const gFormParams = new URLSearchParams();
+      if (GOOGLE_FORM_ENTRY_NAME) gFormParams.append(GOOGLE_FORM_ENTRY_NAME, payload.name);
+      if (GOOGLE_FORM_ENTRY_EMAIL) gFormParams.append(GOOGLE_FORM_ENTRY_EMAIL, payload.email);
+      if (GOOGLE_FORM_ENTRY_SUBJECT) gFormParams.append(GOOGLE_FORM_ENTRY_SUBJECT, payload.subject);
+      if (GOOGLE_FORM_ENTRY_MESSAGE) gFormParams.append(GOOGLE_FORM_ENTRY_MESSAGE, payload.message);
+      if (GOOGLE_FORM_ENTRY_WHATSAPP) gFormParams.append(GOOGLE_FORM_ENTRY_WHATSAPP, payload.consentWhatsapp ? 'Sí' : 'No');
+
+      await fetch(GOOGLE_FORM_ACTION_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: gFormParams.toString(),
+      });
+      console.log('[recepcionista] Lead sincronizado con Google Form');
+    } catch (gfErr) {
+      console.error('[recepcionista] Error enviando a Google Form:', gfErr.message);
     }
   }
 

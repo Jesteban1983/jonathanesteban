@@ -74,19 +74,22 @@ Hoja de ruta completa: [`PLAN-SEO-GEO-v1.md`](PLAN-SEO-GEO-v1.md).
 ## ✉️ Flujo del formulario de contacto
 
 ```
-/contacto/ ──► /.netlify/functions/contact-recepcionista ──► webhook n8n (recepcionista IA)
-     │                  (honeypot + rate-limit)                        │
-     │                                                                 └─► borrador → aprobación por Telegram
+/contacto/ ──► /.netlify/functions/contact-recepcionista ──► Google Sheets (leads ilimitados)
+     │                  (honeypot + rate-limit)              ├─► webhook n8n (recepcionista IA)
+     │                                                       ├─► Resend (email al técnico)
+     │                                                       └─► borrador → Telegram
      ├─ fallback: Formspree
      └─ éxito ──► /gracias/?name=…&email=…   (noindex)
 ```
 
 | Variable | Descripción |
 |---|---|
+| `GOOGLE_SHEET_WEBHOOK_URL` | Webhook de Google Apps Script para almacenar leads en Google Sheets (ilimitado) |
+| `GOOGLE_SHEET_SECRET` | Secreto compartido opcional para autenticar envíos a Google Sheets |
 | `N8N_WEBHOOK_LEADS_URL` | Webhook n8n del recepcionista |
 | `N8N_WEBHOOK_SECRET` | Secreto compartido (header, nunca en el body) |
 
-Se configuran en Netlify (*Site settings → Environment variables*) y en `astro-portfolio/.env` para local. `astro dev` **no** ejecuta Functions: en local el envío se simula.
+Guía paso a paso para Google Sheets: [`GOOGLE-SHEETS-SETUP.md`](GOOGLE-SHEETS-SETUP.md). Se configuran en Netlify (*Site settings → Environment variables*) y en `astro-portfolio/.env` para local. `astro dev` **no** ejecuta Functions: en local el envío se simula.
 
 ---
 
